@@ -22,3 +22,14 @@ Changelog
 ---------
 
 siehe [CHANGELOG.md](CHANGELOG.md)
+
+
+FAQ
+---
+
+siehe [FAQ.md](FAQ.md)
+
+Lizenz
+------
+
+siehe [LICENSE.md](LICENSE.md)
