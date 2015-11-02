@@ -1,0 +1,403 @@
+<div id="tabs">
+  <ul>
+    <li class="tab1"><a href="#bereich1">Bereich 1</a></li>
+    <li class="tab2"><a href="#bereich2">Bereich 2</a></li>
+    <li class="tab3"><a href="#bereich3">Bereich 3</a></li>
+    <li class="tab4"><a href="#bereich4">Bereich 4</a></li>
+    <li class="weiteres" style="float:right;"><a href="#weiteres">Weitere Einstellungen</a></li>
+  </ul>
+
+
+<?php
+
+// Rex Values
+
+
+
+$objForm = new mform();
+//
+// Block 1
+$objForm->addHtml('<div id="bereich1">');
+//
+//  Text
+//
+$objForm->addHeadline('Text');
+$objForm->addTextField(1.1,array('label'=>'Überschrift','style'=>'width:500px'));
+$objForm->addSelectField(1.4, array(
+  'h1'=>'Überschrift 1 (H1) - Nur einmal pro Seite verwenden',
+  'h2'=>'Überschrift 2 (H2)',
+  'h3'=>'Überschrift 3 (H3)',
+  'h4'=>'Überschrift 4 (H4)',
+  'faq'=>'FAQ Überschrift (Inhalt: Fliesstext)',
+), array('label'=>'Art der Überschrift','class'=>"headlineselect1"));
+$objForm->addTextAreaField(1.2,array('label'=>'Kurztext','style'=>'width:500px'));
+$objForm->addTextAreaField(1.3,array('label'=>'Fließtext','class'=>"rex-markitup",'data-buttonset'=>"kreischer",'style'=>'width:505px !important; height: 20px !important;'));
+$objForm->addHtml('<br/>');
+//
+// Bild
+//
+$objForm->addHeadline('Bild');
+$objForm->addMediaField(1,array('types'=>'gif,jpg,png','preview'=>0,'category'=>0,'label'=>'Datei'));
+$objForm->addTextField(2.1,array('label'=>'Alternativtext','style'=>'width:500px'));
+$objForm->addSelectField(2.2, array(
+  ''=>'nein',
+  'ja'=>'ja'
+), array('label'=>'Bildinformationen ausgeben?'));
+$objForm->addSelectField(2.3, array(
+  ''=>'über dem Text',
+  'unten'=>'unter dem Text',
+  'nachueberschrift'=>'unter der Überschrift',
+  'nachteaser'=>'unter dem Kurztext'
+), array('label'=>'Position'));
+$objForm->addSelectField(2.4, array(
+  ''=>'ja',
+  'nein'=>'nein'
+), array('label'=>'Bild anpassen?'));
+$objForm->addHtml('<br/>');
+//
+// Link
+//
+$objForm->addHeadline('Link');
+$objForm->addTextField(3.1,array('label'=>'extern (http://)','style'=>'width:500px'));
+$objForm->addLinkField(1,array('label'=>'intern','category'=>0));
+$objForm->addTextField(3.2,array('label'=>'Bezeichnung','style'=>'width:500px'));
+$objForm->addSelectField(3.3, array(
+  ''=>'nein',
+  'ja'=>'ja'
+), array('label'=>'Überschrift verlinken?'));
+$objForm->addHtml('<br/>');
+/*
+$objForm->addHeadline('Modal');
+$objForm->addLinkField(5,array('label'=>'Link zum Artikel','category'=>0));
+$objForm->addTextField(3.5,array('label'=>'Bezeichnung','style'=>'width:500px'));
+*/
+$objForm->addHtml('</div>');
+// Block 1 Ende
+
+//
+// Block 2
+$objForm->addHtml('<div id="bereich2">');
+//
+//  Text
+//
+$objForm->addHeadline('Text');
+$objForm->addTextField(4.1,array('label'=>'Überschrift','style'=>'width:500px'));
+$objForm->addSelectField(4.4, array(
+  'h1'=>'Überschrift 1 (H1) - Nur einmal pro Seite verwenden',
+  'h2'=>'Überschrift 2 (H2)',
+  'h3'=>'Überschrift 3 (H3)',
+  'h4'=>'Überschrift 4 (H4)',
+  'faq'=>'FAQ Überschrift (Inhalt: Fliesstext)',
+), array('label'=>'Art der Überschrift','class'=>"headlineselect2"));
+$objForm->addTextAreaField(4.2,array('label'=>'Kurztext','style'=>'width:500px'));
+$objForm->addTextAreaField(4.3,array('label'=>'Fließtext','class'=>"rex-markitup",'data-buttonset'=>"kreischer",'style'=>'width:505px !important; height: 20px !important;'));
+$objForm->addHtml('<br/>');
+//
+// Bild
+//
+$objForm->addHeadline('Bild');
+$objForm->addMediaField(2,array('types'=>'gif,jpg,png','preview'=>0,'category'=>0,'label'=>'Datei'));
+$objForm->addTextField(5.1,array('label'=>'Alternativtext','style'=>'width:500px'));
+$objForm->addSelectField(5.2, array(
+  ''=>'nein',
+  'ja'=>'ja'
+), array('label'=>'Bildinformationen ausgeben?'));
+$objForm->addSelectField(5.3, array(
+  ''=>'über dem Text',
+  'unten'=>'unter dem Text',
+  'nachueberschrift'=>'unter der Überschrift',
+  'nachteaser'=>'unter dem Teaser'
+), array('label'=>'Position'));
+$objForm->addSelectField(5.4, array(
+  ''=>'ja',
+  'nein'=>'nein'
+), array('label'=>'Bild anpassen?'));
+$objForm->addHtml('<br/>');
+//
+// Link
+//
+$objForm->addHeadline('Link');
+$objForm->addTextField(6.1,array('label'=>'extern (http://)','style'=>'width:500px'));
+$objForm->addLinkField(2,array('label'=>'intern','category'=>0));
+$objForm->addTextField(6.2,array('label'=>'Bezeichnung','style'=>'width:500px'));
+$objForm->addSelectField(6.3, array(
+  ''=>'nein',
+  'ja'=>'ja'
+), array('label'=>'Überschrift verlinken?'));
+$objForm->addHtml('<br/>');
+/*
+  $objForm->addHeadline('Modal');
+$objForm->addLinkField(6,array('label'=>'Link zum Artikel','category'=>0));
+$objForm->addTextField(6.5,array('label'=>'Bezeichnung','style'=>'width:500px'));
+*/
+
+$objForm->addHtml('</div>');
+// Block 2 Ende
+
+
+//
+// Block 3
+$objForm->addHtml('<div id="bereich3">');
+//
+//  Text
+//
+$objForm->addHeadline('Text');
+$objForm->addTextField(7.1,array('label'=>'Überschrift','style'=>'width:500px'));
+$objForm->addSelectField(7.4, array(
+  'h1'=>'Überschrift 1 (H1) - Nur einmal pro Seite verwenden',
+  'h2'=>'Überschrift 2 (H2)',
+  'h3'=>'Überschrift 3 (H3)',
+  'h4'=>'Überschrift 4 (H4)',
+  'faq'=>'FAQ Überschrift (Inhalt: Fliesstext)',
+), array('label'=>'Art der Überschrift','class'=>"headlineselect3"));
+$objForm->addTextAreaField(7.2,array('label'=>'Kurztext','style'=>'width:500px'));
+$objForm->addTextAreaField(7.3,array('label'=>'Fließtext','class'=>"rex-markitup",'data-buttonset'=>"kreischer",'style'=>'width:505px !important; height: 20px !important;'));
+$objForm->addHtml('<br/>');
+//
+// Bild
+//
+$objForm->addHeadline('Bild');
+$objForm->addMediaField(3,array('types'=>'gif,jpg,png','preview'=>0,'category'=>0,'label'=>'Datei'));
+$objForm->addTextField(8.1,array('label'=>'Alternativtext','style'=>'width:500px'));
+$objForm->addSelectField(8.2, array(
+  ''=>'nein',
+  'ja'=>'ja'
+), array('label'=>'Bildinformationen ausgeben?'));
+$objForm->addSelectField(8.3, array(
+  ''=>'über dem Text',
+  'unten'=>'unter dem Text',
+  'nachueberschrift'=>'unter der Überschrift',
+  'nachteaser'=>'unter dem Teaser'
+), array('label'=>'Position'));
+$objForm->addSelectField(8.4, array(
+  ''=>'ja',
+  'nein'=>'nein'
+), array('label'=>'Bild anpassen?'));
+$objForm->addHtml('<br/>');
+//
+// Link
+//
+$objForm->addHeadline('Link');
+$objForm->addTextField(9.1,array('label'=>'extern (http://)','style'=>'width:500px'));
+$objForm->addLinkField(3,array('label'=>'intern','category'=>0));
+$objForm->addTextField(9.2,array('label'=>'Bezeichnung','style'=>'width:500px'));
+$objForm->addSelectField(9.3, array(
+  ''=>'nein',
+  'ja'=>'ja'
+), array('label'=>'Überschrift verlinken?'));
+$objForm->addHtml('<br/>');
+/*
+  $objForm->addHeadline('Modal');
+$objForm->addLinkField(7,array('label'=>'Link zum Artikel','category'=>0));
+$objForm->addTextField(9.5,array('label'=>'Bezeichnung','style'=>'width:500px'));
+*/
+$objForm->addHtml('</div>');
+// Block 3 Ende
+
+
+
+//
+// Block 4
+$objForm->addHtml('<div id="bereich4">');
+//
+//  Text
+//
+$objForm->addHeadline('Text');
+$objForm->addTextField(10.1,array('label'=>'Überschrift','style'=>'width:500px'));
+$objForm->addSelectField(10.4, array(
+  'h1'=>'Überschrift 1 (H1) - Nur einmal pro Seite verwenden',
+  'h2'=>'Überschrift 2 (H2)',
+  'h3'=>'Überschrift 3 (H3)',
+  'h4'=>'Überschrift 4 (H4)',
+  'faq'=>'FAQ Überschrift (Inhalt: Fliesstext)',
+), array('label'=>'Art der Überschrift','class'=>"headlineselect4"));
+$objForm->addTextAreaField(10.2,array('label'=>'Kurztext','style'=>'width:500px'));
+$objForm->addTextAreaField(10.3,array('label'=>'Fließtext','class'=>"rex-markitup",'data-buttonset'=>"kreischer",'style'=>'width:505px !important; height: 20px !important;'));
+$objForm->addHtml('<br/>');
+//
+// Bild
+//
+$objForm->addHeadline('Bild');
+$objForm->addMediaField(4,array('types'=>'gif,jpg,png','preview'=>0,'category'=>0,'label'=>'Datei'));
+$objForm->addTextField(11.1,array('label'=>'Alternativtext','style'=>'width:500px'));
+$objForm->addSelectField(11.2, array(
+  ''=>'nein',
+  'ja'=>'ja'
+), array('label'=>'Bildinformationen ausgeben?'));
+$objForm->addSelectField(11.3, array(
+  ''=>'über dem Text',
+  'unten'=>'unter dem Text',
+  'nachueberschrift'=>'unter der Überschrift',
+  'nachteaser'=>'unter dem Teaser'
+), array('label'=>'Position'));
+$objForm->addSelectField(11.4, array(
+  ''=>'ja',
+  'nein'=>'nein'
+), array('label'=>'Bild anpassen?'));
+$objForm->addHtml('<br/>');
+//
+// Link
+//
+$objForm->addHeadline('Link');
+$objForm->addTextField(12.1,array('label'=>'extern (http://)','style'=>'width:500px'));
+$objForm->addLinkField(4,array('label'=>'intern','category'=>0));
+$objForm->addTextField(12.2,array('label'=>'Bezeichnung','style'=>'width:500px'));
+$objForm->addSelectField(12.3, array(
+  ''=>'nein',
+  'ja'=>'ja'
+), array('label'=>'Überschrift verlinken?'));
+$objForm->addHtml('<br/>');
+/*
+  $objForm->addHeadline('Modal');
+$objForm->addLinkField(8,array('label'=>'Link zum Artikel','category'=>0));
+$objForm->addTextField(12.5,array('label'=>'Bezeichnung','style'=>'width:500px'));
+*/
+$objForm->addHtml('</div>');
+// Block 4 Ende
+
+
+
+// Weitere Einstellungen
+
+$objForm->addHtml('<div id="weiteres">');
+
+
+$objForm->addHeadline('Raster');
+$objForm->addHtml('<div class="darstellung">');
+$objForm->addRadioField(18,array(
+  '12'=>'<img src="../files/addons/be_style/plugins/agk_skin/12.png"',
+  '6_6'=>'<img src="../files/addons/be_style/plugins/agk_skin/6_6.png"',
+  '4_4_4'=>'<img src="../files/addons/be_style/plugins/agk_skin/4_4_4.png"',
+  '3_3_3_3'=>'<img src="../files/addons/be_style/plugins/agk_skin/3_3_3_3.png"',
+  '6_3_3'=>'<img src="../files/addons/be_style/plugins/agk_skin/6_3_3.png"',
+  '3_6_3'=>'<img src="../files/addons/be_style/plugins/agk_skin/3_6_3.png"',
+  '3_3_6'=>'<img src="../files/addons/be_style/plugins/agk_skin/3_3_6.png"',
+  '8_4'=>'<img src="../files/addons/be_style/plugins/agk_skin/8_4.png"',
+  '4_8'=>'<img src="../files/addons/be_style/plugins/agk_skin/4_8.png"'
+),array('label'=>'Darstellung'));
+
+
+
+$objForm->addHtml('</div><br/>');
+
+
+
+
+
+$objForm->addHeadline('Online Zeitraum einstellen');
+ $objForm->addSelectField(20.1, array(
+  ''=>'nein',
+  'ja'=>'ja'
+), array('label'=>'Einstellungen berücksichtigen?'));
+$objForm->addTextField(20.2,array('label'=>'Online von','style'=>'width:80px','class'=>'datepicker1'));
+$objForm->addTextField(20.3,array('label'=>'Online bis','style'=>'width:80px','class'=>'datepicker2'));
+
+$objForm->addHtml('<br/>');
+$objForm->addHeadline('Sonstiges');
+$objForm->addTextField(13.1,array('label'=>'Individuelle CSS Klasse','style'=>'width:500px'));
+$objForm->addTextField(13.2,array('label'=>'Image Manager Bildtyp','style'=>'width:500px'));
+$objForm->addHtml('</div>');
+
+echo $objForm->show_mform();
+
+?>
+
+<script type="text/javascript">
+jQuery('#tabs').tabs({
+  fx: { height: 'toggle', duration: 200 },
+  select: function(event, ui) {
+    jQuery(this).next().css('height', jQuery(this).height()+10);
+  },
+//  show: function(event, ui) {
+//    jQuery(this).css('height', '550px');
+//    jQuery(this).css('overflow', 'visible');
+//  }
+});
+
+
+  jQuery(document).ready(function($) {
+
+    $('#tabs').tabs();
+
+    if('REX_VALUE[18]' == '') {
+      $('.weiteres a').click();
+      $(".headlineselect1").val('h3');
+      $(".headlineselect2").val('h3');
+      $(".headlineselect3").val('h3');
+      $(".headlineselect4").val('h3');
+    }
+
+    function bereiche(str) {
+
+            if (str == '12') {
+                 $('.tab1').css('display','block');
+                 $('.tab2').css('display','none');
+                 $('.tab3').css('display','none');
+                 $('.tab4').css('display','none');
+            } else if (str == '6_6' || str == '8_4' || str == '4_8') {
+                 $('.tab1').css('display','block');
+                 $('.tab2').css('display','block');
+                 $('.tab3').css('display','none');
+                 $('.tab4').css('display','none');
+           } else if (str == '4_4_4' || str == '6_3_3' || str == '3_6_3' || str == '3_3_6') {
+                 $('.tab1').css('display','block');
+                 $('.tab2').css('display','block');
+                 $('.tab3').css('display','block');
+                 $('.tab4').css('display','none');
+            } else {
+                 $('.tab1').css('display','block');
+                 $('.tab2').css('display','block');
+                 $('.tab3').css('display','block');
+                 $('.tab4').css('display','block');
+               }
+    }
+
+      bereiche('REX_VALUE[18]');
+
+      $( ".darstellung input[type=radio]").change(function() {
+      $('.tab1 a').click();
+
+      bereiche(this.value);
+
+    });
+
+
+      $(".datepicker1").datepicker({
+              inline: true,
+              dateFormat: "dd.mm.yy"
+
+      });
+
+      $(".datepicker2").datepicker({
+              inline: true,
+              defaultDate: "+1w",
+              dateFormat: "dd.mm.yy"
+      });
+
+  });
+</script>
+
+<style>
+.darstellung input { /* HIDE RADIO */
+ visibility:hidden !important;
+}
+.darstellung label img { /* IMAGE STYLES */
+  border: 1px solid #ccc;
+  margin: 5px;
+}
+
+.darstellung label:hover img{ /* IMAGE STYLES */
+  cursor:pointer;
+  border: 1px solid #659CCE;
+}
+.darstellung :checked + span img { /* IMAGE STYLES */
+    border: 1px solid #737373;
+
+}
+
+
+
+</style>
+
+
+
