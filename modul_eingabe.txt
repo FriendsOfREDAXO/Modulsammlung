@@ -31,7 +31,7 @@ $objForm->addSelectField(1.4, array(
   'faq'=>'FAQ Überschrift (Inhalt: Fliesstext)',
 ), array('label'=>'Art der Überschrift','class'=>"headlineselect1"));
 $objForm->addTextAreaField(1.2,array('label'=>'Kurztext','style'=>'width:500px'));
-$objForm->addTextAreaField(1.3,array('label'=>'Fließtext','class'=>"rex-markitup",'data-buttonset'=>"kreischer",'style'=>'width:505px !important; height: 20px !important;'));
+$objForm->addTextAreaField(1.3,array('label'=>'Fließtext','class'=>"rex-markitup",'data-buttonset'=>"textarea",'style'=>'width:505px !important; height: 20px !important;'));
 $objForm->addHtml('<br/>');
 //
 // Bild
@@ -90,7 +90,7 @@ $objForm->addSelectField(4.4, array(
   'faq'=>'FAQ Überschrift (Inhalt: Fliesstext)',
 ), array('label'=>'Art der Überschrift','class'=>"headlineselect2"));
 $objForm->addTextAreaField(4.2,array('label'=>'Kurztext','style'=>'width:500px'));
-$objForm->addTextAreaField(4.3,array('label'=>'Fließtext','class'=>"rex-markitup",'data-buttonset'=>"kreischer",'style'=>'width:505px !important; height: 20px !important;'));
+$objForm->addTextAreaField(4.3,array('label'=>'Fließtext','class'=>"rex-markitup",'data-buttonset'=>"textarea",'style'=>'width:505px !important; height: 20px !important;'));
 $objForm->addHtml('<br/>');
 //
 // Bild
@@ -151,7 +151,7 @@ $objForm->addSelectField(7.4, array(
   'faq'=>'FAQ Überschrift (Inhalt: Fliesstext)',
 ), array('label'=>'Art der Überschrift','class'=>"headlineselect3"));
 $objForm->addTextAreaField(7.2,array('label'=>'Kurztext','style'=>'width:500px'));
-$objForm->addTextAreaField(7.3,array('label'=>'Fließtext','class'=>"rex-markitup",'data-buttonset'=>"kreischer",'style'=>'width:505px !important; height: 20px !important;'));
+$objForm->addTextAreaField(7.3,array('label'=>'Fließtext','class'=>"rex-markitup",'data-buttonset'=>"textarea",'style'=>'width:505px !important; height: 20px !important;'));
 $objForm->addHtml('<br/>');
 //
 // Bild
@@ -212,7 +212,7 @@ $objForm->addSelectField(10.4, array(
   'faq'=>'FAQ Überschrift (Inhalt: Fliesstext)',
 ), array('label'=>'Art der Überschrift','class'=>"headlineselect4"));
 $objForm->addTextAreaField(10.2,array('label'=>'Kurztext','style'=>'width:500px'));
-$objForm->addTextAreaField(10.3,array('label'=>'Fließtext','class'=>"rex-markitup",'data-buttonset'=>"kreischer",'style'=>'width:505px !important; height: 20px !important;'));
+$objForm->addTextAreaField(10.3,array('label'=>'Fließtext','class'=>"rex-markitup",'data-buttonset'=>"textarea",'style'=>'width:505px !important; height: 20px !important;'));
 $objForm->addHtml('<br/>');
 //
 // Bild
