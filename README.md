@@ -13,3 +13,9 @@ ButtonSet für RexMarkitup
 
 textarea:
 'bold,italic,stroke,ins,|,listbullet,listnumeric,|,linkintern,linkextern,linkmailto,linkmedia',
+
+
+Changelog
+---------
+
+siehe [CHANGELOG.md](CHANGELOG.md)
