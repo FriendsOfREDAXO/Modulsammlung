@@ -11,30 +11,28 @@
 <?php
 
 // Rex Values
-for ($v = 1; $v <= 4; $v++) {
+for ($i = 1; $i <= 4; $i++) {
 
-$values[$v] = rex_var::toArray('REX_VALUE['.$v.']');
-$values[$v]['media_1'] =<<<EOF
-REX_MEDIA_BUTTON[$v]
+$values[$i] = rex_var::toArray('REX_VALUE['.$i.']');
+$values[$i]['media_1'] =<<<EOF
+REX_MEDIA_BUTTON[$i]
 EOF;
-$values[$v]['link_1'] =<<<EOF
-REX_LINK_BUTTON[$v]
+$values[$i]['link_1'] =<<<EOF
+REX_LINK_BUTTON[$i]
 EOF;
 
 }
 
- for ($i = 1; $i <= count($values); $i++) {
+for ($i = 1; $i <= count($values); $i++) {
 
-
-echo '<div id="tabs"><ul>';
-
-        for ($i = 1; $i <= count($values); $i++) {
-            echo '<li id="t' . $i . '" class="tab' . $i . '"><a href="#bereich' . $i . '">Bereich ' . $i . '</a></li>';
-        }
-      echo '
-
-        <li class="tabr1" style="float:right;"><a href="#tab-colr1">Weitere Einstellungen</a></li>
-    </ul></div>';
+  echo '<div id="tabs"><ul>';
+  for ($i = 1; $i <= count($values); $i++) {
+    echo '<li id="t' . $i . '" class="tab' . $i . '"><a href="#bereich' . $i . '">Bereich ' . $i . '</a></li>';
+  }
+  echo '
+      <li class="weiteres locked" style="float:right;"><a href="#weiteres">Weitere Einstellungen</a></li>
+    </ul>
+  </div>';
 
         $ueberschrift_art = new rex_select();
         $ueberschrift_art->setName('VALUE[' . $i . '][ueberschrift_art]');
@@ -499,6 +497,5 @@ $(function () {
 
 
 </style>
-
 
 
