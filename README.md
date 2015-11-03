@@ -17,6 +17,18 @@ ButtonSet für RexMarkitup
 textarea:
 'bold,italic,stroke,ins,|,listbullet,listnumeric,|,linkintern,linkextern,linkmailto,linkmedia',
 
+ToDo
+---------
+
+* auf mForm verzichten
+* Drag & Drop für die einzelnen Bereiche (Konzept?)
+* Zahlen aus den Grafiken entfernen
+* Grafik in der Ausgabe fehlerhaft (CSS)
+
+* Einstellungsparameter
+* Modal berücksichtigen
+* Accordion
+
 
 Changelog
 ---------
