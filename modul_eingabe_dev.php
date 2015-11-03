@@ -1,4 +1,4 @@
-<div id="tabs">
+<!-- <div id="tabs">
   <ul>
     <li id="t1" class="tab1"><a href="#bereich1">Bereich 1</a></li>
     <li id="t2" class="tab2"><a href="#bereich2">Bereich 2</a></li>
@@ -6,13 +6,97 @@
     <li id="t4" class="tab4"><a href="#bereich4">Bereich 4</a></li>
     <li class="weiteres locked" style="float:right;"><a href="#weiteres">Weitere Einstellungen</a></li>
   </ul>
-
+-->
 
 <?php
 
 // Rex Values
+for ($v = 1; $v <= 4; $v++) {
+
+$values[$v] = rex_var::toArray('REX_VALUE['.$v.']');
+$values[$v]['media_1'] =<<<EOF
+REX_MEDIA_BUTTON[$v]
+EOF;
+$values[$v]['link_1'] =<<<EOF
+REX_LINK_BUTTON[$v]
+EOF;
+
+}
+
+ for ($i = 1; $i <= count($values); $i++) {
 
 
+echo '<div id="tabs"><ul>';
+
+        for ($i = 1; $i <= count($values); $i++) {
+            echo '<li id="t' . $i . '" class="tab' . $i . '"><a href="#bereich' . $i . '">Bereich ' . $i . '</a></li>';
+        }
+      echo '
+
+        <li class="tabr1" style="float:right;"><a href="#tab-colr1">Weitere Einstellungen</a></li>
+    </ul></div>';
+
+        $ueberschrift_art = new rex_select();
+        $ueberschrift_art->setName('VALUE[' . $i . '][ueberschrift_art]');
+        $ueberschrift_art->setSelected( (isset($values[$i]['ueberschrift_art']) ? $values[$i]['ueberschrift_art'] : '') );
+        $ueberschrift_art->setSize(1);
+        $ueberschrift_art->addOptions(
+                array(
+                     'h1' => 'Überschrift 1 (H1) - Nur einmal pro Seite verwenden',
+                     'h2' => 'Überschrift 2 (H2)',
+                     'h3' => 'Überschrift 3 (H3)',
+                     'h4' => 'Überschrift 4 (H4)',
+                    'faq' => 'FAQ Überschrift (Inhalt: Fliesstext)'
+                ));
+
+
+
+
+
+        echo '
+        <div id="bereich' . $i . '">
+
+            <table class="rex-table">
+
+                <tr class="rex-title">
+                    <th colspan="2">Einstellung</th>
+                </tr>
+
+                <tr>
+
+                <tr>
+                    <th>Überschrift</th>
+                    <td><input name="VALUE[' . $i . '][ueberschrift]" value="' . (isset($values[$i]['ueberschrift']) ? $values[$i]['ueberschrift'] : '') . '" type="text" /></td>
+                </tr>
+
+                <tr>
+                    <th>Art der Überschrift</th>
+                    <td>' . $ueberschrift_art->get() . '</td>
+                </tr>
+
+
+
+
+                <tr>
+                    <th>Fließtext</th>
+                    <td><textarea name="VALUE[' . $i . '][text]" class="rex-markitup" data-buttonset="appstandard">' . (isset($values[$i]['text']) ? $values[$i]['text'] : '') . '</textarea></td>
+                </tr>
+
+
+
+
+
+
+            </table>
+
+        </div>';
+
+
+    }
+
+
+
+/*
 
 $objForm = new mform();
 //
@@ -66,11 +150,11 @@ $objForm->addSelectField(3.3, array(
   'ja'=>'ja'
 ), array('label'=>'Überschrift verlinken?'));
 $objForm->addHtml('<br/>');
-/*
-$objForm->addHeadline('Modal');
-$objForm->addLinkField(5,array('label'=>'Link zum Artikel','category'=>0));
-$objForm->addTextField(3.5,array('label'=>'Bezeichnung','style'=>'width:500px'));
-*/
+
+// $objForm->addHeadline('Modal');
+// $objForm->addLinkField(5,array('label'=>'Link zum Artikel','category'=>0));
+// $objForm->addTextField(3.5,array('label'=>'Bezeichnung','style'=>'width:500px'));
+
 $objForm->addHtml('</div>');
 // Block 1 Ende
 
@@ -125,11 +209,6 @@ $objForm->addSelectField(6.3, array(
   'ja'=>'ja'
 ), array('label'=>'Überschrift verlinken?'));
 $objForm->addHtml('<br/>');
-/*
-  $objForm->addHeadline('Modal');
-$objForm->addLinkField(6,array('label'=>'Link zum Artikel','category'=>0));
-$objForm->addTextField(6.5,array('label'=>'Bezeichnung','style'=>'width:500px'));
-*/
 
 $objForm->addHtml('</div>');
 // Block 2 Ende
@@ -186,11 +265,7 @@ $objForm->addSelectField(9.3, array(
   'ja'=>'ja'
 ), array('label'=>'Überschrift verlinken?'));
 $objForm->addHtml('<br/>');
-/*
-  $objForm->addHeadline('Modal');
-$objForm->addLinkField(7,array('label'=>'Link zum Artikel','category'=>0));
-$objForm->addTextField(9.5,array('label'=>'Bezeichnung','style'=>'width:500px'));
-*/
+
 $objForm->addHtml('</div>');
 // Block 3 Ende
 
@@ -247,11 +322,7 @@ $objForm->addSelectField(12.3, array(
   'ja'=>'ja'
 ), array('label'=>'Überschrift verlinken?'));
 $objForm->addHtml('<br/>');
-/*
-  $objForm->addHeadline('Modal');
-$objForm->addLinkField(8,array('label'=>'Link zum Artikel','category'=>0));
-$objForm->addTextField(12.5,array('label'=>'Bezeichnung','style'=>'width:500px'));
-*/
+
 $objForm->addHtml('</div>');
 // Block 4 Ende
 
@@ -316,7 +387,7 @@ $objForm->addTextField(13.2,array('label'=>'Image Manager Bildtyp','style'=>'wid
 $objForm->addHtml('</div>');
 
 echo $objForm->show_mform();
-
+*/
 ?>
 
 <script type="text/javascript">
