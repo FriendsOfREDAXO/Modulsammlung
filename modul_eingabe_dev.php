@@ -1,13 +1,3 @@
- <div id="tabs">
-  <ul>
-    <li id="t1" class="tab1"><a href="#bereich1">Bereich 1</a></li>
-    <li id="t2" class="tab2"><a href="#bereich2">Bereich 2</a></li>
-    <li id="t3" class="tab3"><a href="#bereich3">Bereich 3</a></li>
-    <li id="t4" class="tab4"><a href="#bereich4">Bereich 4</a></li>
-    <li id="w" class="weiteres locked" style="float:right;"><a href="#weiteres">Weitere Einstellungen</a></li>
-  </ul>
-
-
 <?php
 
 
@@ -33,6 +23,20 @@ $values[4]['link_1']  = 'REX_LINK_ID[4]';
 if (count($values) > $bereichsanzahl) {
     $values = array_slice($values, 0, $bereichsanzahl);
 }
+
+echo '
+<div id="tabs">
+    <ul>
+';
+        for ($i = 1; $i <= count($values); $i++) {
+            echo '<li id="'.$i.'" class="tab' . $i . '"><a href="#bereich' . $i . '">Bereich ' . $i . '</a></li>';
+        }
+
+echo '
+        <li class="weiteres locked" style="float:right;"><a href="#weiteres">Weitere Einstellungen</a></li>
+    </ul>
+  ';
+
 
 
  for ($i = 1; $i <= count($values); $i++) {
