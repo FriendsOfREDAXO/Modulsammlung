@@ -1,38 +1,42 @@
-<!-- <div id="tabs">
+ <div id="tabs">
   <ul>
     <li id="t1" class="tab1"><a href="#bereich1">Bereich 1</a></li>
     <li id="t2" class="tab2"><a href="#bereich2">Bereich 2</a></li>
     <li id="t3" class="tab3"><a href="#bereich3">Bereich 3</a></li>
     <li id="t4" class="tab4"><a href="#bereich4">Bereich 4</a></li>
-    <li class="weiteres locked" style="float:right;"><a href="#weiteres">Weitere Einstellungen</a></li>
+    <li id="w" class="weiteres locked" style="float:right;"><a href="#weiteres">Weitere Einstellungen</a></li>
   </ul>
--->
+
 
 <?php
 
-// Rex Values
-for ($i = 1; $i <= 4; $i++) {
 
-$values[$i] = rex_var::toArray('REX_VALUE['.$i.']');
-$values[$i]['media_1'] =<<<EOF
-REX_MEDIA_BUTTON[$i]
-EOF;
-$values[$i]['link_1'] =<<<EOF
-REX_LINK_BUTTON[$i]
-EOF;
+$bereichsanzahl = 4;
 
+$values[1] = rex_var::toArray('REX_VALUE[1]');
+$values[1]['media_1'] = 'REX_MEDIA[1]';
+$values[1]['link_1']  = 'REX_LINK_ID[1]';
+
+$values[2] = rex_var::toArray('REX_VALUE[2]');
+$values[2]['media_1'] = 'REX_MEDIA[2]';
+$values[2]['link_1']  = 'REX_LINK_ID[2]';
+
+$values[3] = rex_var::toArray('REX_VALUE[3]');
+$values[3]['media_1'] = 'REX_MEDIA[3]';
+$values[3]['link_1']  = 'REX_LINK_ID[3]';
+
+$values[4] = rex_var::toArray('REX_VALUE[4]');
+$values[4]['media_1'] = 'REX_MEDIA[4]';
+$values[4]['link_1']  = 'REX_LINK_ID[4]';
+
+
+if (count($values) > $bereichsanzahl) {
+    $values = array_slice($values, 0, $bereichsanzahl);
 }
 
-for ($i = 1; $i <= count($values); $i++) {
 
-  echo '<div id="tabs"><ul>';
-  for ($i = 1; $i <= count($values); $i++) {
-    echo '<li id="t' . $i . '" class="tab' . $i . '"><a href="#bereich' . $i . '">Bereich ' . $i . '</a></li>';
-  }
-  echo '
-      <li class="weiteres locked" style="float:right;"><a href="#weiteres">Weitere Einstellungen</a></li>
-    </ul>
-  </div>';
+ for ($i = 1; $i <= count($values); $i++) {
+
 
         $ueberschrift_art = new rex_select();
         $ueberschrift_art->setName('VALUE[' . $i . '][ueberschrift_art]');
@@ -92,6 +96,7 @@ for ($i = 1; $i <= count($values); $i++) {
 
     }
 
+echo ' <div id="weiteres">weiteres</div>';
 
 
 /*
@@ -497,5 +502,6 @@ $(function () {
 
 
 </style>
+
 
 
