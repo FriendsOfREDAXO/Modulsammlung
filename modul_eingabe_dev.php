@@ -1,39 +1,54 @@
 <?php
 
-$bereichsanzahl = 4;
+// textarea: 'bold,italic,stroke,ins,|,listbullet,listnumeric,|,linkintern,linkextern,linkmailto'
 
+$values = array();
 $values[1] = rex_var::toArray('REX_VALUE[1]');
-$values[1]['media_1'] = 'REX_MEDIA[1]';
-$values[1]['link_1']  = 'REX_LINK_ID[1]';
+$values[1]['media_1'] =<<<EOF
+REX_MEDIA_BUTTON[1]
+EOF;
+$values[1]['medialist_1'] =<<<EOF
+REX_MEDIALIST[1]
+EOF;
+$values[1]['link_1'] =<<<EOF
+REX_LINK_BUTTON[1]
+EOF;
 
 $values[2] = rex_var::toArray('REX_VALUE[2]');
-$values[2]['media_1'] = 'REX_MEDIA[2]';
-$values[2]['link_1']  = 'REX_LINK_ID[2]';
+$values[2]['media_1'] =<<<EOF
+REX_MEDIA_BUTTON[2]
+EOF;
+$values[2]['link_1'] =<<<EOF
+REX_LINK_BUTTON[2]
+EOF;
 
 $values[3] = rex_var::toArray('REX_VALUE[3]');
-$values[3]['media_1'] = 'REX_MEDIA[3]';
-$values[3]['link_1']  = 'REX_LINK_ID[3]';
+$values[3]['media_1'] =<<<EOF
+REX_MEDIA_BUTTON[3]
+EOF;
+$values[3]['link_1'] =<<<EOF
+REX_LINK_BUTTON[3]
+EOF;
 
 $values[4] = rex_var::toArray('REX_VALUE[4]');
-$values[4]['media_1'] = 'REX_MEDIA[4]';
-$values[4]['link_1']  = 'REX_LINK_ID[4]';
-
-
-if (count($values) > $bereichsanzahl) {
-    $values = array_slice($values, 0, $bereichsanzahl);
-}
+$values[4]['media_1'] =<<<EOF
+REX_MEDIA_BUTTON[4]
+EOF;
+$values[4]['link_1'] =<<<EOF
+REX_LINK_BUTTON[4]
+EOF;
 
 echo '
 <input id="anrodnung" type="hidden" name="VALUE[19]" value="REX_VALUE[19]" />
 <div id="tabs">
-    <ul>
+    <ul class="tabs">
 ';
 
       if('REX_VALUE[19]') {
         $reihenfolgeneu = explode(',','REX_VALUE[19]');
 
           for ($i = 1; $i <= count($values); $i++) {
-              echo '<li id="'.$i.'" class="tab'.($reihenfolgeneu[($i-1)]).'"><a href="#bereich'.($reihenfolgeneu[($i-1)]).'">Bereich '.$i.'</a></li>';
+              echo '<li id="'.($reihenfolgeneu[($i-1)]).'" class="tab'.($reihenfolgeneu[($i-1)]).'"><a href="#bereich'.($reihenfolgeneu[($i-1)]).'">Bereich '.$i.'</a></li>';
           }
 
         } else {
@@ -45,7 +60,7 @@ echo '
 
 
 echo '
-        <li class="weiteres locked" style="float:right;"><a href="#weiteres">Weitere Einstellungen</a></li>
+        <li class="weiteres locked" style="float:right;"><a href="#weiteres">REX_VALUE[19] Weitere Einstellungen</a></li>
     </ul>
   ';
 
@@ -69,53 +84,89 @@ echo '
 
 
         echo '
+<div id="bereich'.$i.'">
+  <table class="output" >
+    <tr><td class="headline" colspan="2" >Überschrift</td></tr>
+
+    <tr>
+      <td class="left first">Überschrift</td>
+      <td class="right first"><input name="VALUE[' . $i . '][ueberschrift]" value="' . (isset($values[$i]['ueberschrift']) ? $values[$i]['ueberschrift'] : '') . '" type="text" /></td>
+    </tr>
+    <tr>
+
+    <tr>
+      <td class="left last">Art der Überschrift</td>
+      <td class="right last"><div class="select-style">' . $ueberschrift_art->get() . '</div></td>
+    </tr>
+
+    <tr><td class="headline" colspan="2" >Inhaltstext</td></tr>
+
+    <tr>
+      <td class="left first">Teasertext</td>
+      <td class="right first"><textarea name="VALUE[' . $i . '][teasertext]" >' . (isset($values[$i]['teasertext']) ? $values[$i]['teasertext'] : '') . '</textarea></td>
+    </tr>
+
+    <tr>
+      <td class="left last">Fließtext</td>
+      <td class="right last"><textarea name="VALUE[' . $i . '][text]" class="rex-markitup" data-buttonset="textarea">' . (isset($values[$i]['text']) ? $values[$i]['text'] : '') . '</textarea></td>
+    </tr>
 
 
 
-        <div id="bereich'.$i.'">
+    <tr><td class="headline" colspan="2" >Bild</td></tr>
+    <tr>
+      <td class="left first">Datei</td>
+      <td class="right first">' . $values[$i]['media_1'] . '</td>
+    </tr>
 
-            <table class="rex-table">
+    <tr>
+      <td class="left">Alternativtext</td>
+      <td class="right"><input name="VALUE[' . $i . '][alt]" value="' . (isset($values[$i]['alt']) ? $values[$i]['alt'] : '') . '" type="text" /></td>
+    </tr>
 
-                <tr class="rex-title">
-                    <th colspan="2">Einstellung</th>
-                </tr>
+    <tr>
+      <td class="left">Bildinformation ausgeben</td>
+      <td class="right"></td>
+    </tr>
 
-                <tr>
+    <tr>
+      <td class="left"Position</td>
+      <td class="right"></td>
+    </tr>
 
-                <tr>
-                    <th>Überschrift</th>
-                    <td><input name="VALUE[' . $i . '][ueberschrift]" value="' . (isset($values[$i]['ueberschrift']) ? $values[$i]['ueberschrift'] : '') . '" type="text" /></td>
-                </tr>
+    <tr>
+      <td class="left last">Bildanpassen</td>
+      <td class="right last"></td>
+    </tr>
 
-                <tr>
-                    <th>Art der Überschrift</th>
-                    <td>' . $ueberschrift_art->get() . '</td>
-                </tr>
+    <tr><td class="headline" colspan="2" >Link</td></tr>
 
+    <tr>
+      <td class="left first">extern (http://)</td>
+      <td class="right first"></td>
+    </tr>
 
+    <tr>
+      <td class="left">Link intern</td>
+      <td class="right">'.$values[$i]['link_1'].'</td>
+    </tr>
 
+    <tr>
+      <td class="left">Bezeichnung</td>
+      <td class="right"><input name="VALUE[' . $i . '][linkbezeichnung]" value="' . (isset($values[$i]['linkbezeichnung']) ? $values[$i]['linkbezeichnung'] : '') . '" type="text" /></td>
+    </tr>
 
-                <tr>
-                    <th>Fließtext</th>
-                    <td><textarea name="VALUE[' . $i . '][text]" class="rex-markitup" data-buttonset="appstandard">' . (isset($values[$i]['text']) ? $values[$i]['text'] : '') . '</textarea></td>
-                </tr>
+    <tr>
+      <td class="left last">Überschrift verlinken</td>
+      <td class="right last"></td>
+    </tr>
 
+    <tr><td class="headline" colspan="2" >Download</td></tr>
+    <tr>
+      <td class="left first last">Dateien</td>
+      <td class="right first last"></td>
+    </tr>
 
-
-  <tr>
-                    <th>Bezeichnung</th>
-                    <td><input name="VALUE[' . $i . '][link_name]" value="' . (isset($values[$i]['link_name']) ? $values[$i]['link_name'] : '') . '" type="text" /></td>
-                </tr>
-
-                <tr>
-                    <th>bild</th>
-                    <td>' . $values[$i]['media_1'] . '</td>
-                </tr>
-
-                                <tr>
-                    <th>intern</th>
-                    <td>55' . $values[$i]['link_1'] . '</td>
-                </tr>
 
 
 
@@ -232,7 +283,7 @@ jQuery('#tabs').tabs({
   jQuery(document).ready(function($) {
 
 $(function () {
-    $("#tabs").tabs().find("ul").sortable({
+    $("#tabs").tabs().find("ul.tabs").sortable({
         axis : "x",
         items: '> li:not(.locked)',
         update: function (e, ui) {
@@ -312,7 +363,127 @@ $(function () {
     border: 1px solid #737373;
 }
 
+table.output {
+  width: 100%;
+    font-size: 14px;
+}
 
+td.headline {
+  background: #E7E7E7;
+  padding: 8px 0 5px 170px;
+  font-weight: bold;
+  font-size: 12px;
+  border-top: 15px solid #fff;
+  border-bottom: 1px solid #fff;
+}
+
+
+
+.left {
+  background: #F0F0F0;
+  padding: 6px 0 10px 10px;
+  font-weight: bold;
+  width: 160px;
+  font-size: 12px;
+  vertical-align: top;
+}
+
+.right {
+  background: #F0F0F0;
+}
+
+.first {
+  padding-top: 20px;
+  padding-bottom: 7px;
+}
+
+.last {
+  padding-bottom: 15px !important;
+}
+
+input[type=text] {
+  width: 490px;
+  padding: 5px 8px;
+  border: 1px solid #E7E7E7;
+}
+
+textarea {
+  width: 490px;
+  height: 70px;
+  padding: 5px 8px;
+  resize: none;
+  border: 1px solid #E7E7E7;
+}
+
+.markItUp {
+  width: 505px;
+
+  resize: none;
+  border: 1px solid #E7E7E7;
+}
+
+.markItUpContainer {
+  border: none;
+}
+
+.markItUp textarea {
+  font-family: arial;
+  font-size: 14px;
+  resize: auto;
+  padding: 10px 8px !important;
+}
+
+.select-style {
+    border: 1px solid #E7E7E7;
+    width: 506px;
+    overflow: hidden;
+
+    background: #fff url("data:image/png;base64,R0lGODlhDwAUAIABAAAAAP///yH5BAEAAAEALAAAAAAPABQAAAIXjI+py+0Po5wH2HsXzmw//lHiSJZmUAAAOw==") no-repeat 480px 50%;
+}
+
+.select-style select {
+    padding: 5px 8px;
+    width:100%;
+    border: none;
+    box-shadow: none;
+    background: transparent;
+    background-image: none;
+    -webkit-appearance: none;
+    -webkit-border-radius: 0px;
+}
+
+.select-style select:focus {
+    outline: none;
+}
+
+.select-style select:hover {
+  cursor: pointer;
+}
+
+
+.rex-widget {
+    border: 1px solid #E7E7E7 !important;
+}
+
+.rex-widget-media,
+.rex-widget-link {
+  width: 495px;
+}
+
+.rex-widget-media input,
+.rex-widget-link input{
+  background: #fff !important;
+  width: 380px;
+}
+
+.rex-widget-media .rex-icon-file-open,
+.rex-widget-media .rex-icon-file-add,
+.rex-widget-media .rex-icon-file-delete,
+.rex-widget-media .rex-icon-file-view,
+.rex-widget-link .rex-icon-file-open,
+.rex-widget-link .rex-icon-file-delete {
+  margin-top: 5px;
+}
 
 </style>
 
