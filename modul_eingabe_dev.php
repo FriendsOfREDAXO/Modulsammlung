@@ -8,7 +8,7 @@ $values[1]['media_1'] =<<<EOF
 REX_MEDIA_BUTTON[1]
 EOF;
 $values[1]['medialist_1'] =<<<EOF
-REX_MEDIALIST[1]
+REX_MEDIALIST_BUTTON[1]
 EOF;
 $values[1]['link_1'] =<<<EOF
 REX_LINK_BUTTON[1]
@@ -18,6 +18,9 @@ $values[2] = rex_var::toArray('REX_VALUE[2]');
 $values[2]['media_1'] =<<<EOF
 REX_MEDIA_BUTTON[2]
 EOF;
+$values[2]['medialist_1'] =<<<EOF
+REX_MEDIALIST_BUTTON[2]
+EOF;
 $values[2]['link_1'] =<<<EOF
 REX_LINK_BUTTON[2]
 EOF;
@@ -26,6 +29,9 @@ $values[3] = rex_var::toArray('REX_VALUE[3]');
 $values[3]['media_1'] =<<<EOF
 REX_MEDIA_BUTTON[3]
 EOF;
+$values[3]['medialist_1'] =<<<EOF
+REX_MEDIALIST_BUTTON[2]
+EOF;
 $values[3]['link_1'] =<<<EOF
 REX_LINK_BUTTON[3]
 EOF;
@@ -33,6 +39,9 @@ EOF;
 $values[4] = rex_var::toArray('REX_VALUE[4]');
 $values[4]['media_1'] =<<<EOF
 REX_MEDIA_BUTTON[4]
+EOF;
+$values[4]['medialist_1'] =<<<EOF
+REX_MEDIALIST_BUTTON[2]
 EOF;
 $values[4]['link_1'] =<<<EOF
 REX_LINK_BUTTON[4]
@@ -60,14 +69,13 @@ echo '
 
 
 echo '
-        <li class="weiteres locked" style="float:right;"><a href="#weiteres">REX_VALUE[19] Weitere Einstellungen</a></li>
+        <li class="weiteres locked" style="float:right;"><a href="#weiteres">Weitere Einstellungen</a></li>
     </ul>
   ';
 
 
 
  for ($i = 1; $i <= count($values); $i++) {
-
 
         $ueberschrift_art = new rex_select();
         $ueberschrift_art->setName('VALUE[' . $i . '][ueberschrift_art]');
@@ -82,6 +90,48 @@ echo '
                     'faq' => 'FAQ Überschrift (Inhalt: Fliesstext)'
                 ));
 
+        $bildinformationen = new rex_select();
+        $bildinformationen->setName('VALUE[' . $i . '][bildinformationen]');
+        $bildinformationen->setSelected( (isset($values[$i]['bildinformationen']) ? $values[$i]['bildinformationen'] : '') );
+        $bildinformationen->setSize(1);
+        $bildinformationen->addOptions(
+                array(
+                     '' => 'nein',
+                     'ja' => 'ja'
+                ));
+
+        $bildposition = new rex_select();
+        $bildposition->setName('VALUE[' . $i . '][bildposition]');
+        $bildposition->setSelected( (isset($values[$i]['bildposition']) ? $values[$i]['bildposition'] : '') );
+        $bildposition->setSize(1);
+        $bildposition->addOptions(
+                array(
+                  ''=>'über dem Text',
+                  'unten'=>'unter dem Text',
+                  'nachueberschrift'=>'unter der Überschrift',
+                  'nachteaser'=>'unter dem Kurztext'
+                ));
+
+
+        $bildanpassen = new rex_select();
+        $bildanpassen->setName('VALUE[' . $i . '][bildanpassen]');
+        $bildanpassen->setSelected( (isset($values[$i]['bildanpassen']) ? $values[$i]['bildanpassen'] : '') );
+        $bildanpassen->setSize(1);
+        $bildanpassen->addOptions(
+                array(
+                     '' => 'nein',
+                     'ja' => 'ja'
+                ));
+
+        $ueberschriftlink = new rex_select();
+        $ueberschriftlink->setName('VALUE[' . $i . '][ueberschriftlink]');
+        $ueberschriftlink->setSelected( (isset($values[$i]['ueberschriftlink']) ? $values[$i]['ueberschriftlink'] : '') );
+        $ueberschriftlink->setSize(1);
+        $ueberschriftlink->addOptions(
+                array(
+                     '' => 'nein',
+                     'ja' => 'ja'
+                ));
 
         echo '
 <div id="bereich'.$i.'">
@@ -126,24 +176,24 @@ echo '
 
     <tr>
       <td class="left">Bildinformation ausgeben</td>
-      <td class="right"></td>
+      <td class="right"><div class="select-style">' . $bildinformationen->get() . '</div></td>
     </tr>
 
     <tr>
-      <td class="left"Position</td>
-      <td class="right"></td>
+      <td class="left">Position</td>
+      <td class="right"><div class="select-style">' . $bildposition->get() . '</div></td>
     </tr>
 
     <tr>
       <td class="left last">Bildanpassen</td>
-      <td class="right last"></td>
+      <td class="right last"><div class="select-style">' . $bildanpassen->get() . '</div></td>
     </tr>
 
     <tr><td class="headline" colspan="2" >Link</td></tr>
 
     <tr>
       <td class="left first">extern (http://)</td>
-      <td class="right first"></td>
+      <td class="right first"><input name="VALUE[' . $i . '][linkextern]" value="' . (isset($values[$i]['linkextern']) ? $values[$i]['linkextern'] : '') . '" type="text" /></td>
     </tr>
 
     <tr>
@@ -157,14 +207,14 @@ echo '
     </tr>
 
     <tr>
-      <td class="left last">Überschrift verlinken</td>
-      <td class="right last"></td>
+       <td class="left last">Überschrift verlinken</td>
+       <td class="right last"><div class="select-style">' . $ueberschriftlink->get() . '</div></td>
     </tr>
 
     <tr><td class="headline" colspan="2" >Download</td></tr>
     <tr>
       <td class="left first last">Dateien</td>
-      <td class="right first last"></td>
+      <td class="right first last">'.$values[$i]['medialist_1'].'</td>
     </tr>
 
 
@@ -211,60 +261,6 @@ echo '
 ';
 
 
-
-/*
-
-$objForm = new mform();
-//
-// Block 1
-$objForm->addHtml('<div id="bereich1">');
-/'width:505px !important; height: 20px !important;'));
-$objForm->addHtml('<br/>');
-//
-// Bild
-//
-$objForm->addHeadline('Bild');
-$objForm->addMediaField(1,array('types'=>'gif,jpg,png','preview'=>0,'category'=>0,'label'=>'Datei'));
-$objForm->addTextField(2.1,array('label'=>'Alternativtext','style'=>'width:500px'));
-$objForm->addSelectField(2.2, array(
-  ''=>'nein',
-  'ja'=>'ja'
-), array('label'=>'Bildinformationen ausgeben?'));
-$objForm->addSelectField(2.3, array(
-  ''=>'über dem Text',
-  'unten'=>'unter dem Text',
-  'nachueberschrift'=>'unter der Überschrift',
-  'nachteaser'=>'unter dem Kurztext'
-), array('label'=>'Position'));
-$objForm->addSelectField(2.4, array(
-  ''=>'ja',
-  'nein'=>'nein'
-), array('label'=>'Bild anpassen?'));
-$objForm->addHtml('<br/>');
-//
-// Link
-//
-$objForm->addHeadline('Link');
-$objForm->addTextField(3.1,array('label'=>'extern (http://)','style'=>'width:500px'));
-$objForm->addLinkField(1,array('label'=>'intern','category'=>0));
-$objForm->addTextField(3.2,array('label'=>'Bezeichnung','style'=>'width:500px'));
-$objForm->addSelectField(3.3, array(
-  ''=>'nein',
-  'ja'=>'ja'
-), array('label'=>'Überschrift verlinken?'));
-$objForm->addHtml('<br/>');
-
-// $objForm->addHeadline('Modal');
-// $objForm->addLinkField(5,array('label'=>'Link zum Artikel','category'=>0));
-// $objForm->addTextField(3.5,array('label'=>'Bezeichnung','style'=>'width:500px'));
-
-$objForm->addHtml('</div>');
-// Block 1 Ende
-
-
-
-echo $objForm->show_mform();
-*/
 ?>
 
 <script type="text/javascript">
@@ -365,7 +361,7 @@ $(function () {
 
 table.output {
   width: 100%;
-    font-size: 14px;
+  font-size: 14px;
 }
 
 td.headline {
@@ -376,8 +372,6 @@ td.headline {
   border-top: 15px solid #fff;
   border-bottom: 1px solid #fff;
 }
-
-
 
 .left {
   background: #F0F0F0;
@@ -394,8 +388,8 @@ td.headline {
 
 .first {
   padding-top: 20px;
-  padding-bottom: 7px;
-}
+  padding-bottom: 10px;
+  }
 
 .last {
   padding-bottom: 15px !important;
@@ -437,8 +431,8 @@ textarea {
     border: 1px solid #E7E7E7;
     width: 506px;
     overflow: hidden;
-
     background: #fff url("data:image/png;base64,R0lGODlhDwAUAIABAAAAAP///yH5BAEAAAEALAAAAAAPABQAAAIXjI+py+0Po5wH2HsXzmw//lHiSJZmUAAAOw==") no-repeat 480px 50%;
+    margin-bottom: 6px;
 }
 
 .select-style select {
@@ -463,27 +457,37 @@ textarea {
 
 .rex-widget {
     border: 1px solid #E7E7E7 !important;
+
 }
 
 .rex-widget-media,
-.rex-widget-link {
+.rex-widget-link,
+.rex-widget-medialist {
   width: 495px;
 }
 
-.rex-widget-media input,
-.rex-widget-link input{
+.rex-widget-media input {
   background: #fff !important;
   width: 380px;
 }
 
-.rex-widget-media .rex-icon-file-open,
-.rex-widget-media .rex-icon-file-add,
-.rex-widget-media .rex-icon-file-delete,
-.rex-widget-media .rex-icon-file-view,
-.rex-widget-link .rex-icon-file-open,
-.rex-widget-link .rex-icon-file-delete {
+.rex-widget-link input {
+  background: #fff !important;
+  width: 420px;
+}
+
+.rex-widget-medialist .rex-widget-field select{
+    background: #fff !important;
+    width: 438px !important;
+    border: 1px solid #E7E7E7 !important;
+}
+
+
+.rex-widget-icons {
   margin-top: 5px;
 }
+
+
 
 </style>
 
