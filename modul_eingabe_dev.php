@@ -137,36 +137,40 @@ echo '
 <div id="bereich'.$i.'">
   <table class="output" >
     <tr><td class="headline" colspan="2" >Überschrift</td></tr>
+    <tr><td class="abstand" colspan="2" ></td></tr>
 
     <tr>
-      <td class="left first">Überschrift</td>
-      <td class="right first"><input name="VALUE[' . $i . '][ueberschrift]" value="' . (isset($values[$i]['ueberschrift']) ? $values[$i]['ueberschrift'] : '') . '" type="text" /></td>
-    </tr>
-    <tr>
-
-    <tr>
-      <td class="left last">Art der Überschrift</td>
-      <td class="right last"><div class="select-style">' . $ueberschrift_art->get() . '</div></td>
+      <td class="left ">Überschrift</td>
+      <td class="right "><input name="VALUE[' . $i . '][ueberschrift]" value="' . (isset($values[$i]['ueberschrift']) ? $values[$i]['ueberschrift'] : '') . '" type="text" /></td>
     </tr>
 
+    <tr>
+      <td class="left ">Art der Überschrift</td>
+      <td class="right "><div class="select-style">' . $ueberschrift_art->get() . '</div></td>
+    </tr>
+
+    <tr><td class="abstand" colspan="2" ></td></tr>
     <tr><td class="headline" colspan="2" >Inhaltstext</td></tr>
+    <tr><td class="abstand" colspan="2" ></td></tr>
 
     <tr>
-      <td class="left first">Teasertext</td>
-      <td class="right first"><textarea name="VALUE[' . $i . '][teasertext]" >' . (isset($values[$i]['teasertext']) ? $values[$i]['teasertext'] : '') . '</textarea></td>
+      <td class="left ">Teasertext</td>
+      <td class="right "><textarea name="VALUE[' . $i . '][teasertext]" >' . (isset($values[$i]['teasertext']) ? $values[$i]['teasertext'] : '') . '</textarea></td>
     </tr>
 
     <tr>
-      <td class="left last">Fließtext</td>
-      <td class="right last"><textarea name="VALUE[' . $i . '][text]" class="rex-markitup" data-buttonset="textarea">' . (isset($values[$i]['text']) ? $values[$i]['text'] : '') . '</textarea></td>
+      <td class="left ">Fließtext</td>
+      <td class="right "><textarea name="VALUE[' . $i . '][text]" class="rex-markitup" data-buttonset="textarea">' . (isset($values[$i]['text']) ? $values[$i]['text'] : '') . '</textarea></td>
     </tr>
 
 
-
+    <tr><td class="abstand" colspan="2" ></td></tr>
     <tr><td class="headline" colspan="2" >Bild</td></tr>
+    <tr><td class="abstand" colspan="2" ></td></tr>
+
     <tr>
-      <td class="left first">Datei</td>
-      <td class="right first">' . $values[$i]['media_1'] . '</td>
+      <td class="left ">Datei</td>
+      <td class="right ">' . $values[$i]['media_1'] . '</td>
     </tr>
 
     <tr>
@@ -185,15 +189,17 @@ echo '
     </tr>
 
     <tr>
-      <td class="left last">Bildanpassen</td>
-      <td class="right last"><div class="select-style">' . $bildanpassen->get() . '</div></td>
+      <td class="left ">Bildanpassen</td>
+      <td class="right "><div class="select-style">' . $bildanpassen->get() . '</div></td>
     </tr>
 
+    <tr><td class="abstand" colspan="2" ></td></tr>
     <tr><td class="headline" colspan="2" >Link</td></tr>
+    <tr><td class="abstand" colspan="2" ></td></tr>
 
     <tr>
-      <td class="left first">extern (http://)</td>
-      <td class="right first"><input name="VALUE[' . $i . '][linkextern]" value="' . (isset($values[$i]['linkextern']) ? $values[$i]['linkextern'] : '') . '" type="text" /></td>
+      <td class="left ">extern (http://)</td>
+      <td class="right "><input name="VALUE[' . $i . '][linkextern]" value="' . (isset($values[$i]['linkextern']) ? $values[$i]['linkextern'] : '') . '" type="text" /></td>
     </tr>
 
     <tr>
@@ -207,16 +213,19 @@ echo '
     </tr>
 
     <tr>
-       <td class="left last">Überschrift verlinken</td>
-       <td class="right last"><div class="select-style">' . $ueberschriftlink->get() . '</div></td>
+       <td class="left ">Überschrift verlinken</td>
+       <td class="right "><div class="select-style">' . $ueberschriftlink->get() . '</div></td>
     </tr>
 
+    <tr><td class="abstand" colspan="2" ></td></tr>
     <tr><td class="headline" colspan="2" >Download</td></tr>
-    <tr>
-      <td class="left first last">Dateien</td>
-      <td class="right first last">'.$values[$i]['medialist_1'].'</td>
-    </tr>
+    <tr><td class="abstand" colspan="2" ></td></tr>
 
+    <tr>
+      <td class="left  ">Dateien</td>
+      <td class="right  ">'.$values[$i]['medialist_1'].'</td>
+    </tr>
+    <tr><td class="abstand" colspan="2" ></td></tr>
 
 
 
@@ -371,6 +380,13 @@ td.headline {
   font-size: 12px;
   border-top: 15px solid #fff;
   border-bottom: 1px solid #fff;
+
+}
+
+td.abstand {
+  background: #F0F0F0;
+  padding: 5px;
+
 }
 
 .left {
@@ -384,15 +400,6 @@ td.headline {
 
 .right {
   background: #F0F0F0;
-}
-
-.first {
-  padding-top: 20px;
-  padding-bottom: 10px;
-  }
-
-.last {
-  padding-bottom: 15px !important;
 }
 
 input[type=text] {
@@ -457,7 +464,7 @@ textarea {
 
 .rex-widget {
     border: 1px solid #E7E7E7 !important;
-
+    margin-bottom: 5px !important;
 }
 
 .rex-widget-media,
