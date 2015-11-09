@@ -1,7 +1,32 @@
 <?php
+/*
+  Redaxo Modul
+  0010 - Responsive Content
 
-// textarea: 'bold,italic,stroke,ins,|,listbullet,listnumeric,|,linkintern,linkextern,linkmailto'
+  (C) Oliver Kreischer - concedra GmbH
 
+
+*** Vorraussetzungen ***
+
+Addons & Plugins
+
+- textile
+- RexMarkitUp
+  textarea: 'bold,italic,stroke,ins,|,listbullet,listnumeric,|,linkintern,linkextern,linkmailto'
+
+- jquery_ui
+
+*/
+
+$anzeige_ueberschriften = 1;
+$anzeige_text           = 1;
+$anzeige_bild           = 1;
+$anzeige_link           = 1;
+$anzeige_download       = 0;
+
+$ausgabeform = '';
+
+$values = '';
 $values = array();
 $values[1] = rex_var::toArray('REX_VALUE[1]');
 $values[1]['media_1'] =<<<EOF
@@ -50,28 +75,21 @@ EOF;
 echo '
 <input id="anrodnung" type="hidden" name="VALUE[19]" value="REX_VALUE[19]" />
 <div id="tabs">
-    <ul class="tabs">
-';
-
+    <ul class="tabs">'.PHP_EOL;
       if('REX_VALUE[19]') {
         $reihenfolgeneu = explode(',','REX_VALUE[19]');
-
-          for ($i = 1; $i <= count($values); $i++) {
+            for ($i = 1; $i <= count($values); $i++) {
               echo '<li id="'.($reihenfolgeneu[($i-1)]).'" class="tab'.($reihenfolgeneu[($i-1)]).'"><a href="#bereich'.($reihenfolgeneu[($i-1)]).'">Bereich '.$i.'</a></li>';
-          }
-
+            }
         } else {
             for ($i = 1; $i <= count($values); $i++) {
               echo '<li id="'.$i.'" class="tab' . $i . '"><a href="#bereich' . $i . '">Bereich ' . $i . '</a></li>';
             }
          }
-
-
-
 echo '
         <li class="weiteres locked" style="float:right;"><a href="#weiteres">Weitere Einstellungen</a></li>
     </ul>
-  ';
+'.PHP_EOL;
 
 
 
@@ -135,105 +153,118 @@ echo '
 
         echo '
 <div id="bereich'.$i.'">
-  <table class="output" >
-    <tr><td class="headline" colspan="2" >Überschrift</td></tr>
-    <tr><td class="abstand" colspan="2" ></td></tr>
+  <table class="output" >';
+
+if($anzeige_ueberschriften) {
+echo '
+    <tr><td class="headline_input" colspan="2" >Überschrift</td></tr>
+    <tr><td class="abstand_input" colspan="2" ></td></tr>
 
     <tr>
-      <td class="left ">Überschrift</td>
-      <td class="right "><input name="VALUE[' . $i . '][ueberschrift]" value="' . (isset($values[$i]['ueberschrift']) ? $values[$i]['ueberschrift'] : '') . '" type="text" /></td>
+      <td class="left_input ">Überschrift</td>
+      <td class="right_input "><input name="VALUE[' . $i . '][ueberschrift]" value="' . (isset($values[$i]['ueberschrift']) ? $values[$i]['ueberschrift'] : '') . '" type="text" /></td>
     </tr>
 
     <tr>
-      <td class="left ">Art der Überschrift</td>
-      <td class="right "><div class="select-style">' . $ueberschrift_art->get() . '</div></td>
-    </tr>
+      <td class="left_input ">Art der Überschrift</td>
+      <td class="right_input "><div class="select-style">' . $ueberschrift_art->get() . '</div></td>
+    </tr>';
+}
 
-    <tr><td class="abstand" colspan="2" ></td></tr>
-    <tr><td class="headline" colspan="2" >Inhaltstext</td></tr>
-    <tr><td class="abstand" colspan="2" ></td></tr>
-
-    <tr>
-      <td class="left ">Teasertext</td>
-      <td class="right "><textarea name="VALUE[' . $i . '][teasertext]" >' . (isset($values[$i]['teasertext']) ? $values[$i]['teasertext'] : '') . '</textarea></td>
-    </tr>
+if($anzeige_text) {
+echo '
+    <tr><td class="abstand_input" colspan="2" ></td></tr>
+    <tr><td class="headline_input" colspan="2" >Inhaltstext</td></tr>
+    <tr><td class="abstand_input" colspan="2" ></td></tr>
 
     <tr>
-      <td class="left ">Fließtext</td>
-      <td class="right "><textarea name="VALUE[' . $i . '][text]" class="rex-markitup" data-buttonset="textarea">' . (isset($values[$i]['text']) ? $values[$i]['text'] : '') . '</textarea></td>
-    </tr>
-
-
-    <tr><td class="abstand" colspan="2" ></td></tr>
-    <tr><td class="headline" colspan="2" >Bild</td></tr>
-    <tr><td class="abstand" colspan="2" ></td></tr>
-
-    <tr>
-      <td class="left ">Datei</td>
-      <td class="right ">' . $values[$i]['media_1'] . '</td>
+      <td class="left_input ">Teasertext</td>
+      <td class="right_input "><textarea name="VALUE[' . $i . '][teasertext]" >' . (isset($values[$i]['teasertext']) ? $values[$i]['teasertext'] : '') . '</textarea></td>
     </tr>
 
     <tr>
-      <td class="left">Alternativtext</td>
-      <td class="right"><input name="VALUE[' . $i . '][alt]" value="' . (isset($values[$i]['alt']) ? $values[$i]['alt'] : '') . '" type="text" /></td>
+      <td class="left_input ">Fließtext</td>
+      <td class="right_input "><textarea name="VALUE[' . $i . '][text]" class="rex-markitup" data-buttonset="textarea">' . (isset($values[$i]['text']) ? $values[$i]['text'] : '') . '</textarea></td>
+    </tr>';
+}
+
+if($anzeige_bild) {
+echo '
+    <tr><td class="abstand_input" colspan="2" ></td></tr>
+    <tr><td class="headline_input" colspan="2" >Bild</td></tr>
+    <tr><td class="abstand_input" colspan="2" ></td></tr>
+
+    <tr>
+      <td class="left_input ">Datei</td>
+      <td class="right_input ">' . $values[$i]['media_1'] . '</td>
     </tr>
 
     <tr>
-      <td class="left">Bildinformation ausgeben</td>
-      <td class="right"><div class="select-style">' . $bildinformationen->get() . '</div></td>
+      <td class="left_input">Alternativtext</td>
+      <td class="right_input"><input name="VALUE[' . $i . '][alt]" value="' . (isset($values[$i]['alt']) ? $values[$i]['alt'] : '') . '" type="text" /></td>
     </tr>
 
     <tr>
-      <td class="left">Position</td>
-      <td class="right"><div class="select-style">' . $bildposition->get() . '</div></td>
+      <td class="left_input">Bildinformation ausgeben</td>
+      <td class="right_input"><div class="select-style">' . $bildinformationen->get() . '</div></td>
     </tr>
 
     <tr>
-      <td class="left ">Bildanpassen</td>
-      <td class="right "><div class="select-style">' . $bildanpassen->get() . '</div></td>
-    </tr>
-
-    <tr><td class="abstand" colspan="2" ></td></tr>
-    <tr><td class="headline" colspan="2" >Link</td></tr>
-    <tr><td class="abstand" colspan="2" ></td></tr>
-
-    <tr>
-      <td class="left ">extern (http://)</td>
-      <td class="right "><input name="VALUE[' . $i . '][linkextern]" value="' . (isset($values[$i]['linkextern']) ? $values[$i]['linkextern'] : '') . '" type="text" /></td>
+      <td class="left_input">Position</td>
+      <td class="right_input"><div class="select-style">' . $bildposition->get() . '</div></td>
     </tr>
 
     <tr>
-      <td class="left">Link intern</td>
-      <td class="right">'.$values[$i]['link_1'].'</td>
+      <td class="left_input ">Bildanpassen</td>
+      <td class="right_input "><div class="select-style">' . $bildanpassen->get() . '</div></td>
+    </tr>';
+}
+
+if($anzeige_link) {
+echo '
+    <tr><td class="abstand_input" colspan="2" ></td></tr>
+    <tr><td class="headline_input" colspan="2" >Link</td></tr>
+    <tr><td class="abstand_input" colspan="2" ></td></tr>
+
+    <tr>
+      <td class="left_input ">extern (http://)</td>
+      <td class="right_input "><input name="VALUE[' . $i . '][linkextern]" value="' . (isset($values[$i]['linkextern']) ? $values[$i]['linkextern'] : '') . '" type="text" /></td>
     </tr>
 
     <tr>
-      <td class="left">Bezeichnung</td>
-      <td class="right"><input name="VALUE[' . $i . '][linkbezeichnung]" value="' . (isset($values[$i]['linkbezeichnung']) ? $values[$i]['linkbezeichnung'] : '') . '" type="text" /></td>
+      <td class="left_input">Link intern</td>
+      <td class="right_input">'.$values[$i]['link_1'].'</td>
     </tr>
 
     <tr>
-       <td class="left ">Überschrift verlinken</td>
-       <td class="right "><div class="select-style">' . $ueberschriftlink->get() . '</div></td>
+      <td class="left_input">Bezeichnung</td>
+      <td class="right_input"><input name="VALUE[' . $i . '][linkbezeichnung]" value="' . (isset($values[$i]['linkbezeichnung']) ? $values[$i]['linkbezeichnung'] : '') . '" type="text" /></td>
     </tr>
-
-    <tr><td class="abstand" colspan="2" ></td></tr>
-    <tr><td class="headline" colspan="2" >Download</td></tr>
-    <tr><td class="abstand" colspan="2" ></td></tr>
 
     <tr>
-      <td class="left  ">Dateien</td>
-      <td class="right  ">'.$values[$i]['medialist_1'].'</td>
+       <td class="left_input ">Überschrift verlinken</td>
+       <td class="right_input "><div class="select-style">' . $ueberschriftlink->get() . '</div></td>
     </tr>
-    <tr><td class="abstand" colspan="2" ></td></tr>
+';
+}
+
+if($anzeige_download) {
+  echo '    <tr><td class="abstand_input" colspan="2" ></td></tr>
+    <tr><td class="headline_input" colspan="2" >Download</td></tr>
+    <tr><td class="abstand_input" colspan="2" ></td></tr>
+
+    <tr>
+      <td class="left_input  ">Dateien</td>
+      <td class="right_input  ">'.$values[$i]['medialist_1'].'</td>
+    </tr>
+    <tr><td class="abstand_input" colspan="2" ></td></tr>
+';
+}
 
 
-
+echo '
             </table>
-
         </div>';
-
-
     }
 
 
@@ -259,27 +290,27 @@ echo '
 echo '
         <div id="weiteres">
             <table class="output" >
-              <tr><td class="headline" colspan="2" >Grid</td></tr>
-              <tr><td class="abstand" colspan="2" ></td></tr>
+              <tr><td class="headline_input" colspan="2" >Grid</td></tr>
+              <tr><td class="abstand_input" colspan="2" ></td></tr>
 
               <tr>
-                <td class="left ">Anordung</td>
-                <td class="right "><div class="grid">'.$grid.'</div></td>
+                <td class="left_input ">Anordung</td>
+                <td class="right_input "><div class="grid">'.$grid.'</div></td>
               </tr>
 
-            <tr><td class="abstand" colspan="2" ></td></tr>
-            <tr><td class="headline" colspan="2" >Sonstiges</td></tr>
-            <tr><td class="abstand" colspan="2" ></td></tr>
+            <tr><td class="abstand_input" colspan="2" ></td></tr>
+            <tr><td class="headline_input" colspan="2" >Sonstiges</td></tr>
+            <tr><td class="abstand_input" colspan="2" ></td></tr>
 
             <tr>
-              <td class="left  ">Individuelle CSS Klasse</td>
-              <td class="right  "><input type=text name=VALUE[17] value="REX_VALUE[17]"></td>
+              <td class="left_input  ">Individuelle CSS Klasse</td>
+              <td class="right_input  "><input type=text name=VALUE[17] value="REX_VALUE[17]"></td>
             </tr>
             <tr>
-              <td class="left  ">Image Manager Typ</td>
-              <td class="right  "><input type=text name=VALUE[18] value="REX_VALUE[18]"></td>
+              <td class="left_input  ">Image Manager Typ</td>
+              <td class="right_input  "><input type=text name=VALUE[18] value="REX_VALUE[18]"></td>
             </tr>
-            <tr><td class="abstand" colspan="2" ></td></tr>
+            <tr><td class="abstand_input" colspan="2" ></td></tr>
 
             </table>
         </div>
@@ -370,8 +401,9 @@ $(function () {
 table.output {
     width: 100%;
     font-size: 14px;
+    background: #D5E1E4;
 }
-td.headline {
+td.headline_input {
     background: #E7E7E7;
     padding: 8px 0 5px 170px;
     font-weight: bold;
@@ -379,11 +411,11 @@ td.headline {
     border-top: 15px solid #fff;
     border-bottom: 1px solid #fff;
 }
-td.abstand {
+td.abstand_input {
     background: #F0F0F0;
     padding: 5px;
 }
-.left {
+.left_input {
     background: #F0F0F0;
     padding: 6px 0 10px 10px;
     font-weight: bold;
@@ -391,7 +423,7 @@ td.abstand {
     font-size: 12px;
     vertical-align: top;
 }
-.right {
+.right_input {
     background: #F0F0F0;
 }
 input[type=text] {
@@ -482,8 +514,8 @@ textarea {
     cursor: pointer;
     border: 1px solid #659CCE;
 }
-.grid:checked + div {
-    border: 1px solid #737373;
+.grid :checked + div {
+    border: 1px solid #737373 !important;
 }
 .img12 {
     background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAVQAAAA8CAIAAAC2INVhAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAQ9JREFUeNrs3TEKgzAYgNFagpuDBxC8/3HcBVcRXAQRQVJPYIcWapr3BpdAhh8+IoikiDE+gPw8jQDED4gfED8gfkD8gPgB8QPiB+4tXC8vy2JGkKiqqpz8gPgB8YP4AfED4gfED4gfED8gfkD8gPgB8QN/Gv84jsMwGCjkFf9xHH3fix8SEj7fYl3Xs/x9300TMoq/67p5ns0Rsou/ruuyLM/X/mmaTBMyir9pmvO5bZv4IS0+9YH4AfED4gfED/yR8J1dQmjb1jQhIUWM8WLZjT2QLjf2AOIHxA/iB8QPiB8QPyB+QPyA+AHxA+IHxA/czpu/+gAnPyB+QPyA+AHxA+IHxA+IHxA/8BMvAQYAX1c3Eu5IAT8AAAAASUVORK5CYII=);
