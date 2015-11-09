@@ -5,7 +5,18 @@ $grid                     = 'REX_VALUE[20]';
 $individuelle_css_klasse  = 'REX_VALUE[17]';
 $imagemangertyp           = 'REX_VALUE[18]';
 $out                      = '';
-$zaehler                  = '0';
+$zaehler                  = '';
+$REX['sidebar']['status'] = '';
+$outback                  = '';
+
+$ueberschrift             = '';
+$art                      = '';
+$teasertext               = '';
+$text                     = '';
+$bild                     = '';
+
+
+
 
 unset($values);
 
@@ -69,9 +80,6 @@ foreach ($reihenfolge as $nummer) {
 
   $value = $values[$nummer];
 
-        $art = '';
-        $ueberschrift = '';
-
         $zaehler = $zaehler + 1;
 
         $outback .= '<tr><td class="headline big" colspan="2" >Bereich '.$zaehler.'</td></tr>'.PHP_EOL;
@@ -90,10 +98,10 @@ foreach ($reihenfolge as $nummer) {
 
       switch ($value['ueberschrift_art']) {
         case 'h1':  $art = 'Überschrift 1 (H1) - Nur einmal pro Seite verwenden'; break;
-        case 'h2':  $art = 'Überschrift 2 (H2)'; break;
-        case 'h3':  $art = 'Überschrift 3 (H3)'; break;
-        case 'h4':  $art = 'Überschrift 4 (H4)'; break;
-        case 'faq': $art = 'FAQ Überschrift (Inhalt: Fliesstext)'; break;
+        case 'h2':  $art = 'Überschrift 2 (H2)';                                  break;
+        case 'h3':  $art = 'Überschrift 3 (H3)';                                  break;
+        case 'h4':  $art = 'Überschrift 4 (H4)';                                  break;
+        case 'faq': $art = 'FAQ Überschrift (Inhalt: Fliesstext)';                break;
       }
 
       $outback .= '
@@ -142,10 +150,66 @@ foreach ($reihenfolge as $nummer) {
       ';
     }
 
+
+    //
+    // Bild
+    $media = '';
+    if ($value['media_1'] != '') {
+
+      $media        = OOMedia::getMediaByName($value['media_1']);
+      $filename     = $media->getFilename();
+      $titel        = $media->getTitle();
+      $beschreibung = $media->getDescription();
+      $copyright    = $media->getCopyright();
+
+      $bild = $filename;
+
+      if ($value['bildanpassen'] == '') {
+        $width = '';
+      } else {
+        $width = 'width="100%"';
+      }
+
+      $bild_img  = '<img src="index.php?rex_img_type='.$imagemangertyp.'&amp;rex_img_file='.$filename.'" alt="'.$value['alt'].'" '.$width.' />';
+
+        if ($titel != '' ) {
+            $titel = '<p class="bildtitel">'.$titel.'</p>'.PHP_EOL;
+        } else {
+            $titel = '';
+        }
+        if ($beschreibung != '' ) {
+            $beschreibung = '<p class="bildbeschreibung">'.$beschreibung.'</p>'.PHP_EOL;
+        } else {
+            $beschreibung = '';
+        }
+        if ($copyright != '') {
+            $copyright = '<p class="bildcopyright">'.$copyright.'</p>'.PHP_EOL;
+        } else {
+            $copyright = '';
+        }
+
+var_dump($value['bildinformationen']);
+
+        if ($value['bildinformationen'] == 'ja' ) {
+          $bild = '<div class="bild">'.$bild_img;
+          $bild .= $copyright;
+          $bild .= $titel;
+          $bild .= $beschreibung;
+          $bild .= '</div>';
+        } else {
+          $bild = '<div class="bild">'.$bild_img.'</div>';
+        }
+
+    } // Bild Ende
+
+
+
+
   $html_block[$zaehler]  = '';
   $html_block[$zaehler] .= $ueberschrift;
   $html_block[$zaehler] .= $teasertext;
   $html_block[$zaehler] .= $text;
+  $html_block[$zaehler] .= $bild;
 
 
   }
