@@ -1,14 +1,19 @@
 <?php
 
-$grid = 'REX_VALUE[20]';
-$individuelle_css_klasse     = 'REX_VALUE[17]';
-$imagemangertyp              = 'REX_VALUE[18]';
-$out = '';
-$html_block = array();
+
+$grid                     = 'REX_VALUE[20]';
+$individuelle_css_klasse  = 'REX_VALUE[17]';
+$imagemangertyp           = 'REX_VALUE[18]';
+$out                      = '';
+$zaehler                  = '0';
+
+unset($values);
 
 if ($imagemangertyp == '') {
     $imagemangertyp = 'standard';
 }
+
+$html_block = array();
 
 $values = array();
 
@@ -59,7 +64,6 @@ if ('REX_VALUE[19]') {
   $reihenfolge = array('1','2','3','4');
 }
 
-$zaehler = '0';
 foreach ($reihenfolge as $nummer) {
   if (isset($values[$nummer])) {
 
@@ -81,7 +85,7 @@ foreach ($reihenfolge as $nummer) {
       if ($value['ueberschrift_art'] == 'faq') { // FAQ
         $ueberschrift .= '<div class="accordionueberschrift"><p>'.$value['ueberschrift'].'</p></div>'.PHP_EOL;
       } else {
-        $ueberschrift .= '<'.$value['ueberschrift_art'].' class="ueberschrift">'.$value['ueberschrift'].'</'.$value['ueberschrift_art'].'>'.PHP_EOL;
+        $ueberschrift .= '<'.$value['ueberschrift_art'].' class="ueberschrift">'.$value['ueberschrift'].'</'.$value['ueberschrift_art'].'>';
       }
 
       switch ($value['ueberschrift_art']) {
@@ -154,57 +158,57 @@ foreach ($reihenfolge as $nummer) {
 switch ($grid) {
   case '12':
     $out .= '
-      <div class="col-xs-12 '.$individuelle_css_klasse.'">
+      <div class="col-xs-12'.$individuelle_css_klasse.'">
         '.$html_block[1].'
       </div>';
   break;
   case '6_6':
     $out .= '
-      <div class="col-xs-12 col-sm-6 '.$individuelle_css_klasse.'">
+      <div class="col-xs-12 col-sm-6'.$individuelle_css_klasse.'">
         '.$html_block[1].'
       </div>
-      <div class="col-xs-12 col-sm-6 '.$individuelle_css_klasse.'">
+      <div class="col-xs-12 col-sm-6'.$individuelle_css_klasse.'">
         '.$html_block[2].'
       </div>';
   break;
   case '4_4_4':
     $out .= '
-      <div class="col-xs-12 col-sm-4 '.$individuelle_css_klasse.'">
+      <div class="col-xs-12 col-sm-4'.$individuelle_css_klasse.'">
         '.$html_block[1].'
       </div>
-      <div class="col-xs-12 col-sm-4 '.$individuelle_css_klasse.'">
+      <div class="col-xs-12 col-sm-4'.$individuelle_css_klasse.'">
         '.$html_block[2].'
       </div>
-      <div class="col-xs-12 col-sm-4 '.$individuelle_css_klasse.'">
+      <div class="col-xs-12 col-sm-4'.$individuelle_css_klasse.'">
         '.$html_block[3].'
       </div>';
   break;
   case '3_3_3_3':
     $out .= '
-      <div class="col-xs-12 col-sm-6 col-md-3 '.$individuelle_css_klasse.'">
+      <div class="col-xs-12 col-sm-6 col-md-3'.$individuelle_css_klasse.'">
         '.$html_block[1].'
       </div>
-      <div class="col-xs-12 col-sm-6 col-md-3 '.$individuelle_css_klasse.'">
+      <div class="col-xs-12 col-sm-6 col-md-3'.$individuelle_css_klasse.'">
         '.$html_block[2].'
       </div>
-      <div class="clearfix visible-sm"></div>
-      <div class="col-xs-12 col-sm-6 col-md-3 '.$individuelle_css_klasse.'">
+      <!-- <div class="clearfix visible-sm"></div> -->
+      <div class="col-xs-12 col-sm-6 col-md-3'.$individuelle_css_klasse.'">
         '.$html_block[3].'
       </div>
-      <div class="col-xs-12 col-sm-6 col-md-3 '.$individuelle_css_klasse.'">
+      <div class="col-xs-12 col-sm-6 col-md-3'.$individuelle_css_klasse.'">
         '.$html_block[4].'
       </div>';
   break;
 
   case '6_3_3':
     $out .= '
-      <div class="col-xs-12 col-sm-6 '.$individuelle_css_klasse.'">
+      <div class="col-xs-12 col-sm-6'.$individuelle_css_klasse.'">
         '.$html_block[1].'
       </div>
-      <div class="col-xs-12 col-sm-3 '.$individuelle_css_klasse.'">
+      <div class="col-xs-12 col-sm-3'.$individuelle_css_klasse.'">
         '.$html_block[2].'
       </div>
-      <div class="col-xs-12 col-sm-3 '.$individuelle_css_klasse.'">
+      <div class="col-xs-12 col-sm-3'.$individuelle_css_klasse.'">
         '.$html_block[3].'
       </div>';
   break;
@@ -212,13 +216,13 @@ switch ($grid) {
 
   case '3_6_3':
     $out .= '
-      <div class="col-xs-12 col-sm-3 '.$individuelle_css_klasse.'">
+      <div class="col-xs-12 col-sm-3'.$individuelle_css_klasse.'">
         '.$html_block[1].'
       </div>
-      <div class="col-xs-12 col-sm-6 '.$individuelle_css_klasse.'">
+      <div class="col-xs-12 col-sm-6'.$individuelle_css_klasse.'">
         '.$html_block[2].'
       </div>
-      <div class="col-xs-12 col-sm-3 '.$individuelle_css_klasse.'">
+      <div class="col-xs-12 col-sm-3'.$individuelle_css_klasse.'">
         '.$html_block[3].'
       </div>';
   break;
@@ -254,20 +258,30 @@ switch ($grid) {
       </div>';
   break;
 
+}
 
+if(!$REX['REDAXO']) {  //  Frontend
 
-
+  if (!$REX['sidebar']['status']) { // setzten sofern es eine Sidebar gibt
+echo '
+<div class="container">
+  <div class="row">
+  '.$out.'
+  </div>
+</div>
+  ';
+  } else {
+echo  '
+<div class="container-fluid">
+  <div class="row">
+  '.$out.'
+  </div>
+/div>
+';
 }
 
 
-
-if(!$REX['REDAXO']) {
-//  Frontend
-
-    echo $out;
-
-} else {
-//  Backend
+  } else { //  Backend
 
   echo '<table class="output" >'.PHP_EOL;
 
@@ -307,7 +321,7 @@ table.output {
     font-size: 14px;
 }
 td.headline {
-    background: #E7E7E7;
+    background: #EEEEEE;
     padding: 8px 0 5px 180px;
     font-weight: bold;
     font-size: 16px;
