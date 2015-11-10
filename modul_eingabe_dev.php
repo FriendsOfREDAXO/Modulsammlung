@@ -99,57 +99,40 @@ echo '
         $ueberschrift_art->setName('VALUE[' . $i . '][ueberschrift_art]');
         $ueberschrift_art->setSelected( (isset($values[$i]['ueberschrift_art']) ? $values[$i]['ueberschrift_art'] : '') );
         $ueberschrift_art->setSize(1);
-        $ueberschrift_art->addOptions(
-                array(
+        $ueberschrift_art->addOptions(array(
                      'h1' => 'Überschrift 1 (H1) - Nur einmal pro Seite verwenden',
                      'h2' => 'Überschrift 2 (H2)',
                      'h3' => 'Überschrift 3 (H3)',
                      'h4' => 'Überschrift 4 (H4)',
-                    'faq' => 'FAQ Überschrift (Inhalt: Fliesstext)'
-                ));
+                    'faq' => 'FAQ Überschrift (Inhalt: Fliesstext)'));
 
         $bildinformationen = new rex_select();
         $bildinformationen->setName('VALUE[' . $i . '][bildinformationen]');
         $bildinformationen->setSelected( (isset($values[$i]['bildinformationen']) ? $values[$i]['bildinformationen'] : '') );
         $bildinformationen->setSize(1);
-        $bildinformationen->addOptions(
-                array(
-                     '' => 'nein',
-                     'ja' => 'ja'
-                ));
+        $bildinformationen->addOptions(array( 'nein' => 'nein', 'ja' => 'ja' ));
 
         $bildposition = new rex_select();
         $bildposition->setName('VALUE[' . $i . '][bildposition]');
         $bildposition->setSelected( (isset($values[$i]['bildposition']) ? $values[$i]['bildposition'] : '') );
         $bildposition->setSize(1);
-        $bildposition->addOptions(
-                array(
+        $bildposition->addOptions( array(
                   ''=>'über dem Text',
                   'unten'=>'unter dem Text',
                   'nachueberschrift'=>'unter der Überschrift',
-                  'nachteaser'=>'unter dem Kurztext'
-                ));
-
+                  'nachteaser'=>'unter dem Kurztext' ));
 
         $bildanpassen = new rex_select();
         $bildanpassen->setName('VALUE[' . $i . '][bildanpassen]');
         $bildanpassen->setSelected( (isset($values[$i]['bildanpassen']) ? $values[$i]['bildanpassen'] : '') );
         $bildanpassen->setSize(1);
-        $bildanpassen->addOptions(
-                array(
-                     'ja' => 'ja',
-                     '' => 'nein'
-                ));
+        $bildanpassen->addOptions(array( 'ja' => 'ja', 'nein' => 'nein' ));
 
         $ueberschriftlink = new rex_select();
         $ueberschriftlink->setName('VALUE[' . $i . '][ueberschriftlink]');
         $ueberschriftlink->setSelected( (isset($values[$i]['ueberschriftlink']) ? $values[$i]['ueberschriftlink'] : '') );
         $ueberschriftlink->setSize(1);
-        $ueberschriftlink->addOptions(
-                array(
-                     '' => 'nein',
-                     'ja' => 'ja'
-                ));
+        $ueberschriftlink->addOptions(array( 'nein' => 'nein', 'ja' => 'ja' ));
 
         echo '
 <div id="bereich'.$i.'">
@@ -386,12 +369,7 @@ $(function () {
         grid(this.value);
     });
 
-
-
-
   });
-
-
 
 </script>
 
@@ -548,4 +526,3 @@ textarea {
 </style>
 
 
- 
