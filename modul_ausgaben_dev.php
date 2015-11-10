@@ -6,19 +6,9 @@ $individuelle_css_klasse  = 'REX_VALUE[17]';
 $imagemangertyp           = 'REX_VALUE[18]';
 $out                      = '';
 $zaehler                  = '';
+$nummer                   = '';
 $REX['sidebar']['status'] = '';
 $outback                  = '';
-
-$ueberschrift             = '';
-$art                      = '';
-$teasertext               = '';
-$text                     = '';
-$bild                     = '';
-
-
-
-
-unset($values);
 
 if ($imagemangertyp == '') {
     $imagemangertyp = 'standard';
@@ -68,7 +58,6 @@ if ($grid == '3_3_3_3') {
 }
 
 
-
 if ('REX_VALUE[19]') {
   $reihenfolge = explode(',','REX_VALUE[19]');
 } else {
@@ -79,15 +68,16 @@ foreach ($reihenfolge as $nummer) {
   if (isset($values[$nummer])) {
 
   $value = $values[$nummer];
+  $zaehler = $zaehler + 1;
 
-        $zaehler = $zaehler + 1;
 
-        $outback .= '<tr><td class="headline big" colspan="2" >Bereich '.$zaehler.'</td></tr>'.PHP_EOL;
-        $outback .= '<tr><td class="abstand" colspan="2" ></td></tr>'.PHP_EOL;
 
+    $outback .= '<tr><td class="headline big" colspan="2" >Bereich '.$zaehler.'</td></tr>'.PHP_EOL;
+    $outback .= '<tr><td class="abstand" colspan="2" ></td></tr>'.PHP_EOL;
 
     //
     // Überschrift
+    $ueberschrift             = '';
     if ($value['ueberschrift']  != '') {
 
       if ($value['ueberschrift_art'] == 'faq') { // FAQ
@@ -118,24 +108,26 @@ foreach ($reihenfolge as $nummer) {
 
     //
     // Teasertext
-    if ($value['teasertext'] !='') { // Teasertext
-      $value['teasertext'] = htmlspecialchars_decode($value['teasertext'],ENT_QUOTES);
-      $value['teasertext'] = str_replace('<br />','', $value['teasertext']);
-      $value['teasertext'] = rex_a79_textile($value['teasertext']);
+    $teasertext = '';
+    if ($value['teasertext'] !='') {
+        $value['teasertext'] = htmlspecialchars_decode($value['teasertext'],ENT_QUOTES);
+        $value['teasertext'] = str_replace('<br />','', $value['teasertext']);
+        $value['teasertext'] = rex_a79_textile($value['teasertext']);
 
-      $teasertext = '<div class="teasertext">'.$value['teasertext'].'</div>'.PHP_EOL;
+        $teasertext = '<div class="teasertext">'.$value['teasertext'].'</div>'.PHP_EOL;
 
-      $outback .= '
-      <tr>
-        <td class="left">Teasertext</td>
-        <td class="right">'.$value['teasertext'].'</td>
-      </tr>
-      ';
+        $outback .= '
+        <tr>
+          <td class="left">Teasertext</td>
+          <td class="right">'.$value['teasertext'].'</td>
+        </tr>
+        ';
     }
 
     //
     // Text
-    if ($value['text'] !='') { // Text
+    $text = '';
+    if ($value['text'] !='') {
       $value['text'] = htmlspecialchars_decode($value['text'],ENT_QUOTES);
       $value['text'] = str_replace('<br />','', $value['text']);
       $value['text'] = rex_a79_textile($value['text']);
@@ -154,6 +146,7 @@ foreach ($reihenfolge as $nummer) {
     //
     // Bild
     $media = '';
+    $bild  = '';
     if ($value['media_1'] != '') {
 
       $media        = OOMedia::getMediaByName($value['media_1']);
@@ -188,7 +181,13 @@ foreach ($reihenfolge as $nummer) {
             $copyright = '';
         }
 
-var_dump($value['bildinformationen']);
+        $outback .= '
+        <tr>
+          <td class="left">Bild</td>
+          <td class="right">'.$filename.'<br/><img src="index.php?rex_img_type=rex_mediapool_detail&amp;rex_img_file='.$filename.'" alt="'.$value['alt'].'" /></td>
+        </tr>
+        ';
+
 
         if ($value['bildinformationen'] == 'ja' ) {
           $bild = '<div class="bild">'.$bild_img;
