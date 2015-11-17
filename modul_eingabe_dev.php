@@ -35,7 +35,7 @@ EOF;
 $values[1]['medialist_1'] =<<<EOF
 REX_MEDIALIST_BUTTON[1]
 EOF;
-$values[1]['link_1'] =<<<EOF
+$values[1]['link_intern'] =<<<EOF
 REX_LINK_BUTTON[1]
 EOF;
 
@@ -46,7 +46,7 @@ EOF;
 $values[2]['medialist_1'] =<<<EOF
 REX_MEDIALIST_BUTTON[2]
 EOF;
-$values[2]['link_1'] =<<<EOF
+$values[2]['link_intern'] =<<<EOF
 REX_LINK_BUTTON[2]
 EOF;
 
@@ -57,7 +57,7 @@ EOF;
 $values[3]['medialist_1'] =<<<EOF
 REX_MEDIALIST_BUTTON[2]
 EOF;
-$values[3]['link_1'] =<<<EOF
+$values[3]['link_intern'] =<<<EOF
 REX_LINK_BUTTON[3]
 EOF;
 
@@ -68,7 +68,7 @@ EOF;
 $values[4]['medialist_1'] =<<<EOF
 REX_MEDIALIST_BUTTON[2]
 EOF;
-$values[4]['link_1'] =<<<EOF
+$values[4]['link_intern'] =<<<EOF
 REX_LINK_BUTTON[4]
 EOF;
 
@@ -97,6 +97,7 @@ echo '
 
         $ueberschrift_art = new rex_select();
         $ueberschrift_art->setName('VALUE[' . $i . '][ueberschrift_art]');
+        $ueberschrift_art->setAttribute('class', 'ueberschriften');
         $ueberschrift_art->setSelected( (isset($values[$i]['ueberschrift_art']) ? $values[$i]['ueberschrift_art'] : '') );
         $ueberschrift_art->setSize(1);
         $ueberschrift_art->addOptions(array(
@@ -117,7 +118,7 @@ echo '
         $bildposition->setSelected( (isset($values[$i]['bildposition']) ? $values[$i]['bildposition'] : '') );
         $bildposition->setSize(1);
         $bildposition->addOptions( array(
-                  ''=>'über dem Text',
+                  'oben'=>'über dem Text',
                   'unten'=>'unter dem Text',
                   'nachueberschrift'=>'unter der Überschrift',
                   'nachteaser'=>'unter dem Kurztext' ));
@@ -133,6 +134,12 @@ echo '
         $ueberschriftlink->setSelected( (isset($values[$i]['ueberschriftlink']) ? $values[$i]['ueberschriftlink'] : '') );
         $ueberschriftlink->setSize(1);
         $ueberschriftlink->addOptions(array( 'nein' => 'nein', 'ja' => 'ja' ));
+
+        $bildlink = new rex_select();
+        $bildlink->setName('VALUE[' . $i . '][bildlink]');
+        $bildlink->setSelected( (isset($values[$i]['bildlink']) ? $values[$i]['bildlink'] : '') );
+        $bildlink->setSize(1);
+        $bildlink->addOptions(array( 'nein' => 'nein', 'ja' => 'ja' ));
 
         echo '
 <div id="bereich'.$i.'">
@@ -211,12 +218,12 @@ echo '
 
     <tr>
       <td class="left_input ">extern (http://)</td>
-      <td class="right_input "><input name="VALUE[' . $i . '][linkextern]" value="' . (isset($values[$i]['linkextern']) ? $values[$i]['linkextern'] : '') . '" type="text" /></td>
+      <td class="right_input "><input name="VALUE[' . $i . '][link_extern]" value="' . (isset($values[$i]['link_extern']) ? $values[$i]['link_extern'] : '') . '" type="text" /></td>
     </tr>
 
     <tr>
       <td class="left_input">Link intern</td>
-      <td class="right_input">'.$values[$i]['link_1'].'</td>
+      <td class="right_input">'.$values[$i]['link_intern'].'</td>
     </tr>
 
     <tr>
@@ -227,6 +234,11 @@ echo '
     <tr>
        <td class="left_input ">Überschrift verlinken</td>
        <td class="right_input "><div class="select-style">' . $ueberschriftlink->get() . '</div></td>
+    </tr>
+
+    <tr>
+       <td class="left_input ">Bild verlinken</td>
+       <td class="right_input "><div class="select-style">' . $bildlink->get() . '</div></td>
     </tr>
 ';
 }
@@ -307,11 +319,7 @@ jQuery('#tabs').tabs({
   fx: { height: 'toggle', duration: 200 },
   select: function(event, ui) {
     jQuery(this).next().css('height', jQuery(this).height()+10);
-  },
-//  show: function(event, ui) {
-//    jQuery(this).css('height', '550px');
-//    jQuery(this).css('overflow', 'visible');
-//  }
+  }
 });
 
 
@@ -335,6 +343,7 @@ $(function () {
 
     if('REX_VALUE[20]' == '') {
       $('.weiteres a').click();
+      $('.ueberschriften').val('h3');
     }
 
      function grid(str) {
