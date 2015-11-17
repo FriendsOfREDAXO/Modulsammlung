@@ -1,6 +1,5 @@
 <?php
 
-
 $grid                     = 'REX_VALUE[20]';
 $individuelle_css_klasse  = 'REX_VALUE[17]';
 $imagemangertyp           = 'REX_VALUE[18]';
@@ -18,24 +17,24 @@ $html_block = array();
 
 $values = array();
 
-$values[1] = rex_var::toArray('REX_VALUE[1]');
+$values[1]                = rex_var::toArray('REX_VALUE[1]');
 $values[1]['media_1']     = 'REX_MEDIA[1]';
-$values[1]['link_1']      = 'REX_LINK_ID[1]';
+$values[1]['link_intern'] = 'REX_LINK_ID[1]';
 $values[1]['medialist_1'] = 'REX_MEDIALIST_BUTTON[1]';
 
-$values[2] = rex_var::toArray('REX_VALUE[2]');
+$values[2]                = rex_var::toArray('REX_VALUE[2]');
 $values[2]['media_1']     = 'REX_MEDIA[2]';
-$values[2]['link_1']      = 'REX_LINK_ID[2]';
+$values[2]['link_intern'] = 'REX_LINK_ID[2]';
 $values[2]['medialist_1'] = 'REX_MEDIALIST_BUTTON[2]';
 
-$values[3] = rex_var::toArray('REX_VALUE[3]');
+$values[3]                = rex_var::toArray('REX_VALUE[3]');
 $values[3]['media_1']     = 'REX_MEDIA[3]';
-$values[3]['link_1']      = 'REX_LINK_ID[3]';
+$values[3]['link_intern'] = 'REX_LINK_ID[3]';
 $values[3]['medialist_1'] = 'REX_MEDIALIST_BUTTON[3]';
 
-$values[4] = rex_var::toArray('REX_VALUE[4]');
+$values[4]                = rex_var::toArray('REX_VALUE[4]');
 $values[4]['media_1']     = 'REX_MEDIA[4]';
-$values[4]['link_1']      = 'REX_LINK_ID[4]';
+$values[4]['link_intern'] = 'REX_LINK_ID[4]';
 $values[4]['medialist_1'] = 'REX_MEDIALIST_BUTTON[4]';
 
 
@@ -71,9 +70,73 @@ foreach ($reihenfolge as $nummer) {
   $zaehler = $zaehler + 1;
 
 
-
     $outback .= '<tr><td class="headline big" colspan="2" >Bereich '.$zaehler.'</td></tr>'.PHP_EOL;
     $outback .= '<tr><td class="abstand" colspan="2" ></td></tr>'.PHP_EOL;
+
+    //
+    // Link
+    $linkanfang               = '';
+    $linkende                 = '';
+    $outback_link             = '';
+    if ($value['link_intern'] != '' OR $value['link_extern'] != '') {
+        if ($value['link_intern'] != '') {
+          $linkanfang = '<a href="'.rex_geturl($value['link_intern'], $REX['CUR_CLANG']).'">';
+
+        $article=OOArticle::getArticleById($value['link_intern']);
+        $name=$article->getName();
+
+        $outback_link .= '
+          <tr>
+            <td class="left">Link intern</td>
+            <td class="right"><a href="index.php?page=content&article_id='.$value['link_intern'].'&mode=edit">'.$name.'</a></td>
+          </tr>
+        ';
+
+        } else {
+          $linkanfang = '<a class="extern" href="'.$value['link_extern'].'">';
+
+        $outback_link .= '
+          <tr>
+            <td class="left">Link extern</td>
+            <td class="right"><a target="_blank" href="'.$value['link_extern'].'">'.$value['link_extern'].'</a></td>
+          </tr>
+        ';
+
+
+        }
+        if ($value['linkbezeichnung'] != '' ) {
+          $outback_link .= '
+            <tr>
+              <td class="left">Linkbezeichnung</td>
+              <td class="right">'.$value['linkbezeichnung'].'</td>
+            </tr>
+          ';
+        }
+
+
+        if ($value['ueberschriftlink'] == 'ja' ) {
+          $outback_link .= '
+            <tr>
+              <td class="left">Überschrift verlinken</td>
+              <td class="right">Ja</td>
+            </tr>
+          ';
+        }
+
+        if ($value['bildlink'] == 'ja' ) {
+        $outback_link .= '
+            <tr>
+              <td class="left">Bild verlinken</td>
+              <td class="right">Ja</td>
+            </tr
+        ';
+        }
+
+        $linkende = '</a>';
+    }
+
+
+
 
     //
     // Überschrift
@@ -147,6 +210,9 @@ foreach ($reihenfolge as $nummer) {
     // Bild
     $media = '';
     $bild  = '';
+    $outbackbildinfos = '';
+    $position = '';
+
     if ($value['media_1'] != '') {
 
       $media        = OOMedia::getMediaByName($value['media_1']);
@@ -166,28 +232,24 @@ foreach ($reihenfolge as $nummer) {
       $bild_img  = '<img src="index.php?rex_img_type='.$imagemangertyp.'&amp;rex_img_file='.$filename.'" alt="'.$value['alt'].'" '.$width.' />';
 
         if ($titel != '' ) {
+            $outbackbildinfos .= '<br/><b>Titel:</b> '.$titel;
             $titel = '<p class="bildtitel">'.$titel.'</p>'.PHP_EOL;
         } else {
             $titel = '';
         }
-        if ($beschreibung != '' ) {
-            $beschreibung = '<p class="bildbeschreibung">'.$beschreibung.'</p>'.PHP_EOL;
-        } else {
-            $beschreibung = '';
-        }
         if ($copyright != '') {
+            $outbackbildinfos .= '<br/><b>Copyright:</b> '.$copyright;
             $copyright = '<p class="bildcopyright">'.$copyright.'</p>'.PHP_EOL;
         } else {
             $copyright = '';
         }
+        if ($beschreibung != '' ) {
+            $outbackbildinfos .= '<br/><b>Beschreibung:</b> '.$beschreibung;
+            $beschreibung = '<p class="bildbeschreibung">'.$beschreibung.'</p>'.PHP_EOL;
 
-        $outback .= '
-        <tr>
-          <td class="left">Bild</td>
-          <td class="right">'.$filename.'<br/><img src="index.php?rex_img_type=rex_mediapool_detail&amp;rex_img_file='.$filename.'" alt="'.$value['alt'].'" /></td>
-        </tr>
-        ';
-
+        } else {
+            $beschreibung = '';
+        }
 
         if ($value['bildinformationen'] == 'ja' ) {
           $bild = '<div class="bild">'.$bild_img;
@@ -195,20 +257,62 @@ foreach ($reihenfolge as $nummer) {
           $bild .= $titel;
           $bild .= $beschreibung;
           $bild .= '</div>';
+
+
+
+        $outback .= '
+        <tr>
+          <td class="left">Bild</td>
+          <td class="right"><img src="index.php?rex_img_type=rex_mediapool_detail&amp;rex_img_file='.$filename.'" alt="'.$value['alt'].'" /><br/>
+            <b>Datei:</b> '.$filename.'
+            '.$outbackbildinfos.'
+          </td>
+        </tr>
+        ';
+
         } else {
           $bild = '<div class="bild">'.$bild_img.'</div>';
+
+        $outback .= '
+        <tr>
+          <td class="left">Bild</td>
+          <td class="right"><img src="index.php?rex_img_type=rex_mediapool_detail&amp;rex_img_file='.$filename.'" alt="'.$value['alt'].'" /><br/>
+            <b>Datei:</b> '.$filename.'
+          </td>
+        </tr>
+        ';
+
         }
+
+   switch ($value['bildposition']) {
+    case 'nachueberschrift':  $position = 'Nach der Überschrift'; break;
+    case 'nachteaser':  $position = 'Nach dem Teasertext'; break;
+    case 'unten':  $position = 'Unter dem Inhalt'; break;
+    case 'oben':  $position = 'Über dem Inhalt'; break;
+   }
+
+        $outback .= '
+        <tr>
+          <td class="left">Bild Position</td>
+          <td class="right">'.$position.'</td>
+        </tr>
+        ';
 
     } // Bild Ende
 
+    $outback .=   $outback_link;
+
+    // Bildposition  berücksichtigen
+
+     $html_block[$zaehler]  = '';
+     $html_block[$zaehler] .= $ueberschrift;
+     $html_block[$zaehler] .= $bild;
+     $html_block[$zaehler] .= $teasertext;
+     $html_block[$zaehler] .= $text;
+     //
+     $html_block[$zaehler] .= $linkanfang.$linkende;
 
 
-
-  $html_block[$zaehler]  = '';
-  $html_block[$zaehler] .= $ueberschrift;
-  $html_block[$zaehler] .= $teasertext;
-  $html_block[$zaehler] .= $text;
-  $html_block[$zaehler] .= $bild;
 
 
   }
@@ -254,7 +358,6 @@ switch ($grid) {
       <div class="col-xs-12 col-sm-6 col-md-3'.$individuelle_css_klasse.'">
         '.$html_block[2].'
       </div>
-      <!-- <div class="clearfix visible-sm"></div> -->
       <div class="col-xs-12 col-sm-6 col-md-3'.$individuelle_css_klasse.'">
         '.$html_block[3].'
       </div>
@@ -325,7 +428,7 @@ switch ($grid) {
 
 if(!$REX['REDAXO']) {  //  Frontend
 
-  if (!$REX['sidebar']['status']) { // setzten sofern es eine Sidebar gibt
+if (!$REX['sidebar']['status']) { // setzten sofern es eine Sidebar gibt
 echo '
 <div class="container">
   <div class="row">
@@ -446,9 +549,6 @@ td.abstand {
 ';
 
 }
-
-
-
 
 ?>
 
