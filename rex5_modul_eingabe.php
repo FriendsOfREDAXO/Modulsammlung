@@ -374,7 +374,7 @@ jQuery(document).ready(function($) {
       $('a#tabweiteres').click();
       $('.ueberschriften').val('h3');
     } else {
-       $('a#tab1').click();
+       $('#tabs ul.nav-tabs li a').first().click();
     }
 
 
