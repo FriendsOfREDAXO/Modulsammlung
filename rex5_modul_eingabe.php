@@ -85,7 +85,7 @@ echo '
         }
       }
 echo '
-        <li class="locked" style="float:right;"><a data-toggle="tab" id="tabweiteres" href="#weiteres"><i class="rex-icon rex-icon-metafuncs"></i><span>Weitere Einstellungen</span></a></li>
+        <li class="locked pull-right"><a data-toggle="tab" id="tabweiteres" href="#weiteres"><i class="rex-icon rex-icon-metafuncs"></i><span>Weitere Einstellungen</span></a></li>
     </ul>
     </div>
 '.PHP_EOL;
@@ -462,10 +462,6 @@ jQuery(document).ready(function($) {
 .nav-tabs>li>a:hover {
   background-color: #fafafa;
   border-bottom: none;
-}
-
-.locked {
-  margin-right: -2px;
 }
 
 .redactor-editor {
