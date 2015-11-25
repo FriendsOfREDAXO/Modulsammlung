@@ -1,7 +1,6 @@
 <?php
 /**
  *
- *
  * Redaxo Modul:    0010 - Responsive Content (Modul Input)
  * Vorraussetzung:  Redaxo Version 5.x / Redactor Addon
  * Entwickler:      Oliver Kreischer / concedra GmbH
