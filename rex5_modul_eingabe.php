@@ -1,15 +1,18 @@
-
 <?php
-/*
-  Redaxo Modul
-  0010 - Responsive Content
+/**
+ *
+ *
+ * Redaxo Modul:    0010 - Responsive Content (Modul Input)
+ * Vorraussetzung:  Redaxo Version 5.x / Redactor Addon
+ * Entwickler:      Oliver Kreischer / concedra GmbH
+ *
+ * Redaxo CMS       http://redaxo.org
+ * Redactor Addon   http://www.redaxo.org/de/download/addons/?addon_id=1264
+ * concedra GmbH    https://www.concedra.de
+ *
+**/
 
-  Vorraussetzung:
 
-  Redaxo Version 5.x / Redactor Addon
-
-  (C) Oliver Kreischer - concedra GmbH
-*/
 
 $anzeige_ueberschriften = 1;
 $anzeige_text           = 1;
