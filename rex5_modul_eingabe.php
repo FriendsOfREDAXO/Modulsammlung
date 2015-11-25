@@ -4,14 +4,11 @@
   Redaxo Modul
   0010 - Responsive Content
 
+  Vorraussetzung:
+
+  Redaxo Version 5.x / Redactor Addon
+
   (C) Oliver Kreischer - concedra GmbH
-
-*** Vorraussetzungen ***
-
-Addons & Plugins
-
-- Redactor
-
 */
 
 $anzeige_ueberschriften = 1;
@@ -458,6 +455,8 @@ jQuery(document).ready(function($) {
   height: 39px;
 }
 
+
+
 /* hover tab color */
 .nav-tabs>li>a:hover {
   background-color: #fafafa;
@@ -508,6 +507,7 @@ jQuery(document).ready(function($) {
     background: transparent;
     background-image: none;
     -webkit-appearance: none;
+    -moz-appearance:none;
     -webkit-border-radius: 0px;
 }
 .select-style select:focus {
