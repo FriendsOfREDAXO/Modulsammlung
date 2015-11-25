@@ -6,16 +6,11 @@
 
   (C) Oliver Kreischer - concedra GmbH
 
-
 *** Vorraussetzungen ***
 
 Addons & Plugins
 
-- textile
-- RexMarkitUp
-  textarea: 'bold,italic,stroke,ins,|,listbullet,listnumeric,|,linkintern,linkextern,linkmailto'
-
-- jquery_ui
+- Redactor
 
 */
 
@@ -23,7 +18,7 @@ $anzeige_ueberschriften = 1;
 $anzeige_text           = 1;
 $anzeige_bild           = 1;
 $anzeige_link           = 1;
-$anzeige_download       = 0;
+$anzeige_download       = 1;
 
 $ausgabeform = '';
 
@@ -35,7 +30,7 @@ $values[1]['media_1'] =<<<EOF
 REX_MEDIA[id=1 widget=1]
 EOF;
 $values[1]['medialist_1'] =<<<EOF
-REX_MEDIALIST_BUTTON[1]
+REX_MEDIALIST[id=1 widget=1]
 EOF;
 $values[1]['link_intern'] =<<<EOF
 REX_LINK[id=1 widget=1]
@@ -46,7 +41,7 @@ $values[2]['media_1'] =<<<EOF
 REX_MEDIA[id=2 widget=1]
 EOF;
 $values[2]['medialist_1'] =<<<EOF
-REX_MEDIALIST_BUTTON[2]
+REX_MEDIALIST[id=2 widget=1]
 EOF;
 $values[2]['link_intern'] =<<<EOF
 REX_LINK[id=2 widget=1]
@@ -57,7 +52,7 @@ $values[3]['media_1'] =<<<EOF
 REX_MEDIA[id=3 widget=1]
 EOF;
 $values[3]['medialist_1'] =<<<EOF
-REX_MEDIALIST_BUTTON[2]
+REX_MEDIALIST[id=3 widget=1]
 EOF;
 $values[3]['link_intern'] =<<<EOF
 REX_LINK[id=3 widget=1]
@@ -68,7 +63,7 @@ $values[4]['media_1'] =<<<EOF
 REX_MEDIA[id=4 widget=1]
 EOF;
 $values[4]['medialist_1'] =<<<EOF
-REX_MEDIALIST_BUTTON[2]
+REX_MEDIALIST[id=4 widget=1]
 EOF;
 $values[4]['link_intern'] =<<<EOF
 REX_LINK[id=4 widget=1]
@@ -76,23 +71,23 @@ EOF;
 
 echo '
 <input id="anrodnung" type="hidden" name="REX_INPUT_VALUE[19]" value="REX_VALUE[19]" />
-<div class="rex-page-nav">
+
   <div id="tabs">
     <ul class="nav nav-tabs">'.PHP_EOL;
       if('REX_VALUE[19]') {
         $reihenfolgeneu = explode(',','REX_VALUE[19]');
           for ($i = 1; $i <= count($values); $i++) {
-            echo '<li id="'.($reihenfolgeneu[($i-1)]).'" ><a data-toggle="tab" id="tab'.($reihenfolgeneu[($i-1)]).'" href="#bereich'.($reihenfolgeneu[($i-1)]).'">Bereich '.$i.'</a></li>'.PHP_EOL;
+            echo '<li id="'.($reihenfolgeneu[($i-1)]).'" ><a data-toggle="tab" id="tab'.($reihenfolgeneu[($i-1)]).'" href="#bereich'.($reihenfolgeneu[($i-1)]).'"><i>B'.$i.'</i><span>Bereich '.$i.'</span></a></li>'.PHP_EOL;
           }
       } else {
         for ($i = 1; $i <= count($values); $i++) {
-          echo '<li id="'.$i.'"><a data-toggle="tab" id="tab'.$i.'" href="#bereich' . $i . '">Bereich ' . $i . '</a></li>'.PHP_EOL;
+          echo '<li id="'.$i.'"><a data-toggle="tab" id="tab'.$i.'" href="#bereich' . $i . '"><i>B'.$i.'</i><span>Bereich ' . $i . '</span></a></li>'.PHP_EOL;
         }
       }
 echo '
-        <li class="locked" style="float:right;"><a data-toggle="tab" id="tabweiteres" href="#weiteres">Weitere Einstellungen</a></li>
+        <li class="locked" style="float:right;"><a data-toggle="tab" id="tabweiteres" href="#weiteres"><i class="rex-icon rex-icon-metafuncs"></i><span>Weitere Einstellungen</span></a></li>
     </ul>
-    </div></div>
+    </div>
 '.PHP_EOL;
 
 
@@ -156,15 +151,15 @@ echo '
      <h3>Überschrift</h3>
 
      <div class="form-group">
-        <label class="col-sm-2 control-label">Überschrift</label>
-          <div class="col-sm-10">
+        <label class="col-sm-3 control-label">Überschrift</label>
+          <div class="col-sm-9">
             <input class="form-control" name="REX_INPUT_VALUE[' . $i . '][ueberschrift]" value="' . (isset($values[$i]['ueberschrift']) ? $values[$i]['ueberschrift'] : '') . '" type="text" />
           </div>
       </div>
 
       <div class="form-group">
-       <label class="col-sm-2 control-label">Art der Überschrift</label>
-          <div class="col-sm-10">
+       <label class="col-sm-3 control-label">Art der Überschrift</label>
+          <div class="col-sm-9">
             <div class="select-style">' . $ueberschrift_art->get() . '</div>
           </div>
       </div>
@@ -178,16 +173,16 @@ echo '
 
 
       <div class="form-group">
-        <label class="col-sm-2 control-label">Teasertext</label>
-        <div class="col-sm-10">
-          <textarea cols="1" rows="6" class="form-control redactorEditor-full" id="redactor_' . $i . '"  name="REX_INPUT_VALUE[' . $i . '][teasertext]">' . (isset($values[$i]['teasertext']) ? $values[$i]['teasertext'] : '') . '</textarea>
+        <label class="col-sm-3 control-label">Teasertext</label>
+        <div class="col-sm-9">
+          <textarea class="form-control"  name="REX_INPUT_VALUE[' . $i . '][teasertext]">' . (isset($values[$i]['teasertext']) ? $values[$i]['teasertext'] : '') . '</textarea>
         </div>
       </div>
 
       <div class="form-group">
-        <label class="col-sm-2 control-label">Fließtext</label>
-        <div class="col-sm-10">
-                 <textarea cols="1" rows="6" class="form-control redactorEditor-full" id="redactor_' . $i . '"  name="REX_INPUT_VALUE[' . $i . '][text]">' . (isset($values[$i]['text']) ? $values[$i]['text'] : '') . '</textarea>
+        <label class="col-sm-3 control-label">Fließtext</label>
+        <div class="col-sm-9">
+                 <textarea class="form-control redactor redactorEditor-full" id="redactor_' . $i . '"  name="REX_INPUT_VALUE[' . $i . '][text]">' . (isset($values[$i]['text']) ? $values[$i]['text'] : '') . '</textarea>
         </div>
       </div>';
 }
@@ -198,36 +193,36 @@ echo '
         <h3>Bild</h3>
 
         <div class="form-group">
-          <label class="col-sm-2 control-label">Datei</label>
-          <div class="col-sm-10">
+          <label class="col-sm-3 control-label">Datei</label>
+          <div class="col-sm-9">
            ' . $values[$i]['media_1'] . '
           </div>
         </div>
 
         <div class="form-group">
-          <label class="col-sm-2 control-label">Alternativtext</label>
-          <div class="col-sm-10">
+          <label class="col-sm-3 control-label">Alternativtext</label>
+          <div class="col-sm-9">
             <input class="form-control" name="REX_INPUT_VALUE[' . $i . '][alt]" value="' . (isset($values[$i]['alt']) ? $values[$i]['alt'] : '') . '" type="text" />
           </div>
         </div>
 
         <div class="form-group">
-          <label class="col-sm-2 control-label">Bildinformation ausgeben</label>
-          <div class="col-sm-10">
+          <label class="col-sm-3 control-label">Bildinformation ausgeben</label>
+          <div class="col-sm-9">
             <div class="select-style">' . $bildinformationen->get() . '</div>
           </div>
         </div>
 
         <div class="form-group">
-          <label class="col-sm-2 control-label">Position</label>
-          <div class="col-sm-10">
+          <label class="col-sm-3 control-label">Position</label>
+          <div class="col-sm-9">
             <div class="select-style">' . $bildposition->get() . '</div>
           </div>
         </div>
 
         <div class="form-group">
-          <label class="col-sm-2 control-label">Bild anpassen</label>
-          <div class="col-sm-10">
+          <label class="col-sm-3 control-label">Bild anpassen</label>
+          <div class="col-sm-9">
             <div class="select-style">' . $bildanpassen->get() . '</div>
           </div>
         </div>
@@ -240,36 +235,36 @@ echo '
         <h3>Link</h3>
 
         <div class="form-group">
-          <label class="col-sm-2 control-label">Link extern (http://)</label>
-          <div class="col-sm-10">
+          <label class="col-sm-3 control-label">Link extern (http://)</label>
+          <div class="col-sm-9">
             <input class="form-control" name="REX_INPUT_VALUE[' . $i . '][link_extern]" value="' . (isset($values[$i]['link_extern']) ? $values[$i]['link_extern'] : '') . '" type="text" />
           </div>
         </div>
 
         <div class="form-group">
-          <label class="col-sm-2 control-label">Link intern</label>
-          <div class="col-sm-10">
+          <label class="col-sm-3 control-label">Link intern</label>
+          <div class="col-sm-9">
             '.$values[$i]['link_intern'].'
           </div>
         </div>
 
         <div class="form-group">
-          <label class="col-sm-2 control-label">Bezeichnung</label>
-          <div class="col-sm-10">
+          <label class="col-sm-3 control-label">Bezeichnung</label>
+          <div class="col-sm-9">
             <input class="form-control" name="REX_INPUT_VALUE[' . $i . '][linkbezeichnung]" value="' . (isset($values[$i]['linkbezeichnung']) ? $values[$i]['linkbezeichnung'] : '') . '" type="text" />
           </div>
         </div>
 
         <div class="form-group">
-          <label class="col-sm-2 control-label">Überschrift verlinken</label>
-          <div class="col-sm-10">
+          <label class="col-sm-3 control-label">Überschrift verlinken</label>
+          <div class="col-sm-9">
             <div class="select-style">' . $ueberschriftlink->get() . '</div>
           </div>
         </div>
 
         <div class="form-group">
-          <label class="col-sm-2 control-label">Bild verlinken</label>
-          <div class="col-sm-10">
+          <label class="col-sm-3 control-label">Bild verlinken</label>
+          <div class="col-sm-9">
             <div class="select-style">' . $bildlink->get() . '</div>
           </div>
         </div>
@@ -277,6 +272,21 @@ echo '
 ';
 }
 
+
+if($anzeige_download) {
+  echo '
+
+        <h3>Download</h3>
+
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Dateien</label>
+          <div class="col-sm-9">
+            '.$values[$i]['medialist_1'].'
+          </div>
+        </div>
+
+';
+}
 
 echo '
   </div>
@@ -307,23 +317,28 @@ echo '
 echo '
 <div id="weiteres" class="tab-pane fade in active">
   <div class="form-horizontal">
+
+    <h3>Grid</h3>
+
     <div class="form-group">
-      <label class="col-sm-2 control-label">Grid</label>
-        <div class="col-sm-10 grid">
+      <label class="col-sm-3 control-label">Raster wählen</label>
+        <div class="col-sm-9 grid">
           '.$grid.'
         </div>
     </div>
 
+    <h3>Sonstiges</h3>
+
    <div class="form-group">
-      <label class="col-sm-2 control-label">Individuelle CSS Klasse</label>
-        <div class="col-sm-10">
+      <label class="col-sm-3 control-label">Individuelle CSS Klasse</label>
+        <div class="col-sm-9">
           <input class="form-control" type="text" name="REX_INPUT_VALUE[17]" value="REX_VALUE[17]" />
         </div>
     </div>
 
    <div class="form-group">
-      <label class="col-sm-2 control-label">Image Manager Typ</label>
-        <div class="col-sm-10">
+      <label class="col-sm-3 control-label">Image Manager Typ</label>
+        <div class="col-sm-9">
           <input class="form-control" type="text" name="REX_INPUT_VALUE[18]" value="REX_VALUE[18]" />
         </div>
     </div>
@@ -399,18 +414,94 @@ jQuery(document).ready(function($) {
 </script>
 
 <style>
+  #tabs i {
+      display: none;
+    }
+  #tabs span {
+          display: inline-block;
+  }
 
-.tab-content {
-  border: 1px solid #000;
-  background: #fff;
+
+@media (max-width:767px) {
+  #tabs i {
+      display: inline-block;
+      font-style: normal;
+      padding: 0 5px 0 5px;
+    }
+  #tabs span {
+    display: none;
+  }
+  .control-label {
+    margin-left: 10px;
+  }
 }
 
+/* tab color */
+.nav-tabs>li>a {
+  color: #31404F;
+  background-color: #DFE3E9;
+  font-size: 12px;
+  border-top: 1px solid #9da6b2;
+  border-left: 1px solid #9da6b2;
+  border-right: 1px solid #9da6b2;
+  padding: 8px;
+  margin-bottom: 1px;
+  height: 38px;
+  top: 1px;
+  padding-top: 10px;
+}
+
+/* active tab color */
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus {
+  color: #31404F;
+  background-color: #f5f5f5;
+  height: 39px;
+}
+
+/* hover tab color */
+.nav-tabs>li>a:hover {
+  background-color: #fafafa;
+  border-bottom: none;
+}
+
+.locked {
+  margin-right: -2px;
+}
+
+.redactor-editor {
+  min-height: 200px;
+  }
+
+.redactor-box {
+  border: 1px solid #ccc;
+}
+
+.tab-content {
+  background: #f5f5f5;
+  padding: 10px 30px 30px 15px;
+  border-right: 1px solid #9da6b2;
+  border-left: 1px solid #9da6b2;
+  border-bottom: 1px solid #9da6b2;
+}
+
+.tab-content h3 {
+  font-size: 14px !important;
+  padding: 10px;
+  background: #DFE3E9;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.tab-content .control-label {
+  font-weight: normal;
+  font-size: 12px !important;
+}
 
 .select-style {
-    border: 1px solid #E7E7E7;
-    width: 506px;
+    border: 1px solid #cccccc;
+    width: 100%;
     overflow: hidden;
-    background: #fff url("data:image/png;base64,R0lGODlhDwAUAIABAAAAAP///yH5BAEAAAEALAAAAAAPABQAAAIXjI+py+0Po5wH2HsXzmw//lHiSJZmUAAAOw==") no-repeat 480px 50%;
+    background: #fff url("data:image/png;base64,R0lGODlhDwAUAIABAAAAAP///yH5BAEAAAEALAAAAAAPABQAAAIXjI+py+0Po5wH2HsXzmw//lHiSJZmUAAAOw==") no-repeat 98% 50%;
     margin-bottom: 6px;
 }
 .select-style select {
@@ -430,6 +521,12 @@ jQuery(document).ready(function($) {
     cursor: pointer;
 }
 
+input.form-control,
+select.form-control,
+textarea.form-control {
+  background: #fff !important;
+}
+
 .grid input {
     display: none;
 }
@@ -438,7 +535,6 @@ jQuery(document).ready(function($) {
     width: 340px;
     height: 60px;
     border: 1px solid #ccc;
-    margin-bottom: 8px;
 }
 .grid label:hover div {
     cursor: pointer;
