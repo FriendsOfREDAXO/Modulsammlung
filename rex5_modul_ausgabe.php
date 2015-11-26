@@ -9,7 +9,7 @@ $grid                     = 'REX_VALUE[20]';
 $individuelle_css_klasse  = 'REX_VALUE[17]';
 $mediamanagertyp           = 'REX_VALUE[18]';
 $out                      = '';
-$zaehler                  = 0;
+$zaehler                  = '';
 $nummer                   = '';
 $REX['sidebar']['status'] = '';
 $outback                  = '';
@@ -172,6 +172,165 @@ foreach ($reihenfolge as $nummer) {
 
 
     }
+
+
+/*
+*   Überschrift
+*/
+    $ueberschrift             = '';
+    if ($value['ueberschrift']  != '') {
+
+      if ($value['ueberschrift_art'] == 'faq') { // FAQ
+        $ueberschrift .= '<div class="accordionueberschrift"><p>'.$value['ueberschrift'].'</p></div>'.PHP_EOL;
+      } else {
+        $ueberschrift .= '<'.$value['ueberschrift_art'].' class="ueberschrift">'.$value['ueberschrift'].'</'.$value['ueberschrift_art'].'>';
+      }
+
+      switch ($value['ueberschrift_art']) {
+        case 'h1':  $art = 'Überschrift 1 (H1) - <i>Nur einmal pro Seite verwenden</i>'; break;
+        case 'h2':  $art = 'Überschrift 2 (H2)';                                         break;
+        case 'h3':  $art = 'Überschrift 3 (H3)';                                         break;
+        case 'h4':  $art = 'Überschrift 4 (H4)';                                         break;
+        case 'faq': $art = 'FAQ Überschrift - <i>Inhalt: Fliesstext</i>';                break;
+      }
+
+      $outback .= '
+        <h3>Überschrift</h3>
+
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Überschrift</label>
+          <div class="col-sm-9">
+            '.$value['ueberschrift'].'
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Art der Überschrift</label>
+          <div class="col-sm-9">
+            '.$art.'
+          </div>
+        </div>
+
+        '.PHP_EOL;
+
+    }
+
+/*
+*   Text
+*/
+
+    if ($value['teasertext'] !='' OR $value['text'] !='' ) {
+
+      $outback .= '<h3>Text</h3>';
+
+
+        // Teasertext
+        $teasertext = '';
+        if ($value['teasertext'] !='') {
+
+
+            $teasertext = '<div class="teasertext">'.$value['teasertext'].'</div>'.PHP_EOL;
+
+            $outback .= '
+            <div class="form-group">
+                  <label class="col-sm-3 control-label">Teasertext</label>
+                  <div class="col-sm-9">
+                    '.$value['teasertext'].'
+                  </div>
+                </div>'.PHP_EOL;
+        }
+
+
+        // Text
+        $text = '';
+        if ($value['text'] !='') {
+
+
+            $text = '<div class="text">'.$value['text'].'</div>'.PHP_EOL;
+
+            $outback .= '
+            <div class="form-group">
+                  <label class="col-sm-3 control-label">Text</label>
+                  <div class="col-sm-9">
+                    '.$value['text'].'
+                  </div>
+                </div>'.PHP_EOL;
+        }
+
+
+    }
+
+
+
+
+
+    //
+    // Bild
+    $media = '';
+    $bild  = '';
+    $outbackbildinfos = '';
+    $position = '';
+
+    if ($value['media_1'] != '') {
+
+      $file = rex_media::get($value['media_1']);
+
+      $filename     = $file->getFilename();
+      $titel        = $file->getTitle();
+      $beschreibung = $file->getValue('description');
+      $copyright    = $file->getValue('copyright');
+
+      if ($value['bildanpassen'] == '') {
+        $width = '';
+      } else {
+        $width = 'width="100%"';
+      }
+
+      $bild_img  = '<img src="'.rex_url::frontendController().'?rex_media_type='.$mediamanagertyp.'&rex_media_file='.$filename.'" alt="'.$value['alt'].'" '.$width.' />';
+
+        if ($titel != '' ) {
+            $outbackbildinfos .= '<br/><b>Titel:</b> '.$titel;
+            $titel = '<p class="bildtitel">'.$titel.'</p>'.PHP_EOL;
+        } else {
+            $titel = '';
+        }
+        if ($copyright != '') {
+            $outbackbildinfos .= '<br/><b>Copyright:</b> '.$copyright;
+            $copyright = '<p class="bildcopyright">'.$copyright.'</p>'.PHP_EOL;
+        } else {
+            $copyright = '';
+        }
+        if ($beschreibung != '' ) {
+            $outbackbildinfos .= '<br/><b>Beschreibung:</b> '.$beschreibung;
+            $beschreibung = '<p class="bildbeschreibung">'.$beschreibung.'</p>'.PHP_EOL;
+
+        } else {
+            $beschreibung = '';
+        }
+
+        if ($value['bildinformationen'] == 'ja' ) {
+          $bild = '<div class="bild">'.PHP_EOL;
+          $bil .= $bild_img;
+          $bild .= $copyright;
+          $bild .= $titel;
+          $bild .= $beschreibung;
+          $bild .= '</div>'.PHP_EOL;
+        }
+
+        $outback .= '<h3>Bild</h3>';
+        $outback .= '
+              <div class="form-group">
+                 <label class="col-sm-3 control-label">Bild</label>
+                  <div class="col-sm-9">
+                    <img src="'.rex_url::frontendController().'?rex_media_type=rex_mediabutton_preview&rex_media_file='.$filename.'"  />
+                  </div>
+                </div>'.PHP_EOL;
+
+    }
+
+
+
+
 
 
 
