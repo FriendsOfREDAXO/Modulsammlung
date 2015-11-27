@@ -210,7 +210,7 @@ echo '
         </div>
 
         <div class="form-group">
-          <label class="col-sm-3 control-label">Bildinformation ausgeben</label>
+          <label class="col-sm-3 control-label">Bildinfos ausgeben</label>
           <div class="col-sm-9">
             <div class="select-style">' . $bildinformationen->get() . '</div>
           </div>
@@ -390,7 +390,7 @@ echo '
         <div class="col-sm-9">
           <p>Vergabe der HTML H1-H4</p>
           <p>H1 zeichnet die "wichtigste" Überschrift aus und sollte auf jeder Seite nur einmal benutzt werden</p>
-          <p>Die Auswahl von "FAQ Überschrift" erzeugt ein Accordion welches den Inhalt aus dem Feld "Fließtext" darstellt.</p>
+          <p>Die Auswahl von <i>FAQ Überschrift</i> erzeugt ein Accordion welches den Inhalt aus dem Feld "Fließtext" darstellt.</p>
         </div>
     </div>
 
@@ -401,9 +401,17 @@ echo '
   <div id="collapse-text" class="panel-collapse collapse">
 
     <div class="form-group">
-      <label class="col-sm-3 control-label">ToDo</label>
+      <label class="col-sm-3 control-label">Teasertext</label>
         <div class="col-sm-9">
-          <p>ToDo</p>
+          <p>Ja nach Darstellung der Ausgabe im Frontend kann der Teasertext als kleiner Einleitungstext benutzt werden. Ob das auf der aktuellen Webseite benutzt wird kann Ihnen Ihr Webentwickler sagen.</p>
+        </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-sm-3 control-label">Fließtext</label>
+        <div class="col-sm-9">
+          <p>Textausgabe. -> Hinweise zum Editor folgen...</p>
+          <p>Sofern die Überschrift Art <i>FAQ Überschrift</i> gewählt wurde wird dieser Inhalt in einem Accordion angezeigt.</p>
         </div>
     </div>
 
@@ -413,9 +421,38 @@ echo '
   <div id="collapse-bild" class="panel-collapse collapse">
 
     <div class="form-group">
-      <label class="col-sm-3 control-label">ToDo</label>
+      <label class="col-sm-3 control-label">Datei</label>
         <div class="col-sm-9">
-          <p>ToDo</p>
+          <p>Einbindung einer Bilddatei aus dem Redaxo Medienpool.</p>
+        </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-sm-3 control-label">Alternativtext</label>
+        <div class="col-sm-9">
+          <p>Der Text sollte kurz beschreiben was auf dem Bild zu dargestellt ist.</p>
+          <p>Der Alternativtext wird nicht direkt auf der Webseite ausgegeben.</p>
+        </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-sm-3 control-label">Bildinfos ausgeben</label>
+        <div class="col-sm-9">
+          <p>Die Bildinformationen die im Medienpool "an dem Bild" gepflegt wurden werden bei der Ausgabe der Inhalte berücksichtigt (je nach Programmierung).</p>
+        </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-sm-3 control-label">Position</label>
+        <div class="col-sm-9">
+          <p>Positionierung des Bildes.</p>
+        </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-sm-3 control-label">Bild anpassen</label>
+        <div class="col-sm-9">
+          <p>Sofern "Bild anpassen" gewählt ist wird das Bil in 100% Breite und der entsprechenden Höhe im Frontend ausgegeben.</p>
         </div>
     </div>
 
@@ -425,9 +462,39 @@ echo '
   <div id="collapse-link" class="panel-collapse collapse">
 
     <div class="form-group">
-      <label class="col-sm-3 control-label">ToDo</label>
+      <label class="col-sm-3 control-label">Link extern</label>
         <div class="col-sm-9">
-          <p>ToDo</p>
+          <p>Hier kann ein Link zu einer anderen Webseite angegeben werden.</p>
+          <p>Die Angabe von <i>http://</i> bzw. <i>https://</i> ist zwingend erforderlich.</p>
+        </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-sm-3 control-label">Link intern</label>
+        <div class="col-sm-9">
+          <p>Angabe eines Links innerhalb der eigenen Webseite.</p>
+        </div>
+    </div>
+
+  <div class="form-group">
+      <label class="col-sm-3 control-label"></label>
+        <div class="col-sm-9">
+          <p>ACHTUNG: Es kann nur ein interner <u>oder</u> ein externe Link angegeben werden.</p>
+        </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-sm-3 control-label">Überschrift verlinken</label>
+        <div class="col-sm-9">
+          <p>Die Überschrift wird verlinkt.</p>
+          <p>Sofern die Überschrift Art <i>FAQ Überschrift</i> gewählt wurde wird die Überschrift <u>nicht</u> verlinkt.</p>
+        </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-sm-3 control-label">Bild verlinken</label>
+        <div class="col-sm-9">
+          <p>Das Bild wird verlinkt.</p>
         </div>
     </div>
 
@@ -439,14 +506,14 @@ echo '
     <div class="form-group">
       <label class="col-sm-3 control-label">Individuelle CSS Klasse</label>
         <div class="col-sm-9">
-          <p>ToDo</p>
+          <p>Nähere Angaben zu diesem Punkt erhalten Sie von Ihrem Webentwickler.</p>
         </div>
     </div>
 
     <div class="form-group">
       <label class="col-sm-3 control-label">Media Manager Typ</label>
         <div class="col-sm-9">
-          <p>ToDo</p>
+          <p>Nähere Angaben zu diesem Punkt erhalten Sie von Ihrem Webentwickler.</p>
         </div>
     </div>
 
