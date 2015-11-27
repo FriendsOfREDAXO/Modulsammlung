@@ -11,6 +11,10 @@
  *
  **/
 
+if(!rex_addon::get('rex_redactor')->isAvailable()) {
+    echo rex_view::error('Dieses Modul ben&ouml;tigt das "Redactor" Addon!');
+}
+
 $anzeige_ueberschriften = 1;
 $anzeige_text           = 1;
 $anzeige_bild           = 1;
