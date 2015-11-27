@@ -14,6 +14,7 @@ $nummer                   = '';
 $REX['sidebar']['status'] = '';
 $outback                  = '';
 $abstandsklasse           = '';
+$bildposition             = '';
 
 if ($mediamanagertyp == '') {
     $mediamanagertyp = 'standard';
@@ -71,11 +72,8 @@ foreach ($reihenfolge as $nummer) {
   $value = $values[$nummer];
   $zaehler = $zaehler + 1;
 
-  if ($zaehler >= 2) {
-    $abstandsklasse = ' class="abstand_oben" ';
-  }
 
-    $outback .= '<h2 '.$abstandsklasse.'>Bereich '.$zaehler.'</h2>'.PHP_EOL;
+    $outback .= '<div class="bereichswrapper"><h2>Bereich '.$zaehler.'</h2>'.PHP_EOL;
 
 
 /*
@@ -209,9 +207,7 @@ foreach ($reihenfolge as $nummer) {
           <div class="col-sm-9">
             '.$art.'
           </div>
-        </div>
-
-        '.PHP_EOL;
+        </div>'.PHP_EOL;
 
     }
 
@@ -280,7 +276,7 @@ foreach ($reihenfolge as $nummer) {
       $beschreibung = $file->getValue('description');
       $copyright    = $file->getValue('copyright');
 
-      if ($value['bildanpassen'] == '') {
+      if ($value['bildanpassen'] == 'nein') {
         $width = '';
       } else {
         $width = 'width="100%"';
@@ -310,7 +306,7 @@ foreach ($reihenfolge as $nummer) {
 
         if ($value['bildinformationen'] == 'ja' ) {
           $bild = '<div class="bild">'.PHP_EOL;
-          $bil .= $bild_img;
+          $bild .= $bild_img;
           $bild .= $copyright;
           $bild .= $titel;
           $bild .= $beschreibung;
@@ -318,26 +314,101 @@ foreach ($reihenfolge as $nummer) {
         }
 
         $outback .= '<h3>Bild</h3>';
+
+          $outback .= '
+               <div class="form-group">
+                   <label class="col-sm-3 control-label">Größe anpassen</label>
+                    <div class="col-sm-9">
+                      '.$value['bildanpassen'].'
+                    </div>
+                  </div>'.PHP_EOL;
+
+      switch ($value['bildposition']) {
+        case 'oben':             $bildpos = 'über dem Text';         break;
+        case 'unten':            $bildpos = 'unter dem Text';        break;
+        case 'nachueberschrift': $bildpos = 'unter der Überschrift'; break;
+        case 'nachteaser':       $bildpos = 'unter dem Teasertext';  break;
+      }
+
+        $outback .= '
+               <div class="form-group">
+                   <label class="col-sm-3 control-label">Position</label>
+                    <div class="col-sm-9">
+                      '.$bildpos.'
+                    </div>
+                  </div>'.PHP_EOL;
+
         $outback .= '
               <div class="form-group">
                  <label class="col-sm-3 control-label">Bild</label>
                   <div class="col-sm-9">
+                    '.$filename.'<br/>
                     <img src="'.rex_url::frontendController().'?rex_media_type=rex_mediabutton_preview&rex_media_file='.$filename.'"  />
                   </div>
                 </div>'.PHP_EOL;
 
+        if ($value['alt']) {
+          $outback .= '
+               <div class="form-group">
+                   <label class="col-sm-3 control-label">Alternativtext</label>
+                    <div class="col-sm-9">
+                      '.$value['alt'].'
+                    </div>
+                  </div>'.PHP_EOL;
+        } else {
+          $outback .= '
+            <div class="form-group ">
+              <label class="col-sm-3 control-label"></label>
+              <div class="col-sm-9 warning">
+                ACHTUNG:<br/>Es wurde kein Alt-Text für das Bild angegeben.
+              </div>
+            </div>'.PHP_EOL;
+        }
+
+
+          $outback .= '
+              <div class="form-group ">
+                <label class="col-sm-3 control-label">Bildinfos ausgeben</label>
+                <div class="col-sm-9">
+                  '.$value['bildinformationen'].'
+                </div>
+              </div>'.PHP_EOL;
+
+        if ($value['bildinformationen'] == 'ja') {
+
+         if ($titel != '' ) {
+            $outback .= '
+              <div class="form-group ">
+                <label class="col-sm-3 control-label">Titel</label>
+                <div class="col-sm-9">
+                  '.$titel.'
+                </div>
+              </div>'.PHP_EOL;
+          }
+        if ($beschreibung != '' ) {
+          $outback .= '
+              <div class="form-group ">
+                <label class="col-sm-3 control-label">Beschreibung</label>
+                <div class="col-sm-9">
+                  '.$beschreibung.'
+                </div>
+              </div>'.PHP_EOL;
+        }
+        if ($copyright != '') {
+          $outback .= '
+              <div class="form-group ">
+                <label class="col-sm-3 control-label">Copyright</label>
+                <div class="col-sm-9">
+                  '.$copyright.'
+                </div>
+              </div>'.PHP_EOL;
+        }
+
+}
     }
 
-
-
-
-
-
-
-
-
         $outback .= $outback_link;
-
+        $outback .= '</div>'.PHP_EOL;
   }
 
 }
@@ -349,7 +420,7 @@ echo '
   <div class="form-horizontal output">'.PHP_EOL;
   echo $outback;
   echo '
-    <h2 class="abstand_oben">Weitere Einstellungen</h2>
+    <h2 class="weitere_einstellungen">Weitere Einstellungen</h2>
 
     <div class="form-group">
       <label class="col-sm-3 control-label">Raster</label>
@@ -406,8 +477,28 @@ if(rex::isBackend()) {
 echo '
 <style>
 
+
+@media (max-width:767px) {
+  .output .control-label {
+    margin-left: 10px;
+    color: #a5abb1
+  }
+  .output .col-sm-9 {
+    padding-left: 25px;
+  }
+}
+
+
 .warning {
   color: #f00;
+}
+
+.bereichswrapper {
+  margin: 5px 0 20px 0;
+  background: #f5f5f5;
+  padding: 0 15px 30px 15px;
+  border: 1px solid #9da6b2;
+
 }
 
 .control-label {
@@ -418,25 +509,27 @@ echo '
 }
 
 .output h2 {
-  font-size: 16px !important;
+  font-size: 12px !important;
   padding: 10px 10px 5px 10px;
-  background: #fff;
   width: 100%;
-  margin-bottom: 20px;
   font-weight: bold;
   border-bottom: 1px solid #31404F;
 }
 
+.output h2.weitere_einstellungen {
+  margin: 15px 0 30px 0;
+}
+
 .output h3 {
-  font-size: 14px !important;
-  padding: 10px;
+  font-size: 12px !important;
+  padding: 5px 5px 5px 10px;
   background: #DFE3E9;
   width: 100%;
   margin-bottom: 20px;
 }
 
-.abstand_oben {
-  margin-top: 80px;
+.output .col-sm-9 img {
+    margin-top: 4px;
 }
 
 .gridimage {
