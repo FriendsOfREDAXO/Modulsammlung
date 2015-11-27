@@ -15,7 +15,7 @@ $anzeige_ueberschriften = 1;
 $anzeige_text           = 1;
 $anzeige_bild           = 1;
 $anzeige_link           = 1;
-$anzeige_download       = 1;
+$anzeige_download       = 0;
 
 $ausgabeform = '';
 
@@ -82,6 +82,7 @@ echo '
     }
 
 echo '
+    <li class="locked pull-right"><a data-toggle="tab" id="tabanleitung" href="#anleitung"><i class="rex-icon rex-icon-info"></i><span>Anleitung</span></a></li>
     <li class="locked pull-right"><a data-toggle="tab" id="tabweiteres" href="#weiteres"><i class="rex-icon rex-icon-metafuncs"></i><span>Weitere Einstellungen</span></a></li>
   </ul>
 </div>'.PHP_EOL;
@@ -115,7 +116,7 @@ for ($i = 1; $i <= count($values); $i++) {
                   'oben'=>'über dem Text',
                   'unten'=>'unter dem Text',
                   'nachueberschrift'=>'unter der Überschrift',
-                  'nachteaser'=>'unter dem Kurztext' ));
+                  'nachteaser'=>'unter dem Teasertext' ));
 
         $bildanpassen = new rex_select();
         $bildanpassen->setName('REX_INPUT_VALUE[' . $i . '][bildanpassen]');
@@ -342,8 +343,75 @@ echo '
         </div>
     </div>
   </div>
-</div>'.PHP_EOL;
+</div>
 
+<div id="anleitung" class="tab-pane fade in active">
+  <div class="form-horizontal">
+
+  <div class="control-label panel-heading collapsed" data-toggle="collapse" data-target="#collapse-allgemeines"><span class="caret"></span>Allgemeines</h3></div>
+  <div id="collapse-allgemeines" class="panel-collapse collapse">
+
+
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Grid Auswahl</label>
+            <div class="col-sm-9">
+              <p>Bei der ersten Verwendung des Moduls wird der Reiter "Weitere Einstellungen" aktiviert. Hier ist die gewünschet Anordnung der Blöcke durch Klick auf das entsprechende Bild auszuwählen. Die Anzahl der Reiter (Bereich 1-4) wird dementsprechend angezeigt.</p>
+              <p>Die Auswahl des Rasters kann jederzeit geändert werden. Zu beachten ist, dass bereits eingegebene Daten in den evtl. ausgeblendeten Bereichen in der Datenbank gespeichert bleiben und u.U. von einer Suchfunktion (Frontend) indiziert werden können.</p>
+            </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Tabs (Bereich 1-4)</label>
+            <div class="col-sm-9">
+              <p>Durch Anklicken eines Tabs kann der Inhalt des gewählten Bereiches editiert werden.</p>
+              <p>Durch das Verschieben der Tabs kann die Anordung der Bereiche geändern werden.</p>
+            </div>
+        </div>
+
+
+  </div>
+
+  <div class=" control-label panel-heading collapsed" data-toggle="collapse" data-target="#collapse-ueberschrift"><span class="caret"></span>Überschrift</h3></div>
+  <div id="collapse-ueberschrift" class="panel-collapse collapse">
+        Überschrift
+  </div>
+
+  <div class="control-label panel-heading collapsed" data-toggle="collapse" data-target="#collapse-text"><span class="caret"></span>Text</h3></div>
+  <div id="collapse-text" class="panel-collapse collapse">
+        Text
+  </div>
+
+  <div class="control-label panel-heading collapsed" data-toggle="collapse" data-target="#collapse-bild"><span class="caret"></span>Bild</h3></div>
+  <div id="collapse-bild" class="panel-collapse collapse">
+        Bild
+  </div>
+
+  <div class="control-label panel-heading collapsed" data-toggle="collapse" data-target="#collapse-link"><span class="caret"></span>Link</h3></div>
+  <div id="collapse-link" class="panel-collapse collapse">
+        Link
+  </div>
+
+  <div class="control-label panel-heading collapsed" data-toggle="collapse" data-target="#collapse-weitereeinstellungen"><span class="caret"></span>Weitere Einstellungen</h3></div>
+  <div id="collapse-weitereeinstellungen" class="panel-collapse collapse">
+
+    <div class="form-group">
+      <label class="col-sm-3 control-label">Individuelle CSS Klasse</label>
+        <div class="col-sm-9">
+          <p>ToDo</p>
+        </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-sm-3 control-label">Media Manager Typ</label>
+        <div class="col-sm-9">
+          <p>ToDo</p>
+        </div>
+    </div>
+
+  </div>
+
+
+</div>'.PHP_EOL;
 
 ?>
 
@@ -421,6 +489,7 @@ jQuery(document).ready(function($) {
     display: inline-block;
     font-style: normal;
     padding: 0 5px 0 5px;
+    font-size: 16px;
   }
   #tabs span {
     display: none;
@@ -428,6 +497,37 @@ jQuery(document).ready(function($) {
   .control-label {
     margin-left: 10px;
   }
+
+  #anleitung p {
+    padding-left: 20px;
+  }
+
+  #anleitung .control-label {
+    padding-left: 25px;
+  }
+
+}
+
+
+#anleitung {
+  margin-top: 20px;
+}
+
+#anleitung .panel-heading {
+  font-size: 14px !important;
+  padding: 10px;
+  background: #DFE3E9;
+  width: 100%;
+  text-align: left;
+  margin-bottom: 20px;
+  border: none;
+}
+#anleitung .panel-heading span {
+  margin-right: 5px;
+}
+
+#anleitung .panel-heading:hover  {
+  color: #000;
 }
 
 .nav-tabs>li>a {
