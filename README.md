@@ -7,7 +7,6 @@ Redaxo Modul für die Pflege von Inhalten die auf einer responsiven Webseite aus
 Aktuelle Voraussetzungen
 ------------------------
 
-* Redactor
 * Redactor Addon
 * Media Manager Typ: "standard"
 
