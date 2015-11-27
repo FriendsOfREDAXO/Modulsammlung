@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////
 // accordion
 ////////////////////////////////////////////////////////
-//
+
     $('.accordioninhalt').hide();
     $('.accordionueberschrift').click(function() {
         $('.accordionueberschrift.aktiv').next('.accordioninhalt').slideUp(300);
@@ -28,5 +28,5 @@
     }).mouseout(function() {
         $(this).removeClass('hover');
     });
-//
+    
 ////////////////////////////////////////////////////////
