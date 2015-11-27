@@ -164,22 +164,23 @@ foreach ($reihenfolge as $nummer) {
 ****/
       $ueberschrift             = '';
       if ($value['ueberschrift']  != '') {
+
         if ($value['ueberschrift_art'] == 'faq') { // FAQ
-          $ueberschrift .= '<div class="accordionueberschrift"><p>'.$value['ueberschrift'].'</p></div>'.PHP_EOL;
+          $ueberschrift .= '<div class="accordionueberschrift">'.$value['ueberschrift'].'</div>'.PHP_EOL;
         } else {
           $ueberschrift .= '<'.$value['ueberschrift_art'].' class="ueberschrift">'.$value['ueberschrift'].'</'.$value['ueberschrift_art'].'>'.PHP_EOL;
         }
 
-      if ($value['ueberschriftlink'] == 'ja') {
+        if ($value['ueberschriftlink'] == 'ja' AND $value['ueberschrift_art'] != 'faq') {
           $ueberschrift = $linkanfang.$ueberschrift.$linkende;
-      }
+        }
 
         switch ($value['ueberschrift_art']) {
           case 'h1':  $art = 'Überschrift 1 (H1) - <i>Nur einmal pro Seite verwenden</i>'; break;
           case 'h2':  $art = 'Überschrift 2 (H2)';                                         break;
           case 'h3':  $art = 'Überschrift 3 (H3)';                                         break;
           case 'h4':  $art = 'Überschrift 4 (H4)';                                         break;
-          case 'faq': $art = 'FAQ Überschrift - <i>Inhalt: Fliesstext</i>';                break;
+          case 'faq': $art = 'FAQ Überschrift - <i>Inhalt: Fließtext</i>';                break;
         }
 
         $outback .= '
@@ -225,6 +226,11 @@ foreach ($reihenfolge as $nummer) {
         $text = '';
         if ($value['text'] !='') {
           $text = '<div class="text">'.$value['text'].'</div>'.PHP_EOL;
+
+        if ($value['ueberschrift_art'] == 'faq') {
+          $text = '<div class="accordioninhalt">'.$value['text'].'</div>'.PHP_EOL;
+        }
+
           $outback .= '
             <div class="form-group">
               <label class="col-sm-3 control-label">Text</label>
