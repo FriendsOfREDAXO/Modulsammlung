@@ -104,7 +104,7 @@ for ($i = 1; $i <= count($values); $i++) {
                      'h2' => 'Überschrift 2 (H2)',
                      'h3' => 'Überschrift 3 (H3)',
                      'h4' => 'Überschrift 4 (H4)',
-                    'faq' => 'FAQ Überschrift (Inhalt: Fliesstext)'));
+                    'faq' => 'FAQ Überschrift (Inhalt: Fließtext)'));
 
         $bildinformationen = new rex_select();
         $bildinformationen->setName('REX_INPUT_VALUE[' . $i . '][bildinformationen]');
@@ -181,7 +181,7 @@ echo '
       </div>
 
       <div class="form-group">
-        <label class="col-sm-3 control-label">Fließtext</label>
+        <label class="col-sm-3 control-label">Fließext</label>
         <div class="col-sm-9">
                  <textarea class="form-control redactor redactorEditor-full" id="redactor_' . $i . '"  name="REX_INPUT_VALUE[' . $i . '][text]">' . (isset($values[$i]['text']) ? $values[$i]['text'] : '') . '</textarea>
         </div>
@@ -379,11 +379,21 @@ echo '
   <div id="collapse-ueberschrift" class="panel-collapse collapse">
 
     <div class="form-group">
-      <label class="col-sm-3 control-label">ToDo</label>
+      <label class="col-sm-3 control-label">Überschrift</label>
         <div class="col-sm-9">
-          <p>ToDo</p>
+          <p>Eingabe von Text</p>
         </div>
     </div>
+
+    <div class="form-group">
+      <label class="col-sm-3 control-label">Art der Überschrift</label>
+        <div class="col-sm-9">
+          <p>Vergabe der HTML H1-H4</p>
+          <p>H1 zeichnet die "wichtigste" Überschrift aus und sollte auf jeder Seite nur einmal benutzt werden</p>
+          <p>Die Auswahl von "FAQ Überschrift" erzeugt ein Accordion welches den Inhalt aus dem Feld "Fließtext" darstellt.</p>
+        </div>
+    </div>
+
 
   </div>
 
