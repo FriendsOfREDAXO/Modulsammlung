@@ -508,6 +508,10 @@ jQuery(document).ready(function($) {
 
 }
 
+#anleitung .control-label {
+  margin-top: -6px;
+}
+
 
 #anleitung {
   margin-top: 20px;
