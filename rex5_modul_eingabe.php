@@ -9,7 +9,7 @@
  * Redactor Addon   http://www.redaxo.org/de/download/addons/?addon_id=1264
  * concedra GmbH    https://www.concedra.de
  *
-**/
+ **/
 
 $anzeige_ueberschriften = 1;
 $anzeige_text           = 1;
@@ -373,22 +373,50 @@ echo '
 
   <div class=" control-label panel-heading collapsed" data-toggle="collapse" data-target="#collapse-ueberschrift"><span class="caret"></span>Überschrift</h3></div>
   <div id="collapse-ueberschrift" class="panel-collapse collapse">
-        Überschrift
+
+    <div class="form-group">
+      <label class="col-sm-3 control-label">ToDo</label>
+        <div class="col-sm-9">
+          <p>ToDo</p>
+        </div>
+    </div>
+
   </div>
 
   <div class="control-label panel-heading collapsed" data-toggle="collapse" data-target="#collapse-text"><span class="caret"></span>Text</h3></div>
   <div id="collapse-text" class="panel-collapse collapse">
-        Text
+
+    <div class="form-group">
+      <label class="col-sm-3 control-label">ToDo</label>
+        <div class="col-sm-9">
+          <p>ToDo</p>
+        </div>
+    </div>
+
   </div>
 
   <div class="control-label panel-heading collapsed" data-toggle="collapse" data-target="#collapse-bild"><span class="caret"></span>Bild</h3></div>
   <div id="collapse-bild" class="panel-collapse collapse">
-        Bild
+
+    <div class="form-group">
+      <label class="col-sm-3 control-label">ToDo</label>
+        <div class="col-sm-9">
+          <p>ToDo</p>
+        </div>
+    </div>
+
   </div>
 
   <div class="control-label panel-heading collapsed" data-toggle="collapse" data-target="#collapse-link"><span class="caret"></span>Link</h3></div>
   <div id="collapse-link" class="panel-collapse collapse">
-        Link
+
+    <div class="form-group">
+      <label class="col-sm-3 control-label">ToDo</label>
+        <div class="col-sm-9">
+          <p>ToDo</p>
+        </div>
+    </div>
+
   </div>
 
   <div class="control-label panel-heading collapsed" data-toggle="collapse" data-target="#collapse-weitereeinstellungen"><span class="caret"></span>Weitere Einstellungen</h3></div>
