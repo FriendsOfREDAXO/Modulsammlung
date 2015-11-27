@@ -3,7 +3,7 @@
  *
  * Redaxo Modul:    0010 - Responsive Content (Modul Output)
  *
-**/
+ **/
 
 $grid                     = 'REX_VALUE[20]';
 $individuelle_css_klasse  = 'REX_VALUE[17]';
@@ -69,239 +69,217 @@ if ('REX_VALUE[19]') {
 foreach ($reihenfolge as $nummer) {
   if (isset($values[$nummer])) {
 
-  $value = $values[$nummer];
-  $zaehler = $zaehler + 1;
-
+    $value = $values[$nummer];
+    $zaehler = $zaehler + 1;
 
     $outback .= '<div class="bereichswrapper"><h2>Bereich '.$zaehler.'</h2>'.PHP_EOL;
 
+/****
+*
+*     Link
+*
+****/
+      $link           = '';
+      $linkanfang     = '';
+      $linkende       = '';
+      $outback_link   = '';
 
-/*
-*   Link
-*/
+      if ($value['link_intern'] OR $value['link_extern'] != '') {
+        $outback_link .= '<h3>Link</h3>'.PHP_EOL;
 
-  $linkanfang               = '';
-  $linkende                 = '';
-  $outback_link             = '';
+        if ($value['link_intern'] != 0) {
+          $linkanfang = '<a href="'.rex_geturl($value['link_intern'], rex_clang::getCurrentId()).'">';
+          $article=rex_article::get($value['link_intern']);
+          $name=$article->getName();
 
-  if ($value['link_intern'] OR $value['link_extern'] != '') {
-
-    $outback_link .= '<h3>Link</h3>';
-
-    if ($value['link_intern'] != 0) {
-
-      $linkanfang = '<a href="'.rex_geturl($value['link_intern'], rex_clang::getCurrentId()).'">';
-
-      $article=rex_article::get($value['link_intern']);
-      $name=$article->getName();
-
-      $outback_link .= '
-        <div class="form-group">
-          <label class="col-sm-3 control-label">Link intern</label>
-          <div class="col-sm-9">
-            <a href="index.php?page=content&article_id='.$value['link_intern'].'&mode=edit">'.$name.' (ID = '.$value['link_intern'].')</a>
-          </div>
-        </div>
-
-        ';
-
-    }
-
-    if ($value['link_extern'] != '') {
-
-        $linkanfang = '<a class="extern" href="'.$value['link_extern'].'">';
-
-        $outback_link .= '
-          <div class="form-group">
-            <label class="col-sm-3 control-label">Link extern</label>
-            <div class="col-sm-9">
-              <a target="_blank" href="'.$value['link_extern'].'">'.$value['link_extern'].'</a>
-            </div>
-          </div>
-        ';
-    }
-
-    if ($value['link_intern'] AND $value['link_extern'] != '') {
-        $outback_link .= '
-          <div class="form-group ">
-            <label class="col-sm-3 control-label"></label>
-            <div class="col-sm-9 warning">
-              ACHTUNG:<br/>Es wurde ein interner <u>und</u> ein externer Link angegeben.
-            </div>
-          </div>
-        ';
-    }
-
-    if ($value['linkbezeichnung'] != '' ) {
-        $outback_link .= '
-          <div class="form-group ">
-            <label class="col-sm-3 control-label">Linkbezeichnung</label>
-            <div class="col-sm-9">
-              '.$value['linkbezeichnung'].'
-            </div>
-          </div>
-          ';
+          $outback_link .= '
+            <div class="form-group">
+             <label class="col-sm-3 control-label">Link intern</label>
+             <div class="col-sm-9">
+               <a href="index.php?page=content&article_id='.$value['link_intern'].'&mode=edit">'.$name.' (ID = '.$value['link_intern'].')</a>
+             </div>
+            </div>'.PHP_EOL;
         }
 
+        if ($value['link_extern'] != '') {
+
+          $linkanfang = '<a class="extern" href="'.$value['link_extern'].'">';
+
+          $outback_link .= '
+            <div class="form-group">
+              <label class="col-sm-3 control-label">Link extern</label>
+              <div class="col-sm-9">
+                <a target="_blank" href="'.$value['link_extern'].'">'.$value['link_extern'].'</a>
+              </div>
+            </div>'.PHP_EOL;
+        }
+
+        if ($value['link_intern'] AND $value['link_extern'] != '') {
+          $outback_link .= '
+            <div class="form-group ">
+              <label class="col-sm-3 control-label"></label>
+              <div class="col-sm-9 warning">
+                ACHTUNG:<br/>Es wurde ein interner <u>und</u> ein externer Link angegeben.
+              </div>
+            </div>'.PHP_EOL;
+        }
+
+        if ($value['linkbezeichnung'] != '' ) {
+          $outback_link .= '
+            <div class="form-group ">
+              <label class="col-sm-3 control-label">Linkbezeichnung</label>
+              <div class="col-sm-9">'.$value['linkbezeichnung'].'</div>
+            </div>'.PHP_EOL;
+        }
 
         if ($value['ueberschriftlink'] == 'ja' ) {
           $outback_link .= '
-          <div class="form-group ">
-            <label class="col-sm-3 control-label">Überschrift verlinken</label>
-            <div class="col-sm-9">
-              Ja
-            </div>
-          </div>
-          ';
+            <div class="form-group ">
+              <label class="col-sm-3 control-label">Überschrift verlinken</label>
+              <div class="col-sm-9">Ja</div>
+            </div>'.PHP_EOL;
         }
 
         if ($value['bildlink'] == 'ja' ) {
-        $outback_link .= '
-          <div class="form-group ">
-            <label class="col-sm-3 control-label">Bild verlinken</label>
+          $outback_link .= '
+            <div class="form-group ">
+              <label class="col-sm-3 control-label">Bild verlinken</label>
+              <div class="col-sm-9">Ja</div>
+            </div>'.PHP_EOL;
+        }
+
+        $linkende = '</a>'.PHP_EOL;
+
+        if ($value['linkbezeichnung'] != '' ) {
+          $link = $linkanfang.$value['linkbezeichnung'].$linkende;
+        }
+
+      }
+
+
+/****
+*
+*     Überschrift
+*
+****/
+      $ueberschrift             = '';
+      if ($value['ueberschrift']  != '') {
+        if ($value['ueberschrift_art'] == 'faq') { // FAQ
+          $ueberschrift .= '<div class="accordionueberschrift"><p>'.$value['ueberschrift'].'</p></div>'.PHP_EOL;
+        } else {
+          $ueberschrift .= '<'.$value['ueberschrift_art'].' class="ueberschrift">'.$value['ueberschrift'].'</'.$value['ueberschrift_art'].'>'.PHP_EOL;
+        }
+
+      if ($value['ueberschriftlink'] == 'ja') {
+          $ueberschrift = $linkanfang.$ueberschrift.$linkende;
+      }
+
+        switch ($value['ueberschrift_art']) {
+          case 'h1':  $art = 'Überschrift 1 (H1) - <i>Nur einmal pro Seite verwenden</i>'; break;
+          case 'h2':  $art = 'Überschrift 2 (H2)';                                         break;
+          case 'h3':  $art = 'Überschrift 3 (H3)';                                         break;
+          case 'h4':  $art = 'Überschrift 4 (H4)';                                         break;
+          case 'faq': $art = 'FAQ Überschrift - <i>Inhalt: Fliesstext</i>';                break;
+        }
+
+        $outback .= '
+          <h3>Überschrift</h3>
+
+          <div class="form-group">
+            <label class="col-sm-3 control-label">Überschrift</label>
             <div class="col-sm-9">
-              Ja
+              '.$value['ueberschrift'].'
             </div>
           </div>
-        ';
-        }
 
-        $linkende = '</a>';
-
-
-    }
-
-
-/*
-*   Überschrift
-*/
-    $ueberschrift             = '';
-    if ($value['ueberschrift']  != '') {
-
-      if ($value['ueberschrift_art'] == 'faq') { // FAQ
-        $ueberschrift .= '<div class="accordionueberschrift"><p>'.$value['ueberschrift'].'</p></div>'.PHP_EOL;
-      } else {
-        $ueberschrift .= '<'.$value['ueberschrift_art'].' class="ueberschrift">'.$value['ueberschrift'].'</'.$value['ueberschrift_art'].'>';
+          <div class="form-group">
+            <label class="col-sm-3 control-label">Art der Überschrift</label>
+            <div class="col-sm-9">
+              '.$art.'
+            </div>
+          </div>'.PHP_EOL;
       }
 
-      switch ($value['ueberschrift_art']) {
-        case 'h1':  $art = 'Überschrift 1 (H1) - <i>Nur einmal pro Seite verwenden</i>'; break;
-        case 'h2':  $art = 'Überschrift 2 (H2)';                                         break;
-        case 'h3':  $art = 'Überschrift 3 (H3)';                                         break;
-        case 'h4':  $art = 'Überschrift 4 (H4)';                                         break;
-        case 'faq': $art = 'FAQ Überschrift - <i>Inhalt: Fliesstext</i>';                break;
-      }
+/****
+*
+*     Teasertext & Text
+*
+****/
 
-      $outback .= '
-        <h3>Überschrift</h3>
-
-        <div class="form-group">
-          <label class="col-sm-3 control-label">Überschrift</label>
-          <div class="col-sm-9">
-            '.$value['ueberschrift'].'
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label class="col-sm-3 control-label">Art der Überschrift</label>
-          <div class="col-sm-9">
-            '.$art.'
-          </div>
-        </div>'.PHP_EOL;
-
-    }
-
-/*
-*   Text
-*/
-
-    if ($value['teasertext'] !='' OR $value['text'] !='' ) {
-
-      $outback .= '<h3>Text</h3>';
-
+      $teasertext = '';
+      $text       = '';
+      if ($value['teasertext'] !='' OR $value['text'] !='' ) {
+        $outback .= '<h3>Text</h3>';
 
         // Teasertext
-        $teasertext = '';
         if ($value['teasertext'] !='') {
-
-
             $teasertext = '<div class="teasertext">'.$value['teasertext'].'</div>'.PHP_EOL;
-
             $outback .= '
             <div class="form-group">
-                  <label class="col-sm-3 control-label">Teasertext</label>
-                  <div class="col-sm-9">
-                    '.$value['teasertext'].'
-                  </div>
-                </div>'.PHP_EOL;
+              <label class="col-sm-3 control-label">Teasertext</label>
+              <div class="col-sm-9">'.$value['teasertext'].'</div>
+            </div>'.PHP_EOL;
         }
-
 
         // Text
         $text = '';
         if ($value['text'] !='') {
-
-
-            $text = '<div class="text">'.$value['text'].'</div>'.PHP_EOL;
-
-            $outback .= '
+          $text = '<div class="text">'.$value['text'].'</div>'.PHP_EOL;
+          $outback .= '
             <div class="form-group">
-                  <label class="col-sm-3 control-label">Text</label>
-                  <div class="col-sm-9">
-                    '.$value['text'].'
-                  </div>
-                </div>'.PHP_EOL;
+              <label class="col-sm-3 control-label">Text</label>
+              <div class="col-sm-9">'.$value['text'].'</div>
+            </div>'.PHP_EOL;
         }
-
-
-    }
-
-
-
-
-
-    //
-    // Bild
-    $media = '';
-    $bild  = '';
-    $outbackbildinfos = '';
-    $position = '';
-
-    if ($value['media_1'] != '') {
-
-      $file = rex_media::get($value['media_1']);
-
-      $filename     = $file->getFilename();
-      $titel        = $file->getTitle();
-      $beschreibung = $file->getValue('description');
-      $copyright    = $file->getValue('copyright');
-
-      if ($value['bildanpassen'] == 'nein') {
-        $width = '';
-      } else {
-        $width = 'width="100%"';
       }
 
-      $bild_img  = '<img src="'.rex_url::frontendController().'?rex_media_type='.$mediamanagertyp.'&rex_media_file='.$filename.'" alt="'.$value['alt'].'" '.$width.' />';
+/****
+*
+*     Bild
+*
+****/
+
+      $media = '';
+      $bild  = '';
+      $outbackbildinfos = '';
+      $position = '';
+
+      if ($value['media_1'] != '') {
+        $file = rex_media::get($value['media_1']);
+        $filename     = $file->getFilename();
+        $titel        = $file->getTitle();
+        $beschreibung = $file->getValue('description');
+        $copyright    = $file->getValue('copyright');
+
+        if ($value['bildanpassen'] == 'nein') {
+          $width = '';
+        } else {
+          $width = 'width="100%"';
+        }
+
+        $bild_img  = '<img src="'.rex_url::frontendController().'?rex_media_type='.$mediamanagertyp.'&rex_media_file='.$filename.'" alt="'.$value['alt'].'" '.$width.' />'.PHP_EOL;
+
+        if ($value['bildlink'] == 'ja') {
+          $bild_img = $linkanfang.$bild_img.$linkende;
+        }
 
         if ($titel != '' ) {
-            $outbackbildinfos .= '<br/><b>Titel:</b> '.$titel;
-            $titel = '<p class="bildtitel">'.$titel.'</p>'.PHP_EOL;
+          $outbackbildinfos .= '<br/><b>Titel:</b> '.$titel;
+          $titel = '<p class="bildtitel">'.$titel.'</p>'.PHP_EOL;
         } else {
-            $titel = '';
+          $titel = '';
         }
         if ($copyright != '') {
-            $outbackbildinfos .= '<br/><b>Copyright:</b> '.$copyright;
-            $copyright = '<p class="bildcopyright">'.$copyright.'</p>'.PHP_EOL;
+          $outbackbildinfos .= '<br/><b>Copyright:</b> '.$copyright;
+          $copyright = '<p class="bildcopyright">'.$copyright.'</p>'.PHP_EOL;
         } else {
-            $copyright = '';
+          $copyright = '';
         }
         if ($beschreibung != '' ) {
-            $outbackbildinfos .= '<br/><b>Beschreibung:</b> '.$beschreibung;
-            $beschreibung = '<p class="bildbeschreibung">'.$beschreibung.'</p>'.PHP_EOL;
-
+          $outbackbildinfos .= '<br/><b>Beschreibung:</b> '.$beschreibung;
+          $beschreibung = '<p class="bildbeschreibung">'.$beschreibung.'</p>'.PHP_EOL;
         } else {
-            $beschreibung = '';
+          $beschreibung = '';
         }
 
         if ($value['bildinformationen'] == 'ja' ) {
@@ -311,50 +289,46 @@ foreach ($reihenfolge as $nummer) {
           $bild .= $titel;
           $bild .= $beschreibung;
           $bild .= '</div>'.PHP_EOL;
+        } else {
+          $bild .= $bild_img;
         }
 
         $outback .= '<h3>Bild</h3>';
 
-          $outback .= '
-               <div class="form-group">
-                   <label class="col-sm-3 control-label">Größe anpassen</label>
-                    <div class="col-sm-9">
-                      '.$value['bildanpassen'].'
-                    </div>
-                  </div>'.PHP_EOL;
+        $outback .= '
+          <div class="form-group">
+            <label class="col-sm-3 control-label">Größe anpassen</label>
+            <div class="col-sm-9">'.$value['bildanpassen'].'</div>
+          </div>'.PHP_EOL;
 
-      switch ($value['bildposition']) {
-        case 'oben':             $bildpos = 'über dem Text';         break;
-        case 'unten':            $bildpos = 'unter dem Text';        break;
-        case 'nachueberschrift': $bildpos = 'unter der Überschrift'; break;
-        case 'nachteaser':       $bildpos = 'unter dem Teasertext';  break;
-      }
+        switch ($value['bildposition']) {
+          case 'oben':             $bildpos = 'über dem Text';         break;
+          case 'unten':            $bildpos = 'unter dem Text';        break;
+          case 'nachueberschrift': $bildpos = 'unter der Überschrift'; break;
+          case 'nachteaser':       $bildpos = 'unter dem Teasertext';  break;
+        }
 
         $outback .= '
-               <div class="form-group">
-                   <label class="col-sm-3 control-label">Position</label>
-                    <div class="col-sm-9">
-                      '.$bildpos.'
-                    </div>
-                  </div>'.PHP_EOL;
+          <div class="form-group">
+            <label class="col-sm-3 control-label">Position</label>
+            <div class="col-sm-9">'.$bildpos.'</div>
+          </div>'.PHP_EOL;
 
         $outback .= '
-              <div class="form-group">
-                 <label class="col-sm-3 control-label">Bild</label>
-                  <div class="col-sm-9">
-                    '.$filename.'<br/>
-                    <img src="'.rex_url::frontendController().'?rex_media_type=rex_mediabutton_preview&rex_media_file='.$filename.'"  />
-                  </div>
-                </div>'.PHP_EOL;
+          <div class="form-group">
+            <label class="col-sm-3 control-label">Bild</label>
+            <div class="col-sm-9">
+              '.$filename.'<br/>
+              <img src="'.rex_url::frontendController().'?rex_media_type=rex_mediabutton_preview&rex_media_file='.$filename.'"  />
+            </div>
+          </div>'.PHP_EOL;
 
         if ($value['alt']) {
           $outback .= '
-               <div class="form-group">
-                   <label class="col-sm-3 control-label">Alternativtext</label>
-                    <div class="col-sm-9">
-                      '.$value['alt'].'
-                    </div>
-                  </div>'.PHP_EOL;
+            <div class="form-group">
+              <label class="col-sm-3 control-label">Alternativtext</label>
+              <div class="col-sm-9">'.$value['alt'].'</div>
+            </div>'.PHP_EOL;
         } else {
           $outback .= '
             <div class="form-group ">
@@ -365,52 +339,183 @@ foreach ($reihenfolge as $nummer) {
             </div>'.PHP_EOL;
         }
 
-
-          $outback .= '
-              <div class="form-group ">
-                <label class="col-sm-3 control-label">Bildinfos ausgeben</label>
-                <div class="col-sm-9">
-                  '.$value['bildinformationen'].'
-                </div>
-              </div>'.PHP_EOL;
+        $outback .= '
+          <div class="form-group ">
+            <label class="col-sm-3 control-label">Bildinfos ausgeben</label>
+            <div class="col-sm-9">'.$value['bildinformationen'].'</div>
+          </div>'.PHP_EOL;
 
         if ($value['bildinformationen'] == 'ja') {
 
-         if ($titel != '' ) {
-            $outback .= '
-              <div class="form-group ">
-                <label class="col-sm-3 control-label">Titel</label>
-                <div class="col-sm-9">
-                  '.$titel.'
-                </div>
-              </div>'.PHP_EOL;
+        if ($titel != '' ) {
+          $outback .= '
+            <div class="form-group ">
+              <label class="col-sm-3 control-label">Titel</label>
+              <div class="col-sm-9">'.$titel.'</div>
+            </div>'.PHP_EOL;
           }
+
         if ($beschreibung != '' ) {
           $outback .= '
-              <div class="form-group ">
-                <label class="col-sm-3 control-label">Beschreibung</label>
-                <div class="col-sm-9">
-                  '.$beschreibung.'
-                </div>
-              </div>'.PHP_EOL;
+            <div class="form-group ">
+              <label class="col-sm-3 control-label">Beschreibung</label>
+                <div class="col-sm-9">'.$beschreibung.'</div>
+            </div>'.PHP_EOL;
         }
+
         if ($copyright != '') {
           $outback .= '
-              <div class="form-group ">
-                <label class="col-sm-3 control-label">Copyright</label>
-                <div class="col-sm-9">
-                  '.$copyright.'
-                </div>
+            <div class="form-group ">
+              <label class="col-sm-3 control-label">Copyright</label>
+              <div class="col-sm-9">'.$copyright.'</div>
               </div>'.PHP_EOL;
         }
-
-}
-    }
-
-        $outback .= $outback_link;
-        $outback .= '</div>'.PHP_EOL;
+      }
   }
 
+    $outback .= $outback_link;
+    $outback .= '</div>'.PHP_EOL;
+
+    switch($value['bildposition']) {
+      case 'unten':
+         $html_block[$zaehler]  = '';
+         $html_block[$zaehler] .= $ueberschrift;
+         $html_block[$zaehler] .= $teasertext;
+         $html_block[$zaehler] .= $text;
+         $html_block[$zaehler] .= $link;
+         $html_block[$zaehler] .= $bild;
+      break;
+      case 'nachueberschrift':
+         $html_block[$zaehler]  = '';
+         $html_block[$zaehler] .= $ueberschrift;
+         $html_block[$zaehler] .= $bild;
+         $html_block[$zaehler] .= $teasertext;
+         $html_block[$zaehler] .= $text;
+         $html_block[$zaehler] .= $link;
+      break;
+      case 'nachteaser':
+         $html_block[$zaehler]  = '';
+         $html_block[$zaehler] .= $ueberschrift;
+         $html_block[$zaehler] .= $teasertext;
+         $html_block[$zaehler] .= $bild;
+         $html_block[$zaehler] .= $text;
+         $html_block[$zaehler] .= $link;
+      break;
+      default:
+         $html_block[$zaehler]  = '';
+         $html_block[$zaehler] .= $ueberschrift;
+         $html_block[$zaehler] .= $bild;
+         $html_block[$zaehler] .= $teasertext;
+         $html_block[$zaehler] .= $text;
+         $html_block[$zaehler] .= $link;
+      break;
+    }
+  }
+}
+
+// HTML
+
+switch ($grid) {
+  case '12':
+    $out .= '
+      <div class="col-xs-12 '.$individuelle_css_klasse.'">
+        '.$html_block[1].'
+      </div>'.PHP_EOL;
+  break;
+  case '6_6':
+    $out .= '
+      <div class="col-xs-12 col-sm-6 '.$individuelle_css_klasse.'">
+        '.$html_block[1].'
+      </div>
+      <div class="col-xs-12 col-sm-6 '.$individuelle_css_klasse.'">
+        '.$html_block[2].'
+      </div>'.PHP_EOL;
+  break;
+  case '4_4_4':
+    $out .= '
+      <div class="col-xs-12 col-sm-4 '.$individuelle_css_klasse.'">
+        '.$html_block[1].'
+      </div>
+      <div class="col-xs-12 col-sm-4 '.$individuelle_css_klasse.'">
+        '.$html_block[2].'
+      </div>
+      <div class="col-xs-12 col-sm-4 '.$individuelle_css_klasse.'">
+        '.$html_block[3].'
+      </div>'.PHP_EOL;
+  break;
+  case '3_3_3_3':
+    $out .= '
+      <div class="col-xs-12 col-sm-6 col-md-3 '.$individuelle_css_klasse.'">
+        '.$html_block[1].'
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-3 '.$individuelle_css_klasse.'">
+        '.$html_block[2].'
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-3 '.$individuelle_css_klasse.'">
+        '.$html_block[3].'
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-3 '.$individuelle_css_klasse.'">
+        '.$html_block[4].'
+      </div>'.PHP_EOL;
+  break;
+
+  case '6_3_3':
+    $out .= '
+      <div class="col-xs-12 col-sm-6 '.$individuelle_css_klasse.'">
+        '.$html_block[1].'
+      </div>
+      <div class="col-xs-12 col-sm-3 '.$individuelle_css_klasse.'">
+        '.$html_block[2].'
+      </div>
+      <div class="col-xs-12 col-sm-3 '.$individuelle_css_klasse.'">
+        '.$html_block[3].'
+      </div>'.PHP_EOL;
+  break;
+
+
+  case '3_6_3':
+    $out .= '
+      <div class="col-xs-12 col-sm-3 '.$individuelle_css_klasse.'">
+        '.$html_block[1].'
+      </div>
+      <div class="col-xs-12 col-sm-6 '.$individuelle_css_klasse.'">
+        '.$html_block[2].'
+      </div>
+      <div class="col-xs-12 col-sm-3 '.$individuelle_css_klasse.'">
+        '.$html_block[3].'
+      </div>'.PHP_EOL;
+  break;
+
+  case '3_3_6':
+    $out .= '
+      <div class="col-xs-12 col-sm-3 '.$individuelle_css_klasse.'">
+        '.$html_block[1].'
+      </div>
+      <div class="col-xs-12 col-sm-3 '.$individuelle_css_klasse.'">
+        '.$html_block[2].'
+      </div>
+      <div class="col-xs-12 col-sm-6 '.$individuelle_css_klasse.'">
+        '.$html_block[3].'
+      </div>'.PHP_EOL;
+  break;
+  case '8_4':
+    $out .= '
+      <div class="col-xs-12 col-sm-8 '.$individuelle_css_klasse.'">
+        '.$html_block[1].'
+      </div>
+      <div class="col-xs-12 col-sm-4 '.$individuelle_css_klasse.'">
+        '.$html_block[2].'
+      </div>'.PHP_EOL;
+  break;
+  case '4_8':
+    $out .= '
+      <div class="col-xs-12 col-sm-4 '.$individuelle_css_klasse.'">
+        '.$html_block[1].'
+      </div>
+      <div class="col-xs-12 col-sm-8 '.$individuelle_css_klasse.'">
+        '.$html_block[2].'
+      </div>'.PHP_EOL;
+  break;
 }
 
 if(rex::isBackend()) {
@@ -434,7 +539,7 @@ echo '
       <div class="form-group">
         <label class="col-sm-3 control-label">Individuelle CSS Klasse</label>
         <div class="col-sm-9">
-          '.$individuelle_css_klasse.'
+           '.$individuelle_css_klasse.'
         </div>
       </div>'.PHP_EOL;
   }
@@ -566,22 +671,6 @@ echo '
 .img4_8 {
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAVQAAAA8CAIAAAC2INVhAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAhBJREFUeNrs3U9LInEcwOFNBzEypfIiizKEl069Bd8/ePFgJY1YtxQ1Evrj3/3tzmUvuxsZ25TPc4jRoMO3+ThfKZm9zWbzDdg9OSMA8QPiB8QPiB8QPyB+QPyA+IFsi/7+7dlsZkavdHh4aJJ8onPSlR+s/YD4AfED4gfED4gfED8gfkD8gPgB8QPiBz5A9F4/6O7u7unpKY5jM32zl5eX8Xg8n89LpdLx8XEu56WZzMe/Wq2SJAlnrfjfbDQaXVxcrNfr9OH+/v75+XmxWDQZsrv2Pz4+drvdUL5pvtlisbi8vAzln56ehubL5XJYo3q9nsmQ3St/p9OZTCbmuKWw7YftKaz6jUbj528litrt9nQ6NRmyG//R0VGhUAgnbthaTXOb901hzz85OUkfpjdQDC8BJkN246/X6+Hr8/Oz+Lfx/Zf0eLlcXl9fh4NqtWoyZDd+3tf9/f3V1VV4w39wcBDe/xsI4t8Jg8Hg5uYm7Py1Wq3ZbObzeTNB/F9fv9+/vb0NwZ+dnVn4Ef8Obfuh/HAQx3GhUHh4eEifL5fLhoP4v7LhcJgeJEny+/OtVstwyHT8URT5375tVCqVcME3B/6nvfRPyn/iPjOv5449fK5z0kdHYEeJH8QPiB8QPyB+QPyA+AHxA+IHxA+IHxA/8LH+8ak+wJUfED8gfkD8gPgB8QPiB8QPiB/4ED8EGADiTZ6qytwGIAAAAABJRU5ErkJggg==);
 }
-</style>
-
-';
+</style>'.PHP_EOL;
 }
 ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
