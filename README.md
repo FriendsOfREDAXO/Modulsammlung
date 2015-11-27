@@ -8,8 +8,10 @@ Aktuelle Voraussetzungen
 ------------------------
 
 * Redactor Addon
-* Media Manager Typ: "standard"
 
+Empfehlung
+------------------------
+* Media Manager Typ: "standard" anlegen
 
 Changelog
 ---------
