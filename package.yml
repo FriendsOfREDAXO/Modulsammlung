@@ -1,0 +1,13 @@
+
+
+package: grid_modul_builder
+version: '0.1'
+author: Oliver Kreischer
+supportpage: www.redaxo.org/de/forum
+
+page:
+    title: 'translate:title'
+    perm: grid_modul_builder[]
+    subpages:
+        install: { title: 'translate:install' }
+        anleitung: { title: 'translate:anleitung'}

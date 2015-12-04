@@ -3,6 +3,8 @@
  *
  * Redaxo Modul:    0010 - Responsive Content (Modul Output)
  *
+ * modul: grundinstalltion_ohne_aenderungen
+ *
  **/
 
 $grid                     = 'REX_VALUE[20]';
