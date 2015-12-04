@@ -7,6 +7,11 @@
  *
  **/
 
+
+
+
+
+
 $grid                     = 'REX_VALUE[20]';
 $individuelle_css_klasse  = 'REX_VALUE[17]';
 $mediamanagertyp           = 'REX_VALUE[18]';
@@ -17,6 +22,15 @@ $REX['sidebar']['status'] = '';
 $outback                  = '';
 $abstandsklasse           = '';
 $bildposition             = '';
+$editor                   = '';
+
+if(rex_addon::get('rex_redactor')->isAvailable()) {
+  $editor = 'redactor';
+}
+if(rex_addon::get('rex_markitup')->isAvailable()) {
+  $editor = 'markitup';
+}
+
 
 if ($mediamanagertyp == '') {
     $mediamanagertyp = 'standard';
@@ -227,11 +241,16 @@ foreach ($reihenfolge as $nummer) {
         // Text
         $text = '';
         if ($value['text'] !='') {
+          if ($editor == 'markitup') {
+            $value['text'] = str_replace('<br />', '', $value['text']);
+            $value['text'] = rex_textile::parse($value['text']);
+          }
+
           $text = '<div class="text">'.$value['text'].'</div>'.PHP_EOL;
 
-        if ($value['ueberschrift_art'] == 'faq') {
-          $text = '<div class="accordioninhalt">'.$value['text'].'</div>'.PHP_EOL;
-        }
+          if ($value['ueberschrift_art'] == 'faq') {
+            $text = '<div class="accordioninhalt">'.$value['text'].'</div>'.PHP_EOL;
+          }
 
           $outback .= '
             <div class="form-group">

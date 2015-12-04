@@ -2,18 +2,16 @@
 /**
  *
  * Redaxo Modul:    0010 - Responsive Content (Modul Input)
- * Vorraussetzung:  Redaxo Version 5.x / Redactor Addon / Media Manager Typ: "standard"
+ * Vorraussetzung:  Redaxo Version 5.x / Redactor oder MarkItUp (+Textile) Addon / Media Manager Typ: "standard"
  * Entwickler:      Oliver Kreischer / concedra GmbH
  *
  * Redaxo CMS       http://redaxo.org
  * Redactor Addon   http://www.redaxo.org/de/download/addons/?addon_id=1264
+ * MarkItUp-Addon   http://www.redaxo.org/de/download/addons/?addon_id=1267
  * concedra GmbH    https://www.concedra.de
  *
  **/
 
-if(!rex_addon::get('rex_redactor')->isAvailable()) {
-    echo rex_view::error('Dieses Modul ben&ouml;tigt das "Redactor" Addon!');
-}
 
 $anzeige_ueberschriften = 1;
 $anzeige_text           = 1;
@@ -21,7 +19,26 @@ $anzeige_bild           = 1;
 $anzeige_link           = 1;
 $anzeige_download       = 0;
 
-$ausgabeform = '';
+$editor                 = 0;
+$redactor               = 0;
+
+$ausgabeform            = '';
+
+if(!rex_addon::get('rex_redactor')->isAvailable() AND !rex_addon::get('rex_markitup')->isAvailable()) {
+    echo rex_view::error('Dieses Modul ben&ouml;tigt das "Redactor" oder das "MarkItUp" Addon!');
+}
+
+if(rex_addon::get('rex_redactor')->isAvailable()) {
+  $editor = 'redactor';
+}
+if(rex_addon::get('rex_markitup')->isAvailable()) {
+  $editor = 'markitup';
+
+  if (!rex_addon::get('textile')->isAvailable()) {
+      echo rex_view::error('Dieses Modul benötigt das "textile" Addon!');
+  }
+}
+
 
 $values = '';
 $values = array();
@@ -183,7 +200,7 @@ echo '
       <div class="form-group">
         <label class="col-sm-3 control-label">Fließext</label>
         <div class="col-sm-9">
-                 <textarea class="form-control redactor redactorEditor-full" id="redactor_' . $i . '"  name="REX_INPUT_VALUE[' . $i . '][text]">' . (isset($values[$i]['text']) ? $values[$i]['text'] : '') . '</textarea>
+                 <textarea class="form-control '.$editor.' '.$editor.'Editor-full" id="'.$editor.'_' . $i . '"  name="REX_INPUT_VALUE[' . $i . '][text]">' . (isset($values[$i]['text']) ? $values[$i]['text'] : '') . '</textarea>
         </div>
       </div>'.PHP_EOL;
 }
@@ -411,6 +428,7 @@ echo '
       <label class="col-sm-3 control-label">Fließtext</label>
         <div class="col-sm-9">
           <p>Textausgabe. -> Hinweise zum Editor folgen...</p>
+          <p><i>Bitte beachten Sie, dass die Textdarstellung im Backend von der Darstellung im Frontend abweicht :-)</i></p>
           <p>Sofern die Überschrift Art <i>FAQ Überschrift</i> gewählt wurde wird dieser Inhalt in einem Accordion angezeigt.</p>
         </div>
     </div>
@@ -670,7 +688,8 @@ jQuery(document).ready(function($) {
   border-bottom: none;
 }
 
-.redactor-editor {
+.redactor-editor,
+.markitup {
   min-height: 200px;
 }
 
