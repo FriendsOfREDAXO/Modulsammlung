@@ -7,7 +7,7 @@ Redaxo Modul für die Pflege von Inhalten die auf einer responsiven Webseite aus
 Aktuelle Voraussetzungen
 ------------------------
 
-* Redactor Addon
+* Redactor oder MarkItUp (+Textile) Addon
 
 Empfehlung
 ------------------------

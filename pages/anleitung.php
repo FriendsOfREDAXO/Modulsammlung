@@ -11,7 +11,7 @@ $content = '<p>
 <p><b>Aktuelle Voraussetzungen</b></p>
 
 <ul>
-<li> Redactor Addon oder</li>
+<li>Redactor oder MarkItUp (+Textile) Addon</li>
 </ul>
 
 <br/>

@@ -1,7 +1,5 @@
 <?php
 
-if (rex::getUser()->isAdmin()) {
-
     $content = '';
     $searchtext = 'modul:grundinstalltion_ohne_aenderungen';
 
@@ -24,7 +22,7 @@ if (rex::getUser()->isAdmin()) {
         $output = rex_file::get(rex_path::addon('grid_modul_builder','module/module_output.inc'));
 
         $mi = rex_sql::factory();
-        $mi->debugsql = 1;
+        $mi->debugsql = 0;
         $mi->setTable('rex_module');
         $mi->setValue('input', $input);
         $mi->setValue('output', $output);
@@ -59,7 +57,3 @@ if (rex::getUser()->isAdmin()) {
     $fragment->setVar('title', $this->i18n('install_modul'), false);
     $fragment->setVar('body', $content , false);
     echo $fragment->parse('core/page/section.php');
-
-}
-
-

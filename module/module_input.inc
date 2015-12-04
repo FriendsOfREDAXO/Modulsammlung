@@ -12,7 +12,6 @@
  *
  **/
 
-
 $anzeige_ueberschriften = 1;
 $anzeige_text           = 1;
 $anzeige_bild           = 1;

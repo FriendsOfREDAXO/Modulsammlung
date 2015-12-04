@@ -7,11 +7,6 @@
  *
  **/
 
-
-
-
-
-
 $grid                     = 'REX_VALUE[20]';
 $individuelle_css_klasse  = 'REX_VALUE[17]';
 $mediamanagertyp           = 'REX_VALUE[18]';
