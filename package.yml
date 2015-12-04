@@ -8,9 +8,10 @@ supportpage: www.redaxo.org/de/forum
 page:
     title: 'translate:title'
     perm: grid_modul_builder[]
+    icon: fa-plus-square
     subpages:
         install: { title: 'translate:install' }
         anleitung: { title: 'translate:anleitung'}
 
 
- fa-plus-square [&#xf0fe;]
+ 
