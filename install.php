@@ -28,3 +28,11 @@ if ($somethingIsWrong) {
     $this->setProperty('installmsg', 'Something is wrong');
     $this->setProperty('install', false);
 }
+
+if(rex_addon::get('rex_markitup')->isAvailable()) {
+ rex_markitup::insertProfile('simple', 'Grid Modul Builder Profil', 'textile', 'bold,italic');
+}
+
+if(rex_addon::get('rex_redactor')->isAvailable()) {
+ rex_redactor::insertProfile('simple', 'Grid Modul Builder Profil', 'bold,italic', 'table');
+}
