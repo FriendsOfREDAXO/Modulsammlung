@@ -24,6 +24,9 @@ if(rex_addon::get('rex_redactor')->isAvailable()) {
 }
 if(rex_addon::get('rex_markitup')->isAvailable()) {
   $editor = 'markitup';
+    if (!rex_addon::get('textile')->isAvailable()) {
+      echo rex_view::error('Dieses Modul benötigt das "textile" Addon!');
+  }
 }
 
 
@@ -236,7 +239,7 @@ foreach ($reihenfolge as $nummer) {
         // Text
         $text = '';
         if ($value['text'] !='') {
-          if ($editor == 'markitup') {
+          if ($editor == 'markitup' AND rex_addon::get('textile')->isAvailable()) {
             $value['text'] = str_replace('<br />', '', $value['text']);
             $value['text'] = rex_textile::parse($value['text']);
           }
