@@ -29,9 +29,11 @@ if(!rex_addon::get('rex_redactor')->isAvailable() AND !rex_addon::get('rex_marki
 
 if(rex_addon::get('rex_redactor')->isAvailable()) {
   $editor = 'redactor';
+  rex_redactor::insertProfile('simple', 'Grid Modul Builder Profil', 'bold,italic', 'table');
 }
 if(rex_addon::get('rex_markitup')->isAvailable()) {
   $editor = 'markitup';
+  rex_markitup::insertProfile('simple', 'Grid Modul Builder Profil', 'textile', 'bold,italic');
 
   if (!rex_addon::get('textile')->isAvailable()) {
       echo rex_view::error('Dieses Modul benötigt das "textile" Addon!');
