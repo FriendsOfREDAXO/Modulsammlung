@@ -29,16 +29,20 @@ if(!rex_addon::get('rex_redactor')->isAvailable() AND !rex_addon::get('rex_marki
 
 if(rex_addon::get('rex_redactor')->isAvailable()) {
   $editor = 'redactor';
-  rex_redactor::insertProfile('simple', 'Grid Modul Builder Profil', 'bold,italic', 'table');
+    rex_redactor::insertProfile('simple', 'Grid Modul Builder Profil', 'bold,italic,underline,deleted,unorderedlist', 'rex_linkmap,rex_mediapool_link');
+
 }
+
 if(rex_addon::get('rex_markitup')->isAvailable()) {
   $editor = 'markitup';
-  rex_markitup::insertProfile('simple', 'Grid Modul Builder Profil', 'textile', 'bold,italic');
+  rex_markitup::insertProfile('simple', 'Grid Modul Builder Profil', 'textile', 'bold,italic,underline,deleted,quote,sub,sup,code,unorderedlist,link[internal|external|mailto],image');
 
   if (!rex_addon::get('textile')->isAvailable()) {
       echo rex_view::error('Dieses Modul benötigt das "textile" Addon!');
   }
 }
+
+
 
 
 $values = '';
@@ -201,7 +205,7 @@ echo '
       <div class="form-group">
         <label class="col-sm-3 control-label">Fließext</label>
         <div class="col-sm-9">
-                 <textarea class="form-control '.$editor.' '.$editor.'Editor-full" id="'.$editor.'_' . $i . '"  name="REX_INPUT_VALUE[' . $i . '][text]">' . (isset($values[$i]['text']) ? $values[$i]['text'] : '') . '</textarea>
+                 <textarea class="form-control '.$editor.' '.$editor.'Editor-simple" id="'.$editor.'_' . $i . '"  name="REX_INPUT_VALUE[' . $i . '][text]">' . (isset($values[$i]['text']) ? $values[$i]['text'] : '') . '</textarea>
         </div>
       </div>'.PHP_EOL;
 }
