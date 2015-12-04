@@ -12,11 +12,11 @@
  *
  **/
 
-$anzeige_ueberschriften = 1;
-$anzeige_text           = 1;
-$anzeige_bild           = 1;
-$anzeige_link           = 1;
-$anzeige_download       = 0;
+$anzeige_ueberschriften = 1;//ueberschrift
+$anzeige_text           = 1;//text
+$anzeige_bild           = 1;//bild
+$anzeige_link           = 1;//link
+$anzeige_download       = 0;//download
 
 $editor                 = 0;
 $redactor               = 0;
