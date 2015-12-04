@@ -3,7 +3,7 @@
 if (rex::getUser()->isAdmin()) {
 
     $content = '';
-    $searchtext = 'module:grundinstalltion_ohne_aenderungen';
+    $searchtext = 'modul:grundinstalltion_ohne_aenderungen';
 
     $gm = rex_sql::factory();
     $gm->debugsql = 1;
