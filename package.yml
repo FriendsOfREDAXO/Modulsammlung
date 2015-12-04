@@ -8,7 +8,6 @@ supportpage: www.redaxo.org/de/forum
 page:
     title: 'translate:title'
     perm: grid_modul_builder[]
-    icon: rex-icon fa-hand-spock-o
     subpages:
         install: { title: 'translate:install' }
         anleitung: { title: 'translate:anleitung'}
