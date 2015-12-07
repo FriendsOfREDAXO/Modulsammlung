@@ -1,13 +1,16 @@
 
 
-grid_modul_builder_title                         = Grid Modul Builder
-grid_modul_builder_install                       = Modul installieren
-grid_modul_builder_install_modul                 = Modul installieren
-grid_modul_builder_install_update_modul          = Modul aktualisieren
+grid_modul_builder_title                           = Grid Modul Builder
+grid_modul_builder_install                         = Modul installieren
+grid_modul_builder_anleitung                       = Anleitung
 
-grid_modul_builder_install_modul_description     = Das Modul "0010 - Responsive Content" wird installiert bzw. aktualisiert
-grid_modul_builder_anleitung                     = Anleitung
 
-# Benennung für die Addonrechte, sichtbar innerhalb der REDAXO-Administration unter Benutzer > Rollen > Allgemein
+gmb_install_ews_modul               = EWS Modul installieren
+gmb_install_ews_modul_description   = Hinweistext EWS Modul
 
-perm_general_grid_modul_builder[] = Grid Modul Builder
+form_modul_name                     = Modul Name
+form_modul_install_button           = Modul installieren
+
+
+
+perm_general_gmb[] = Grid Modul Builder

@@ -1,21 +1,26 @@
 <?php
 /**
  *
- * Redaxo Modul:    0010 - Responsive Content (Modul Input)
- * Vorraussetzung:  Redaxo Version 5.x / Redactor oder MarkItUp (+Textile) Addon / Media Manager Typ: "standard"
+ * --
+ * Dieses Modul wurde vom Grid Modul Builder angelegt.
+ * --
+ *
+ *
+ * Vorraussetzung:  Redaxo Version 5.x / Redactor oder MarkItUp (+Textile) Addon
+ * Empfohlen:       Media Manager Typ: "standard" anlegen und konfigurieren
  * Entwickler:      Oliver Kreischer / concedra GmbH
  *
  * Redaxo CMS       http://redaxo.org
  * Redactor Addon   http://www.redaxo.org/de/download/addons/?addon_id=1264
  * MarkItUp-Addon   http://www.redaxo.org/de/download/addons/?addon_id=1267
- * concedra GmbH    https://www.concedra.de
  *
  **/
 
-$anzeige_ueberschriften = 1;//ueberschrift
-$anzeige_text           = 1;//text
-$anzeige_bild           = 1;//bild
-$anzeige_link           = 1;//link
+
+$anzeige_ueberschriften = 0;//ueberschrift
+$anzeige_text           = 0;//text
+$anzeige_bild           = 0;//bild
+$anzeige_link           = 0;//link
 $anzeige_download       = 0;//download
 
 $editor                 = 0;

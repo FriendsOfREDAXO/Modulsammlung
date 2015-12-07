@@ -1,10 +1,11 @@
 <?php
 /**
  *
- * Redaxo Modul:    0010 - Responsive Content (Modul Output)
+ * --
+ * Dieses Modul wurde vom Grid Modul Builder angelegt.
+  * --
  *
- * modul:grundinstallation_ohne_aenderungen
- *
+  *
  **/
 
 $grid                     = 'REX_VALUE[20]';
