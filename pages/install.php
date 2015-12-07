@@ -83,3 +83,61 @@
 
 
 
+
+
+//////
+
+
+    $content = '';
+    $gmb_modul_name = '';
+
+  //  $content .= '<p>'.$this->i18n('install_ews_modul_description').'<br /><br />';
+
+    $content .= '
+    <form action="' . rex_url::currentBackendPage() . '" method="POST">
+        <dl class="rex-form-group form-group">
+            <dt><label>Modulname</label></dt>
+            <dd><input class="form-control" type="text" name="gmb_modul_name"></dd>
+        </dl>
+    <input type="hidden" name="install" value="2">
+   ';
+
+  if (rex_request('install',"integer") == 2) {
+
+      $gmb_modul_name           = rex_post("gmb_modul_name", 'string');
+
+    if ($gmb_modul_name == '') {
+        echo rex_view::warning('Bitte einen Modulnamen angeben!');
+
+    } else {
+
+        $input = rex_file::get(rex_path::addon('grid_modul_builder','module/leer_module_input.inc'));
+
+
+        $output = rex_file::get(rex_path::addon('grid_modul_builder','module/leer_module_output.inc'));
+
+        $mi = rex_sql::factory();
+        $mi->debugsql = 0;
+        $mi->setTable('rex_module');
+        $mi->setValue('input', $input);
+        $mi->setValue('output', $output);
+
+            $mi->setValue('name', $gmb_modul_name);
+            $mi->insert();
+            $module_id = (int) $mi->getLastId();
+            echo rex_view::success('Das Modul "' . $gmb_modul_name . '" wurde angelegt. ');
+    }
+  }
+
+    $content .= '<p><input type="submit" class="btn btn-primary" class="rex-button" value="' . $this->i18n('form_modul_install_button', $gmb_modul_name) . '" /></p>';
+
+    $content .= '</form></p>';
+
+    $fragment = new rex_fragment();
+    $fragment->setVar('class', 'edit');
+    $fragment->setVar('title', $this->i18n('gmb_install_leer_modul'), false);
+    $fragment->setVar('body', $content , false);
+    echo $fragment->parse('core/page/section.php');
+
+
+

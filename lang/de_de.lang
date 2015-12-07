@@ -12,5 +12,7 @@ form_modul_name                     = Modul Name
 form_modul_install_button           = Modul installieren
 
 
+gmb_install_leer_modul              = Leeres Testmodul anlegen
+
 
 perm_general_gmb[] = Grid Modul Builder

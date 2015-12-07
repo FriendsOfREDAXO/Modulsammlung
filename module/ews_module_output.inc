@@ -3,9 +3,9 @@
  *
  * --
  * Dieses Modul wurde vom Grid Modul Builder angelegt.
-  * --
+ * --
  *
-  *
+ *
  **/
 
 $grid                     = 'REX_VALUE[20]';
