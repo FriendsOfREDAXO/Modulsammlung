@@ -18,10 +18,10 @@ Noch fehlende Module
 
 * 0030 - Text - Bildergalerie
 * 0040 - Text - Video (Vimeo / Youtube)
-* 0050 - Bilderslider (100% Breite / Contentbreite)
-* 0060 - Routenplaner (Google Maps)
-* 0070 - Text - Kontaktformular
-* 0080 - Text - Download
+* 0050 - Text - Kontaktformular
+* 0060 - Text - Download
+* 0070 - Bilderslider (100% Breite / Contentbreite)
+* 0080 - Routenplaner (Google Maps)
 * 0090 - Nur Text (Footer etc.)
 * 0100 - Sitemap
 * 0110 - Alle Bilder mit aus dem Medienpool mit Copyright anzeigen
