@@ -21,9 +21,10 @@ Noch fehlende Module
 * 0050 - Bilderslider (100% Breite / Contentbreite)
 * 0060 - Routenplaner (Google Maps)
 * 0070 - Text - Kontaktformular
-* 0080 - Nur Text (Footer etc.)
-* 0090 - Sitemap
-* 0100 - Alle Bilder mit aus dem Medienpool mit Copyright anzeigen
+* 0080 - Text - Download
+* 0090 - Nur Text (Footer etc.)
+* 0100 - Sitemap
+* 0110 - Alle Bilder mit aus dem Medienpool mit Copyright anzeigen
 * evtl. Parallax
 * evtl. Bilderslider (swiper) / Text
 
