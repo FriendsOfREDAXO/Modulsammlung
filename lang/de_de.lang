@@ -1,18 +1,11 @@
 
 
 modulsammlung_title            = Modulsammlung
-modulsammlung_install          = Modul installieren
+modulsammlung_install          = Module installieren
 modulsammlung_info             = Info
 
-
-gmb_install_ews_modul               = EWS Modul installieren
-gmb_install_ews_modul_description   = Hinweistext EWS Modul
 
 form_modul_name                     = Modul Name
 form_modul_install_button           = Modul installieren
 
-
-gmb_install_leer_modul              = Leeres Testmodul anlegen
-
-
-perm_general_gmb[] = Grid Modul Builder
+perm_general_gmb[] = Modulsammlung

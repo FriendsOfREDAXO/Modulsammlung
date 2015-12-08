@@ -17,10 +17,10 @@
  **/
 
 
-$anzeige_ueberschriften = 1;//ueberschrift
-$anzeige_text           = 1;//text
-$anzeige_bild           = 1;//bild
-$anzeige_link           = 1;//link
+$anzeige_ueberschriften = 0;//ueberschrift
+$anzeige_text           = 0;//text
+$anzeige_bild           = 0;//bild
+$anzeige_link           = 0;//link
 $anzeige_download       = 0;//download
 
 $editor                 = 0;

@@ -1,13 +1,13 @@
 
 
-package: grid_modul_builder
+package: modulsammlung
 version: '1.7-dev'
 author: Oliver Kreischer
 supportpage: www.redaxo.org/de/forum
 
 page:
     title: 'translate:title'
-    perm: grid_modul_builder[]
+    perm: modulsammlung[]
     icon: rex-icon fa-plus-square
     subpages:
         install: { title: 'translate:install' }
