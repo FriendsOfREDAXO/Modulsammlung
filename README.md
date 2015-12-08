@@ -7,8 +7,8 @@ Dieses Addon ermöglicht es leicht und schnell einige "Standard"-Module zu insta
 Aktuell enthaltene Module
 -------------------------
 
-* 0010 - Text - Bild - Link (1-4 Spalten)
-* 0020 - Abstand (Trennline / Bild)
+* 0010 - Text / Bild / Link | 1-4 Spalten
+* 0020 - Abstand oder Trennlinie mit/ohne Grafik
 
 
 Noch fehlende Module
