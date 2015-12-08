@@ -1,4 +1,4 @@
-Rredaxo 5 Modulsammlung
+Redaxo 5 Modulsammlung
 =======================
 
 Dieses Addon ermöglicht es leicht und schnell einige "Standard"-Module zu installieren.
