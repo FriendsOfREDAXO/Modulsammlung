@@ -1,8 +1,8 @@
 
 
-grid_modul_builder_title                           = Grid Modul Builder
-grid_modul_builder_install                         = Modul installieren
-grid_modul_builder_anleitung                       = Anleitung
+modulsammlung_title            = Modulsammlung
+modulsammlung_install          = Modul installieren
+modulsammlung_info             = Info
 
 
 gmb_install_ews_modul               = EWS Modul installieren
