@@ -17,10 +17,10 @@
  **/
 
 
-$anzeige_ueberschriften = 0;//ueberschrift
-$anzeige_text           = 0;//text
-$anzeige_bild           = 0;//bild
-$anzeige_link           = 0;//link
+$anzeige_ueberschriften = 1;//ueberschrift
+$anzeige_text           = 1;//text
+$anzeige_bild           = 1;//bild
+$anzeige_link           = 1;//link
 $anzeige_download       = 0;//download
 
 $editor                 = 0;
@@ -46,8 +46,6 @@ if(rex_addon::get('rex_markitup')->isAvailable()) {
       echo rex_view::error('Dieses Modul benötigt das "textile" Addon!');
   }
 }
-
-
 
 
 $values = '';
@@ -143,11 +141,25 @@ for ($i = 1; $i <= count($values); $i++) {
         $bildposition->setName('REX_INPUT_VALUE[' . $i . '][bildposition]');
         $bildposition->setSelected( (isset($values[$i]['bildposition']) ? $values[$i]['bildposition'] : '') );
         $bildposition->setSize(1);
-        $bildposition->addOptions( array(
-                  'oben'=>'über dem Text',
-                  'unten'=>'unter dem Text',
-                  'nachueberschrift'=>'unter der Überschrift',
-                  'nachteaser'=>'unter dem Teasertext' ));
+
+        if($anzeige_ueberschriften && $anzeige_text) {
+          $bildposition->addOptions( array(
+                    'oben'=>'ganz oben',
+                    'unten'=>'ganz unten',
+                    'nachueberschrift'=>'unter der Überschrift',
+                    'nachteaser'=>'unter dem Teasertext' ));
+        } else if ($anzeige_ueberschriften) {
+          $bildposition->addOptions( array(
+                    'oben'=>'ganz oben',
+                    'unten'=>'ganz unten' ));
+        } else if ($anzeige_text) {
+          $bildposition->addOptions( array(
+                    'oben'=>'ganz oben',
+                    'unten'=>'ganz unten',
+                    'nachteaser'=>'unter dem Teasertext' ));
+        }
+
+
 
         $bildanpassen = new rex_select();
         $bildanpassen->setName('REX_INPUT_VALUE[' . $i . '][bildanpassen]');
@@ -241,16 +253,18 @@ echo '
           <div class="col-sm-9">
             <div class="select-style">' . $bildinformationen->get() . '</div>
           </div>
-        </div>
+        </div>'.PHP_EOL;
 
-        <div class="form-group">
-          <label class="col-sm-3 control-label">Position</label>
-          <div class="col-sm-9">
-            <div class="select-style">' . $bildposition->get() . '</div>
-          </div>
-        </div>
+      if($anzeige_ueberschriften OR $anzeige_text) {
+        echo '  <div class="form-group">
+              <label class="col-sm-3 control-label">Position</label>
+              <div class="col-sm-9">
+                <div class="select-style">' . $bildposition->get() . '</div>
+              </div>
+            </div>'.PHP_EOL;
+        }
 
-        <div class="form-group">
+echo '  <div class="form-group">
           <label class="col-sm-3 control-label">Bild anpassen</label>
           <div class="col-sm-9">
             <div class="select-style">' . $bildanpassen->get() . '</div>
@@ -285,21 +299,25 @@ echo '
           <div class="col-sm-9">
             <input class="form-control" name="REX_INPUT_VALUE[' . $i . '][linkbezeichnung]" value="' . (isset($values[$i]['linkbezeichnung']) ? $values[$i]['linkbezeichnung'] : '') . '" type="text" />
           </div>
-        </div>
+        </div>'.PHP_EOL;
 
+if ($anzeige_ueberschriften) {
+echo '
         <div class="form-group">
           <label class="col-sm-3 control-label">Überschrift verlinken</label>
           <div class="col-sm-9">
             <div class="select-style">' . $ueberschriftlink->get() . '</div>
           </div>
-        </div>
-
-        <div class="form-group">
+        </div>'.PHP_EOL;
+}
+if ($anzeige_bild) {
+echo '  <div class="form-group">
           <label class="col-sm-3 control-label">Bild verlinken</label>
           <div class="col-sm-9">
             <div class="select-style">' . $bildlink->get() . '</div>
           </div>
         </div>'.PHP_EOL;
+}
 }
 
 //
@@ -400,8 +418,11 @@ echo '
         </div>
 
 
-  </div>
+  </div>'.PHP_EOL;
 
+if($anzeige_ueberschriften == 1) {
+
+echo '
   <div class=" control-label panel-heading collapsed" data-toggle="collapse" data-target="#collapse-ueberschrift"><span class="caret"></span>Überschrift</h3></div>
   <div id="collapse-ueberschrift" class="panel-collapse collapse">
 
@@ -422,8 +443,11 @@ echo '
     </div>
 
 
-  </div>
+  </div>'.PHP_EOL;
+}
 
+if($anzeige_text == 1) {
+echo '
   <div class="control-label panel-heading collapsed" data-toggle="collapse" data-target="#collapse-text"><span class="caret"></span>Text</h3></div>
   <div id="collapse-text" class="panel-collapse collapse">
 
@@ -443,8 +467,11 @@ echo '
         </div>
     </div>
 
-  </div>
+  </div>'.PHP_EOL;
+}
 
+if ($anzeige_bild == 1) {
+echo '
   <div class="control-label panel-heading collapsed" data-toggle="collapse" data-target="#collapse-bild"><span class="caret"></span>Bild</h3></div>
   <div id="collapse-bild" class="panel-collapse collapse">
 
@@ -484,8 +511,11 @@ echo '
         </div>
     </div>
 
-  </div>
+  </div>'.PHP_EOL;
+}
 
+if($anzeige_link) {
+echo '
   <div class="control-label panel-heading collapsed" data-toggle="collapse" data-target="#collapse-link"><span class="caret"></span>Link</h3></div>
   <div id="collapse-link" class="panel-collapse collapse">
 
@@ -526,8 +556,10 @@ echo '
         </div>
     </div>
 
-  </div>
+  </div>'.PHP_EOL;
+}
 
+echo '
   <div class="control-label panel-heading collapsed" data-toggle="collapse" data-target="#collapse-weitereeinstellungen"><span class="caret"></span>Weitere Einstellungen</h3></div>
   <div id="collapse-weitereeinstellungen" class="panel-collapse collapse">
 

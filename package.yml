@@ -1,7 +1,7 @@
 
 
 package: grid_modul_builder
-version: '1.6-dev'
+version: '1.7-dev'
 author: Oliver Kreischer
 supportpage: www.redaxo.org/de/forum
 
@@ -11,4 +11,4 @@ page:
     icon: rex-icon fa-plus-square
     subpages:
         install: { title: 'translate:install' }
-        anleitung: { title: 'translate:anleitung'}
+        info: { title: 'translate:info'}
