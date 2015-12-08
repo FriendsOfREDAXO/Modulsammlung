@@ -103,7 +103,7 @@
 
     $fragment = new rex_fragment();
     $fragment->setVar('class', 'edit');
-    $fragment->setVar('title', 'Modul: Text / Bild / Link | 1-4 Spalten', false);
+    $fragment->setVar('title', 'Text / Bild / Link | 1-4 Spalten', false);
     $fragment->setVar('body', $content , false);
     echo $fragment->parse('core/page/section.php');
 
@@ -120,9 +120,9 @@
             <dt><label>Modulname</label></dt>
             <dd><input class="form-control" type="text" name="abstand_modul_name" value="0020 - Abstand oder Trennlinie mit/ohne Grafik"></dd>
         </dl>
-    <input type="hidden" name="install" value="3">';
+    <input type="hidden" name="install" value="2">';
 
-  if (rex_request('install',"integer") == 3) {
+  if (rex_request('install',"integer") == 2) {
 
       $abstand_modul_name           = rex_post("abstand_modul_name", 'string');
 
@@ -173,8 +173,75 @@
 
     $fragment = new rex_fragment();
     $fragment->setVar('class', 'edit');
-    $fragment->setVar('title', 'Module: Abstand oder Trennlinie mit/ohne Grafik', false);
+    $fragment->setVar('title', 'Abstand oder Trennlinie mit/ohne Grafik', false);
     $fragment->setVar('body', $content , false);
     echo $fragment->parse('core/page/section.php');
 
+
+
+////// Alle Bilder mit aus dem Medienpool mit Copyright anzeigen
+
+    $content = '';
+    $copyright_modul_name = '';
+
+    $content .= '
+    <form action="' . rex_url::currentBackendPage() . '" method="POST">
+        <dl class="rex-form-group form-group">
+            <dt><label>Modulname</label></dt>
+            <dd><input class="form-control" type="text" name="copyright_modul_name" value="0110 - Alle Bilder mit aus dem Medienpool mit Copyright anzeigen"></dd>
+        </dl>
+    <input type="hidden" name="install" value="3">';
+
+  if (rex_request('install',"integer") == 3) {
+
+      $copyright_modul_name           = rex_post("copyright_modul_name", 'string');
+
+    if ($copyright_modul_name == '') {
+        echo rex_view::warning('Bitte einen Modulnamen angeben!');
+
+    } else {
+
+        $input = rex_file::get(rex_path::addon('modulsammlung','module/copyright_module_input.inc'));
+        $output = rex_file::get(rex_path::addon('modulsammlung','module/copyright_module_output.inc'));
+
+        $mi = rex_sql::factory();
+        $mi->debugsql = 0;
+        $mi->setTable('rex_module');
+        $mi->setValue('input', $input);
+        $mi->setValue('output', $output);
+
+            $mi->setValue('name', $copyright_modul_name);
+            $mi->insert();
+            $module_id = (int) $mi->getLastId();
+            echo rex_view::success('Das Modul "' . $copyright_modul_name . '" wurde angelegt. ');
+    }
+  }
+
+    $content .= '<input style="float:right;" type="submit" class="btn btn-primary" class="rex-button" value="' . $this->i18n('form_modul_install_button', $copyright_modul_name) . '" />';
+
+    $content .= '</form>';
+
+ $content .= '
+<button class="btn btn-success" data-toggle="collapse" data-target="#copyright">Modul Info</button>
+<div id="copyright" class="collapse" style="padding: 0;">
+    <div style="padding: 10px 15px 10px 15px;margin-top: 20px;background: #F3F6FB; border: 1px solid #3CB594;">
+
+    <h3>Alle Bilder mit aus dem Medienpool mit Copyright anzeigen</h3>
+
+    <p>Alle Bilder die im Medienpool deren Copyrightinfo ausgefüllt ist haben werden ausgegeben.</p>
+
+    <br/>
+    <b>Empfehlung</b>
+    <ul>
+        <li>Media Manager Typ: "bildercopyright" anlegen</li>
+    </ul>
+    </div>
+</div>
+';
+
+    $fragment = new rex_fragment();
+    $fragment->setVar('class', 'edit');
+    $fragment->setVar('title', 'Alle Bilder mit aus dem Medienpool mit Copyright anzeigen', false);
+    $fragment->setVar('body', $content , false);
+    echo $fragment->parse('core/page/section.php');
 
