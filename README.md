@@ -3,6 +3,8 @@ Redaxo 5 Modulsammlung
 
 Dieses Addon ermöglicht es leicht und schnell einige "Standard"-Module zu installieren.
 
+Das Frontent CSS wird nicht mitgeliefert.
+
 
 Aktuell enthaltene Module
 -------------------------
@@ -22,9 +24,8 @@ Noch fehlende Module
 * 0080 - Nur Text (Footer etc.)
 * 0090 - Sitemap
 * 0100 - Alle Bilder mit aus dem Medienpool mit Copyright anzeigen
-*
-* Parallax
-* Bilderslider (swiper) / Text
+* evtl. Parallax
+* evtl. Bilderslider (swiper) / Text
 
 
 Changelog
