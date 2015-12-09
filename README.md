@@ -11,6 +11,7 @@ Aktuell enthaltene Module
 
 * 0010 - Text / Bild / Link | 1-4 Spalten
 * 0020 - Abstand oder Trennlinie mit/ohne Grafik
+* 0110 - Alle Bilder mit aus dem Medienpool mit Copyright anzeigen
 
 
 Noch fehlende Module
@@ -24,7 +25,6 @@ Noch fehlende Module
 * 0080 - Routenplaner (Google Maps)
 * 0090 - Nur Text (Footer etc.)
 * 0100 - Sitemap
-* 0110 - Alle Bilder mit aus dem Medienpool mit Copyright anzeigen
 * evtl.  Parallax
 * evtl.  Bilderslider (Swiper) / Text
 
