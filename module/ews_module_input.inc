@@ -21,6 +21,7 @@ $anzeige_ueberschriften = 0;//ueberschrift
 $anzeige_text           = 0;//text
 $anzeige_bild           = 0;//bild
 $anzeige_link           = 0;//link
+$anzeige_video          = 0;//video
 $anzeige_download       = 0;//download
 
 $editor                 = 0;
@@ -158,8 +159,6 @@ for ($i = 1; $i <= count($values); $i++) {
                     'unten'=>'ganz unten',
                     'nachteaser'=>'unter dem Teasertext' ));
         }
-
-
 
         $bildanpassen = new rex_select();
         $bildanpassen->setName('REX_INPUT_VALUE[' . $i . '][bildanpassen]');
@@ -319,6 +318,32 @@ echo '  <div class="form-group">
         </div>'.PHP_EOL;
 }
 }
+
+//
+// Video
+//
+if($anzeige_video) {
+  echo '
+    <h3>Video (YouTube / Vimeo)</h3>
+      <div class="form-group">
+        <label class="col-sm-3 control-label">YouTube Video ID</label>
+          <div class="col-sm-9">
+              <input class="form-control" name="REX_INPUT_VALUE[' . $i . '][youtube_video_id]" value="' . (isset($values[$i]['youtube_video_id']) ? $values[$i]['youtube_video_id'] : '') . '" type="text" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label">Vimeo Video ID</label>
+          <div class="col-sm-9">
+              <input class="form-control" name="REX_INPUT_VALUE[' . $i . '][vimeo_video_id]" value="' . (isset($values[$i]['vimeo_video_id']) ? $values[$i]['vimeo_video_id'] : '') . '" type="text" />
+        </div>
+    </div>
+</script>
+
+'.PHP_EOL;
+}
+
+
+
 
 //
 // Download
@@ -557,6 +582,32 @@ echo '
     </div>
 
   </div>'.PHP_EOL;
+}
+
+if($anzeige_video) {
+echo '
+  <div class="control-label panel-heading collapsed" data-toggle="collapse" data-target="#collapse-text"><span class="caret"></span>Video (YouTube / Vimeo)</h3></div>
+  <div id="collapse-text" class="panel-collapse collapse">
+    <div class="form-group">
+      <label class="col-sm-3 control-label">YouTube ID</label>
+        <div class="col-sm-9">
+          <p>In dem Eingabefeld bitte nur die ID des Videos eingeben.</p>
+          <p>Bsp.: https://www.youtube.com/watch?v=<b>jsbhA64PvwA</b></p>
+        </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-sm-3 control-label">Vimeo ID</label>
+        <div class="col-sm-9">
+          <p>In dem Eingabefeld bitte nur die ID des Videos eingeben.</p>
+          <p>Bsp.: https://vimeo.com/<b>13416084</b></p>
+          <br/>
+          <p>ACHTUNG: Es kann nur eine YouTube ID <u>oder</u> eine Vimeo ID angegeben werden.</p>
+        </div>
+    </div>
+
+  </div>'.PHP_EOL;
+
 }
 
 echo '
@@ -835,3 +886,4 @@ textarea.form-control {
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAVQAAAA8CAIAAAC2INVhAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAhBJREFUeNrs3U9LInEcwOFNBzEypfIiizKEl069Bd8/ePFgJY1YtxQ1Evrj3/3tzmUvuxsZ25TPc4jRoMO3+ThfKZm9zWbzDdg9OSMA8QPiB8QPiB8QPyB+QPyA+IFsi/7+7dlsZkavdHh4aJJ8onPSlR+s/YD4AfED4gfED4gfED8gfkD8gPgB8QPiBz5A9F4/6O7u7unpKY5jM32zl5eX8Xg8n89LpdLx8XEu56WZzMe/Wq2SJAlnrfjfbDQaXVxcrNfr9OH+/v75+XmxWDQZsrv2Pz4+drvdUL5pvtlisbi8vAzln56ehubL5XJYo3q9nsmQ3St/p9OZTCbmuKWw7YftKaz6jUbj528litrt9nQ6NRmyG//R0VGhUAgnbthaTXOb901hzz85OUkfpjdQDC8BJkN246/X6+Hr8/Oz+Lfx/Zf0eLlcXl9fh4NqtWoyZDd+3tf9/f3V1VV4w39wcBDe/xsI4t8Jg8Hg5uYm7Py1Wq3ZbObzeTNB/F9fv9+/vb0NwZ+dnVn4Ef8Obfuh/HAQx3GhUHh4eEifL5fLhoP4v7LhcJgeJEny+/OtVstwyHT8URT5375tVCqVcME3B/6nvfRPyn/iPjOv5449fK5z0kdHYEeJH8QPiB8QPyB+QPyA+AHxA+IHxA+IHxA/8LH+8ak+wJUfED8gfkD8gPgB8QPiB8QPiB/4ED8EGADiTZ6qytwGIAAAAABJRU5ErkJggg==);
 }
 </style>
+

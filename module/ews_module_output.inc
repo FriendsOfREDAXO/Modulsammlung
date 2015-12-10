@@ -20,6 +20,7 @@ $abstandsklasse           = '';
 $bildposition             = '';
 $editor                   = '';
 
+
 if(rex_addon::get('rex_redactor')->isAvailable()) {
   $editor = 'redactor';
 }
@@ -218,6 +219,62 @@ foreach ($reihenfolge as $nummer) {
 
 /****
 *
+*     Video
+*
+****/
+
+      $video = '';
+
+      if ($value['youtube_video_id'] !='' OR $value['vimeo_video_id'] !='' ) {
+        $outback .= '<h3>Video</h3>';
+
+        // Youtube
+        if ($value['youtube_video_id'] !='') {
+            $video = '
+              <div class="responsive-video">
+              <iframe src="https://www.youtube-nocookie.com/embed/'.$value['youtube_video_id'].'?rel=0&amp;showinfo=0"
+              width="1600" height="900" frameborder="0" webkitAllowFullScreen
+              mozallowfullscreen allowFullScreen></iframe>
+              </div>'.PHP_EOL;
+            $outback .= '
+            <div class="form-group">
+              <label class="col-sm-3 control-label">Youtube Video ID</label>
+              <div class="col-sm-9">ff'.$value['youtube_video_id'].'</div>
+            </div>'.PHP_EOL;
+        }
+
+        // Vimeo
+        if ($value['vimeo_video_id'] !='') {
+        $video = '
+        <div class="responsive-video">
+        <iframe src="http://player.vimeo.com/video/'.$value['vimeo_video_id'].'?title=0&amp
+        ;byline=0&amp;portrait=0&amp;autoplay=0"
+        width="1600" height="900" frameborder="0" webkitAllowFullScreen
+        mozallowfullscreen allowFullScreen></iframe>
+        </div>'.PHP_EOL;
+
+        $outback .= '
+            <div class="form-group">
+              <label class="col-sm-3 control-label">Vimeo Video ID</label>
+              <div class="col-sm-9">ff'.$value['vimeo_video_id'].'</div>
+            </div>'.PHP_EOL;
+        }
+
+        if ($value['youtube_video_id'] !='' AND $value['vimeo_video_id'] !='') {
+          $outback .= '
+            <div class="form-group ">
+              <label class="col-sm-3 control-label"></label>
+              <div class="col-sm-9 warning">
+                ACHTUNG:<br/>Es kann nur eine YouTube ID oder eine Vimeo ID angegeben werden.
+              </div>
+            </div>'.PHP_EOL;
+          }
+
+      }
+
+
+/****
+*
 *     Teasertext & Text
 *
 ****/
@@ -258,6 +315,7 @@ foreach ($reihenfolge as $nummer) {
             </div>'.PHP_EOL;
         }
       }
+
 
 /****
 *
@@ -407,6 +465,7 @@ foreach ($reihenfolge as $nummer) {
          $html_block[$zaehler]  = '';
          $html_block[$zaehler] .= $ueberschrift;
          $html_block[$zaehler] .= $teasertext;
+         $html_block[$zaehler] .= $video;
          $html_block[$zaehler] .= $text;
          $html_block[$zaehler] .= $link;
          $html_block[$zaehler] .= $bild;
@@ -416,6 +475,7 @@ foreach ($reihenfolge as $nummer) {
          $html_block[$zaehler] .= $ueberschrift;
          $html_block[$zaehler] .= $bild;
          $html_block[$zaehler] .= $teasertext;
+         $html_block[$zaehler] .= $video;
          $html_block[$zaehler] .= $text;
          $html_block[$zaehler] .= $link;
       break;
@@ -424,6 +484,7 @@ foreach ($reihenfolge as $nummer) {
          $html_block[$zaehler] .= $ueberschrift;
          $html_block[$zaehler] .= $teasertext;
          $html_block[$zaehler] .= $bild;
+         $html_block[$zaehler] .= $video;
          $html_block[$zaehler] .= $text;
          $html_block[$zaehler] .= $link;
       break;
@@ -432,6 +493,7 @@ foreach ($reihenfolge as $nummer) {
          $html_block[$zaehler] .= $ueberschrift;
          $html_block[$zaehler] .= $bild;
          $html_block[$zaehler] .= $teasertext;
+         $html_block[$zaehler] .= $video;
          $html_block[$zaehler] .= $text;
          $html_block[$zaehler] .= $link;
       break;

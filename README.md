@@ -9,22 +9,21 @@ Das Frontent CSS wird nicht mitgeliefert.
 Aktuell enthaltene Module
 -------------------------
 
-* 0010 - Text / Bild / Link | 1-4 Spalten
+* 0010 - Text / Bild / Video / Link | 1-4 Spalten
 * 0020 - Abstand oder Trennlinie mit/ohne Grafik
-* 0110 - Alle Bilder mit aus dem Medienpool mit Copyright anzeigen
+* 0100 - Alle Bilder mit aus dem Medienpool mit Copyright anzeigen
 
 
 Noch fehlende Module
 --------------------
 
-* 0030 - Text / Bildergalerie
-* 0040 - Text / Video (Vimeo / Youtube)
-* 0050 - Text / Kontaktformular
-* 0060 - Text / Download
-* 0070 - Bilderslider (100% Breite / Contentbreite)
-* 0080 - Routenplaner (Google Maps)
-* 0090 - Nur Text (Footer etc.)
-* 0100 - Sitemap
+* Text / Bildergalerie
+* Text / Kontaktformular
+* Text / Download
+* Bilderslider (100% Breite / Contentbreite)
+* Routenplaner (Google Maps)
+* Nur Text (Footer etc.)
+* Sitemap
 * evtl.  Parallax
 * evtl.  Bilderslider (Swiper) / Text
 

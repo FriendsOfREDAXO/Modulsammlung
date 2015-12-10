@@ -1,7 +1,7 @@
 <?php
 ////////
 //
-// EWS : Text / Bild / Link | 1-4 Spalten
+// EWS : Text / Bild / Video / Link | 1-4 Spalten
 //
 ////////
 $content = '';
@@ -10,13 +10,14 @@ $content .= '
   <form action="' . rex_url::currentBackendPage() . '" method="POST">
     <dl class="rex-form-group form-group">
       <dt><label>Modulname</label></dt>
-        <dd><input class="form-control" type="text" name="ews_modul_name" value="0010 - Text / Bild / Link | 1-4 Spalten"></dd>
+        <dd><input class="form-control" type="text" name="ews_modul_name" value="0010 - Text / Bild / Video / Link | 1-4 Spalten"></dd>
       </dl>
       <dl class="rex-form-group form-group">
       <dd>
         <div class="checkbox"><label><input type="checkbox" name="ueberschrift" >Überschrift</label></div>
         <div class="checkbox"><label><input type="checkbox" name="text" >Textfelder</label></div>
         <div class="checkbox"><label><input type="checkbox" name="bild" >Bild</label></div>
+        <div class="checkbox"><label><input type="checkbox" name="video" >Video</label></div>
         <div class="checkbox"><label><input type="checkbox" name="link" >Link</label></div>
         <!-- <div class="checkbox"><label><input type="checkbox" name="download" >Download</label></div> -->
       </dd>
@@ -28,6 +29,7 @@ if (rex_request('install',"integer") == 1) {
   $ews_modul_name           = rex_post("ews_modul_name", 'string');
   $ews_modul_ueberschrift   = rex_post("ueberschrift", 'string');
   $ews_modul_text           = rex_post("text", 'string');
+  $ews_modul_video          = rex_post("video", 'string');
   $ews_modul_bild           = rex_post("bild", 'string');
   $ews_modul_link           = rex_post("link", 'string');
   $ews_modul_download       = rex_post("download", 'string');
@@ -71,6 +73,9 @@ if (rex_request('install',"integer") == 1) {
     if ($ews_modul_text != '') {
       $input = str_replace("0;//text", "1;//text", $input);
     }
+    if ($ews_modul_video != '') {
+      $input = str_replace("0;//video", "1;//video", $input);
+    }
     if ($ews_modul_bild != '') {
       $input = str_replace("0;//bild", "1;//bild", $input);
     }
@@ -104,7 +109,7 @@ $content .= '
   <button class="btn btn-success" data-toggle="collapse" data-target="#ews">Modul Info</button>
   <div id="ews" class="collapse" style="padding: 0;">
     <div style="padding: 10px 15px 10px 15px;margin-top: 20px;background: #F3F6FB; border: 1px solid #3CB594;">
-    <h3>Text / Bild / Link | 1-4 Spalten</h3>
+    <h3>Text / Bild / Video / Link | 1-4 Spalten</h3>
     <p>Redaxo Modul für die Pflege von Inhalten die auf einer responsiven Webseite ausgegeben werden.</p>
     <br/>
     <b>Aktuelle Voraussetzungen</b>
@@ -116,13 +121,32 @@ $content .= '
       <li>Der Media Manager Typ <i>standard</i> wird angelegt und kann konfiguriert werden.</li>
       <li>Das Meta Info Feld (Medien) <i>med_no_copyright_out</i> wird angelegt.</li>
     </ul>
+    <br/><br/>
+    <b>CSS für die Einbindung von Videos</b>
+    <pre style="padding: 20px 20px 0 20px; margin-top: 10px;">
+.responsive-video iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.responsive-video {
+  position: relative;
+  padding-bottom: 56.25%; /* Default for 1600x900 videos 16:9 ratio*/
+  padding-top: 0px;
+  height: 0;
+  overflow: hidden;
+}
+    </pre>
   </div>
 </div>
 ';
 
 $fragment = new rex_fragment();
 $fragment->setVar('class', 'edit');
-$fragment->setVar('title', 'Text / Bild / Link | 1-4 Spalten', false);
+$fragment->setVar('title', 'Text / Bild / Video / Link | 1-4 Spalten', false);
 $fragment->setVar('body', $content , false);
 echo $fragment->parse('core/page/section.php');
 
@@ -205,7 +229,7 @@ $content .= '
     <form action="' . rex_url::currentBackendPage() . '" method="POST">
         <dl class="rex-form-group form-group">
             <dt><label>Modulname</label></dt>
-            <dd><input class="form-control" type="text" name="copyright_modul_name" value="0110 - Alle Bilder mit aus dem Medienpool mit Copyright anzeigen"></dd>
+            <dd><input class="form-control" type="text" name="copyright_modul_name" value="0100 - Alle Bilder mit aus dem Medienpool mit Copyright anzeigen"></dd>
         </dl>
     <input type="hidden" name="install" value="3">';
 
