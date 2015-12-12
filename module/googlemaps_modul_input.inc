@@ -1,133 +1,196 @@
+<?php
+$editor                 = 0;
 
-
-<input id="hidden" type="hidden" />
+if(!rex_addon::get('rex_redactor')->isAvailable() AND !rex_addon::get('rex_markitup')->isAvailable()) {
+    echo rex_view::error('Dieses Modul ben&ouml;tigt das "Redactor" oder das "MarkItUp" Addon!');
+}
+if(rex_addon::get('rex_redactor')->isAvailable()) {
+  $editor = 'redactor';
+    rex_redactor::insertProfile('simple', 'Grid Modul Builder Profil', 'bold,italic,underline,deleted,unorderedlist', 'rex_linkmap,rex_mediapool_link');
+}
+if(rex_addon::get('rex_markitup')->isAvailable()) {
+  $editor = 'markitup';
+  rex_markitup::insertProfile('simple', 'Grid Modul Builder Profil', 'textile', 'bold,italic,underline,deleted,quote,sub,sup,code,unorderedlist,link[internal|external|mailto],image');
+  if (!rex_addon::get('textile')->isAvailable()) {
+      echo rex_view::error('Dieses Modul benötigt das "textile" Addon!');
+  }
+}
+?>
 
 
 <div class="modul-content">
   <div id="bereich1" class="">
     <div class="form-horizontal">
-        <h3>Adresse</h3>
-        <div class="form-group">
-          <label class="col-sm-3 control-label">Adresse</label>
-          <div class="col-sm-9">
-            <input id="address"  placeholder="" class="form-control" name="REX_INPUT_VALUE[1]" value="REX_VALUE[1]" type="text" />
-          </div>
+      <h3>Adresse</h3>
+      <div class="form-group">
+        <label class="col-sm-3 control-label">Adresse</label>
+        <div class="col-sm-9">
+          <input id="address"  placeholder="" class="form-control" name="REX_INPUT_VALUE[1]" value="REX_VALUE[1]" type="text" />
         </div>
+      </div>
 
-        <div class="form-group">
-          <label class="col-sm-3 control-label">Latitude</label>
-          <div class="col-sm-9">
-            <input  id="latitude" class="form-control" name="REX_INPUT_VALUE[2]" value="REX_VALUE[2]" type="text" />
-          </div>
+      <div class="form-group">
+        <label class="col-sm-3 control-label">Latitude</label>
+        <div class="col-sm-9">
+          <input  id="latitude" class="form-control" name="REX_INPUT_VALUE[2]" value="REX_VALUE[2]" type="text" />
         </div>
+      </div>
 
-        <div class="form-group">
-          <label class="col-sm-3 control-label">Longitude</label>
-          <div class="col-sm-9">
-            <input id="longitude" class="form-control" name="REX_INPUT_VALUE[3]" value="REX_VALUE[3]" type="text" />
-          </div>
+      <div class="form-group">
+        <label class="col-sm-3 control-label">Longitude</label>
+        <div class="col-sm-9">
+          <input id="longitude" class="form-control" name="REX_INPUT_VALUE[3]" value="REX_VALUE[3]" type="text" />
         </div>
+      </div>
 
-        <div class="form-group">
-          <label class="col-sm-3 control-label">Infotext</label>
-          <div class="col-sm-9">
-            <textarea id="infotext" class="form-control" name="REX_INPUT_VALUE[4]">REX_VALUE[4]</textarea>
-          </div>
+      <div class="form-group">
+        <label class="col-sm-3 control-label">Infotext</label>
+        <div class="col-sm-9">
+          <textarea id="infotext" class="form-control" name="REX_INPUT_VALUE[4]">REX_VALUE[4]</textarea>
         </div>
+      </div>
 
       <h3>Karte</h3>
 
+      <div class="form-group">
+        <label class="col-sm-3 control-label">Karte</label>
+        <div class="col-sm-9">
+          <div id="map_canvas"></div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-3 control-label">Darstellung</label>
+        <div class="col-sm-9 ">
+          <div class="select-style">
+            <select id="maptype" name="REX_INPUT_VALUE[5]">
+            <?php
+              foreach (array('roadmap', 'satellite', 'hybrid', 'terrain') as $value) {
+                echo '<option value="'.$value.'" ';
+
+                if ( "REX_VALUE[5]"=="$value" ) {
+                  echo 'selected="selected" ';
+                }
+                echo '>'.$value.'</option>';
+                }
+            ?>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+       <label class="col-sm-3 control-label">Zoom</label>
+         <div class="col-sm-9 ">
+           <div class="select-style">
+            <select id="zoom" name="REX_INPUT_VALUE[6]">
+            <?php
+              foreach (array('4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20') as $value) {
+                echo '<option value="'.$value.'" ';
+                if ( 'REX_VALUE[6]'==$value) {
+                  echo 'selected="selected" ';
+                }
+                echo '>'.$value.'</option>';
+                }
+            ?>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-3 control-label">Markerfarbe</label>
+        <div class="col-sm-9">
+          <div class="select-style">
+            <select id="marker" name="REX_INPUT_VALUE[7]">
+            <?php
+              foreach (array('red','green','blue','yellow','purple','pink') as $value) {
+                echo '<option value="'.$value.'" ';
+                if ( 'REX_VALUE[7]'==$value) {
+                  echo 'selected="selected" ';
+                }
+                echo '>'.$value.'</option>';
+                }
+            ?>
+            </select>
+          </div>
+        </div>
+      </div>
+
+    <h3>Routenplaner</h3>
+
+      <div class="form-group">
+        <label class="col-sm-3 control-label">Routenplaner anzeigen</label>
+        <div class="col-sm-9">
+          <div class="select-style">
+            <select id="marker" name="REX_INPUT_VALUE[8]">
+            <?php
+              foreach (array('nein','ja') as $value) {
+                echo '<option value="'.$value.'" ';
+                if ( 'REX_VALUE[8]'==$value) {
+                  echo 'selected="selected" ';
+                }
+                echo '>'.$value.'</option>';
+                }
+            ?>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-3 control-label">Senden Button</label>
+        <div class="col-sm-9">
+          <input  id="latitude" class="form-control" name="REX_INPUT_VALUE[9]" value="REX_VALUE[9]" type="text" />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-3 control-label">Erklärungstext</label>
+        <div class="col-sm-9">
+          <textarea id="erklaerungstext" class="form-control <?php echo $editor.' '.$editor; ?>Editor-simple" name="REX_INPUT_VALUE[10]">REX_VALUE[10]</textarea>
+        </div>
+      </div>
+
+<div id="anleitung" class="tab-pane fade in active">
+  <div class="form-horizontal">
+  <div class="control-label panel-heading collapsed" data-toggle="collapse" data-target="#collapse-allgemeines"><span class="caret"></span>Anleitung</h3></div>
+  <div id="collapse-allgemeines" class="panel-collapse collapse">
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Adresse</label>
+            <div class="col-sm-9">
+              <p>Lorem</p>
+            </div>
+        </div>
         <div class="form-group">
           <label class="col-sm-3 control-label">Karte</label>
-          <div class="col-sm-9">
-               <div id="map_canvas"></div>
-          </div>
-        </div>
-
-        <div class="form-group">
-         <label class="col-sm-3 control-label">Darstellung</label>
-            <div class="col-sm-9 ">
-              <div class="select-style">
-               <select id="maptype" name="REX_INPUT_VALUE[5]">
-                    <?php
-                    foreach (array('roadmap', 'satellite', 'hybrid', 'terrain') as $value) {
-                      echo '<option value="'.$value.'" ';
-
-                      if ( "REX_VALUE[5]"=="$value" ) {
-                        echo 'selected="selected" ';
-                      }
-                      echo '>'.$value.'</option>';
-                    }
-                    ?>
-                  </select>
-              </div>
+            <div class="col-sm-9">
+              <p>Lorem</p>
             </div>
         </div>
-
         <div class="form-group">
-         <label class="col-sm-3 control-label">Zoom</label>
-            <div class="col-sm-9 ">
-              <div class="select-style">
-                  <select id="zoom" name="REX_INPUT_VALUE[6]">
-                    <?php
-
-                    foreach (array('0','1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21') as $value) {
-                      echo '<option value="'.$value.'" ';
-
-                      if ( 'REX_VALUE[6]'==$value) {
-                        echo 'selected="selected" ';
-                      }
-                      echo '>'.$value.'</option>';
-                    }
-                    ?>
-                </select>
-              </div>
+          <label class="col-sm-3 control-label">Routenplaner</label>
+            <div class="col-sm-9">
+              <p>Lorem</p>
             </div>
         </div>
-
-
-
-        <div class="form-group">
-          <label class="col-sm-3 control-label">Markerfarbe</label>
-          <div class="col-sm-9">
-              <div class="select-style">
-                   <select id="marker" name="REX_INPUT_VALUE[7]">
-                    <?php
-
-                    foreach (array('red','green','blue','yellow','purple','pink') as $value) {
-                      echo '<option value="'.$value.'" ';
-
-                      if ( 'REX_VALUE[7]'==$value) {
-                        echo 'selected="selected" ';
-                      }
-                      echo '>'.$value.'</option>';
-                    }
-                    ?>
-                </select>
-          </div>
-          </div>
-        </div>
-
-
+  </div>
 
 
   </div>
 </div>
 
-
 <style>
 .controls {
-            margin-top: 10px;
-            border: 1px solid transparent;
-            border-radius: 2px 0 0 2px;
-            box-sizing: border-box;
-            -moz-box-sizing: border-box;
-            height: 32px;
-            outline: none;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-        }
-
-
+  margin-top: 10px;
+  border: 1px solid transparent;
+  border-radius: 2px 0 0 2px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  height: 32px;
+  outline: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
 
 .modul-content {
   background: #f5f5f5;
@@ -149,28 +212,31 @@
 }
 
 .select-style {
-    border: 1px solid #cccccc;
-    width: 100%;
-    overflow: hidden;
-    background: #fff url("data:image/png;base64,R0lGODlhDwAUAIABAAAAAP///yH5BAEAAAEALAAAAAAPABQAAAIXjI+py+0Po5wH2HsXzmw//lHiSJZmUAAAOw==") no-repeat 98% 50%;
-    margin-bottom: 6px;
+  border: 1px solid #cccccc;
+  width: 100%;
+  overflow: hidden;
+  background: #fff url("data:image/png;base64,R0lGODlhDwAUAIABAAAAAP///yH5BAEAAAEALAAAAAAPABQAAAIXjI+py+0Po5wH2HsXzmw//lHiSJZmUAAAOw==") no-repeat 98% 50%;
+  margin-bottom: 6px;
 }
+
 .select-style select {
-    padding: 5px 8px;
-    width: 100%;
-    border: none;
-    box-shadow: none;
-    background: transparent;
-    background-image: none;
-    -webkit-appearance: none;
-    -moz-appearance:none;
-    -webkit-border-radius: 0px;
+  padding: 5px 8px;
+  width: 100%;
+  border: none;
+  box-shadow: none;
+  background: transparent;
+  background-image: none;
+  -webkit-appearance: none;
+  -moz-appearance:none;
+  -webkit-border-radius: 0px;
 }
+
 .select-style select:focus {
-    outline: none;
+  outline: none;
 }
+
 .select-style select:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 input.form-control,
@@ -178,6 +244,17 @@ select.form-control,
 textarea.form-control {
   background: #fff !important;
 }
+
+
+.redactor-editor,
+.markitup {
+  min-height: 200px;
+}
+.redactor-box {
+  border: 1px solid #ccc;
+}
+
+
 
 #anleitung .control-label {
   margin-top: -6px;
@@ -196,6 +273,7 @@ textarea.form-control {
   margin-bottom: 20px;
   border: none;
 }
+
 #anleitung .panel-heading span {
   margin-right: 5px;
 }
@@ -204,7 +282,6 @@ textarea.form-control {
   color: #000;
 }
 
-
 #map_canvas {
   width: 100%;
   height: 300px;
@@ -212,52 +289,30 @@ textarea.form-control {
   border: 1px solid #afbcc2;
 }
 
-
 </style>
-<script type="text/javascript" src="http://maps.google.com/maps/api/js?libraries=places&region=DE"></script>
 
+<script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false&amp;libraries=places&region=DE"></script>
 <script type="text/javascript">
-//Useful links:
-// https://developers.google.com/maps/documentation/javascript/
-// http://code.google.com/apis/maps/documentation/javascript/reference.html#Marker
-// http://code.google.com/apis/maps/documentation/javascript/services.html#Geocoding
-// http://jqueryui.com/demos/autocomplete/#remote-with-cache
-// http://stackoverflow.com/questions/8248077/google-maps-v3-standard-icon-shadow-names-equiv-of-g-default-icon-in-v2
-
-
-
-
-
 
 // vars
-
-
 var geocoder;
 var map;
 var marker;
-
 var infotext = 'REX_VALUE[4]';
-
 var startlat  = 'REX_VALUE[2]';
 var startlng  = 'REX_VALUE[3]';
 
-
-
 var zoomer    = 'REX_VALUE[6]';
-
 if (zoomer == '') {
   zoomer = 10;
   $('#zoom').val('10');
 }
-
 zoomer = parseInt(zoomer);
-if (startlat == '') startlat = '51.3596667976187';
-if (startlng == '') startlng = '7.130280321426426';
 
-
+if (startlat == '') startlat = '51.35969024552221';
+if (startlng == '') startlng = '7.130266910381351';
 startlat = parseFloat(startlat);
 startlng = parseFloat(startlng);
-
 
 function initialize(){
 
@@ -275,41 +330,37 @@ function initialize(){
   map = new google.maps.Map(document.getElementById("map_canvas"), options);
 
   marker = new google.maps.Marker({
-
     map: map,
     draggable: true
   });
 
-
-        geocoder = new google.maps.Geocoder();
+  geocoder = new google.maps.Geocoder();
 
   // Marker
   var location = new google.maps.LatLng(startlat, startlng);
   marker.setPosition(location);
-  marker.setIcon('https://maps.gstatic.com/mapfiles/ms2/micons/' + jQuery('#marker').val() + '-dot.png');
-
+  marker.setIcon('https://maps.gstatic.com/mapfiles/ms2/micons/' + $('#marker').val() + '-dot.png');
 
   // Set Maptype
-  map.setMapTypeId(jQuery('#maptype').val());
+  map.setMapTypeId($('#maptype').val());
 
   // Set Zoom
-  zoomer = jQuery('#zoom').val();
+  zoomer = $('#zoom').val();
   zoomer = parseInt(zoomer);
   if (isNaN(zoomer)) {
     zoomer = 10;
   }
   map.setZoom(zoomer);
 
-
-
 }
 
-jQuery(document).ready(function(){
+
+$(document).ready(function(){
 
   initialize();
 
-
   var input = /** @type {!HTMLInputElement} */(
+
     document.getElementById('address'));
 
     var autocomplete = new google.maps.places.Autocomplete(input);
@@ -318,7 +369,6 @@ jQuery(document).ready(function(){
     autocomplete.addListener('place_changed', function () {
       var place = autocomplete.getPlace();
       if (place.geometry) {
-
         neulat = parseFloat(place.geometry.location.lat());
         neulng = parseFloat( place.geometry.location.lng());
 
@@ -326,20 +376,17 @@ jQuery(document).ready(function(){
         marker.setPosition(location);
         map.setCenter(location);
 
-        jQuery('#latitude').val(neulat);
-        jQuery('#longitude').val(neulng);
+        $('#latitude').val(neulat);
+        $('#longitude').val(neulng);
+
       } else {
         alert('Keinen darstellbaren Ort gefunden');
       }
 
-      });
+    });
 
-
-
-
-
-//Add listener to marker for reverse geocoding
-google.maps.event.addListener(marker,'dragend',function(event)  {
+  //Add listener to marker for reverse geocoding
+  google.maps.event.addListener(marker,'dragend',function(event)  {
     geocoder.geocode({'latLng': marker.getPosition()}, function(results, status) {
       if (status == google.maps.GeocoderStatus.OK) {
         if (results[0]) {
@@ -351,58 +398,47 @@ google.maps.event.addListener(marker,'dragend',function(event)  {
     });
   });
 
+  // Set Infowindow
+  var infoWindow = new google.maps.InfoWindow();
+  if (infotext !='' ) {
+    infoWindow.setContent(infotext);
+    infoWindow.open(map, marker);
+  }
 
-           if (infotext != '') {
-              var infowindow = new google.maps.InfoWindow();
-              infowindow.setContent(infotext);
-              infowindow.open(map, marker);
-            }
-
-  $( "#infotext" ).blur(function() {
-        infowindow.setContent($('#infotext').val());
+  $( "#infotext" ).change(function() {
     if ($('#infotext').val() =='' ) {
-        infowindow.close();
+      infoWindow.close();
     } else {
-
-           infowindow.open(map, marker);
+      infoWindow.setContent($('#infotext').val());
+      infoWindow.open(map, marker);
     }
-
   });
 
-
-
-
  // Map-Darstellung über Selectbox ändern
-  jQuery('#maptype').bind('change keypress', function(){
-    map.setMapTypeId(jQuery('#maptype').val());
+  $('#maptype').bind('change keypress', function(){
+    map.setMapTypeId($('#maptype').val());
     map.setCenter(marker.getPosition());
   });
 
   // Map-Zoom geändert - Input ändern
   google.maps.event.addListener(map, 'zoom_changed', function(){
-    jQuery('#zoom').val(map.getZoom());
+    $('#zoom').val(map.getZoom());
+    if (map.getZoom() < 4) map.setZoom(4);
+    if (map.getZoom() > 20) map.setZoom(20);
     map.setCenter(marker.getPosition());
   });
- // Map-Zoom über Eingabefeld ändern
-  jQuery('#zoom').change(function() {
-    zoomer = jQuery('#zoom').val();
-    zoomer = parseInt(zoomer);
-    map.setZoom(zoomer);
 
-  })
+ // Map-Zoom über Eingabefeld ändern
+ $('#zoom').change(function() {
+   zoomer = $('#zoom').val();
+   zoomer = parseInt(zoomer);
+   map.setZoom(zoomer);
+ });
 
   // Marker über Selectbox ändern
-  jQuery('#marker').bind('change keypress', function(){
-    marker.setIcon('https://maps.gstatic.com/mapfiles/ms2/micons/' + jQuery('#marker').val() + '-dot.png');
+  $('#marker').bind('change keypress', function(){
+    marker.setIcon('https://maps.gstatic.com/mapfiles/ms2/micons/' + $('#marker').val() + '-dot.png');
   });
 
-
 });
-
 </script>
-
-
-
-
-
-
