@@ -291,7 +291,7 @@ textarea.form-control {
 
 </style>
 
-<script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false&amp;libraries=places&region=DE"></script>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&amp;libraries=places&amp;region=DE&amp;callback=initialize"></script>
 <script type="text/javascript">
 
 // vars
@@ -352,14 +352,7 @@ function initialize(){
   }
   map.setZoom(zoomer);
 
-}
-
-
-$(document).ready(function(){
-
-  initialize();
-
-  var input = /** @type {!HTMLInputElement} */(
+ var input = /** @type {!HTMLInputElement} */(
 
     document.getElementById('address'));
 
@@ -440,5 +433,10 @@ $(document).ready(function(){
     marker.setIcon('https://maps.gstatic.com/mapfiles/ms2/micons/' + $('#marker').val() + '-dot.png');
   });
 
-});
+}
+
 </script>
+
+
+
+
