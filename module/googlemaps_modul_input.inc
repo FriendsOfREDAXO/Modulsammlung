@@ -25,7 +25,7 @@ if(rex_addon::get('rex_markitup')->isAvailable()) {
       <div class="form-group">
         <label class="col-sm-3 control-label">Adresse</label>
         <div class="col-sm-9">
-          <input id="address"  placeholder="" class="form-control" name="REX_INPUT_VALUE[1]" value="REX_VALUE[1]" type="text" />
+          <input id="address" class="form-control" name="REX_INPUT_VALUE[1]" value="REX_VALUE[1]" type="text" />
         </div>
       </div>
 
@@ -76,6 +76,13 @@ if(rex_addon::get('rex_markitup')->isAvailable()) {
             ?>
             </select>
           </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-3 control-label">Ausgabesprache</label>
+        <div class="col-sm-9 ">
+          <input id="longitude" class="form-control" name="REX_INPUT_VALUE[11]" placeholder="de" value="REX_VALUE[11]" type="text" />
         </div>
       </div>
 
@@ -141,7 +148,7 @@ if(rex_addon::get('rex_markitup')->isAvailable()) {
       <div class="form-group">
         <label class="col-sm-3 control-label">Senden Button</label>
         <div class="col-sm-9">
-          <input  id="latitude" class="form-control" name="REX_INPUT_VALUE[9]" value="REX_VALUE[9]" type="text" />
+          <input  id="latitude" class="form-control" placeholder="Route anzeigen" name="REX_INPUT_VALUE[9]" value="REX_VALUE[9]" type="text" />
         </div>
       </div>
 
@@ -159,21 +166,127 @@ if(rex_addon::get('rex_markitup')->isAvailable()) {
         <div class="form-group">
           <label class="col-sm-3 control-label">Adresse</label>
             <div class="col-sm-9">
-              <p>Lorem</p>
+              <p>Hier wird die Adresse eingetragen an der der Marker positioniert werden soll.</p>
+              <p>Es kann eine beleibige Adresse in Form von <i>Strasse Nr, PLZ Ort</i> angegeben werden. bei der Eingabe schlägt Gogole bereits gefundene Addressen vor die einfach ausgewählt werden können.</p><p>Auch die Angabe von z.B. 'Düsseldorf Flughafen' oder "Zoo Duisburg' funktionieren.</p>
             </div>
         </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Latitude / Longitude</label>
+            <div class="col-sm-9">
+              <p>Diese Felder werden durch Angabe der Adresse bzw. durch verschieben des Markers auf der Karte automatisch ausgefüllt.</p>
+            </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Infotext</label>
+            <div class="col-sm-9">
+              <p>Dieser Text erscheint als Hinweistext über dem Marker auf der Karte. In diesem Feld ist die (eingeschränkte) Verwendung von HTML Befehlen möglich.</p><p>Durch die Eingabe von <i>&lt;br/&gt;</i> wird ein Zeilenumbruch dargestellt.
+            </div>
+        </div>
+
         <div class="form-group">
           <label class="col-sm-3 control-label">Karte</label>
             <div class="col-sm-9">
-              <p>Lorem</p>
+              <p>Der Marker auf der Karte ist mit der Maus verschiebbar. Somit ändern sich die Koordinaten in den Feldern Latitude / Longitude.</p><p>Die Adresse wird (absichtlich) nicht geändert. Dies dient dazu um kleinere Korrekturen der Markerposition vornehmen zu können. (MAL SEHEN WAS DER ROUTENPLANER DARAUS MACHT!!!</p>
             </div>
         </div>
         <div class="form-group">
-          <label class="col-sm-3 control-label">Routenplaner</label>
+          <label class="col-sm-3 control-label">Darstellung</label>
             <div class="col-sm-9">
-              <p>Lorem</p>
+              <p>Ändert die Darstellungsart der Karte.</p>
             </div>
         </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Ausgabesprache</label>
+            <div class="col-sm-9">
+              <p>Mögliche Sprachen:</p>
+              <div class="col-xs-12 col-sm-6">
+              <ul>
+              <li><b>ar</b> - Arabic</li>
+              <li><b>bg</b> - Bulgarian</li>
+              <li><b>bn</b> - Bengali</li>
+              <li><b>ca</b> - Catalan</li>
+              <li><b>cs</b> - Czech</li>
+              <li><b>da</b> - Danish</li>
+              <li><b>de</b> - German</li>
+              <li><b>el</b> - Greek</li>
+              <li><b>en</b> - English</li>
+              <li><b>es</b> - Spanish</li>
+              <li><b>eu</b> - Basque</li>
+              <li><b>fa</b> - Farsi</li>
+              <li><b>fi</b> - Finnish</li>
+              <li><b>fil</b> - Filipino</li>
+              <li><b>fr</b> - French</li>
+              <li><b>gl</b> - Galician</li>
+              <li><b>gu</b> - Gujarati</li>
+              <li><b>hi</b> - Hindi</li>
+              <li><b>hr</b> - Croatian</li>
+              <li><b>hu</b> - Hungarian</li>
+              <li><b>id</b> - Indonesian</li>
+              <li><b>it</b> - Italian</li>
+              <li><b>iw</b> - Hebrew</li>
+              <li><b>ja</b> - Japanese</li>
+              </ul>
+              </div>
+              <div class="col-xs-12 col-sm-6">
+              <ul>
+              <li><b>kn</b> - Kannada</li>
+              <li><b>ko</b> - Korean</li>
+              <li><b>lt</b> - Lithuanian</li>
+              <li><b>lv</b> - Latvian</li>
+              <li><b>ml</b> - Malayalam</li>
+              <li><b>mr</b> - Marathi</li>
+              <li><b>nl</b> - Dutch</li>
+              <li><b>no</b> - Norwegian</li>
+              <li><b>pl</b> - Polish</li>
+              <li><b>pt</b> - Portuguese</li>
+              <li><b>ro</b> - Romanian</li>
+              <li><b>ru</b> - Russian</li>
+              <li><b>sk</b> - Slovak</li>
+              <li><b>sl</b> - Slovenian</li>
+              <li><b>sr</b> - Serbian</li>
+              <li><b>sv</b> - Swedish</li>
+              <li><b>ta</b> - Tamil</li>
+              <li><b>te</b> - Telugu</li>
+              <li><b>th</b> - Thai</li>
+              <li><b>tl</b> - Tagalog</li>
+              <li><b>tr</b> - Turkish</li>
+              <li><b>uk</b> - Ukrainian</li>
+              <li><b>vi</b> - Vietnamese</li>
+              <li><b>zh-CN </b> - Chinese</li>
+              </div>
+            </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Zoom</label>
+            <div class="col-sm-9">
+              <p>Ändert den Zoomfaktor.</p>
+            </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Markerfarbe</label>
+            <div class="col-sm-9">
+              <p>Ändert die Farbe des Markers.</p>
+            </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Routenplaner anzeigen</label>
+            <div class="col-sm-9">
+              <p>Blendet den Routenplaner ein oder aus.</p>
+            </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Senden Button</label>
+            <div class="col-sm-9">
+              <p>Bezeichnung des Sendenbuttons.</p>
+            </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Erklärungstext</label>
+            <div class="col-sm-9">
+              <p>Dieser Text erschein neben dem Sendebutton (sofern der Routenplaner angezeigt wird).</p>
+            </div>
+        </div>
+
   </div>
 
 
@@ -249,6 +362,10 @@ textarea.form-control {
     resize: none;
 }
 
+input[placeholder] {
+
+}
+
 .redactor-editor,
 .markitup {
   min-height: 200px;
@@ -283,6 +400,17 @@ textarea.form-control {
 
 #anleitung .panel-heading:hover  {
   color: #000;
+}
+
+#anleitung ul {
+  list-style: none;
+  margin: 5px 0 5px -15px;
+}
+
+#anleitung ul li {
+  list-style: none;
+  margin: 5px 0 5px -35px;
+  border-bottom: 1px solid #DFE3E9;
 }
 
 #map_canvas {
