@@ -294,8 +294,16 @@ textarea.form-control {
 
 </style>
 
-<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&amp;libraries=places&amp;region=DE"></script>
-<script type="text/javascript">
+<script>
+function loadScript(src){
+  var script = document.createElement("script");
+  script.type = "text/javascript";
+  document.getElementsByTagName("head")[0].appendChild(script);
+  script.src = src;
+}
+if(typeof google === "undefined") {
+  loadScript('http://maps.googleapis.com/maps/api/js?v=3&sensor=false&libraries=places&callback=initialize');
+}
 
 // vars
 var geocoder;
@@ -319,16 +327,19 @@ startlng = parseFloat(startlng);
 
 function initialize(){
 
-  var latlng = new google.maps.LatLng(startlat, startlng);
+  var latlng = new google.maps.LatLng(startlat, startlng),
+      options = {
+        scrollwheel: false,
+        mapTypeControl: false,
+        streetViewControl : false,
+        zoom: zoomer,
+        center: latlng,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      },
+      MapElement = document.getElementById("map_canvas");
 
-  var options = {
-    scrollwheel: false,
-    mapTypeControl: false,
-    streetViewControl : false,
-    zoom: zoomer,
-    center: latlng,
-    mapTypeId: google.maps.MapTypeId.ROADMAP
-  };
+  if(MapElement === null)
+    return;
 
   map = new google.maps.Map(document.getElementById("map_canvas"), options);
 
@@ -354,38 +365,6 @@ function initialize(){
     zoomer = 10;
   }
   map.setZoom(zoomer);
-
-}
-
-
-$(document).ready(function(){
-  initialize();
-
- var input = /** @type {!HTMLInputElement} */(
-
-    document.getElementById('address'));
-
-    var autocomplete = new google.maps.places.Autocomplete(input);
-    autocomplete.bindTo('map_canvas', map);
-
-    autocomplete.addListener('place_changed', function () {
-      var place = autocomplete.getPlace();
-      if (place.geometry) {
-        neulat = parseFloat(place.geometry.location.lat());
-        neulng = parseFloat( place.geometry.location.lng());
-
-        var location = new google.maps.LatLng(neulat,neulng);
-        marker.setPosition(location);
-        map.setCenter(location);
-
-        $('#latitude').val(neulat);
-        $('#longitude').val(neulng);
-
-      } else {
-        alert('Keinen darstellbaren Ort gefunden');
-      }
-
-    });
 
   //Add listener to marker for reverse geocoding
   google.maps.event.addListener(marker,'dragend',function(event)  {
@@ -442,9 +421,34 @@ $(document).ready(function(){
     marker.setIcon('https://maps.gstatic.com/mapfiles/ms2/micons/' + $('#marker').val() + '-dot.png');
   });
 
+  var input = document.getElementById('address'),
+      autocomplete = new google.maps.places.Autocomplete(input);
 
+  autocomplete.bindTo('map_canvas', map);
+
+  autocomplete.addListener('place_changed', function () {
+    var place = autocomplete.getPlace();
+    if (place.geometry) {
+      neulat = parseFloat(place.geometry.location.lat());
+      neulng = parseFloat( place.geometry.location.lng());
+
+      var location = new google.maps.LatLng(neulat,neulng);
+      marker.setPosition(location);
+      map.setCenter(location);
+
+      $('#latitude').val(neulat);
+      $('#longitude').val(neulng);
+
+    } else {
+      alert('Keinen darstellbaren Ort gefunden');
+    }
+
+  });
+
+}
+
+$(document).on('ready pjax:success',function(){
+  if(typeof google !== "undefined")
+    initialize();
 });
-
 </script>
-
-
