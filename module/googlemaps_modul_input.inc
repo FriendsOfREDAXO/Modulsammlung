@@ -6,11 +6,11 @@ if(!rex_addon::get('rex_redactor')->isAvailable() AND !rex_addon::get('rex_marki
 }
 if(rex_addon::get('rex_redactor')->isAvailable()) {
   $editor = 'redactor';
-    rex_redactor::insertProfile('simple', 'Grid Modul Builder Profil', 'bold,italic,underline,deleted,unorderedlist', 'rex_linkmap,rex_mediapool_link');
+    rex_redactor::insertProfile('supersimple', 'Google Maps Modul Profil', 'bold,italic,underline');
 }
 if(rex_addon::get('rex_markitup')->isAvailable()) {
   $editor = 'markitup';
-  rex_markitup::insertProfile('simple', 'Grid Modul Builder Profil', 'textile', 'bold,italic,underline,deleted,quote,sub,sup,code,unorderedlist,link[internal|external|mailto],image');
+  rex_markitup::insertProfile('supersimple', 'Google Maps Modul Profil', 'textile', 'bold,italic,underline');
   if (!rex_addon::get('textile')->isAvailable()) {
       echo rex_view::error('Dieses Modul benötigt das "textile" Addon!');
   }
@@ -23,7 +23,7 @@ if(rex_addon::get('rex_markitup')->isAvailable()) {
     <div class="form-horizontal">
       <h3>Adresse</h3>
       <div class="form-group">
-        <label class="col-sm-3 control-label">Adresse</label>
+        <label class="col-sm-3 control-label">Adresse / Infotext</label>
         <div class="col-sm-9">
           <input id="address" class="form-control" name="REX_INPUT_VALUE[1]" value="REX_VALUE[1]" type="text" />
         </div>
@@ -43,14 +43,7 @@ if(rex_addon::get('rex_markitup')->isAvailable()) {
         </div>
       </div>
 
-      <div class="form-group">
-        <label class="col-sm-3 control-label">Infotext</label>
-        <div class="col-sm-9">
-          <textarea id="infotext" class="form-control" name="REX_INPUT_VALUE[4]">REX_VALUE[4]</textarea>
-        </div>
-      </div>
-
-      <h3>Karte</h3>
+      <h3>Karte / Marker</h3>
 
       <div class="form-group">
         <label class="col-sm-3 control-label">Karte</label>
@@ -124,6 +117,14 @@ if(rex_addon::get('rex_markitup')->isAvailable()) {
         </div>
       </div>
 
+      <div class="form-group">
+        <label class="col-sm-3 control-label">Infotext</label>
+        <div class="col-sm-9">
+          <textarea id="infotext" class="form-control" name="REX_INPUT_VALUE[4]">REX_VALUE[4]</textarea>
+        </div>
+      </div>
+
+
     <h3>Routenplaner</h3>
 
       <div class="form-group">
@@ -146,7 +147,7 @@ if(rex_addon::get('rex_markitup')->isAvailable()) {
       </div>
 
       <div class="form-group">
-        <label class="col-sm-3 control-label">Senden Button</label>
+        <label class="col-sm-3 control-label">Senden Button Text</label>
         <div class="col-sm-9">
           <input  id="latitude" class="form-control" placeholder="Route anzeigen" name="REX_INPUT_VALUE[9]" value="REX_VALUE[9]" type="text" />
         </div>
@@ -155,7 +156,7 @@ if(rex_addon::get('rex_markitup')->isAvailable()) {
       <div class="form-group">
         <label class="col-sm-3 control-label">Erklärungstext</label>
         <div class="col-sm-9">
-          <textarea id="erklaerungstext" class="form-control <?php echo $editor.' '.$editor; ?>Editor-simple" name="REX_INPUT_VALUE[10]">REX_VALUE[10]</textarea>
+          <textarea id="erklaerungstext" class="form-control <?php echo $editor.' '.$editor; ?>Editor-supersimple" name="REX_INPUT_VALUE[10]">REX_VALUE[10]</textarea>
         </div>
       </div>
 
@@ -174,12 +175,6 @@ if(rex_addon::get('rex_markitup')->isAvailable()) {
           <label class="col-sm-3 control-label">Latitude / Longitude</label>
             <div class="col-sm-9">
               <p>Diese Felder werden durch Angabe der Adresse bzw. durch verschieben des Markers auf der Karte automatisch ausgefüllt.</p>
-            </div>
-        </div>
-        <div class="form-group">
-          <label class="col-sm-3 control-label">Infotext</label>
-            <div class="col-sm-9">
-              <p>Dieser Text erscheint als Hinweistext über dem Marker auf der Karte. In diesem Feld ist die (eingeschränkte) Verwendung von HTML Befehlen möglich.</p><p>Durch die Eingabe von <i>&lt;br/&gt;</i> wird ein Zeilenumbruch dargestellt.
             </div>
         </div>
 
@@ -268,6 +263,14 @@ if(rex_addon::get('rex_markitup')->isAvailable()) {
               <p>Ändert die Farbe des Markers.</p>
             </div>
         </div>
+
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Infotext</label>
+            <div class="col-sm-9">
+              <p>Dieser Text erscheint als Hinweistext über dem Marker auf der Karte. In diesem Feld ist die (eingeschränkte) Verwendung von HTML Befehlen möglich.</p><p>Durch die Eingabe von <i>&lt;br/&gt;</i> wird ein Zeilenumbruch dargestellt.
+            </div>
+        </div>
+
         <div class="form-group">
           <label class="col-sm-3 control-label">Routenplaner anzeigen</label>
             <div class="col-sm-9">
@@ -275,7 +278,7 @@ if(rex_addon::get('rex_markitup')->isAvailable()) {
             </div>
         </div>
         <div class="form-group">
-          <label class="col-sm-3 control-label">Senden Button</label>
+          <label class="col-sm-3 control-label">Senden Button Text</label>
             <div class="col-sm-9">
               <p>Bezeichnung des Sendenbuttons.</p>
             </div>
@@ -510,7 +513,7 @@ function initialize(){
   // Set Infowindow
   var infoWindow = new google.maps.InfoWindow();
   if (infotext !='' ) {
-    infoWindow.setContent(infotext);
+    infoWindow.setContent($('#infotext').val());
     infoWindow.open(map, marker);
   }
 
