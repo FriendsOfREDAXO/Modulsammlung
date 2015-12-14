@@ -245,6 +245,9 @@ textarea.form-control {
   background: #fff !important;
 }
 
+#infotext {
+    resize: none;
+}
 
 .redactor-editor,
 .markitup {
