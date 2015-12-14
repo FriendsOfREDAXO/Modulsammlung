@@ -294,8 +294,11 @@ textarea.form-control {
 
 </style>
 
-<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&amp;libraries=places&amp;region=DE"></script>
-<script type="text/javascript">
+<script>
+if(typeof google === "undefined") {
+    document.write(unescape("%3Cscript src='http://maps.google.com/maps/api/js?libraries=places&amp;region=DE&amp;callback=initGoogleModul' type='text/javascript'%3E%3C/script%3E"));
+}
+  
 
 // vars
 var geocoder;
@@ -358,7 +361,7 @@ function initialize(){
 }
 
 
-$(document).ready(function(){
+function initGoogleModul() {
   initialize();
 
  var input = /** @type {!HTMLInputElement} */(
@@ -443,7 +446,7 @@ $(document).ready(function(){
   });
 
 
-});
+};
 
 </script>
 
