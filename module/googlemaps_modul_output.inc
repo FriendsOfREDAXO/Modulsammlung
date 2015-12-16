@@ -24,6 +24,11 @@ $routenplaner_anzeige = 'REX_VALUE[8]';
 $sendenbutton         = 'REX_VALUE[9]';
 $erklärungstext       = 'REX_VALUE[10]';
 
+// Sprache bei mehr als einer Karte definieren!
+
+$mapstyle             = ''; // Noch einbauen
+if ($mapstyle == '') { $mapstyle = 'width:100%;height:300px;'; }
+
 $text = '';
   if ($erklärungstext !='') {
     if ($editor == 'markitup' AND rex_addon::get('textile')->isAvailable()) {
@@ -33,10 +38,176 @@ $text = '';
   }
 $text = $erklärungstext;
 
+if ($sprache == '') {
+  $sprache = 'de';
+}
+
+if ($sendenbutton == '') {
+  $sendenbutton = 'Bitte eine Bezeichnung (z.B: Route anzeigen) eingeben. ';
+}
+
 
 
 if(!rex::isBackend()) {
 
+  if (!isset($REX['GoogleMap']['MapCounter'])) $REX['GoogleMap']['MapCounter'] = 0;
+  $REX['GoogleMap']['MapCounter']++;
+  $mapidx = $REX['GoogleMap']['MapCounter'];
+
+  if ($mapidx==1) $mapidx = '';
+
+echo '---- routenplaner '.$mapidx.' ---';
+
+
+  if ($mapidx==''){
+    echo '<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;language='.$sprache.'&amp;region='.strtoupper($sprache).'"></script>';
+  }
+
+  echo '<script type="text/javascript">';
+  if ($routenplaner_anzeige == 'ja'){
+    echo "
+    var directionDisplay".$mapidx.";
+    var directionsService".$mapidx." = new google.maps.DirectionsService();
+    function calcRoute".$mapidx."(mapidx, zieladresse, lat, lng) {
+      var mylatlng = new google.maps.LatLng(lat,lng);
+      var start = document.getElementById('start'+mapidx).value;
+      var end = mylatlng;
+      var request = {
+        origin: start,
+        destination: end,
+        travelMode: google.maps.DirectionsTravelMode.DRIVING
+      };
+      directionsService".$mapidx.".route(request, function(response, status){
+        if (status == google.maps.DirectionsStatus.OK) {
+          $('#directions-panel".$mapidx."').html('');
+          directionsDisplay".$mapidx.".setDirections(response);
+        } else if (status == google.maps.DirectionsStatus.NOT_FOUND) {
+          $('#directions-panel".$mapidx."').html('<p>Adresse nicht gefunden!</p>');
+        }
+      });
+    }
+    ";
+  }
+
+
+
+echo "
+    function initializemap".$mapidx."(){
+
+      var myLatlng = new google.maps.LatLng(".$lat.",".$lng.");
+
+      var myOptions = {
+        zoom:".$zoom.",
+        mapTypeId: '".$darstellung."',
+        scrollwheel: false,
+        center: myLatlng
+      };
+      var map".$mapidx." = new google.maps.Map(document.getElementById('map_canvas".$mapidx."'), myOptions);
+
+      var marker = new google.maps.Marker({
+        position: myLatlng,
+        title: '".$adresse."',
+        icon: 'https://maps.gstatic.com/mapfiles/ms2/micons/".$markerfarbe."-dot.png',
+        map: map".$mapidx."
+      });
+";
+
+ if ($routenplaner_anzeige == 'ja'){
+ echo "
+      directionsDisplay".$mapidx." = new google.maps.DirectionsRenderer();
+      directionsDisplay".$mapidx.".setMap(map".$mapidx.");
+      directionsDisplay".$mapidx.".setPanel(document.getElementById('directions-panel".$mapidx."'));
+      ";
+}
+
+if ($infotext != ''){
+echo "
+      var contentString = '".$infotext."';
+      var infowindow = new google.maps.InfoWindow({
+        content: contentString
+      });
+      infowindow.open(map".$mapidx.", marker);
+      google.maps.event.addListener(marker, 'click', function() {
+        infowindow.open(map".$mapidx.", marker);
+      });
+";
+}
+
+
+
+echo "
+
+ };
+    google.maps.event.addDomListener(window, 'load', initializemap".$mapidx.");
+  </script>";
+
+  echo "
+  <!-- Google Maps Routenplaner ".$mapidx." -->
+  <div id='googelmapsroutenplaner".$mapidx."' class='googelmapsroutenplaner'>
+  <div id='map_canvas".$mapidx."' class='map_canvas' style='".trim($mapstyle)."'></div>
+  </div>
+  <!-- /Google Maps Routenplaner ".$mapidx." -->
+  ";
+
+
+ if ($routenplaner_anzeige == 'ja'){
+echo "
+
+  <!-- Formular -->
+  <form id='routenplaner".$mapidx."' class='routenplaner' action='javascript:void(0);'' onsubmit='return calcRoute".$mapidx."('".$mapidx."', '".$zieladresse."', '".$lat."', '".$lng."')'>
+    <fieldset>
+    <input type='text' id='start".$mapidx."' value='' />
+    <input name='submit' type='submit' class='submit' value='".$sendenbutton."' />
+    </fieldset>
+  </form>
+
+  <!-- Ausgabe der Wegbeschreibung -->
+  <div id='directions-panel".$mapidx."' class='directions-panel'></div>
+";
+}
+
+
+echo '</div>';
+echo '//---- routenplaner '.$mapidx.' ---';
+echo '
+<style>
+/*  routenplaner *****************************************************************/
+
+#map_canvas {
+  width: 100%;
+  height: 350px;
+}
+
+#directions tbody,#directions tr, #directions table {
+  width: 100%;
+}
+
+table.adp-placemark {
+  border: 1px solid red !important;
+}
+
+.adp-text {
+  padding: 3px;
+  vertical-align: middle;
+}
+.adp-legal,
+a.externerkartenlink {
+  font-size: 10px;
+  float: right;
+}
+
+.adp-placemark img {
+  padding: 8px 5px 0 8px;
+}
+
+fieldset {
+  clear: both;
+  padding: 5px;
+  margin: 10px 0 10px 0;
+  background-color: #eee;
+}
+</style>
+';
 
 } else {
 
@@ -60,6 +231,10 @@ if(!rex::isBackend()) {
  <h2>Karte / Marker</h2>
        <div class="form-group">
          <label class="col-sm-3 control-label">Darstellung</label>
+         <div class="col-sm-9">'.$darstellung.'</div>
+       </div>
+       <div class="form-group">
+         <label class="col-sm-3 control-label">Sprache</label>
          <div class="col-sm-9">'.$sprache.'</div>
        </div>
        <div class="form-group">
@@ -69,14 +244,18 @@ if(!rex::isBackend()) {
        <div class="form-group">
          <label class="col-sm-3 control-label">Markerfarbe</label>
          <div class="col-sm-9">'.$markerfarbe.'</div>
-       </div>
-       <div class="form-group">
+       </div>';
+
+if ($infotext != '') {
+echo ' <div class="form-group">
          <label class="col-sm-3 control-label">Infotext</label>
          <div class="col-sm-9">'.html_entity_decode($infotext).'</div>
-       </div>
+       </div>';
+}
 
+if ($routenplaner_anzeige == 'ja') {
 
-    <h2>Routenplaner</h2>
+echo'  <h2>Routenplaner</h2>
        <div class="form-group">
          <label class="col-sm-3 control-label">Routenplaner anzeigen</label>
          <div class="col-sm-9">'.$routenplaner_anzeige.'</div>
@@ -84,11 +263,16 @@ if(!rex::isBackend()) {
        <div class="form-group">
          <label class="col-sm-3 control-label">Senden Button Text</label>
          <div class="col-sm-9">'.$sendenbutton.'</div>
-       </div>
-       <div class="form-group">
-         <label class="col-sm-3 control-label">Erklärungstext</label>
-         <div class="col-sm-9">'.$erklärungstext.'</div>
-       </div>
+       </div>';
+
+  if ($erklärungstext != '') {
+  echo'  <div class="form-group">
+           <label class="col-sm-3 control-label">Erklärungstext</label>
+           <div class="col-sm-9">'.$erklärungstext.'</div>
+         </div>';
+  }
+}
+echo'
     </div>
   </div>
 
