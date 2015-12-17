@@ -235,10 +235,6 @@ $content .= '
     if (rex_request('install',"integer") == 3) {
       $googlemaps_modul_name           = rex_post("googlemaps_modul_name", 'string');
 
-  rex_redactor::insertProfile('supersimple', 'Google Maps Modul Profil', 'bold,italic,underline');
-  rex_markitup::insertProfile('supersimple', 'Google Maps Modul Profil', 'textile', 'bold,italic,underline');
-
-
       if ($googlemaps_modul_name == '') {
         echo rex_view::warning('Bitte einen Modulnamen angeben!');
       } else {
