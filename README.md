@@ -36,6 +36,7 @@ Geplante Module
 ToDo
 ----
 * Modulbeschreibungen auslagern
+* Installtionsdateien umbenennen
 
 
 Changelog

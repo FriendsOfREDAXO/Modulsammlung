@@ -238,8 +238,8 @@ $content .= '
       if ($googlemaps_modul_name == '') {
         echo rex_view::warning('Bitte einen Modulnamen angeben!');
       } else {
-       $input = rex_file::get(rex_path::addon('modulsammlung','module/googlemaps_module_input.inc'));
-       $output = rex_file::get(rex_path::addon('modulsammlung','module/googlemaps_module_output.inc'));
+       $input = rex_file::get(rex_path::addon('modulsammlung','module/googlemaps_modul_input.inc'));
+       $output = rex_file::get(rex_path::addon('modulsammlung','module/googlemaps_modul_output.inc'));
 
        $mi = rex_sql::factory();
        $mi->debugsql = 0;
