@@ -6,7 +6,7 @@ if(!rex_addon::get('rex_redactor')->isAvailable() AND !rex_addon::get('rex_marki
 }
 if(rex_addon::get('rex_redactor')->isAvailable()) {
   $editor = 'redactor';
-    rex_redactor::insertProfile('supersimple', 'Google Maps Modul Profil', 'bold,italic,underline');
+  rex_redactor::insertProfile('supersimple', 'Google Maps Modul Profil', 'bold,italic,underline');
 }
 if(rex_addon::get('rex_markitup')->isAvailable()) {
   $editor = 'markitup';
@@ -16,7 +16,6 @@ if(rex_addon::get('rex_markitup')->isAvailable()) {
   }
 }
 ?>
-
 
 <div class="modul-content">
   <div id="bereich1" class="">
@@ -62,6 +61,26 @@ if(rex_addon::get('rex_markitup')->isAvailable()) {
                 echo '<option value="'.$value.'" ';
 
                 if ( "REX_VALUE[5]"=="$value" ) {
+                  echo 'selected="selected" ';
+                }
+                echo '>'.$value.'</option>';
+                }
+            ?>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-3 control-label">Breite der Karte</label>
+        <div class="col-sm-9 ">
+          <div class="select-style">
+            <select id="maptype" name="REX_INPUT_VALUE[12]">
+            <?php
+              foreach (array('100% Browserbreite', 'So breit wie der Inhalt') as $value) {
+                echo '<option value="'.$value.'" ';
+
+                if ( "REX_VALUE[12]"=="$value" ) {
                   echo 'selected="selected" ';
                 }
                 echo '>'.$value.'</option>';
@@ -191,8 +210,15 @@ if(rex_addon::get('rex_markitup')->isAvailable()) {
             </div>
         </div>
         <div class="form-group">
+          <label class="col-sm-3 control-label">Breite der Karte</label>
+            <div class="col-sm-9">
+              <p>Ändert die Breite der Karte.</p>
+            </div>
+        </div>
+        <div class="form-group">
           <label class="col-sm-3 control-label">Ausgabesprache</label>
             <div class="col-sm-9">
+              <p>Die Wahl der Sprache trifft für alle auf einer Seite benutzten Karten zu. Es gilt die Einstellung der zuerst verwendeten Karte.</p>
               <p>Mögliche Sprachen:</p>
               <div class="col-xs-12 col-sm-6">
               <ul>
@@ -286,7 +312,7 @@ if(rex_addon::get('rex_markitup')->isAvailable()) {
         <div class="form-group">
           <label class="col-sm-3 control-label">Erklärungstext</label>
             <div class="col-sm-9">
-              <p>Dieser Text erschein neben dem Sendebutton (sofern der Routenplaner angezeigt wird).</p>
+              <p>Dieser Text erscheint neben dem Sendebutton (sofern der Routenplaner angezeigt wird).</p>
             </div>
         </div>
 

@@ -1,4 +1,16 @@
+
 <?php
+
+/*
+Benötige CSS Angaben:
+
+#map_canvas {
+  width: 100%;
+  height: 150px;
+}
+
+*/
+
 $editor                 = 0;
 if(!rex_addon::get('rex_redactor')->isAvailable() AND !rex_addon::get('rex_markitup')->isAvailable()) {
     echo rex_view::error('Dieses Modul ben&ouml;tigt das "Redactor" oder das "MarkItUp" Addon!');
@@ -24,6 +36,7 @@ $routenplaner_anzeige = 'REX_VALUE[8]';
 $sendenbutton         = 'REX_VALUE[9]';
 $erklärungstext       = 'REX_VALUE[10]';
 
+<<<<<<< Updated upstream
 // Sprache bei mehr als einer Karte definieren!
 
 $mapstyle             = ''; // Noch einbauen
@@ -35,18 +48,39 @@ $text = '';
      $erklärungstext = str_replace('<br />', '', $erklärungstext);
      $erklärungstext = rex_textile::parse($erklärungstext);
     }
+=======
+$breite               = 'REX_VALUE[12]';
+$container            = '';
+
+if ($breite == '100% Browserbreite') {
+  $container = 'container-fluid';
+} else {
+  $container = 'container';
+}
+
+if ($erklärungstext !='') {
+  if ($editor == 'markitup' AND rex_addon::get('textile')->isAvailable()) {
+    $erklärungstext = str_replace('<br />', '', $erklärungstext);
+    $erklärungstext = rex_textile::parse($erklärungstext);
+>>>>>>> Stashed changes
   }
-$text = $erklärungstext;
+}
 
 if ($sprache == '') {
   $sprache = 'de';
 }
+<<<<<<< Updated upstream
 
 if ($sendenbutton == '') {
   $sendenbutton = 'Bitte eine Bezeichnung (z.B: Route anzeigen) eingeben. ';
 }
 
+=======
+>>>>>>> Stashed changes
 
+if ($sendenbutton == '') {
+  $sendenbutton = 'Bitte eine Bezeichnung (z.B: Route anzeigen) eingeben. ';
+}
 
 if(!rex::isBackend()) {
 
@@ -56,9 +90,12 @@ if(!rex::isBackend()) {
 
   if ($mapidx==1) $mapidx = '';
 
+<<<<<<< Updated upstream
 echo '---- routenplaner '.$mapidx.' ---';
 
 
+=======
+>>>>>>> Stashed changes
   if ($mapidx==''){
     echo '<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;language='.$sprache.'&amp;region='.strtoupper($sprache).'"></script>';
   }
@@ -89,8 +126,11 @@ echo '---- routenplaner '.$mapidx.' ---';
     ";
   }
 
+<<<<<<< Updated upstream
 
 
+=======
+>>>>>>> Stashed changes
 echo "
     function initializemap".$mapidx."(){
 
@@ -132,16 +172,21 @@ echo "
       });
 ";
 }
+<<<<<<< Updated upstream
 
 
 
 echo "
 
+=======
+echo "
+>>>>>>> Stashed changes
  };
     google.maps.event.addDomListener(window, 'load', initializemap".$mapidx.");
   </script>";
 
   echo "
+<<<<<<< Updated upstream
   <!-- Google Maps Routenplaner ".$mapidx." -->
   <div id='googelmapsroutenplaner".$mapidx."' class='googelmapsroutenplaner'>
   <div id='map_canvas".$mapidx."' class='map_canvas' style='".trim($mapstyle)."'></div>
@@ -208,6 +253,47 @@ fieldset {
 }
 </style>
 ';
+=======
+  <!-- Google Maps (+ Routenplaner) ".$mapidx." -->
+    <div class='".$container."'>
+      <div class='row'>
+      <div id='googelmapsroutenplaner".$mapidx."' class='googelmapsroutenplaner'>
+      <div id='map_canvas".$mapidx."' class='map_canvas'></div>
+      </div>
+    </div>
+  ";
+
+  if ($routenplaner_anzeige == 'ja'){
+
+  echo '
+  <div class="container">
+    <div class="row">';
+
+    $formularausgabe = "
+        <form id='routenplaner".$mapidx."' class='routenplaner' action='javascript:void(0);' onsubmit=\"return calcRoute".$mapidx."('".$mapidx."', '".$adresse."', '".$lat."', '".$lng."')\">
+          <fieldset>
+            <input type='text' id='start".$mapidx."' value='' />
+            <input name='submit' type='submit' class='submit' value='".$sendenbutton."' />
+          </fieldset>
+        </form>
+    ";
+
+    if ($erklärungstext != ''){
+      echo '<div class="col-xs-6">'.$erklärungstext.'</div>';
+      echo '<div class="col-xs-6">'.$formularausgabe.'</div>';
+    } else {
+      echo '<div class="col-xs-12">'.$formularausgabe.'</div>';
+    }
+    echo "
+      </div>
+    </div>
+    <div class='container'>
+        <!-- Ausgabe der Wegbeschreibung -->
+          <div id='directions-panel".$mapidx."' class='directions-panel'></div>
+    </div>
+    <!-- /Google Maps Routenplaner ".$mapidx." -->";
+  }
+>>>>>>> Stashed changes
 
 } else {
 
@@ -234,6 +320,13 @@ fieldset {
          <div class="col-sm-9">'.$darstellung.'</div>
        </div>
        <div class="form-group">
+<<<<<<< Updated upstream
+=======
+         <label class="col-sm-3 control-label">Breite der Karte</label>
+         <div class="col-sm-9">'.$breite.'</div>
+       </div>
+       <div class="form-group">
+>>>>>>> Stashed changes
          <label class="col-sm-3 control-label">Sprache</label>
          <div class="col-sm-9">'.$sprache.'</div>
        </div>

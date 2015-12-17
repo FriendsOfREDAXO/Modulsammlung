@@ -1,9 +1,15 @@
 Redaxo 5 Modulsammlung
 =======================
 
-Dieses Addon ermöglicht es leicht und schnell einige Redaxo 5 Module zu installieren.
+Ziel diese Addons ist es einfach einige Module für Redaxo 5.x installieren zu können.
 
-Das Frontent CSS wird nicht mitgeliefert.
+Da es keinen Updateprozess vorhandener Module gibt (ist auch nicht geplant) kann das Addon nach der Installation der gewünschten Module eigentlich wieder gelöscht werden.
+
+Selbstverständlich können die Module nach der Installtion individuell angepasst werden.
+
+Das Frontent CSS wird nicht mitgeliefert :-)
+
+Schreibt doch bitte auftretende Fehler, Notices und Wünsche als Issue.
 
 
 Aktuell enthaltene Module
@@ -11,21 +17,25 @@ Aktuell enthaltene Module
 
 * 0010 - Text / Bild / Video / Link | 1-4 Spalten
 * 0020 - Abstand oder Trennlinie mit/ohne Grafik
+* 0030 - Google Maps Modul / Routenplaner
 * 0100 - Alle Bilder mit aus dem Medienpool mit Copyright anzeigen
 
 
-Noch fehlende Module
+Geplante Module
 --------------------
 
 * Text / Bildergalerie
 * Text / Kontaktformular
 * Text / Download
 * Bilderslider (100% Breite / Contentbreite)
-* Routenplaner (Google Maps)
 * Nur Text (Footer etc.)
 * Sitemap
 * evtl.  Parallax
 * evtl.  Bilderslider (Swiper) / Text
+
+ToDo
+----
+* Modulbeschreibungen auslagern
 
 
 Changelog

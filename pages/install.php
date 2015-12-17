@@ -112,7 +112,7 @@ $content .= '
     <h3>Text / Bild / Video / Link | 1-4 Spalten</h3>
     <p>Redaxo Modul für die Pflege von Inhalten die auf einer responsiven Webseite ausgegeben werden.</p>
     <br/>
-    <b>Aktuelle Voraussetzungen</b>
+    <b>Voraussetzungen</b>
     <ul>
       <li>Redactor oder MarkItUp (+Textile) Addon</li>
     </ul>
@@ -192,8 +192,8 @@ $content .= '<input style="float:right;" type="submit" class="btn btn-primary" c
 $content .= '</form>';
 
 $content .= '
-<button class="btn btn-success" data-toggle="collapse" data-target="#leer">Modul Info</button>
-<div id="leer" class="collapse" style="padding: 0;">
+<button class="btn btn-success" data-toggle="collapse" data-target="#abstand">Modul Info</button>
+<div id="abstand" class="collapse" style="padding: 0;">
     <div style="padding: 10px 15px 10px 15px;margin-top: 20px;background: #F3F6FB; border: 1px solid #3CB594;">
 
     <h3>Abstand oder Trennlinie mit/ohne Grafik</h3>
@@ -201,7 +201,7 @@ $content .= '
     <p>Redaxo Modul für das Einfügen eines Abstandes bzw. einer Trennlinie mit oder ohne Grafik.</p>
 
     <br/>
-    <b>Aktuelle Voraussetzungen</b>
+    <b>Voraussetzungen</b>
     <ul>
         <li>Grafik "trenner.png" 30px x 30px im Files Ordner / Medienpool</li>
     </ul>
@@ -215,6 +215,83 @@ $content .= '
     $fragment->setVar('body', $content , false);
     echo $fragment->parse('core/page/section.php');
 
+////////
+//
+// Google Maps / Routenplaner
+//
+////////
+
+$content = '';
+$googlemaps_modul_name = '';
+
+$content .= '
+  <form action="' . rex_url::currentBackendPage() . '" method="POST">
+    <dl class="rex-form-group form-group">
+      <dt><label>Modulname</label></dt>
+      <dd><input class="form-control" type="text" name="googlemaps_modul_name" value="0030 - Google Maps Modul / Routenplaner"></dd>
+    </dl>
+  <input type="hidden" name="install" value="3">';
+
+    if (rex_request('install',"integer") == 3) {
+      $googlemaps_modul_name           = rex_post("googlemaps_modul_name", 'string');
+
+  rex_redactor::insertProfile('supersimple', 'Google Maps Modul Profil', 'bold,italic,underline');
+  rex_markitup::insertProfile('supersimple', 'Google Maps Modul Profil', 'textile', 'bold,italic,underline');
+
+
+      if ($googlemaps_modul_name == '') {
+        echo rex_view::warning('Bitte einen Modulnamen angeben!');
+      } else {
+       $input = rex_file::get(rex_path::addon('modulsammlung','module/googlemaps_module_input.inc'));
+       $output = rex_file::get(rex_path::addon('modulsammlung','module/googlemaps_module_output.inc'));
+
+       $mi = rex_sql::factory();
+       $mi->debugsql = 0;
+       $mi->setTable('rex_module');
+       $mi->setValue('input', $input);
+       $mi->setValue('output', $output);
+       $mi->setValue('name', $googlemaps_modul_name);
+       $mi->insert();
+       $module_id = (int) $mi->getLastId();
+       echo rex_view::success('Das Modul "' . $googlemaps_modul_name . '" wurde angelegt. ');
+      }
+    }
+
+$content .= '<input style="float:right;" type="submit" class="btn btn-primary" class="rex-button" value="' . $this->i18n('form_modul_install_button', $googlemaps_modul_name) . '" />';
+$content .= '</form>';
+
+$content .= '
+<button class="btn btn-success" data-toggle="collapse" data-target="#googlemaps">Modul Info</button>
+<div id="googlemaps" class="collapse" style="padding: 0;">
+    <div style="padding: 10px 15px 10px 15px;margin-top: 20px;background: #F3F6FB; border: 1px solid #3CB594;">
+
+     <h3>Google Maps Modul / Routenplaner</h3>
+    <p>Redaxo Modul für die Ausgabe einer Google Map mit einigen Konfigurationsmöglichkeiten und Ausgabe eines Routenplaners.</p>
+    <br/>
+    <b>Voraussetzungen</b>
+    <ul>
+      <li>jQuery im Frontend</li>
+      <li>Redactor oder MarkItUp (+Textile) Addon</li>
+    </ul>
+    <br/><br/>
+    <b>Minmale CSS Angaben für die Darstellung der Karte</b>
+    <pre style="padding: 20px 20px 0 20px; margin-top: 10px;">
+
+#map_canvas {
+  width: 100%;
+  height: 150px;
+}
+
+    </pre>
+  </div>
+</div>
+';
+
+    $fragment = new rex_fragment();
+    $fragment->setVar('class', 'edit');
+    $fragment->setVar('title', 'Google Maps Modul / Routenplaner', false);
+    $fragment->setVar('body', $content , false);
+    echo $fragment->parse('core/page/section.php');
 
 ////////
 //
@@ -231,9 +308,9 @@ $content .= '
             <dt><label>Modulname</label></dt>
             <dd><input class="form-control" type="text" name="copyright_modul_name" value="0100 - Alle Bilder mit aus dem Medienpool mit Copyright anzeigen"></dd>
         </dl>
-    <input type="hidden" name="install" value="3">';
+    <input type="hidden" name="install" value="4">';
 
-  if (rex_request('install',"integer") == 3) {
+  if (rex_request('install',"integer") == 4) {
 
       $copyright_modul_name           = rex_post("copyright_modul_name", 'string');
 

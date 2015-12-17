@@ -1,4 +1,4 @@
 Modulsammlung - Changelog
 ===
 
-### Versionsinfos erst ab Version 1 :-))
+### Versionsinfos erst ab Release 1.0 :-))
