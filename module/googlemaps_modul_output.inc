@@ -36,11 +36,7 @@ $routenplaner_anzeige = 'REX_VALUE[8]';
 $sendenbutton         = 'REX_VALUE[9]';
 $erklärungstext       = 'REX_VALUE[10]';
 
-<<<<<<< Updated upstream
-// Sprache bei mehr als einer Karte definieren!
 
-$mapstyle             = ''; // Noch einbauen
-if ($mapstyle == '') { $mapstyle = 'width:100%;height:300px;'; }
 
 $text = '';
   if ($erklärungstext !='') {
@@ -48,7 +44,7 @@ $text = '';
      $erklärungstext = str_replace('<br />', '', $erklärungstext);
      $erklärungstext = rex_textile::parse($erklärungstext);
     }
-=======
+
 $breite               = 'REX_VALUE[12]';
 $container            = '';
 
@@ -62,7 +58,6 @@ if ($erklärungstext !='') {
   if ($editor == 'markitup' AND rex_addon::get('textile')->isAvailable()) {
     $erklärungstext = str_replace('<br />', '', $erklärungstext);
     $erklärungstext = rex_textile::parse($erklärungstext);
->>>>>>> Stashed changes
   }
 }
 

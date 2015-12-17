@@ -15,7 +15,7 @@ if(!rex::isBackend()) {
   }
   if ('REX_VALUE[3]' == 'ja') {
     $klasse = 'trennerliniemitgrafik';
-    $grafik = '<img src="./files/trenner.png" width="30" height="30" alt= "">';
+    $grafik = '<img src="./media/trenner.png" width="30" height="30" alt= "">';
     if ('REX_VALUE[1]' <= 30) {
       $abstand = 30;
       $abstand2 = 15;
