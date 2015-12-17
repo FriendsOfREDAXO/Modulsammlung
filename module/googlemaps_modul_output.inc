@@ -1,4 +1,3 @@
-
 <?php
 
 /*
@@ -34,16 +33,7 @@ $infotext             = 'REX_VALUE[4]';
 
 $routenplaner_anzeige = 'REX_VALUE[8]';
 $sendenbutton         = 'REX_VALUE[9]';
-$erklärungstext       = 'REX_VALUE[10]';
-
-
-
-$text = '';
-  if ($erklärungstext !='') {
-    if ($editor == 'markitup' AND rex_addon::get('textile')->isAvailable()) {
-     $erklärungstext = str_replace('<br />', '', $erklärungstext);
-     $erklärungstext = rex_textile::parse($erklärungstext);
-    }
+$erklaerungstext       = 'REX_VALUE[10]';
 
 $breite               = 'REX_VALUE[12]';
 $container            = '';
@@ -54,24 +44,16 @@ if ($breite == '100% Browserbreite') {
   $container = 'container';
 }
 
-if ($erklärungstext !='') {
+if ($erklaerungstext !='') {
   if ($editor == 'markitup' AND rex_addon::get('textile')->isAvailable()) {
-    $erklärungstext = str_replace('<br />', '', $erklärungstext);
-    $erklärungstext = rex_textile::parse($erklärungstext);
+    $erklaerungstext = str_replace('<br />', '', $erklaerungstext);
+    $erklaerungstext = rex_textile::parse($erklaerungstext);
   }
 }
 
 if ($sprache == '') {
   $sprache = 'de';
 }
-<<<<<<< Updated upstream
-
-if ($sendenbutton == '') {
-  $sendenbutton = 'Bitte eine Bezeichnung (z.B: Route anzeigen) eingeben. ';
-}
-
-=======
->>>>>>> Stashed changes
 
 if ($sendenbutton == '') {
   $sendenbutton = 'Bitte eine Bezeichnung (z.B: Route anzeigen) eingeben. ';
@@ -85,12 +67,6 @@ if(!rex::isBackend()) {
 
   if ($mapidx==1) $mapidx = '';
 
-<<<<<<< Updated upstream
-echo '---- routenplaner '.$mapidx.' ---';
-
-
-=======
->>>>>>> Stashed changes
   if ($mapidx==''){
     echo '<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;language='.$sprache.'&amp;region='.strtoupper($sprache).'"></script>';
   }
@@ -121,11 +97,6 @@ echo '---- routenplaner '.$mapidx.' ---';
     ";
   }
 
-<<<<<<< Updated upstream
-
-
-=======
->>>>>>> Stashed changes
 echo "
     function initializemap".$mapidx."(){
 
@@ -167,103 +138,27 @@ echo "
       });
 ";
 }
-<<<<<<< Updated upstream
-
-
 
 echo "
 
-=======
-echo "
->>>>>>> Stashed changes
  };
     google.maps.event.addDomListener(window, 'load', initializemap".$mapidx.");
   </script>";
 
-  echo "
-<<<<<<< Updated upstream
-  <!-- Google Maps Routenplaner ".$mapidx." -->
-  <div id='googelmapsroutenplaner".$mapidx."' class='googelmapsroutenplaner'>
-  <div id='map_canvas".$mapidx."' class='map_canvas' style='".trim($mapstyle)."'></div>
-  </div>
-  <!-- /Google Maps Routenplaner ".$mapidx." -->
-  ";
 
-
- if ($routenplaner_anzeige == 'ja'){
 echo "
 
-  <!-- Formular -->
-  <form id='routenplaner".$mapidx."' class='routenplaner' action='javascript:void(0);'' onsubmit='return calcRoute".$mapidx."('".$mapidx."', '".$zieladresse."', '".$lat."', '".$lng."')'>
-    <fieldset>
-    <input type='text' id='start".$mapidx."' value='' />
-    <input name='submit' type='submit' class='submit' value='".$sendenbutton."' />
-    </fieldset>
-  </form>
-
-  <!-- Ausgabe der Wegbeschreibung -->
-  <div id='directions-panel".$mapidx."' class='directions-panel'></div>
-";
-}
-
-
-echo '</div>';
-echo '//---- routenplaner '.$mapidx.' ---';
-echo '
-<style>
-/*  routenplaner *****************************************************************/
-
-#map_canvas {
-  width: 100%;
-  height: 350px;
-}
-
-#directions tbody,#directions tr, #directions table {
-  width: 100%;
-}
-
-table.adp-placemark {
-  border: 1px solid red !important;
-}
-
-.adp-text {
-  padding: 3px;
-  vertical-align: middle;
-}
-.adp-legal,
-a.externerkartenlink {
-  font-size: 10px;
-  float: right;
-}
-
-.adp-placemark img {
-  padding: 8px 5px 0 8px;
-}
-
-fieldset {
-  clear: both;
-  padding: 5px;
-  margin: 10px 0 10px 0;
-  background-color: #eee;
-}
-</style>
-';
-=======
   <!-- Google Maps (+ Routenplaner) ".$mapidx." -->
     <div class='".$container."'>
-      <div class='row'>
       <div id='googelmapsroutenplaner".$mapidx."' class='googelmapsroutenplaner'>
       <div id='map_canvas".$mapidx."' class='map_canvas'></div>
-      </div>
     </div>
   ";
 
   if ($routenplaner_anzeige == 'ja'){
 
   echo '
-  <div class="container">
-    <div class="row">';
-
+  <div class="container">';
     $formularausgabe = "
         <form id='routenplaner".$mapidx."' class='routenplaner' action='javascript:void(0);' onsubmit=\"return calcRoute".$mapidx."('".$mapidx."', '".$adresse."', '".$lat."', '".$lng."')\">
           <fieldset>
@@ -273,14 +168,13 @@ fieldset {
         </form>
     ";
 
-    if ($erklärungstext != ''){
-      echo '<div class="col-xs-6">'.$erklärungstext.'</div>';
+    if ($erklaerungstext != ''){
+      echo '<div class="col-xs-6">'.$erklaerungstext.'</div>';
       echo '<div class="col-xs-6">'.$formularausgabe.'</div>';
     } else {
       echo '<div class="col-xs-12">'.$formularausgabe.'</div>';
     }
     echo "
-      </div>
     </div>
     <div class='container'>
         <!-- Ausgabe der Wegbeschreibung -->
@@ -288,8 +182,6 @@ fieldset {
     </div>
     <!-- /Google Maps Routenplaner ".$mapidx." -->";
   }
->>>>>>> Stashed changes
-
 } else {
 
  echo '
@@ -315,13 +207,10 @@ fieldset {
          <div class="col-sm-9">'.$darstellung.'</div>
        </div>
        <div class="form-group">
-<<<<<<< Updated upstream
-=======
          <label class="col-sm-3 control-label">Breite der Karte</label>
          <div class="col-sm-9">'.$breite.'</div>
        </div>
        <div class="form-group">
->>>>>>> Stashed changes
          <label class="col-sm-3 control-label">Sprache</label>
          <div class="col-sm-9">'.$sprache.'</div>
        </div>
@@ -353,10 +242,10 @@ echo'  <h2>Routenplaner</h2>
          <div class="col-sm-9">'.$sendenbutton.'</div>
        </div>';
 
-  if ($erklärungstext != '') {
+  if ($erklaerungstext != '') {
   echo'  <div class="form-group">
-           <label class="col-sm-3 control-label">Erklärungstext</label>
-           <div class="col-sm-9">'.$erklärungstext.'</div>
+           <label class="col-sm-3 control-label">erklaerungstext</label>
+           <div class="col-sm-9">'.$erklaerungstext.'</div>
          </div>';
   }
 }
@@ -394,4 +283,3 @@ echo'
 }
 
 ?>
-

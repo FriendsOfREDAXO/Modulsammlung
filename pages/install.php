@@ -66,7 +66,7 @@ if (rex_request('install',"integer") == 1) {
         }
 
 
-    $input = rex_file::get(rex_path::addon('modulsammlung','module/ews_module_input.inc'));
+    $input = rex_file::get(rex_path::addon('modulsammlung','module/ews_modul_input.inc'));
     if ($ews_modul_ueberschrift != '') {
       $input = str_replace("0;//ueberschrift", "1;//ueberschrift", $input);
     }
@@ -86,7 +86,7 @@ if (rex_request('install',"integer") == 1) {
       $input = str_replace("0;//download", "1;//download", $input);
     }
 
-    $output = rex_file::get(rex_path::addon('modulsammlung','module/ews_module_output.inc'));
+    $output = rex_file::get(rex_path::addon('modulsammlung','module/ews_modul_output.inc'));
 
 
     $mi = rex_sql::factory();
@@ -96,7 +96,7 @@ if (rex_request('install',"integer") == 1) {
     $mi->setValue('output', $output);
     $mi->setValue('name', $ews_modul_name);
     $mi->insert();
-    $module_id = (int) $mi->getLastId();
+    $modul_id = (int) $mi->getLastId();
     echo rex_view::success('Das Modul "' . $ews_modul_name . '" wurde angelegt. ');
   }
 }
@@ -173,8 +173,8 @@ $content .= '
       if ($abstand_modul_name == '') {
         echo rex_view::warning('Bitte einen Modulnamen angeben!');
       } else {
-       $input = rex_file::get(rex_path::addon('modulsammlung','module/abstand_module_input.inc'));
-       $output = rex_file::get(rex_path::addon('modulsammlung','module/abstand_module_output.inc'));
+       $input = rex_file::get(rex_path::addon('modulsammlung','module/abstand_modul_input.inc'));
+       $output = rex_file::get(rex_path::addon('modulsammlung','module/abstand_modul_output.inc'));
 
        $mi = rex_sql::factory();
        $mi->debugsql = 0;
@@ -183,7 +183,7 @@ $content .= '
        $mi->setValue('output', $output);
        $mi->setValue('name', $abstand_modul_name);
        $mi->insert();
-       $module_id = (int) $mi->getLastId();
+       $modul_id = (int) $mi->getLastId();
        echo rex_view::success('Das Modul "' . $abstand_modul_name . '" wurde angelegt. ');
       }
     }
@@ -248,7 +248,7 @@ $content .= '
        $mi->setValue('output', $output);
        $mi->setValue('name', $googlemaps_modul_name);
        $mi->insert();
-       $module_id = (int) $mi->getLastId();
+       $modul_id = (int) $mi->getLastId();
        echo rex_view::success('Das Modul "' . $googlemaps_modul_name . '" wurde angelegt. ');
       }
     }
@@ -315,8 +315,8 @@ $content .= '
 
     } else {
 
-        $input = rex_file::get(rex_path::addon('modulsammlung','module/copyright_module_input.inc'));
-        $output = rex_file::get(rex_path::addon('modulsammlung','module/copyright_module_output.inc'));
+        $input = rex_file::get(rex_path::addon('modulsammlung','module/copyright_modul_input.inc'));
+        $output = rex_file::get(rex_path::addon('modulsammlung','module/copyright_modul_output.inc'));
 
         rex_metainfo_add_field('Nicht in der Copyrightliste ausgeben', 'med_no_copyright_out', '3','','5','','','','');
 
@@ -354,7 +354,7 @@ $content .= '
         $mi->setValue('output', $output);
         $mi->setValue('name', $copyright_modul_name);
         $mi->insert();
-        $module_id = (int) $mi->getLastId();
+        $modul_id = (int) $mi->getLastId();
         echo rex_view::success('Das Modul "' . $copyright_modul_name . '" wurde angelegt. ');
     }
   }
