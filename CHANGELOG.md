@@ -24,3 +24,4 @@ Modulsammlung - Changelog
 
 * Readme aktualisiert
 * Infoseite aktualisiert
+* Module ins Accordion gepackt (danke an Thomas)

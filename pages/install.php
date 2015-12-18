@@ -123,6 +123,8 @@ $content .= '
 ';
 
 $fragment = new rex_fragment();
+$fragment->setVar('collapse', true);
+$fragment->setVar('collapsed', true);
 $fragment->setVar('class', 'edit');
 $fragment->setVar('title', 'Text / Bild / Video / Link | 1-4 Spalten', false);
 $fragment->setVar('body', $content , false);
@@ -189,6 +191,8 @@ $content .= '
 
 
     $fragment = new rex_fragment();
+    $fragment->setVar('collapse', true);
+    $fragment->setVar('collapsed', true);
     $fragment->setVar('class', 'edit');
     $fragment->setVar('title', 'Abstand oder Trennlinie mit/ohne Grafik', false);
     $fragment->setVar('body', $content , false);
@@ -253,6 +257,8 @@ $content .= '
 ';
 
     $fragment = new rex_fragment();
+    $fragment->setVar('collapse', true);
+    $fragment->setVar('collapsed', true);
     $fragment->setVar('class', 'edit');
     $fragment->setVar('title', 'Google Maps / Routenplaner', false);
     $fragment->setVar('body', $content , false);
@@ -352,7 +358,8 @@ $content .= '
 
     $fragment = new rex_fragment();
     $fragment->setVar('class', 'edit');
+    $fragment->setVar('collapse', true);
+    $fragment->setVar('collapsed', true);
     $fragment->setVar('title', 'Alle Bilder mit aus dem Medienpool mit Copyright anzeigen', false);
     $fragment->setVar('body', $content , false);
     echo $fragment->parse('core/page/section.php');
-
