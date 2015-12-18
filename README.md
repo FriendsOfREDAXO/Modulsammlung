@@ -33,10 +33,6 @@ Geplante Module
 * evtl.  Parallax
 * evtl.  Bilderslider (Swiper) / Text
 
-ToDo
-----
-* Modulbeschreibungen auslagern
-* Beispiel CSS
 
 Changelog
 ---------
