@@ -240,18 +240,18 @@ $content .= '<input style="float:right;" type="submit" class="btn btn-primary" c
 $content .= '</form>';
 
 $content .= '
-<button class="btn btn-success" data-toggle="collapse" data-target="#google_maps_info">Info</button>
-<button class="btn btn-success" data-toggle="collapse" data-target="#google_maps_css">CSS Angaben</button>
+<button class="btn btn-success" data-toggle="collapse" data-target="#googlemaps_info">Info</button>
+<button class="btn btn-success" data-toggle="collapse" data-target="#googlemaps_css">CSS Angaben</button>
 
-<div id="google_maps_info" class="collapse" style="padding: 0;">
+<div id="googlemaps_info" class="collapse" style="padding: 0;">
     <div style="padding: 10px 15px 10px 15px;margin-top: 20px;background: #F3F6FB; border: 1px solid #3CB594;">
-    '.rex_file::get(rex_path::addon('modulsammlung','module/google_maps_modul_info.inc')).'
+    '.rex_file::get(rex_path::addon('modulsammlung','module/googlemaps_modul_info.inc')).'
     </div>
 </div>
 
-<div id="google_maps_css" class="collapse" style="padding: 0;">
+<div id="googlemaps_css" class="collapse" style="padding: 0;">
     <div style="padding: 10px 15px 10px 15px;margin-top: 20px;background: #F3F6FB; border: 1px solid #3CB594;">
-    <pre style="margin-top: 10px;">'.rex_file::get(rex_path::addon('modulsammlung','module/google_maps_modul_css.inc')).'</pre>
+    <pre style="margin-top: 10px;">'.rex_file::get(rex_path::addon('modulsammlung','module/googlemaps_modul_css.inc')).'</pre>
     </div>
 </div>
 ';
@@ -363,3 +363,74 @@ $content .= '
     $fragment->setVar('title', 'Alle Bilder mit aus dem Medienpool mit Copyright anzeigen', false);
     $fragment->setVar('body', $content , false);
     echo $fragment->parse('core/page/section.php');
+
+
+
+////////
+//
+// Sitemap
+//
+////////
+
+$content = '';
+$sitemap_modul_name = '';
+
+$content .= '
+  <form action="' . rex_url::currentBackendPage() . '" method="POST">
+    <dl class="rex-form-group form-group">
+      <dt><label>Modulname</label></dt>
+      <dd><input class="form-control" type="text" name="sitemap_modul_name" value="0110 - Sitemap"></dd>
+    </dl>
+  <input type="hidden" name="install" value="5">';
+
+    if (rex_request('install',"integer") == 5) {
+      $sitemap_modul_name           = rex_post("sitemap_modul_name", 'string');
+
+      if ($sitemap_modul_name == '') {
+        echo rex_view::warning('Bitte einen Modulnamen angeben!');
+      } else {
+       $input = rex_file::get(rex_path::addon('modulsammlung','module/sitemap_modul_input.inc'));
+       $output = rex_file::get(rex_path::addon('modulsammlung','module/sitemap_modul_output.inc'));
+
+       $mi = rex_sql::factory();
+       $mi->debugsql = 0;
+       $mi->setTable('rex_module');
+       $mi->setValue('input', $input);
+       $mi->setValue('output', $output);
+       $mi->setValue('name', $sitemap_modul_name);
+       $mi->insert();
+       $modul_id = (int) $mi->getLastId();
+       echo rex_view::success('Das Modul "' . $sitemap_modul_name . '" wurde angelegt. ');
+      }
+    }
+
+$content .= '<input style="float:right;" type="submit" class="btn btn-primary" class="rex-button" value="' . $this->i18n('form_modul_install_button', $sitemap_modul_name) . '" />';
+$content .= '</form>';
+
+
+$content .= '
+<button class="btn btn-success" data-toggle="collapse" data-target="#sitemap_modul_info">Info</button>
+<button class="btn btn-success" data-toggle="collapse" data-target="#sitemap_modul_css">CSS Beispiel</button>
+
+<div id="sitemap_modul_info" class="collapse" style="padding: 0;">
+    <div style="padding: 10px 15px 10px 15px;margin-top: 20px;background: #F3F6FB; border: 1px solid #3CB594;">
+    '.rex_file::get(rex_path::addon('modulsammlung','module/sitemap_modul_info.inc')).'
+    </div>
+</div>
+
+<div id="sitemap_modul_css" class="collapse" style="padding: 0;">
+    <div style="padding: 10px 15px 10px 15px;margin-top: 20px;background: #F3F6FB; border: 1px solid #3CB594;">
+    <pre style="margin-top: 10px;">'.rex_file::get(rex_path::addon('modulsammlung','module/sitemap_modul_css.inc')).'</pre>
+    </div>
+</div>
+';
+
+
+    $fragment = new rex_fragment();
+    $fragment->setVar('collapse', true);
+    $fragment->setVar('collapsed', true);
+    $fragment->setVar('class', 'edit');
+    $fragment->setVar('title', 'Sitemap', false);
+    $fragment->setVar('body', $content , false);
+    echo $fragment->parse('core/page/section.php');
+

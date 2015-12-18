@@ -19,7 +19,7 @@ Aktuell enthaltene Module
 * 0020 - Abstand oder Trennlinie mit/ohne Grafik
 * 0030 - Google Maps Modul / Routenplaner
 * 0100 - Alle Bilder mit aus dem Medienpool mit Copyright anzeigen
-
+* 0110 - Sitemap
 
 Geplante Module
 --------------------
@@ -29,10 +29,15 @@ Geplante Module
 * Text / Download
 * Bilderslider (100% Breite / Contentbreite)
 * Nur Text (Footer etc.)
-* Sitemap
 * evtl.  Parallax
 * evtl.  Bilderslider (Swiper) / Text
 
+
+ToDo
+---------
+
+* ToDos im Modul Sitemap beachten
+* Sitemap Modul Input: HTML / CSS "gerade ziehen"
 
 Changelog
 ---------
