@@ -1,7 +1,7 @@
 Modulsammlung - Changelog
 ===
 
-###### 18.12.2015 Version 2.8-beta
+## 18.12.2015 Version 2.8-beta
 
 #### Update: Abstand oder Trennlinie mit/ohne Grafik
 * CSS ID vergeben
