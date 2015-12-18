@@ -13,7 +13,7 @@ Modulsammlung - Changelog
 
 #### Update: Google Maps Modul / Routenplaner
 * Name geändert: Google Maps / Routenplaner
-* Modulinfo ausgelager
+* Modulinfo ausgelagert
 * CSS Info ausgelagert
 
 #### Update: Text / Bild / Video / Link Modul
