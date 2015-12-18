@@ -6,7 +6,12 @@ $content = '<p>
 <h3>Modulsammlung</h3>
 <br/>
 <p>Zweck dieses Addons ist die schnelle und unkomplizierte Installation einiger "Standard" Module.</p>
-<p>Nach der Installation aller gewünschten Module kann das Addon eigentlich wieder gelöscht werden :-).</p>
+<p>Da es keinen Updateprozess vorhandener Module gibt (ist auch nicht geplant) kann das Addon nach der Installation der gewünschten Module eigentlich wieder gelöscht werden.<p>
+
+<p>Selbstverständlich können (und sollen) die Module nach der Installation individuell angepasst werden.</p>
+
+<p>Legt doch bitte für alle auftretende Fehler, Notices und Wünsche ein Issue an:
+<a href="https://github.com/olien/REX5-Modulsammlung" target="_blank">https://github.com/olien/REX5-Modulsammlung</a></p>
 
 ';
 

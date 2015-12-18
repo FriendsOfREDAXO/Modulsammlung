@@ -1,10 +1,19 @@
 <?php
-  if ('REX_VALUE[1]' == '') {
-    $abstand = 30;
-    $abstand2 = $abstand/2;
-  } else {
-    $abstand = 'REX_VALUE[1]';
-  }
+if ('REX_VALUE[1]' == '') {
+  $abstand = 30;
+  $abstand2 = $abstand/2;
+} else {
+  $abstand = 'REX_VALUE[1]';
+}
+
+$breite               = 'REX_VALUE[4]';
+$container            = '';
+
+if ($breite == '100% Browserbreite') {
+  $container = 'container-fluid';
+} else {
+  $container = 'container';
+}
 
 if(!rex::isBackend()) {
   $klasse = '';
@@ -22,21 +31,21 @@ if(!rex::isBackend()) {
     }
   }
 
+// Sofern $REX['project_vars']['sidenavi'] nicht leer ist wird immer die Klasse container-fluid benutzt
+$REX['project_vars']['sidenavi'] = rex::getProperty('project_vars');
 
- if ($REX['sidebar']['status'] == '0') {
-   echo  '
-    <div class="container">
-   ';
- } else {
-   echo '
+if (isset($REX['project_vars']) && isset($REX['project_vars']['sidenavi']) && $REX['project_vars']['sidenavi'] != '') {
+  echo  '
     <div class="container-fluid">
-   ';
- }
+  ';
+} else {
+  echo '
+    <div class="'.$container.'">
+  ';
+}
 
-
-  echo '<div class="trenner '.$klasse.'" style="height: '.$abstand.'px; line-height: '.$abstand.'px;"><span>'.$grafik.'</span></div>';
-  echo '</div>'.PHP_EOL;
-
+echo '<div class="trenner '.$klasse.'" style="height: '.$abstand.'px; line-height: '.$abstand.'px;"><span>'.$grafik.'</span></div>';
+echo '</div>'.PHP_EOL;
 
 } else {
 
@@ -56,12 +65,15 @@ if(!rex::isBackend()) {
          <label class="col-sm-3 control-label">Grafik anzeigen</label>
          <div class="col-sm-9">REX_VALUE[3]</div>
        </div>
+       <div class="form-group">
+         <label class="col-sm-3 control-label">Breite des Trenners</label>
+         <div class="col-sm-9">'.$breite.'</div>
+       </div>
     </div>
   </div>
 
-
 <style>
-#trennlinie.bereichswrapper {
+#trennlinie .bereichswrapper {
   margin: 5px 0 5px 0;
   background: #f5f5f5;
   padding: 5px 15px 5px 15px;
@@ -83,10 +95,7 @@ if(!rex::isBackend()) {
   border-bottom: 1px solid #31404F;
 }
 
-</style>
-
-  '.PHP_EOL;
+</style>'.PHP_EOL;
 }
 
 ?>
-

@@ -3,10 +3,9 @@
 $out = '<div class="container">
         <div class="copyrightlist">';
 
-
 $sql = rex_sql::factory();
 // $sql->setDebug();
-$sql->setTable(rex::getTablePrefix().'media'); // rex_foo_bar
+$sql->setTable(rex::getTablePrefix().'media');
 $sql->setWhere('med_copyright != "" AND med_no_copyright_out != "|true|"');
 $sql->select();
 
@@ -23,7 +22,6 @@ if($sql->getRows()) {
             $out .= '<div class="copyright">### Copyright ### '.$copyright.'</div>'.PHP_EOL;
             $out .= '</div>'.PHP_EOL;
           }
-
         $sql->next();
     }
 }
@@ -44,7 +42,7 @@ if(!rex::isBackend()) {
   </div>
 
 <style>
-#copyright.bereichswrapper {
+#copyright .bereichswrapper {
   margin: 5px 0 5px 0;
   background: #f5f5f5;
   padding: 5px 15px 5px 15px;

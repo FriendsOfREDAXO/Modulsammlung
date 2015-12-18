@@ -1,24 +1,15 @@
 <?php
-/**
- *
- * --
- * Dieses Modul wurde vom Grid Modul Builder angelegt.
- * --
- *
- *
- **/
-
-$grid                     = 'REX_VALUE[20]';
-$individuelle_css_klasse  = 'REX_VALUE[17]';
-$mediamanagertyp          = 'REX_VALUE[18]';
-$out                      = '';
-$zaehler                  = '';
-$nummer                   = '';
-$REX['sidebar']['status'] = '';
-$outback                  = '';
-$abstandsklasse           = '';
-$bildposition             = '';
-$editor                   = '';
+$grid                             = 'REX_VALUE[20]';
+$individuelle_css_klasse          = 'REX_VALUE[17]';
+$mediamanagertyp                  = 'REX_VALUE[18]';
+$out                              = '';
+$zaehler                          = '';
+$nummer                           = '';
+$REX['project_vars']['sidenavi']  = '';
+$outback                          = '';
+$abstandsklasse                   = '';
+$bildposition                     = '';
+$editor                           = '';
 
 
 if(rex_addon::get('rex_redactor')->isAvailable()) {
@@ -30,7 +21,6 @@ if(rex_addon::get('rex_markitup')->isAvailable()) {
       echo rex_view::error('Dieses Modul benötigt das "textile" Addon!');
   }
 }
-
 
 if ($mediamanagertyp == '') {
     $mediamanagertyp = 'standard';
@@ -647,22 +637,26 @@ echo '
 
 } else {
 
-  if (!$REX['sidebar']['status']) {
-    echo '
-      <div class="container">
-        <div class="row">
-          '.$out.'
-        </div>
-      </div>'.PHP_EOL;
-  } else {
-    echo  '
-      <div class="container-fluid">
-        <div class="row">
-          '.$out.'
-        </div>
-      </div>'.PHP_EOL;
-  }
+// Sofern $REX['project_vars']['sidenavi'] nicht leer ist wird immer die Klasse container-fluid benutzt
+$REX['project_vars']['sidenavi'] = rex::getProperty('project_vars');
 
+if (isset($REX['project_vars']) && isset($REX['project_vars']['sidenavi']) && $REX['project_vars']['sidenavi'] != '') {
+  echo  '
+    <div class="container-fluid">
+      <div class="row">
+        '.$out.'
+      </div>
+    </div>
+  '.PHP_EOL;
+} else {
+  echo '
+    <div class="container">
+      <div class="row">
+        '.$out.'
+      </div>
+    </div>
+  '.PHP_EOL;
+}
 }
 
 if(rex::isBackend()) {

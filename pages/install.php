@@ -106,41 +106,19 @@ $content .= '<input style="float:right;" type="submit" class="btn btn-primary" c
 $content .= '</form>';
 
 $content .= '
-  <button class="btn btn-success" data-toggle="collapse" data-target="#ews">Modul Info</button>
-  <div id="ews" class="collapse" style="padding: 0;">
-    <div style="padding: 10px 15px 10px 15px;margin-top: 20px;background: #F3F6FB; border: 1px solid #3CB594;">
-    <h3>Text / Bild / Video / Link | 1-4 Spalten</h3>
-    <p>Redaxo Modul für die Pflege von Inhalten die auf einer responsiven Webseite ausgegeben werden.</p>
-    <br/>
-    <b>Voraussetzungen</b>
-    <ul>
-      <li>Redactor oder MarkItUp (+Textile) Addon</li>
-    </ul>
-    <br/><br/>
-    <ul>
-      <li>Der Media Manager Typ <i>standard</i> wird angelegt und kann konfiguriert werden.</li>
-      <li>Das Meta Info Feld (Medien) <i>med_no_copyright_out</i> wird angelegt.</li>
-    </ul>
-    <br/><br/>
-    <b>CSS für die Einbindung von Videos</b>
-    <pre style="padding: 20px 20px 0 20px; margin-top: 10px;">
-.responsive-video iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
+<button class="btn btn-success" data-toggle="collapse" data-target="#ews_info">Info</button>
+<button class="btn btn-success" data-toggle="collapse" data-target="#ews_css">CSS Angaben</button>
 
-.responsive-video {
-  position: relative;
-  padding-bottom: 56.25%; /* Default for 1600x900 videos 16:9 ratio*/
-  padding-top: 0px;
-  height: 0;
-  overflow: hidden;
-}
-    </pre>
-  </div>
+<div id="ews_info" class="collapse" style="padding: 0;">
+    <div style="padding: 10px 15px 10px 15px;margin-top: 20px;background: #F3F6FB; border: 1px solid #3CB594;">
+    '.rex_file::get(rex_path::addon('modulsammlung','module/ews_modul_info.inc')).'
+    </div>
+</div>
+
+<div id="ews_css" class="collapse" style="padding: 0;">
+    <div style="padding: 10px 15px 10px 15px;margin-top: 20px;background: #F3F6FB; border: 1px solid #3CB594;">
+    <pre style="margin-top: 10px;">'.rex_file::get(rex_path::addon('modulsammlung','module/ews_modul_css.inc')).'</pre>
+    </div>
 </div>
 ';
 
@@ -191,23 +169,24 @@ $content .= '
 $content .= '<input style="float:right;" type="submit" class="btn btn-primary" class="rex-button" value="' . $this->i18n('form_modul_install_button', $abstand_modul_name) . '" />';
 $content .= '</form>';
 
+
 $content .= '
-<button class="btn btn-success" data-toggle="collapse" data-target="#abstand">Modul Info</button>
-<div id="abstand" class="collapse" style="padding: 0;">
+<button class="btn btn-success" data-toggle="collapse" data-target="#abstand_info">Info</button>
+<button class="btn btn-success" data-toggle="collapse" data-target="#abstand_css">SCSS Beispiel</button>
+
+<div id="abstand_info" class="collapse" style="padding: 0;">
     <div style="padding: 10px 15px 10px 15px;margin-top: 20px;background: #F3F6FB; border: 1px solid #3CB594;">
+    '.rex_file::get(rex_path::addon('modulsammlung','module/abstand_modul_info.inc')).'
+    </div>
+</div>
 
-    <h3>Abstand oder Trennlinie mit/ohne Grafik</h3>
-
-    <p>Redaxo Modul für das Einfügen eines Abstandes bzw. einer Trennlinie mit oder ohne Grafik.</p>
-
-    <br/>
-    <b>Voraussetzungen</b>
-    <ul>
-        <li>Grafik "trenner.png" 30px x 30px im Files Ordner / Medienpool</li>
-    </ul>
+<div id="abstand_css" class="collapse" style="padding: 0;">
+    <div style="padding: 10px 15px 10px 15px;margin-top: 20px;background: #F3F6FB; border: 1px solid #3CB594;">
+    <pre style="margin-top: 10px;">'.rex_file::get(rex_path::addon('modulsammlung','module/abstand_modul_css.inc')).'</pre>
     </div>
 </div>
 ';
+
 
     $fragment = new rex_fragment();
     $fragment->setVar('class', 'edit');
@@ -228,7 +207,7 @@ $content .= '
   <form action="' . rex_url::currentBackendPage() . '" method="POST">
     <dl class="rex-form-group form-group">
       <dt><label>Modulname</label></dt>
-      <dd><input class="form-control" type="text" name="googlemaps_modul_name" value="0030 - Google Maps Modul / Routenplaner"></dd>
+      <dd><input class="form-control" type="text" name="googlemaps_modul_name" value="0030 - Google Maps / Routenplaner"></dd>
     </dl>
   <input type="hidden" name="install" value="3">';
 
@@ -257,35 +236,25 @@ $content .= '<input style="float:right;" type="submit" class="btn btn-primary" c
 $content .= '</form>';
 
 $content .= '
-<button class="btn btn-success" data-toggle="collapse" data-target="#googlemaps">Modul Info</button>
-<div id="googlemaps" class="collapse" style="padding: 0;">
+<button class="btn btn-success" data-toggle="collapse" data-target="#google_maps_info">Info</button>
+<button class="btn btn-success" data-toggle="collapse" data-target="#google_maps_css">CSS Angaben</button>
+
+<div id="google_maps_info" class="collapse" style="padding: 0;">
     <div style="padding: 10px 15px 10px 15px;margin-top: 20px;background: #F3F6FB; border: 1px solid #3CB594;">
+    '.rex_file::get(rex_path::addon('modulsammlung','module/google_maps_modul_info.inc')).'
+    </div>
+</div>
 
-     <h3>Google Maps Modul / Routenplaner</h3>
-    <p>Redaxo Modul für die Ausgabe einer Google Map mit einigen Konfigurationsmöglichkeiten und Ausgabe eines Routenplaners.</p>
-    <br/>
-    <b>Voraussetzungen</b>
-    <ul>
-      <li>jQuery im Frontend</li>
-      <li>Redactor oder MarkItUp (+Textile) Addon</li>
-    </ul>
-    <br/><br/>
-    <b>Minmale CSS Angaben für die Darstellung der Karte</b>
-    <pre style="padding: 20px 20px 0 20px; margin-top: 10px;">
-
-#map_canvas {
-  width: 100%;
-  height: 150px;
-}
-
-    </pre>
-  </div>
+<div id="google_maps_css" class="collapse" style="padding: 0;">
+    <div style="padding: 10px 15px 10px 15px;margin-top: 20px;background: #F3F6FB; border: 1px solid #3CB594;">
+    <pre style="margin-top: 10px;">'.rex_file::get(rex_path::addon('modulsammlung','module/google_maps_modul_css.inc')).'</pre>
+    </div>
 </div>
 ';
 
     $fragment = new rex_fragment();
     $fragment->setVar('class', 'edit');
-    $fragment->setVar('title', 'Google Maps Modul / Routenplaner', false);
+    $fragment->setVar('title', 'Google Maps / Routenplaner', false);
     $fragment->setVar('body', $content , false);
     echo $fragment->parse('core/page/section.php');
 

@@ -6,11 +6,18 @@ if(!rex_addon::get('rex_redactor')->isAvailable() AND !rex_addon::get('rex_marki
 }
 if(rex_addon::get('rex_redactor')->isAvailable()) {
   $editor = 'redactor';
-  rex_redactor::insertProfile('supersimple', 'Google Maps Modul Profil', 'bold,italic,underline');
+
+  if (!rex_markitup::profileExists('supersimple')) {
+    rex_markitup::insertProfile('supersimple', 'Google Maps Modul Profil', 'bold,italic,underline');
+  }
 }
 if(rex_addon::get('rex_markitup')->isAvailable()) {
   $editor = 'markitup';
-  rex_markitup::insertProfile('supersimple', 'Google Maps Modul Profil', 'textile', 'bold,italic,underline');
+
+  if (!rex_markitup::profileExists('supersimple')) {
+    rex_markitup::insertProfile('supersimple', 'Google Maps Modul Profil', 'textile', 'bold,italic,underline');
+  }
+
   if (!rex_addon::get('textile')->isAvailable()) {
       echo rex_view::error('Dieses Modul benötigt das "textile" Addon!');
   }

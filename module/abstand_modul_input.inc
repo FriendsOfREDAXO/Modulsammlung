@@ -1,22 +1,4 @@
-<?php
-/**
- *
- *
- * Modul:
- *
- * Abstand oder Trennlinie mit/ohne Grafik
- *
- *
- *
- * Empfohlen:       Grafik in den Mediepool laden: 'trenner.png' 30px x 30px
- * Entwickler:      Oliver Kreischer / concedra GmbH
- *
- *
- **/
-?>
-
-
-<div class="modul-content">
+<div id="trenner_modul_input">
   <div id="bereich1" class="">
     <div class="form-horizontal">
       <h3>Abstand oder Trennlinie mit/ohne Grafik</h3>
@@ -48,6 +30,25 @@
             </div>
           </div>
         </div>
+     <div class="form-group">
+        <label class="col-sm-3 control-label">Breite des Trenners</label>
+        <div class="col-sm-9 ">
+          <div class="select-style">
+            <select id="maptype" name="REX_INPUT_VALUE[4]">
+            <?php
+              foreach (array('100% Browserbreite', 'So breit wie der Inhalt') as $value) {
+                echo '<option value="'.$value.'" ';
+
+                if ( "REX_VALUE[4]"=="$value" ) {
+                  echo 'selected="selected" ';
+                }
+                echo '>'.$value.'</option>';
+                }
+            ?>
+            </select>
+          </div>
+        </div>
+      </div>
 
 
  <div  id="anleitung" >
@@ -74,7 +75,12 @@
           <p>Zeigt eine Trennline und eine 30x30px große Grafik aus dem Medienpool (trenner.png) an.</p>
         </div>
     </div>
-
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Breite des Trenners</label>
+            <div class="col-sm-9">
+              <p>Ändert die Breite des Trenners. 100% Browserbreite ist nicht möglich sofern es eine Seitenleiste (Inhalt / Navigation) im Content gibt.</p>
+            </div>
+        </div>
   </div>
   </div>
 
@@ -83,13 +89,13 @@
 
 
 <style>
-.modul-content {
+#trenner_modul_input {
   background: #f5f5f5;
   padding: 10px 30px 30px 15px;
   border: 1px solid #9da6b2;
 }
 
-.modul-content h3 {
+#trenner_modul_input  h3 {
   font-size: 14px !important;
   padding: 10px;
   background: #DFE3E9;
@@ -97,19 +103,20 @@
   margin-bottom: 20px;
 }
 
-.modul-content .control-label {
+#trenner_modul_input .control-label {
   font-weight: normal;
   font-size: 12px !important;
 }
 
-.select-style {
+#trenner_modul_input .select-style {
     border: 1px solid #cccccc;
     width: 100%;
     overflow: hidden;
     background: #fff url("data:image/png;base64,R0lGODlhDwAUAIABAAAAAP///yH5BAEAAAEALAAAAAAPABQAAAIXjI+py+0Po5wH2HsXzmw//lHiSJZmUAAAOw==") no-repeat 98% 50%;
     margin-bottom: 6px;
 }
-.select-style select {
+
+#trenner_modul_input .select-style select {
     padding: 5px 8px;
     width: 100%;
     border: none;
@@ -120,28 +127,30 @@
     -moz-appearance:none;
     -webkit-border-radius: 0px;
 }
-.select-style select:focus {
+
+#trenner_modul_input .select-style select:focus {
     outline: none;
 }
-.select-style select:hover {
+
+#trenner_modul_input .select-style select:hover {
     cursor: pointer;
 }
 
-input.form-control,
-select.form-control,
-textarea.form-control {
+#trenner_modul_input input.form-control,
+#trenner_modul_input select.form-control,
+#trenner_modul_input textarea.form-control {
   background: #fff !important;
 }
 
-#anleitung .control-label {
+#trenner_modul_input #anleitung .control-label {
   margin-top: -6px;
 }
 
-#anleitung {
+#trenner_modul_input #anleitung {
   margin-top: 30px;
 }
 
-#anleitung .panel-heading {
+#trenner_modul_input #anleitung .panel-heading {
   font-size: 14px !important;
   padding: 10px;
   background: #DFE3E9;
@@ -150,11 +159,11 @@ textarea.form-control {
   margin-bottom: 20px;
   border: none;
 }
-#anleitung .panel-heading span {
+#trenner_modul_input #anleitung .panel-heading span {
   margin-right: 5px;
 }
 
-#anleitung .panel-heading:hover  {
+#trenner_modul_input #anleitung .panel-heading:hover  {
   color: #000;
 }
 </style>
