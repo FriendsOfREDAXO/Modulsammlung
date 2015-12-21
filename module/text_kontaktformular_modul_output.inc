@@ -17,6 +17,7 @@ $textnebenformular    = 'REX_VALUE[1]';
 $textnebenformular1   = '';
 $email                = 'REX_VALUE[2]';
 $textdanke            = 'REX_VALUE[3]';
+$textdanke1           = '';
 $emailabsender        = 'REX_VALUE[4]';
 
 if ($emailabsender == '') {
@@ -25,8 +26,16 @@ if ($emailabsender == '') {
 
 if ($textnebenformular !='') {
   if ($editor == 'markitup' AND rex_addon::get('textile')->isAvailable()) {
-    $textnebenformular1 = str_replace('<br />', '', $textnebenformular);
-    $textnebenformular1 = rex_textile::parse($textnebenformular);
+    $textnebenformular = str_replace('<br />', '', $textnebenformular);
+    $textnebenformular = rex_textile::parse($textnebenformular);
+  }
+}
+
+$textdanke = $textdanke1;
+if ($textdanke !='') {
+  if ($editor == 'markitup' AND rex_addon::get('textile')->isAvailable()) {
+    $textdanke = str_replace('<br />', '', $textdanke);
+    $textdanke = rex_textile::parse($textdanke);
   }
 }
 
@@ -54,7 +63,7 @@ action|email|'.$emailabsender.'|'.$email.'|Nachricht von der Webseite (Kontaktfo
 
 submit|label|Senden|||
 
-action|showtext|'.$textdanke.'|||1
+action|showtext|'.$textdanke1.'|||'.$ausgabe_art.'
 ';
 
 $yform->setFormData($form_data);
@@ -91,7 +100,7 @@ echo '
        </div>
        <div class="form-group">
          <label class="col-sm-3 control-label">Text neben Formular</label>
-         <div class="col-sm-9">'.$textnebenformular1.'</div>
+         <div class="col-sm-9">'.$textnebenformular.'</div>
        </div>
        <div class="form-group">
          <label class="col-sm-3 control-label">Text (Danke)</label>
