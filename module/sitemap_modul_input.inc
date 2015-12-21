@@ -26,7 +26,7 @@ if(rex_addon::get('rex_markitup')->isAvailable()) {
 }
 
 ?><div class="modul-content">
-  <div id="bereich1" class="">
+  <div>
     <div class="form-horizontal">
       <h3>Sitemap</h3>
         <div class="form-group">

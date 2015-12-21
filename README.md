@@ -36,14 +36,8 @@ Geplante Module
 ToDo
 ---------
 
-* ToDos im Modul Sitemap beachten
-* Sitemap Modul Input: HTML / CSS "gerade ziehen"
-* In allen Ein- und Ausgaben MarkItUp / Textile + Redacotr prüfen
-* Module im Installer neu sortieren
-* CSS Angaben im Backend "trennen"
-* Alle Platzhalter mit {{}} markieren
-* Redactor einbindung prüfen. Geht grad nicht :-(
-* Textile Ausgabe im Modul 0040 - Text / Kontaktformular funktinoert nicht (Danke Text)
+siehe [ISSUES](https://github.com/olien/REX5-Modulsammlung/issues/)
+
 
 Changelog
 ---------
