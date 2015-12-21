@@ -434,3 +434,124 @@ $content .= '
     $fragment->setVar('body', $content , false);
     echo $fragment->parse('core/page/section.php');
 
+
+
+////////
+//
+// Nur Text
+//
+////////
+
+$content = '';
+$nur_text_modul_name = '';
+
+$content .= '
+  <form action="' . rex_url::currentBackendPage() . '" method="POST">
+    <dl class="rex-form-group form-group">
+      <dt><label>Modulname</label></dt>
+      <dd><input class="form-control" type="text" name="googlemaps_modul_name" value="0060 - Nur Text (Footer, Seitenleiste etc.)"></dd>
+    </dl>
+  <input type="hidden" name="install" value="6">';
+
+    if (rex_request('install',"integer") == 6) {
+      $nur_text_modul_name           = rex_post("googlemaps_modul_name", 'string');
+
+      if ($nur_text_modul_name == '') {
+        echo rex_view::warning('Bitte einen Modulnamen angeben!');
+      } else {
+       $input = rex_file::get(rex_path::addon('modulsammlung','module/nur_text_modul_input.inc'));
+       $output = rex_file::get(rex_path::addon('modulsammlung','module/nur_text_modul_output.inc'));
+
+       $mi = rex_sql::factory();
+       $mi->debugsql = 0;
+       $mi->setTable('rex_module');
+       $mi->setValue('input', $input);
+       $mi->setValue('output', $output);
+       $mi->setValue('name', $nur_text_modul_name);
+       $mi->insert();
+       $modul_id = (int) $mi->getLastId();
+       echo rex_view::success('Das Modul "' . $nur_text_modul_name . '" wurde angelegt. ');
+      }
+    }
+
+$content .= '<input style="float:right;" type="submit" class="btn btn-primary" class="rex-button" value="' . $this->i18n('form_modul_install_button', $nur_text_modul_name) . '" />';
+$content .= '</form>';
+
+$content .= '
+<button class="btn btn-success" data-toggle="collapse" data-target="#nur_text_info">Info</button>
+
+<div id="nur_text_info" class="collapse" style="padding: 0;">
+    <div style="padding: 10px 15px 10px 15px;margin-top: 20px;background: #F3F6FB; border: 1px solid #3CB594;">
+    '.rex_file::get(rex_path::addon('modulsammlung','module/nur_text_modul_info.inc')).'
+    </div>
+</div>
+';
+
+    $fragment = new rex_fragment();
+    $fragment->setVar('collapse', true);
+    $fragment->setVar('collapsed', true);
+    $fragment->setVar('class', 'edit');
+    $fragment->setVar('title', 'Nur Text', false);
+    $fragment->setVar('body', $content , false);
+    echo $fragment->parse('core/page/section.php');
+
+
+
+////////
+//
+// Text / Kontaktformular
+//
+////////
+
+$content = '';
+$text_kontaktformular_modul_name = '';
+
+$content .= '
+  <form action="' . rex_url::currentBackendPage() . '" method="POST">
+    <dl class="rex-form-group form-group">
+      <dt><label>Modulname</label></dt>
+      <dd><input class="form-control" type="text" name="text_kontaktformular_modul_name" value="0040 - Text / Kontaktformular"></dd>
+    </dl>
+  <input type="hidden" name="install" value="7">';
+
+    if (rex_request('install',"integer") == 7) {
+      $text_kontaktformular_modul_name           = rex_post("text_kontaktformular_modul_name", 'string');
+
+      if ($text_kontaktformular_modul_name == '') {
+        echo rex_view::warning('Bitte einen Modulnamen angeben!');
+      } else {
+       $input = rex_file::get(rex_path::addon('modulsammlung','module/text_kontaktformular_modul_input.inc'));
+       $output = rex_file::get(rex_path::addon('modulsammlung','module/text_kontaktformular_modul_output.inc'));
+
+       $mi = rex_sql::factory();
+       $mi->debugsql = 0;
+       $mi->setTable('rex_module');
+       $mi->setValue('input', $input);
+       $mi->setValue('output', $output);
+       $mi->setValue('name', $text_kontaktformular_modul_name);
+       $mi->insert();
+       $modul_id = (int) $mi->getLastId();
+       echo rex_view::success('Das Modul "' . $text_kontaktformular_modul_name . '" wurde angelegt. ');
+      }
+    }
+
+$content .= '<input style="float:right;" type="submit" class="btn btn-primary" class="rex-button" value="' . $this->i18n('form_modul_install_button', $text_kontaktformular_modul_name) . '" />';
+$content .= '</form>';
+
+$content .= '
+<button class="btn btn-success" data-toggle="collapse" data-target="#text_kontaktformular_info">Info</button>
+
+<div id="text_kontaktformular_info" class="collapse" style="padding: 0;">
+    <div style="padding: 10px 15px 10px 15px;margin-top: 20px;background: #F3F6FB; border: 1px solid #3CB594;">
+    '.rex_file::get(rex_path::addon('modulsammlung','module/text_kontaktformular_modul_info.inc')).'
+    </div>
+</div>
+';
+
+    $fragment = new rex_fragment();
+    $fragment->setVar('collapse', true);
+    $fragment->setVar('collapsed', true);
+    $fragment->setVar('class', 'edit');
+    $fragment->setVar('title', 'Text / Kontaktformular', false);
+    $fragment->setVar('body', $content , false);
+    echo $fragment->parse('core/page/section.php');
