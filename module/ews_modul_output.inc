@@ -288,8 +288,10 @@ foreach ($reihenfolge as $nummer) {
         $text = '';
         if ($value['text'] !='') {
           if ($editor == 'markitup' AND rex_addon::get('textile')->isAvailable()) {
+            $value['text'] = htmlspecialchars_decode($value['text']);
             $value['text'] = str_replace('<br />', '', $value['text']);
             $value['text'] = rex_textile::parse($value['text']);
+            $value['text'] = str_replace('###', '&#x20;', $value['text']);
           }
 
           $text = '<div class="text">'.$value['text'].'</div>'.PHP_EOL;
@@ -339,32 +341,34 @@ foreach ($reihenfolge as $nummer) {
 
         if ($titel != '' ) {
           $outbackbildinfos .= '<br/><b>Titel:</b> '.$titel;
-          $titel = '<p class="bildtitel">'.$titel.'</p>'.PHP_EOL;
+          $titel = '<figcaption class="titel">'.$titel.'</figcaption>'.PHP_EOL;
         } else {
           $titel = '';
         }
         if ($copyright != '') {
           $outbackbildinfos .= '<br/><b>Copyright:</b> '.$copyright;
-          $copyright = '<p class="bildcopyright">'.$copyright.'</p>'.PHP_EOL;
+          $copyright = '<figcaption class="copyright">'.$copyright.'</figcaption>'.PHP_EOL;
         } else {
           $copyright = '';
         }
         if ($beschreibung != '' ) {
           $outbackbildinfos .= '<br/><b>Beschreibung:</b> '.$beschreibung;
-          $beschreibung = '<p class="bildbeschreibung">'.$beschreibung.'</p>'.PHP_EOL;
+          $beschreibung = '<figcaption class="beschreibung">'.$beschreibung.'</figcaption>'.PHP_EOL;
         } else {
           $beschreibung = '';
         }
 
         if ($value['bildinformationen'] == 'ja' ) {
-          $bild = '<div class="bild">'.PHP_EOL;
+          $bild = '<figure class="image">'.PHP_EOL;
           $bild .= $bild_img;
           $bild .= $copyright;
           $bild .= $titel;
           $bild .= $beschreibung;
-          $bild .= '</div>'.PHP_EOL;
+          $bild .= '</figure>'.PHP_EOL;
         } else {
+          $bild = '<figure class="image">'.PHP_EOL;
           $bild .= $bild_img;
+          $bild .= '</figure>'.PHP_EOL;
         }
 
         $outback .= '<h3>Bild</h3>';

@@ -11,28 +11,21 @@ $redactor               = 0;
 
 $ausgabeform            = '';
 
-if(!rex_addon::get('rex_redactor')->isAvailable() AND !rex_addon::get('rex_markitup')->isAvailable()) {
-    echo rex_view::error('Dieses Modul ben&ouml;tigt das "Redactor" oder das "MarkItUp" Addon!');
-}
-
 if(rex_addon::get('rex_redactor')->isAvailable()) {
   $editor = 'redactor';
-
   if (!rex_redactor::profileExists('simple')) {
-    rex_redactor::insertProfile('simple', 'Modulsammlung Profil', 'relative', 'bold,italic,underline,deleted,unorderedlist', 'rex_linkmap,rex_mediapool_link');
+    rex_redactor::insertProfile('simple', 'Angelegt durch das Addon Modulsammlung', 'relative', 'bold,italic,underline,deleted,unorderedlist', 'rex_linkmap,rex_mediapool_link');
   }
-
-}
-if(rex_addon::get('rex_markitup')->isAvailable()) {
+} else if(rex_addon::get('rex_markitup')->isAvailable()) {
   $editor = 'markitup';
-
   if (!rex_markitup::profileExists('simple')) {
-  rex_markitup::insertProfile('simple', 'Modulsammlung Profil', 'textile', 'bold,italic,underline,deleted,quote,sub,sup,code,unorderedlist,link[internal|external|mailto]');
+  rex_markitup::insertProfile('simple', 'Angelegt durch das Addon Modulsammlung', 'textile', 'bold,italic,underline,deleted,quote,sub,sup,code,unorderedlist,link[internal|external|mailto]');
   }
   if (!rex_addon::get('textile')->isAvailable()) {
       echo rex_view::error('Dieses Modul benötigt das "textile" Addon!');
   }
-
+} else {
+    echo rex_view::error('Dieses Modul ben&ouml;tigt das "Redactor" oder das "MarkItUp" Addon!');
 }
 
 $values = '';

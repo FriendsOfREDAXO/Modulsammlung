@@ -46,8 +46,10 @@ if ($breite == '100% Browserbreite') {
 
 if ($erklaerungstext !='') {
   if ($editor == 'markitup' AND rex_addon::get('textile')->isAvailable()) {
+    $erklaerungstext = htmlspecialchars_decode($erklaerungstext);
     $erklaerungstext = str_replace('<br />', '', $erklaerungstext);
     $erklaerungstext = rex_textile::parse($erklaerungstext);
+    $erklaerungstext = str_replace('###', '&#x20;', $erklaerungstext);
   }
 }
 

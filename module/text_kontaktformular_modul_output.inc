@@ -25,17 +25,21 @@ if ($emailabsender == '') {
 }
 
 if ($textnebenformular !='') {
+  $textnebenformular = htmlspecialchars_decode($textnebenformular);
   if ($editor == 'markitup' AND rex_addon::get('textile')->isAvailable()) {
     $textnebenformular = str_replace('<br />', '', $textnebenformular);
     $textnebenformular = rex_textile::parse($textnebenformular);
+    $textnebenformular = str_replace('###', '&#x20;', $textnebenformular);
   }
 }
 
-$textdanke = $textdanke1;
+$textdanke1 = $textdanke;
 if ($textdanke !='') {
+  $textdanke = htmlspecialchars_decode($textdanke);
   if ($editor == 'markitup' AND rex_addon::get('textile')->isAvailable()) {
     $textdanke = str_replace('<br />', '', $textdanke);
     $textdanke = rex_textile::parse($textdanke);
+    $textdanke = str_replace('###', '&#x20;', $textdanke);
   }
 }
 
@@ -62,8 +66,8 @@ validate|empty|name|Bitte geben Sie eine Nachricht ein.|
 action|email|'.$emailabsender.'|'.$email.'|Nachricht von der Webseite (Kontaktformular)|<b>Name:</b> ###name###<br/><b>E-Mail:</b> ###email###<br/><br/><b>Nachricht:</b><br/>###nachricht###
 
 submit|label|Senden|||
+action|showtext|'.$textdanke1.'|||1
 
-action|showtext|'.$textdanke1.'|||'.$ausgabe_art.'
 ';
 
 $yform->setFormData($form_data);
@@ -77,7 +81,7 @@ echo '
   <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-6">
-        '.$textnebenformular1.'
+        '.$textnebenformular.'
     </div>
     <div class="col-xs-12 col-sm-6">
         '.$yform->getForm().'
@@ -104,7 +108,7 @@ echo '
        </div>
        <div class="form-group">
          <label class="col-sm-3 control-label">Text (Danke)</label>
-         <div class="col-sm-9">'.$textdanke1.'</div>
+         <div class="col-sm-9">'.$textdanke.'</div>
        </div>
     </div>
   </div>

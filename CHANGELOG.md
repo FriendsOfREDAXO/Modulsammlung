@@ -1,6 +1,21 @@
 Modulsammlung - Changelog
 ===
 
+#### 03.01.2016 Version 3.0-beta
+
+* Text / Bild: Textfelder / Redacor Bug behoben
+* Text / Bild: Textfelder / Darstellungsfehler behoben
+* Text / Bild: img mit <figure> eingebunden
+* Text / Bild: Textile Ausgabe neu
+* Google Maps: Redacor Bug behoben
+* Google Maps: Textile Ausgabe neu
+* Nur Text: Textile Ausgabe neu
+* Sitemap: Info erstellt
+* Sitemap: Textile Ausgabe neu
+* Text / Kontaktformular: Textile Ausgabe neu
+* Text / Kontaktformular: Textile Bug behoben
+* Text / Kontaktformular: Redacor Bug behoben
+
 #### 21.12.2015 Version 2.9-beta
 
 ###### Neues Modul: Nur Text

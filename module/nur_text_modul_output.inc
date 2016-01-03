@@ -14,8 +14,10 @@ $text             = 'REX_VALUE[1]';
 
 if ($text !='') {
   if ($editor == 'markitup' AND rex_addon::get('textile')->isAvailable()) {
-    $text = str_replace('<br />', '', $text);
+    $text = htmlspecialchars_decode($text);
+    $text = str_replace('<br />', '',$text);
     $text = rex_textile::parse($text);
+    $text = str_replace('###', '&#x20;',$text);
   }
 }
 

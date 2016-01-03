@@ -9,5 +9,5 @@
 <br/>
 <b>Voraussetzungen</b>
 <ul>
-  <li>Redactor oder MarkItUp (+Textile) Addon</li>
+  <li>Redactor oder MarkItUp (+Textile) Addon<br/>Beim ersten Aufruf des Moduls wird das jeweilige Profil angelegt. Danach sollte Redactor / MarkItUp funktionieren.</li>
 </ul>

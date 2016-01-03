@@ -1,10 +1,6 @@
 <?php
 //  ToDo
-//
-//  - auf Userberechtigungen (Community - heul) prüfen
-//  - auf yRewrite prüfen
 //  - testen ob Redactor funktioniert
-//  - durch URL Controls erzeugte berüksichtigen...?!
 //
 //
 //  Das Modul basiert auf einem Modul von Stefan Kittel (k²bytes)
@@ -32,8 +28,10 @@ $seo_infos        = 'REX_VALUE[4]';
 
 if ($text !='') {
   if ($editor == 'markitup' AND rex_addon::get('textile')->isAvailable()) {
-    $text = str_replace('<br />', '', $text);
+    $text = htmlspecialchars_decode($text);
+    $text = str_replace('<br />', '',$text);
     $text = rex_textile::parse($text);
+    $text = str_replace('###', '&#x20;',$text);
   }
 }
 
@@ -104,7 +102,6 @@ function ModulPrintCatList($categories, $printArticles, $printStartArticles, $sh
   }
 }
 
-
 if(!rex::isBackend()) {
 
 $categories = rex_category::getRootCategories();
@@ -123,11 +120,16 @@ if (is_array($categories) && count($categories) > 0){
   <div id="trennlinie" class="bereichswrapper">
     <div class="form-horizontal output">
      <h2>Sitemap</h2>
-       <div class="form-group">
-         <label class="col-sm-3 control-label">Text</label>
-         <div class="col-sm-9">'.$text.'</div>
-       </div>
-       <div class="form-group">
+     ';
+
+  if ($text !='') {
+  echo '
+    <div class="form-group">
+      <label class="col-sm-3 control-label">Text</label>
+      <div class="col-sm-9">'.$text.'</div>
+    </div>';
+  }
+  echo '<div class="form-group">
          <label class="col-sm-3 control-label">Artikel anzeigen</label>
          <div class="col-sm-9">REX_VALUE[2]</div>
        </div>

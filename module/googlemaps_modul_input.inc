@@ -1,27 +1,22 @@
 <?php
 $editor                 = 0;
-
-if(!rex_addon::get('rex_redactor')->isAvailable() AND !rex_addon::get('rex_markitup')->isAvailable()) {
-    echo rex_view::error('Dieses Modul ben&ouml;tigt das "Redactor" oder das "MarkItUp" Addon!');
-}
 if(rex_addon::get('rex_redactor')->isAvailable()) {
   $editor = 'redactor';
-
-  if (!rex_markitup::profileExists('supersimple')) {
-    rex_markitup::insertProfile('supersimple', 'Google Maps Modul Profil', 'bold,italic,underline');
+  if (!rex_redactor::profileExists('supersimple')) {
+    rex_redactor::insertProfile('supersimple', 'Angelegt durch das Addon Modulsammlung', 'relative', 'bold,italic,underline');
   }
-}
-if(rex_addon::get('rex_markitup')->isAvailable()) {
+} else if(rex_addon::get('rex_markitup')->isAvailable()) {
   $editor = 'markitup';
-
   if (!rex_markitup::profileExists('supersimple')) {
-    rex_markitup::insertProfile('supersimple', 'Google Maps Modul Profil', 'textile', 'bold,italic,underline');
+      rex_markitup::insertProfile('supersimple', 'Angelegt durch das Addon Modulsammlung', 'textile', 'bold,italic,underline');
   }
-
   if (!rex_addon::get('textile')->isAvailable()) {
       echo rex_view::error('Dieses Modul benötigt das "textile" Addon!');
   }
+} else {
+    echo rex_view::error('Dieses Modul ben&ouml;tigt das "Redactor" oder das "MarkItUp" Addon!');
 }
+
 ?>
 
 <div class="modul-content">

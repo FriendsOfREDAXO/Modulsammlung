@@ -5,24 +5,25 @@ $editor                 = 0;
 if(!rex_addon::get('rex_redactor')->isAvailable() AND !rex_addon::get('rex_markitup')->isAvailable()) {
     echo rex_view::error('Dieses Modul ben&ouml;tigt das "Redactor" oder das "MarkItUp" Addon!');
 }
+
 if(rex_addon::get('rex_redactor')->isAvailable()) {
   $editor = 'redactor';
 
   if (!rex_redactor::profileExists('simple')) {
-  rex_redactor::insertProfile('simple', 'Angelegt durch das Addon MOdulsammlung', 'bold,italic,underline');
+    rex_redactor::insertProfile('simple', 'Angelegt durch das Addon Modulsammlung', 'relative', 'bold,italic,underline,deleted,unorderedlist', 'rex_linkmap,rex_mediapool_link');
   }
 
 }
-
 if(rex_addon::get('rex_markitup')->isAvailable()) {
   $editor = 'markitup';
 
   if (!rex_markitup::profileExists('simple')) {
-    rex_markitup::insertProfile('simple', 'Angelegt durch das Addon MOdulsammlung', 'textile', 'bold,italic,underline');
+  rex_markitup::insertProfile('simple', 'Angelegt durch das Addon Modulsammlung', 'textile', 'bold,italic,underline,deleted,quote,sub,sup,code,unorderedlist,link[internal|external|mailto]');
   }
   if (!rex_addon::get('textile')->isAvailable()) {
       echo rex_view::error('Dieses Modul benötigt das "textile" Addon!');
   }
+
 }
 
 ?><div class="modul-content">
@@ -97,7 +98,7 @@ if(rex_addon::get('rex_markitup')->isAvailable()) {
     <div class="form-group">
       <label class="col-sm-3 control-label">SEO Infos anzeigen</label>
         <div class="col-sm-9">
-          <p>Es werde die Informationen "Title" und "Description" ausgegeben. Am besten auf "nein" stellen sobald die Webseite onlione ist.</p>
+          <p>Es werde die Informationen "Title" und "Description" ausgegeben. Am besten auf "nein" stellen sobald die Webseite online ist.</p>
         </div>
     </div>
 
