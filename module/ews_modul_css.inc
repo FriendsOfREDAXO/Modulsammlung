@@ -10,7 +10,7 @@
 
 .responsive-video {
   position: relative;
-  padding-bottom: 56.25%; /* Default for 1600x900 videos 16:9 ratio*/
+  padding-bottom: 56.25%; /* 16:9 ratio*/
   padding-top: 0px;
   height: 0;
   overflow: hidden;

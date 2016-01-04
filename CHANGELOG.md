@@ -1,5 +1,9 @@
 Modulsammlung - Changelog
 ===
+#### 04.01.2016 Version 3.1-beta
+
+* Installationsseite komplett neu erstellt
+* Kleinere Änderungen
 
 #### 03.01.2016 Version 3.0-beta
 
