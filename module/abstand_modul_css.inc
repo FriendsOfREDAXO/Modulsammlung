@@ -50,16 +50,21 @@ $trennline: #ccc;
   &.trennerliniemitgrafik {
     position: relative;
     min-height: 30px;
-
     span {
+	   height: 30px;
       &:before {
-         margin-right: 15px;
+    	 position: absolute;
+	     top: 45%;
+         margin-right: 50%;
          background: $trennline !important;
       }
       &:after {
+	    position: absolute;
+        top: 45%;
         margin-left: 15px;
         background: $trennline !important;
       }
     }
   }
+    
 }
