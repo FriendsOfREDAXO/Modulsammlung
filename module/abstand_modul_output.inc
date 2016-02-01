@@ -1,13 +1,14 @@
 <?php
 if ('REX_VALUE[1]' == '') {
   $abstand = 30;
-  $abstand2 = $abstand/2;
 } else {
   $abstand = 'REX_VALUE[1]';
 }
 
 $breite               = 'REX_VALUE[4]';
 $container            = '';
+
+  $abstand2 = ($abstand/2)-17;
 
 if ($breite == '100% Browserbreite') {
   $container = 'container-fluid';
@@ -24,10 +25,9 @@ if(!rex::isBackend()) {
   }
   if ('REX_VALUE[3]' == 'ja') {
     $klasse = 'trennerliniemitgrafik';
-    $grafik = '<img src="./media/trenner.png" width="30" height="30" alt= "">';
+    $grafik = '<img src="index.php?rex_media_type=trenner&rex_media_file=trenner.png" width="30" height="30" alt= "">';
     if ('REX_VALUE[1]' <= 30) {
       $abstand = 30;
-      $abstand2 = 15;
     }
   }
 
@@ -44,7 +44,7 @@ if (isset($REX['project_vars']) && isset($REX['project_vars']['sidenavi']) && $R
   ';
 }
 
-echo '<div class="trenner '.$klasse.'" style="height: '.$abstand.'px; line-height: '.$abstand.'px;"><span>'.$grafik.'</span></div>';
+echo '<div class="trenner '.$klasse.'" style="height: '.$abstand.'px;"><span style="top: '.$abstand2.'px">'.$grafik.'</span></div>';
 echo '</div>'.PHP_EOL;
 
 } else {
