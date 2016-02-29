@@ -288,10 +288,9 @@ foreach ($reihenfolge as $nummer) {
         $text = '';
         if ($value['text'] !='') {
           if ($editor == 'markitup' AND rex_addon::get('textile')->isAvailable()) {
-            $value['text'] = htmlspecialchars_decode($value['text']);
-            $value['text'] = str_replace('<br />', '', $value['text']);
-            $value['text'] = rex_textile::parse($value['text']);
-            $value['text'] = str_replace('###', '&#x20;', $value['text']);
+              if ($editor == 'markitup' AND rex_addon::get('textile')->isAvailable()) {
+                $value['text'] =  rex_markitup::parseOutput('textile', $value['text']);
+              }
           }
 
           $text = '<div class="text">'.$value['text'].'</div>'.PHP_EOL;

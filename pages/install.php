@@ -258,7 +258,113 @@ echo '
       }
     }
 
+////////
+//
+// Text / Kontaktformular
+//
+////////
 
+$text_kontaktformular_modul_name = '';
+echo '
+  <tr>
+    <form action="' . rex_url::currentBackendPage() . '" method="POST">
+    <td class="rex-table-icon"><i class="rex-icon rex-icon-module" style="font-size: 2rem; margin: 7px 0 0 8px;"></i></a></td>
+      <td data-title="Modulbezeichnung">
+
+        <input class="form-control" type="text" name="text_kontaktformular_modul_name" value="0040 - Text / Kontaktformular">
+        <input type="hidden" name="install" value="7">
+
+          <div id="text_kontaktformular_info" class="collapse">
+            <div style="margin-top: 10px;padding: 10px; background: #f5f5f5; border: 1px solid #ccc;">
+              '.rex_file::get(rex_path::addon('modulsammlung','module/text_kontaktformular_modul_info.inc')).'
+            </div>
+          </div>
+
+      </td>
+    <td data-title="Info"><span class="btn btn-success" data-toggle="collapse" data-target="#text_kontaktformular_info">Info</span></td>
+    <td data-title="Techn. Infos"></td>
+    <td data-title="Installieren">
+      <input type="submit" class="btn btn-primary" class="rex-button" value="' . $this->i18n('form_modul_install_button', $text_kontaktformular_modul_name) . '" />
+    </td>
+    </form>
+    </tr>
+';
+
+
+  if (rex_request('install',"integer") == 7) {
+    $text_kontaktformular_modul_name           = rex_post("text_kontaktformular_modul_name", 'string');
+
+    if ($text_kontaktformular_modul_name == '') {
+      echo rex_view::warning('Bitte einen Modulnamen angeben!');
+    } else {
+      $input = rex_file::get(rex_path::addon('modulsammlung','module/text_kontaktformular_modul_input.inc'));
+      $output = rex_file::get(rex_path::addon('modulsammlung','module/text_kontaktformular_modul_output.inc'));
+
+      $mi = rex_sql::factory();
+      $mi->debugsql = 0;
+      $mi->setTable('rex_module');
+      $mi->setValue('input', $input);
+      $mi->setValue('output', $output);
+      $mi->setValue('name', $text_kontaktformular_modul_name);
+      $mi->insert();
+      $modul_id = (int) $mi->getLastId();
+        echo rex_view::success('Das Modul "' . $text_kontaktformular_modul_name . '" wurde angelegt. ');
+      }
+    }
+
+
+////////
+//
+// Nur Text
+//
+////////
+
+$nur_text_modul_name = '';
+echo '
+  <tr>
+    <form action="' . rex_url::currentBackendPage() . '" method="POST">
+    <td class="rex-table-icon"><i class="rex-icon rex-icon-module" style="font-size: 2rem; margin: 7px 0 0 8px;"></i></a></td>
+      <td data-title="Modulbezeichnung">
+
+        <input class="form-control" type="text" name="nur_text_modul_name" value="0060 - Nur Text (Footer, Seitenleiste etc.)">
+        <input type="hidden" name="install" value="6">
+
+          <div id="nur_text_info" class="collapse">
+            <div style="margin-top: 10px;padding: 10px; background: #f5f5f5; border: 1px solid #ccc;">
+              '.rex_file::get(rex_path::addon('modulsammlung','module/nur_text_modul_info.inc')).'
+            </div>
+          </div>
+
+      </td>
+    <td data-title="Info"><span class="btn btn-success" data-toggle="collapse" data-target="#nur_text_info">Info</span></td>
+    <td data-title="Techn. Infos"></td>
+    <td data-title="Installieren">
+      <input type="submit" class="btn btn-primary" class="rex-button" value="' . $this->i18n('form_modul_install_button', $nur_text_modul_name) . '" />
+    </td>
+    </form>
+    </tr>
+';
+
+    if (rex_request('install',"integer") == 6) {
+      $nur_text_modul_name           = rex_post("nur_text_modul_name", 'string');
+
+      if ($nur_text_modul_name == '') {
+        echo rex_view::warning('Bitte einen Modulnamen angeben!');
+      } else {
+       $input = rex_file::get(rex_path::addon('modulsammlung','module/nur_text_modul_input.inc'));
+       $output = rex_file::get(rex_path::addon('modulsammlung','module/nur_text_modul_output.inc'));
+
+       $mi = rex_sql::factory();
+       $mi->debugsql = 0;
+       $mi->setTable('rex_module');
+       $mi->setValue('input', $input);
+       $mi->setValue('output', $output);
+       $mi->setValue('name', $nur_text_modul_name);
+       $mi->insert();
+       $modul_id = (int) $mi->getLastId();
+       echo rex_view::success('Das Modul "' . $nur_text_modul_name . '" wurde angelegt. ');
+      }
+    }
 
 
 ////////
@@ -410,120 +516,6 @@ echo '
     }
 
 
-
-
-
-
-
-////////
-//
-// Nur Text
-//
-////////
-
-$nur_text_modul_name = '';
-echo '
-  <tr>
-    <form action="' . rex_url::currentBackendPage() . '" method="POST">
-    <td class="rex-table-icon"><i class="rex-icon rex-icon-module" style="font-size: 2rem; margin: 7px 0 0 8px;"></i></a></td>
-      <td data-title="Modulbezeichnung">
-
-        <input class="form-control" type="text" name="nur_text_modul_name" value="0060 - Nur Text (Footer, Seitenleiste etc.)">
-        <input type="hidden" name="install" value="6">
-
-          <div id="nur_text_info" class="collapse">
-            <div style="margin-top: 10px;padding: 10px; background: #f5f5f5; border: 1px solid #ccc;">
-              '.rex_file::get(rex_path::addon('modulsammlung','module/nur_text_modul_info.inc')).'
-            </div>
-          </div>
-
-      </td>
-    <td data-title="Info"><span class="btn btn-success" data-toggle="collapse" data-target="#nur_text_info">Info</span></td>
-    <td data-title="Techn. Infos"></td>
-    <td data-title="Installieren">
-      <input type="submit" class="btn btn-primary" class="rex-button" value="' . $this->i18n('form_modul_install_button', $nur_text_modul_name) . '" />
-    </td>
-    </form>
-    </tr>
-';
-
-    if (rex_request('install',"integer") == 6) {
-      $nur_text_modul_name           = rex_post("nur_text_modul_name", 'string');
-
-      if ($nur_text_modul_name == '') {
-        echo rex_view::warning('Bitte einen Modulnamen angeben!');
-      } else {
-       $input = rex_file::get(rex_path::addon('modulsammlung','module/nur_text_modul_input.inc'));
-       $output = rex_file::get(rex_path::addon('modulsammlung','module/nur_text_modul_output.inc'));
-
-       $mi = rex_sql::factory();
-       $mi->debugsql = 0;
-       $mi->setTable('rex_module');
-       $mi->setValue('input', $input);
-       $mi->setValue('output', $output);
-       $mi->setValue('name', $nur_text_modul_name);
-       $mi->insert();
-       $modul_id = (int) $mi->getLastId();
-       echo rex_view::success('Das Modul "' . $nur_text_modul_name . '" wurde angelegt. ');
-      }
-    }
-
-
-
-
-////////
-//
-// Text / Kontaktformular
-//
-////////
-
-$text_kontaktformular_modul_name = '';
-echo '
-  <tr>
-    <form action="' . rex_url::currentBackendPage() . '" method="POST">
-    <td class="rex-table-icon"><i class="rex-icon rex-icon-module" style="font-size: 2rem; margin: 7px 0 0 8px;"></i></a></td>
-      <td data-title="Modulbezeichnung">
-
-        <input class="form-control" type="text" name="text_kontaktformular_modul_name" value="040 - Text / Kontaktformular">
-        <input type="hidden" name="install" value="7">
-
-          <div id="text_kontaktformular_info" class="collapse">
-            <div style="margin-top: 10px;padding: 10px; background: #f5f5f5; border: 1px solid #ccc;">
-              '.rex_file::get(rex_path::addon('modulsammlung','module/text_kontaktformular_modul_info.inc')).'
-            </div>
-          </div>
-
-      </td>
-    <td data-title="Info"><span class="btn btn-success" data-toggle="collapse" data-target="#text_kontaktformular_info">Info</span></td>
-    <td data-title="Techn. Infos"></td>
-    <td data-title="Installieren">
-      <input type="submit" class="btn btn-primary" class="rex-button" value="' . $this->i18n('form_modul_install_button', $text_kontaktformular_modul_name) . '" />
-    </td>
-    </form>
-    </tr>
-';
-
-
-  if (rex_request('install',"integer") == 7) {
-    $text_kontaktformular_modul_name           = rex_post("text_kontaktformular_modul_name", 'string');
-
-    if ($text_kontaktformular_modul_name == '') {
-      echo rex_view::warning('Bitte einen Modulnamen angeben!');
-    } else {
-      $input = rex_file::get(rex_path::addon('modulsammlung','module/text_kontaktformular_modul_input.inc'));
-      $output = rex_file::get(rex_path::addon('modulsammlung','module/text_kontaktformular_modul_output.inc'));
-
-      $mi = rex_sql::factory();
-      $mi->debugsql = 0;
-      $mi->setTable('rex_module');
-      $mi->setValue('input', $input);
-      $mi->setValue('output', $output);
-      $mi->setValue('name', $text_kontaktformular_modul_name);
-      $mi->insert();
-      $modul_id = (int) $mi->getLastId();
-        echo rex_view::success('Das Modul "' . $text_kontaktformular_modul_name . '" wurde angelegt. ');
-      }
-    }
 
 
 echo '

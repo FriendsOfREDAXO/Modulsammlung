@@ -1,20 +1,27 @@
 <?php
+
 $editor                 = 0;
+
+if(!rex_addon::get('rex_redactor')->isAvailable() AND !rex_addon::get('rex_markitup')->isAvailable()) {
+    echo rex_view::error('Dieses Modul ben&ouml;tigt das "Redactor" oder das "MarkItUp" Addon!');
+}
+
 if(rex_addon::get('rex_redactor')->isAvailable()) {
   $editor = 'redactor';
+
   if (!rex_redactor::profileExists('supersimple')) {
     rex_redactor::insertProfile('supersimple', 'Angelegt durch das Addon Modulsammlung', 'relative', 'bold,italic,underline');
   }
-} else if(rex_addon::get('rex_markitup')->isAvailable()) {
+}
+if(rex_addon::get('rex_markitup')->isAvailable()) {
   $editor = 'markitup';
+
   if (!rex_markitup::profileExists('supersimple')) {
       rex_markitup::insertProfile('supersimple', 'Angelegt durch das Addon Modulsammlung', 'textile', 'bold,italic,underline');
   }
   if (!rex_addon::get('textile')->isAvailable()) {
       echo rex_view::error('Dieses Modul benötigt das "textile" Addon!');
   }
-} else {
-    echo rex_view::error('Dieses Modul ben&ouml;tigt das "Redactor" oder das "MarkItUp" Addon!');
 }
 
 ?>
@@ -177,7 +184,7 @@ if(rex_addon::get('rex_redactor')->isAvailable()) {
       <div class="form-group">
         <label class="col-sm-3 control-label">Erklärungstext</label>
         <div class="col-sm-9">
-          <textarea id="erklaerungstext" class="form-control <?php echo $editor.' '.$editor; ?>Editor-supersimple" name="REX_INPUT_VALUE[10]">REX_VALUE[10]</textarea>
+          <textarea id="erklaerungstext <?php echo $editor; ?>_1" class="form-control <?php echo $editor.' '.$editor; ?>Editor-supersimple" name="REX_INPUT_VALUE[1]">REX_VALUE[10]</textarea>
         </div>
       </div>
 

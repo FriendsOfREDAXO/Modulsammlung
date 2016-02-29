@@ -1,9 +1,9 @@
 <?php
-$anzeige_ueberschriften = 0;//ueberschrift
-$anzeige_text           = 0;//text
-$anzeige_bild           = 0;//bild
-$anzeige_link           = 0;//link
-$anzeige_video          = 0;//video
+$anzeige_ueberschriften = 1;//ueberschrift
+$anzeige_text           = 1;//text
+$anzeige_bild           = 1;//bild
+$anzeige_link           = 1;//link
+$anzeige_video          = 1;//video
 $anzeige_download       = 0;//download
 
 $editor                 = 0;
@@ -11,22 +11,28 @@ $redactor               = 0;
 
 $ausgabeform            = '';
 
+if(!rex_addon::get('rex_redactor')->isAvailable() AND !rex_addon::get('rex_markitup')->isAvailable()) {
+    echo rex_view::error('Dieses Modul ben&ouml;tigt das "Redactor" oder das "MarkItUp" Addon!');
+}
+
 if(rex_addon::get('rex_redactor')->isAvailable()) {
   $editor = 'redactor';
+
   if (!rex_redactor::profileExists('simple')) {
     rex_redactor::insertProfile('simple', 'Angelegt durch das Addon Modulsammlung', 'relative', 'bold,italic,underline,deleted,unorderedlist', 'rex_linkmap,rex_mediapool_link');
   }
-} else if(rex_addon::get('rex_markitup')->isAvailable()) {
+}
+if(rex_addon::get('rex_markitup')->isAvailable()) {
   $editor = 'markitup';
+
   if (!rex_markitup::profileExists('simple')) {
   rex_markitup::insertProfile('simple', 'Angelegt durch das Addon Modulsammlung', 'textile', 'bold,italic,underline,deleted,quote,sub,sup,code,unorderedlist,link[internal|external|mailto]');
   }
   if (!rex_addon::get('textile')->isAvailable()) {
       echo rex_view::error('Dieses Modul benötigt das "textile" Addon!');
   }
-} else {
-    echo rex_view::error('Dieses Modul ben&ouml;tigt das "Redactor" oder das "MarkItUp" Addon!');
 }
+
 
 $values = '';
 $values = array();
@@ -201,7 +207,7 @@ echo '
       <div class="form-group">
         <label class="col-sm-3 control-label">Fließext</label>
         <div class="col-sm-9">
-                 <textarea class="form-control '.$editor.' '.$editor.'Editor-simple" id="'.$editor.'_' . $i . '" name="REX_INPUT_VALUE[' . $i . '][text]">' . (isset($values[$i]['text']) ? $values[$i]['text'] : '') . '</textarea>
+                 <textarea class="form-control '.$editor.' '.$editor.'Editor-simple" id="'.$editor.'_textile_' . $i . '" name="REX_INPUT_VALUE[' . $i . '][text]">' . (isset($values[$i]['text']) ? $values[$i]['text'] : '') . '</textarea>
         </div>
       </div>'.PHP_EOL;
 }
@@ -773,6 +779,7 @@ jQuery(document).ready(function($) {
 
 #ews_modul .tab-content {
   background: #f5f5f5;
+  margin-top: -20px;
   padding: 10px 30px 30px 15px;
   border-right: 1px solid #9da6b2;
   border-left: 1px solid #9da6b2;

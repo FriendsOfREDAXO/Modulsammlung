@@ -1,13 +1,4 @@
 <?php
-//  ToDo
-//  - testen ob Redactor funktioniert
-//
-//
-//  Das Modul basiert auf einem Modul von Stefan Kittel (k²bytes)
-//  Sitemap, Kategorieliste mit Artikeln und Textauszug
-//  (http://www.redaxo.org/de/download/module/?modul_id=450)
-//
-//
 
 $editor                 = 0;
 if(!rex_addon::get('rex_redactor')->isAvailable() AND !rex_addon::get('rex_markitup')->isAvailable()) {
@@ -20,7 +11,6 @@ if(rex_addon::get('rex_markitup')->isAvailable()) {
   $editor = 'markitup';
 }
 
-
 $text             = 'REX_VALUE[1]';
 $artikel          = 'REX_VALUE[2]';
 $start_artikel    = 'REX_VALUE[3]';
@@ -28,10 +18,9 @@ $seo_infos        = 'REX_VALUE[4]';
 
 if ($text !='') {
   if ($editor == 'markitup' AND rex_addon::get('textile')->isAvailable()) {
-    $text = htmlspecialchars_decode($text);
-    $text = str_replace('<br />', '',$text);
-    $text = rex_textile::parse($text);
-    $text = str_replace('###', '&#x20;',$text);
+    $text =  rex_markitup::parseOutput ('textile', 'REX_VALUE[id=1 output="html"]');
+  } else {
+    $text =  'REX_VALUE[id=1 output="html"]';
   }
 }
 

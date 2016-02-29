@@ -9,7 +9,7 @@ if(rex_addon::get('rex_redactor')->isAvailable()) {
   $editor = 'redactor';
 
   if (!rex_redactor::profileExists('simple')) {
-     rex_redactor::insertProfile('simple', 'Angelegt durch das Addon Modulsammlung', 'bold,italic,underline,deleted,unorderedlist', 'rex_linkmap,rex_mediapool_link');
+    rex_redactor::insertProfile('simple', 'Angelegt durch das Addon Modulsammlung', 'relative', 'bold,italic,underline,deleted,unorderedlist', 'rex_linkmap,rex_mediapool_link');
   }
 }
 if(rex_addon::get('rex_markitup')->isAvailable()) {
@@ -43,13 +43,13 @@ if(rex_addon::get('rex_markitup')->isAvailable()) {
     <div class="form-group">
       <label class="col-sm-3 control-label">Text neben Formular</label>
       <div class="col-sm-9">
-        <textarea  class="form-control <?php echo $editor.' '.$editor; ?>Editor-simple" name="REX_INPUT_VALUE[1]">REX_VALUE[1]</textarea>
+          <textarea id="<?php echo $editor; ?>_textile_1" class="form-control <?php echo $editor.' '.$editor; ?>Editor-simple" name="REX_INPUT_VALUE[1]">REX_VALUE[1]</textarea>
       </div>
     </div>
     <div class="form-group">
       <label class="col-sm-3 control-label">Text (Danke)</label>
         <div class="col-sm-9">
-          <textarea  class="form-control <?php echo $editor.' '.$editor; ?>Editor-simple" name="REX_INPUT_VALUE[3]">REX_VALUE[3]</textarea>
+          <textarea id="<?php echo $editor; ?>_textile_2" class="form-control <?php echo $editor.' '.$editor; ?>Editor-simple" name="REX_INPUT_VALUE[1]">REX_VALUE[1]</textarea>
         </div>
     </div>
 

@@ -14,15 +14,13 @@ $text             = 'REX_VALUE[1]';
 
 if ($text !='') {
   if ($editor == 'markitup' AND rex_addon::get('textile')->isAvailable()) {
-    $text = htmlspecialchars_decode($text);
-    $text = str_replace('<br />', '',$text);
-    $text = rex_textile::parse($text);
-    $text = str_replace('###', '&#x20;',$text);
+    $text =  rex_markitup::parseOutput ('textile', 'REX_VALUE[id=1 output="html"]');
+  } else {
+    $text =  'REX_VALUE[id=1 output="html"]';
   }
 }
 
 $text = '<div class="text">'.$text.'</div>'.PHP_EOL;
-
 
 if(!rex::isBackend()) {
 

@@ -1,5 +1,13 @@
 Modulsammlung - Changelog
 ===
+
+#### 29.02.2016 Version 3.5-beta
+
+* Lizenz geändert
+* Bezeichnung "0040 - Text / Kontaktformular" geändert
+* Reihenfolge der Module geändert
+* Update der Module
+
 #### 04.01.2016 Version 3.1-beta
 
 * Installationsseite komplett neu erstellt

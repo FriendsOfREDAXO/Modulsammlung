@@ -33,7 +33,7 @@ $infotext             = 'REX_VALUE[4]';
 
 $routenplaner_anzeige = 'REX_VALUE[8]';
 $sendenbutton         = 'REX_VALUE[9]';
-$erklaerungstext       = 'REX_VALUE[10]';
+$erklaerungstext       = 'REX_VALUE[id=1 output="html"]';
 
 $breite               = 'REX_VALUE[12]';
 $container            = '';
@@ -46,10 +46,7 @@ if ($breite == '100% Browserbreite') {
 
 if ($erklaerungstext !='') {
   if ($editor == 'markitup' AND rex_addon::get('textile')->isAvailable()) {
-    $erklaerungstext = htmlspecialchars_decode($erklaerungstext);
-    $erklaerungstext = str_replace('<br />', '', $erklaerungstext);
-    $erklaerungstext = rex_textile::parse($erklaerungstext);
-    $erklaerungstext = str_replace('###', '&#x20;', $erklaerungstext);
+    $erklaerungstext =  rex_markitup::parseOutput ('textile', $erklaerungstext);
   }
 }
 
