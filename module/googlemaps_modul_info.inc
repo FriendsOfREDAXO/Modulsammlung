@@ -6,6 +6,6 @@
 <p>
 <ul>
   <li>jQuery im Frontend</li>
-  <li>Redactor oder MarkItUp (+Textile) Addon</li>
+  <li>MarkItUp (+Textile) Addon</li>
 </ul>
 </p>

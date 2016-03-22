@@ -1,26 +1,14 @@
 <?php
-$editor                 = 0;
-if(!rex_addon::get('rex_redactor')->isAvailable() AND !rex_addon::get('rex_markitup')->isAvailable()) {
-    echo rex_view::error('Dieses Modul ben&ouml;tigt das "Redactor" oder das "MarkItUp" Addon!');
-}
-if(rex_addon::get('rex_redactor')->isAvailable()) {
-  $editor = 'redactor';
- }
-if(rex_addon::get('rex_markitup')->isAvailable()) {
-  $editor = 'markitup';
+if(!rex_addon::get('rex_markitup')->isAvailable()) {
+    echo rex_view::error('Dieses Modul ben&ouml;tigt das "MarkItUp" Addon!');
 }
 
-$text             = 'REX_VALUE[1]';
-
-if ($text !='') {
-  if ($editor == 'markitup' AND rex_addon::get('textile')->isAvailable()) {
-    $text =  rex_markitup::parseOutput ('textile', 'REX_VALUE[id=1 output="html"]');
-  } else {
-    $text =  'REX_VALUE[id=1 output="html"]';
-  }
+if ('REX_VALUE[id=1 isset=1]') {
+    $textile = 'REX_VALUE[id=1 output=html]';
+    $textile = rex_textile::parse($textile);
 }
 
-$text = '<div class="text">'.$text.'</div>'.PHP_EOL;
+$text = '<div class="text">'.$textile.'</div>'.PHP_EOL;
 
 if(!rex::isBackend()) {
 

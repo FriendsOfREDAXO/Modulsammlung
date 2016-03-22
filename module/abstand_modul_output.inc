@@ -31,21 +31,14 @@ if(!rex::isBackend()) {
     }
   }
 
-// Sofern $REX['project_vars']['sidenavi'] nicht leer ist wird immer die Klasse container-fluid benutzt
-$REX['project_vars']['sidenavi'] = rex::getProperty('project_vars');
-
-if (isset($REX['project_vars']) && isset($REX['project_vars']['sidenavi']) && $REX['project_vars']['sidenavi'] != '') {
-  echo  '
-    <div class="container-fluid">
-  ';
-} else {
   echo '
     <div class="'.$container.'">
-  ';
-}
-
-echo '<div class="trenner '.$klasse.'" style="height: '.$abstand.'px;"><span style="top: '.$abstand2.'px">'.$grafik.'</span></div>';
-echo '</div>'.PHP_EOL;
+      <div class="row">
+        <div class="trenner '.$klasse.'" style="height: '.$abstand.'px;">
+            <span style="top: '.$abstand2.'px">'.$grafik.'</span>
+        </div>
+      </div>
+  </div>'.PHP_EOL;
 
 } else {
 

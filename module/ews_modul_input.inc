@@ -6,25 +6,11 @@ $anzeige_link           = 1;//link
 $anzeige_video          = 1;//video
 $anzeige_download       = 0;//download
 
-$editor                 = 0;
-$redactor               = 0;
-
 $ausgabeform            = '';
 
-if(!rex_addon::get('rex_redactor')->isAvailable() AND !rex_addon::get('rex_markitup')->isAvailable()) {
-    echo rex_view::error('Dieses Modul ben&ouml;tigt das "Redactor" oder das "MarkItUp" Addon!');
-}
-
-if(rex_addon::get('rex_redactor')->isAvailable()) {
-  $editor = 'redactor';
-
-  if (!rex_redactor::profileExists('simple')) {
-    rex_redactor::insertProfile('simple', 'Angelegt durch das Addon Modulsammlung', 'relative', 'bold,italic,underline,deleted,unorderedlist', 'rex_linkmap,rex_mediapool_link');
-  }
-}
-if(rex_addon::get('rex_markitup')->isAvailable()) {
-  $editor = 'markitup';
-
+if(!rex_addon::get('rex_markitup')->isAvailable()) {
+    echo rex_view::error('Dieses Modul ben&ouml;tigt das "MarkItUp" Addon!');
+} else {
   if (!rex_markitup::profileExists('simple')) {
   rex_markitup::insertProfile('simple', 'Angelegt durch das Addon Modulsammlung', 'textile', 'bold,italic,underline,deleted,quote,sub,sup,code,unorderedlist,link[internal|external|mailto]');
   }
@@ -186,7 +172,7 @@ echo '
       <div class="form-group">
        <label class="col-sm-3 control-label">Art der Überschrift</label>
           <div class="col-sm-9">
-            <div class="select-style">' . $ueberschrift_art->get() . '</div>
+            <div class="rex-select-style">' . $ueberschrift_art->get() . '</div>
           </div>
       </div>'.PHP_EOL;
 };
@@ -207,7 +193,7 @@ echo '
       <div class="form-group">
         <label class="col-sm-3 control-label">Fließext</label>
         <div class="col-sm-9">
-                 <textarea class="form-control '.$editor.' '.$editor.'Editor-simple" id="'.$editor.'_textile_' . $i . '" name="REX_INPUT_VALUE[' . $i . '][text]">' . (isset($values[$i]['text']) ? $values[$i]['text'] : '') . '</textarea>
+           <textarea id="markitup_textile_' . $i . '" class="form-control markitup markitupEditor-simple" name="REX_INPUT_VALUE[' . $i . '][text]">' . (isset($values[$i]['text']) ? $values[$i]['text'] : '') . '</textarea>
         </div>
       </div>'.PHP_EOL;
 }
@@ -236,7 +222,7 @@ echo '
         <div class="form-group">
           <label class="col-sm-3 control-label">Bildinfos ausgeben</label>
           <div class="col-sm-9">
-            <div class="select-style">' . $bildinformationen->get() . '</div>
+            <div class="rex-select-style">' . $bildinformationen->get() . '</div>
           </div>
         </div>'.PHP_EOL;
 
@@ -244,7 +230,7 @@ echo '
         echo '  <div class="form-group">
               <label class="col-sm-3 control-label">Position</label>
               <div class="col-sm-9">
-                <div class="select-style">' . $bildposition->get() . '</div>
+                <div class="rex-select-style">' . $bildposition->get() . '</div>
               </div>
             </div>'.PHP_EOL;
         }
@@ -252,7 +238,7 @@ echo '
 echo '  <div class="form-group">
           <label class="col-sm-3 control-label">Bild anpassen</label>
           <div class="col-sm-9">
-            <div class="select-style">' . $bildanpassen->get() . '</div>
+            <div class="rex-select-style">' . $bildanpassen->get() . '</div>
           </div>
         </div>'.PHP_EOL;
 }
@@ -291,7 +277,7 @@ echo '
         <div class="form-group">
           <label class="col-sm-3 control-label">Überschrift verlinken</label>
           <div class="col-sm-9">
-            <div class="select-style">' . $ueberschriftlink->get() . '</div>
+            <div class="rex-select-style">' . $ueberschriftlink->get() . '</div>
           </div>
         </div>'.PHP_EOL;
 }
@@ -299,7 +285,7 @@ if ($anzeige_bild) {
 echo '  <div class="form-group">
           <label class="col-sm-3 control-label">Bild verlinken</label>
           <div class="col-sm-9">
-            <div class="select-style">' . $bildlink->get() . '</div>
+            <div class="rex-select-style">' . $bildlink->get() . '</div>
           </div>
         </div>'.PHP_EOL;
 }
@@ -768,14 +754,10 @@ jQuery(document).ready(function($) {
   border-bottom: none;
 }
 
-#ews_modul .redactor-editor,
 #ews_modul .markitup {
   min-height: 200px;
 }
 
-#ews_modul .redactor-box {
-  border: 1px solid #ccc;
-}
 
 #ews_modul .tab-content {
   background: #f5f5f5;
@@ -797,31 +779,6 @@ jQuery(document).ready(function($) {
 #ews_modul .tab-content .control-label {
   font-weight: normal;
   font-size: 12px !important;
-}
-
-#ews_modul .select-style {
-    border: 1px solid #cccccc;
-    width: 100%;
-    overflow: hidden;
-    background: #fff url("data:image/png;base64,R0lGODlhDwAUAIABAAAAAP///yH5BAEAAAEALAAAAAAPABQAAAIXjI+py+0Po5wH2HsXzmw//lHiSJZmUAAAOw==") no-repeat 98% 50%;
-    margin-bottom: 6px;
-}
-#ews_modul .select-style select {
-    padding: 5px 8px;
-    width: 100%;
-    border: none;
-    box-shadow: none;
-    background: transparent;
-    background-image: none;
-    -webkit-appearance: none;
-    -moz-appearance:none;
-    -webkit-border-radius: 0px;
-}
-#ews_modul .select-style select:focus {
-    outline: none;
-}
-#ews_modul .select-style select:hover {
-    cursor: pointer;
 }
 
 #ews_modul input.form-control,

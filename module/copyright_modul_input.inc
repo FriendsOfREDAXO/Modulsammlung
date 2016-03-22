@@ -3,8 +3,7 @@
     <div class="form-horizontal">
       <h3>Alle Bilder mit aus dem Medienpool mit Copyright anzeigen</h3>
         <div class="form-group">
-          <label class="col-sm-3 control-label">Info</label>
-          <div class="col-sm-9">
+          <div class="col-xs-12">
            Alle Bilddateien (jpg,png,gif) im Medienpool deren Copyrightinfo ausgefüllt ist werden im Frontend ausgegeben. Ausnahmen bilden die Bilder bei denen im Medienpool das Feld "Nicht in der Copyrightliste ausgeben" aktiviert ist.
           </div>
         </div>

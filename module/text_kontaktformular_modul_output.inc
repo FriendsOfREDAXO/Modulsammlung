@@ -1,46 +1,26 @@
 <?php
-$editor                 = 0;
-if(!rex_addon::get('rex_redactor')->isAvailable() AND !rex_addon::get('rex_markitup')->isAvailable()) {
-    echo rex_view::error('Dieses Modul ben&ouml;tigt das "Redactor" oder das "MarkItUp" Addon!');
-}
-if(rex_addon::get('rex_redactor')->isAvailable()) {
-  $editor = 'redactor';
-  $ausgabe_art ='1';
- }
-if(rex_addon::get('rex_markitup')->isAvailable()) {
-  $editor = 'markitup';
-  $ausgabe_art ='2';
+if(!rex_addon::get('rex_markitup')->isAvailable()) {
+    echo rex_view::error('Dieses Modul ben&ouml;tigt das "MarkItUp" Addon!');
 }
 
-$ausgabeart           = '0';
-$textnebenformular    = 'REX_VALUE[1]';
-$textnebenformular1   = '';
+$textnebenformular    = '';
 $email                = 'REX_VALUE[2]';
-$textdanke            = 'REX_VALUE[3]';
-$textdanke1           = '';
+$textdanke            = '';
+$textile_danke        = '';
 $emailabsender        = 'REX_VALUE[4]';
 
 if ($emailabsender == '') {
   $emailabsender = rex::getErrorEmail();
 }
 
-if ($textnebenformular !='') {
-  $textnebenformular = htmlspecialchars_decode($textnebenformular);
-  if ($editor == 'markitup' AND rex_addon::get('textile')->isAvailable()) {
-    $textnebenformular = str_replace('<br />', '', $textnebenformular);
-    $textnebenformular = rex_textile::parse($textnebenformular);
-    $textnebenformular = str_replace('###', '&#x20;', $textnebenformular);
-  }
+if ('REX_VALUE[id=1 isset=1]') {
+    $textile = 'REX_VALUE[id=1 output=html]';
+    $textnebenformular = rex_textile::parse($textile);
 }
 
-$textdanke1 = $textdanke;
-if ($textdanke !='') {
-  $textdanke = htmlspecialchars_decode($textdanke);
-  if ($editor == 'markitup' AND rex_addon::get('textile')->isAvailable()) {
-    $textdanke = str_replace('<br />', '', $textdanke);
-    $textdanke = rex_textile::parse($textdanke);
-    $textdanke = str_replace('###', '&#x20;', $textdanke);
-  }
+if ('REX_VALUE[id=3 isset=1]') {
+    $textile_danke = 'REX_VALUE[id=3 output=html]';
+    $textdanke = rex_textile::parse($textile_danke);
 }
 
 
@@ -66,7 +46,7 @@ validate|empty|name|Bitte geben Sie eine Nachricht ein.|
 action|email|'.$emailabsender.'|'.$email.'|Nachricht von der Webseite (Kontaktformular)|<b>Name:</b> ###name###<br/><b>E-Mail:</b> ###email###<br/><br/><b>Nachricht:</b><br/>###nachricht###
 
 submit|label|Senden|||
-action|showtext|'.$textdanke1.'|||1
+action|showtext|'.$textile_danke.'|||2
 
 ';
 

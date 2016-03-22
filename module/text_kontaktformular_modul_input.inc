@@ -1,20 +1,8 @@
 <?php
-$editor                 = 0;
 
-if(!rex_addon::get('rex_redactor')->isAvailable() AND !rex_addon::get('rex_markitup')->isAvailable()) {
-    echo rex_view::error('Dieses Modul ben&ouml;tigt das "Redactor" oder das "MarkItUp" Addon!');
-}
-
-if(rex_addon::get('rex_redactor')->isAvailable()) {
-  $editor = 'redactor';
-
-  if (!rex_redactor::profileExists('simple')) {
-    rex_redactor::insertProfile('simple', 'Angelegt durch das Addon Modulsammlung', 'relative', 'bold,italic,underline,deleted,unorderedlist', 'rex_linkmap,rex_mediapool_link');
-  }
-}
-if(rex_addon::get('rex_markitup')->isAvailable()) {
-  $editor = 'markitup';
-
+if(!rex_addon::get('rex_markitup')->isAvailable()) {
+    echo rex_view::error('Dieses Modul ben&ouml;tigt das "MarkItUp" Addon!');
+} else {
   if (!rex_markitup::profileExists('simple')) {
   rex_markitup::insertProfile('simple', 'Angelegt durch das Addon Modulsammlung', 'textile', 'bold,italic,underline,deleted,quote,sub,sup,code,unorderedlist,link[internal|external|mailto]');
   }
@@ -43,13 +31,13 @@ if(rex_addon::get('rex_markitup')->isAvailable()) {
     <div class="form-group">
       <label class="col-sm-3 control-label">Text neben Formular</label>
       <div class="col-sm-9">
-          <textarea id="<?php echo $editor; ?>_textile_1" class="form-control <?php echo $editor.' '.$editor; ?>Editor-simple" name="REX_INPUT_VALUE[1]">REX_VALUE[1]</textarea>
+          <textarea id="markitup_textile_1" class="form-control markitup markitupEditor-simple" name="REX_INPUT_VALUE[1]">REX_VALUE[1]</textarea>
       </div>
     </div>
     <div class="form-group">
       <label class="col-sm-3 control-label">Text (Danke)</label>
         <div class="col-sm-9">
-          <textarea id="<?php echo $editor; ?>_textile_2" class="form-control <?php echo $editor.' '.$editor; ?>Editor-simple" name="REX_INPUT_VALUE[1]">REX_VALUE[1]</textarea>
+          <textarea id="markitup_textile_2" class="form-control markitup markitupEditor-simple" name="REX_INPUT_VALUE[3]">REX_VALUE[3]</textarea>
         </div>
     </div>
 
@@ -131,7 +119,7 @@ if(rex_addon::get('rex_markitup')->isAvailable()) {
   padding: 10px;
   background: #DFE3E9;
   width: 100%;
-  text-align: right;
+  text-align: left;
   margin-bottom: 20px;
   border: none;
 }

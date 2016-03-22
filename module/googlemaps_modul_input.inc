@@ -1,23 +1,9 @@
 <?php
-
-$editor                 = 0;
-
-if(!rex_addon::get('rex_redactor')->isAvailable() AND !rex_addon::get('rex_markitup')->isAvailable()) {
-    echo rex_view::error('Dieses Modul ben&ouml;tigt das "Redactor" oder das "MarkItUp" Addon!');
-}
-
-if(rex_addon::get('rex_redactor')->isAvailable()) {
-  $editor = 'redactor';
-
-  if (!rex_redactor::profileExists('supersimple')) {
-    rex_redactor::insertProfile('supersimple', 'Angelegt durch das Addon Modulsammlung', 'relative', 'bold,italic,underline');
-  }
-}
-if(rex_addon::get('rex_markitup')->isAvailable()) {
-  $editor = 'markitup';
-
+if(!rex_addon::get('rex_markitup')->isAvailable()) {
+    echo rex_view::error('Dieses Modul ben&ouml;tigt das "MarkItUp" Addon!');
+} else {
   if (!rex_markitup::profileExists('supersimple')) {
-      rex_markitup::insertProfile('supersimple', 'Angelegt durch das Addon Modulsammlung', 'textile', 'bold,italic,underline');
+  rex_markitup::insertProfile('supersimple', 'Angelegt durch das Addon Modulsammlung', 'textile', 'bold,italic,underline');
   }
   if (!rex_addon::get('textile')->isAvailable()) {
       echo rex_view::error('Dieses Modul benötigt das "textile" Addon!');
@@ -63,7 +49,7 @@ if(rex_addon::get('rex_markitup')->isAvailable()) {
       <div class="form-group">
         <label class="col-sm-3 control-label">Darstellung</label>
         <div class="col-sm-9 ">
-          <div class="select-style">
+          <div class="rex-select-style">
             <select id="maptype" name="REX_INPUT_VALUE[5]">
             <?php
               foreach (array('roadmap', 'satellite', 'hybrid', 'terrain') as $value) {
@@ -83,7 +69,7 @@ if(rex_addon::get('rex_markitup')->isAvailable()) {
       <div class="form-group">
         <label class="col-sm-3 control-label">Breite der Karte</label>
         <div class="col-sm-9 ">
-          <div class="select-style">
+          <div class="rex-select-style">
             <select id="maptype" name="REX_INPUT_VALUE[12]">
             <?php
               foreach (array('100% Browserbreite', 'So breit wie der Inhalt') as $value) {
@@ -110,7 +96,7 @@ if(rex_addon::get('rex_markitup')->isAvailable()) {
       <div class="form-group">
        <label class="col-sm-3 control-label">Zoom</label>
          <div class="col-sm-9 ">
-           <div class="select-style">
+           <div class="rex-select-style">
             <select id="zoom" name="REX_INPUT_VALUE[6]">
             <?php
               foreach (array('4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20') as $value) {
@@ -129,7 +115,7 @@ if(rex_addon::get('rex_markitup')->isAvailable()) {
       <div class="form-group">
         <label class="col-sm-3 control-label">Markerfarbe</label>
         <div class="col-sm-9">
-          <div class="select-style">
+          <div class="rex-select-style">
             <select id="marker" name="REX_INPUT_VALUE[7]">
             <?php
               foreach (array('red','green','blue','yellow','purple','pink') as $value) {
@@ -158,7 +144,7 @@ if(rex_addon::get('rex_markitup')->isAvailable()) {
       <div class="form-group">
         <label class="col-sm-3 control-label">Routenplaner anzeigen</label>
         <div class="col-sm-9">
-          <div class="select-style">
+          <div class="rex-select-style">
             <select id="marker" name="REX_INPUT_VALUE[8]">
             <?php
               foreach (array('nein','ja') as $value) {
@@ -184,7 +170,7 @@ if(rex_addon::get('rex_markitup')->isAvailable()) {
       <div class="form-group">
         <label class="col-sm-3 control-label">Erklärungstext</label>
         <div class="col-sm-9">
-          <textarea id="erklaerungstext <?php echo $editor; ?>_1" class="form-control <?php echo $editor.' '.$editor; ?>Editor-supersimple" name="REX_INPUT_VALUE[1]">REX_VALUE[10]</textarea>
+           <textarea id="erklaerungstext markitup_textile_1" class="form-control markitup markitupEditor-supersimple" name="REX_INPUT_VALUE[10]">REX_VALUE[10]</textarea>
         </div>
       </div>
 
@@ -362,34 +348,6 @@ if(rex_addon::get('rex_markitup')->isAvailable()) {
   font-size: 12px !important;
 }
 
-.select-style {
-  border: 1px solid #cccccc;
-  width: 100%;
-  overflow: hidden;
-  background: #fff url("data:image/png;base64,R0lGODlhDwAUAIABAAAAAP///yH5BAEAAAEALAAAAAAPABQAAAIXjI+py+0Po5wH2HsXzmw//lHiSJZmUAAAOw==") no-repeat 98% 50%;
-  margin-bottom: 6px;
-}
-
-.select-style select {
-  padding: 5px 8px;
-  width: 100%;
-  border: none;
-  box-shadow: none;
-  background: transparent;
-  background-image: none;
-  -webkit-appearance: none;
-  -moz-appearance:none;
-  -webkit-border-radius: 0px;
-}
-
-.select-style select:focus {
-  outline: none;
-}
-
-.select-style select:hover {
-  cursor: pointer;
-}
-
 input.form-control,
 select.form-control,
 textarea.form-control {
@@ -427,7 +385,7 @@ input[placeholder] {
   padding: 10px;
   background: #DFE3E9;
   width: 100%;
-  text-align: right;
+  text-align: left;
   margin-bottom: 20px;
   border: none;
 }

@@ -11,7 +11,7 @@
         <div class="form-group">
           <label class="col-sm-3 control-label">Linie anzeigen</label>
           <div class="col-sm-9">
-            <div class="select-style">
+            <div class="rex-select-style">
               <select name="REX_INPUT_VALUE[2]">
                 <option value="nein"<?php if ('REX_VALUE[2]' == 'nein') echo ' selected'; ?>>nein</option>
                 <option value="ja"<?php if ('REX_VALUE[2]' == 'ja') echo ' selected'; ?>>ja</option>
@@ -22,7 +22,7 @@
         <div class="form-group">
           <label class="col-sm-3 control-label">Grafik anzeigen</label>
           <div class="col-sm-9">
-            <div class="select-style">
+            <div class="rex-select-style">
               <select name="REX_INPUT_VALUE[3]">
                 <option value="nein"<?php if ('REX_VALUE[3]' == 'nein') echo ' selected'; ?>>nein</option>
                 <option value="ja"<?php if ('REX_VALUE[3]' == 'ja') echo ' selected'; ?>>ja</option>
@@ -33,8 +33,8 @@
      <div class="form-group">
         <label class="col-sm-3 control-label">Breite des Trenners</label>
         <div class="col-sm-9 ">
-          <div class="select-style">
-            <select id="maptype" name="REX_INPUT_VALUE[4]">
+          <div class="rex-select-style">
+            <select id="trennerbreite" name="REX_INPUT_VALUE[4]">
             <?php
               foreach (array('100% Browserbreite', 'So breit wie der Inhalt') as $value) {
                 echo '<option value="'.$value.'" ';
@@ -52,7 +52,7 @@
 
 
  <div  id="anleitung" >
- <div class="control-label panel-heading collapsed" data-toggle="collapse" data-target="#collapse-text"><span class="caret"></span>Erklärung</h3></div>
+ <div class="control-label panel-heading collapsed" data-toggle="collapse" data-target="#collapse-text"><span class="caret"></span>Erklärung</div>
   <div id="collapse-text" class="panel-collapse collapse">
 
     <div class="form-group">
@@ -95,7 +95,7 @@
   border: 1px solid #9da6b2;
 }
 
-#trenner_modul_input  h3 {
+#trenner_modul_input h3 {
   font-size: 14px !important;
   padding: 10px;
   background: #DFE3E9;
@@ -106,34 +106,6 @@
 #trenner_modul_input .control-label {
   font-weight: normal;
   font-size: 12px !important;
-}
-
-#trenner_modul_input .select-style {
-    border: 1px solid #cccccc;
-    width: 100%;
-    overflow: hidden;
-    background: #fff url("data:image/png;base64,R0lGODlhDwAUAIABAAAAAP///yH5BAEAAAEALAAAAAAPABQAAAIXjI+py+0Po5wH2HsXzmw//lHiSJZmUAAAOw==") no-repeat 98% 50%;
-    margin-bottom: 6px;
-}
-
-#trenner_modul_input .select-style select {
-    padding: 5px 8px;
-    width: 100%;
-    border: none;
-    box-shadow: none;
-    background: transparent;
-    background-image: none;
-    -webkit-appearance: none;
-    -moz-appearance:none;
-    -webkit-border-radius: 0px;
-}
-
-#trenner_modul_input .select-style select:focus {
-    outline: none;
-}
-
-#trenner_modul_input .select-style select:hover {
-    cursor: pointer;
 }
 
 #trenner_modul_input input.form-control,
@@ -155,11 +127,11 @@
   padding: 10px;
   background: #DFE3E9;
   width: 100%;
-  text-align: right;
+  text-align: left;
   margin-bottom: 20px;
   border: none;
 }
-#trenner_modul_input #anleitung .panel-heading span {
+#trenner_modul_input #anleitung span {
   margin-right: 5px;
 }
 

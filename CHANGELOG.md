@@ -1,6 +1,10 @@
 Modulsammlung - Changelog
 ===
 
+#### 21.03.2016 Version 3.6.1-beta
+
+* bei allen Modulen Fehler korrigiert und die Unterstützung für Redactor entfernt
+
 #### 29.02.2016 Version 3.5-beta
 
 * Lizenz geändert

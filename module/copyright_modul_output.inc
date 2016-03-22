@@ -17,9 +17,9 @@ if($sql->getRows()) {
 
           if (in_array( substr($filename, -3), array("jpg","png","gif"))) {
             $out .= '<div class="item">'.PHP_EOL;
-            $out .= '<img src="'.$REX['HTDOCS_PATH'].'index.php?rex_media_type=bildercopyright&rex_media_file='.$filename.'" alt="'.$filename.'"/>'.PHP_EOL;
+            $out .= '<img src="index.php?rex_media_type=bildercopyright&rex_media_file='.$filename.'" alt="'.$filename.'"/>'.PHP_EOL;
             $out .= '<div class="filename">'.$filename.'</div>'.PHP_EOL;
-            $out .= '<div class="copyright">### Copyright ### '.$copyright.'</div>'.PHP_EOL;
+            $out .= '<div class="copyright">{{ Copyright }} '.$copyright.'</div>'.PHP_EOL;
             $out .= '</div>'.PHP_EOL;
           }
         $sql->next();

@@ -1,21 +1,8 @@
 <?php
 
-$editor                 = 0;
-
-if(!rex_addon::get('rex_redactor')->isAvailable() AND !rex_addon::get('rex_markitup')->isAvailable()) {
-    echo rex_view::error('Dieses Modul ben&ouml;tigt das "Redactor" oder das "MarkItUp" Addon!');
-}
-
-if(rex_addon::get('rex_redactor')->isAvailable()) {
-  $editor = 'redactor';
-
-  if (!rex_redactor::profileExists('simple')) {
-    rex_redactor::insertProfile('simple', 'Angelegt durch das Addon Modulsammlung', 'relative', 'bold,italic,underline,deleted,unorderedlist', 'rex_linkmap,rex_mediapool_link');
-  }
-}
-if(rex_addon::get('rex_markitup')->isAvailable()) {
-  $editor = 'markitup';
-
+if(!rex_addon::get('rex_markitup')->isAvailable()) {
+    echo rex_view::error('Dieses Modul ben&ouml;tigt das "MarkItUp" Addon!');
+} else {
   if (!rex_markitup::profileExists('simple')) {
   rex_markitup::insertProfile('simple', 'Angelegt durch das Addon Modulsammlung', 'textile', 'bold,italic,underline,deleted,quote,sub,sup,code,unorderedlist,link[internal|external|mailto]');
   }
@@ -32,7 +19,7 @@ if(rex_addon::get('rex_markitup')->isAvailable()) {
     <div class="form-group">
       <label class="col-sm-3 control-label">Text</label>
         <div class="col-sm-9">
-          <textarea id="<?php echo $editor; ?>_1" class="form-control <?php echo $editor.' '.$editor; ?>Editor-simple" name="REX_INPUT_VALUE[1]">REX_VALUE[1]</textarea>
+          <textarea id="markitup_textile_1" class="form-control markitup markitupEditor-simple" name="REX_INPUT_VALUE[1]">REX_VALUE[1]</textarea>
         </div>
     </div>
 

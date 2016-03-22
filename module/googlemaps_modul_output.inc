@@ -10,15 +10,8 @@ Benötige CSS Angaben:
 
 */
 
-$editor                 = 0;
-if(!rex_addon::get('rex_redactor')->isAvailable() AND !rex_addon::get('rex_markitup')->isAvailable()) {
-    echo rex_view::error('Dieses Modul ben&ouml;tigt das "Redactor" oder das "MarkItUp" Addon!');
-}
-if(rex_addon::get('rex_redactor')->isAvailable()) {
-  $editor = 'redactor';
- }
-if(rex_addon::get('rex_markitup')->isAvailable()) {
-  $editor = 'markitup';
+if(!rex_addon::get('rex_markitup')->isAvailable()) {
+    echo rex_view::error('Dieses Modul ben&ouml;tigt das "MarkItUp" Addon!');
 }
 
 $adresse              = 'REX_VALUE[1]';
@@ -33,7 +26,7 @@ $infotext             = 'REX_VALUE[4]';
 
 $routenplaner_anzeige = 'REX_VALUE[8]';
 $sendenbutton         = 'REX_VALUE[9]';
-$erklaerungstext       = 'REX_VALUE[id=1 output="html"]';
+$erklaerungstext      = '';
 
 $breite               = 'REX_VALUE[12]';
 $container            = '';
@@ -44,11 +37,11 @@ if ($breite == '100% Browserbreite') {
   $container = 'container';
 }
 
-if ($erklaerungstext !='') {
-  if ($editor == 'markitup' AND rex_addon::get('textile')->isAvailable()) {
-    $erklaerungstext =  rex_markitup::parseOutput ('textile', $erklaerungstext);
-  }
+if ('REX_VALUE[id=10 isset=1]') {
+    $textile = 'REX_VALUE[id=10 output=html]';
+    $erklaerungstext = rex_textile::parse($textile);
 }
+
 
 if ($sprache == '') {
   $sprache = 'de';
@@ -149,15 +142,20 @@ echo "
 
   <!-- Google Maps (+ Routenplaner) ".$mapidx." -->
     <div class='".$container."'>
-      <div id='googelmapsroutenplaner".$mapidx."' class='googelmapsroutenplaner'>
-      <div id='map_canvas".$mapidx."' class='map_canvas'></div>
+      <di class='row'>
+        <div id='googelmapsroutenplaner".$mapidx."' class='googelmapsroutenplaner'>
+        <div class='row'>
+        <div id='map_canvas".$mapidx."' class='map_canvas'></div>
+        </div>
+      </div>
     </div>
   ";
 
   if ($routenplaner_anzeige == 'ja'){
 
   echo '
-  <div class="container">';
+  <div class="container">
+  <div class="row">';
     $formularausgabe = "
         <form id='routenplaner".$mapidx."' class='routenplaner' action='javascript:void(0);' onsubmit=\"return calcRoute".$mapidx."('".$mapidx."', '".$adresse."', '".$lat."', '".$lng."')\">
           <fieldset>
@@ -174,6 +172,7 @@ echo "
       echo '<div class="col-xs-12">'.$formularausgabe.'</div>';
     }
     echo "
+    </div>
     </div>
     <div class='container'>
         <!-- Ausgabe der Wegbeschreibung -->

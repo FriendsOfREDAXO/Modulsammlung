@@ -1,21 +1,7 @@
 <?php
-
-$editor                 = 0;
-
-if(!rex_addon::get('rex_redactor')->isAvailable() AND !rex_addon::get('rex_markitup')->isAvailable()) {
-    echo rex_view::error('Dieses Modul ben&ouml;tigt das "Redactor" oder das "MarkItUp" Addon!');
-}
-
-if(rex_addon::get('rex_redactor')->isAvailable()) {
-  $editor = 'redactor';
-
-  if (!rex_redactor::profileExists('simple')) {
-    rex_redactor::insertProfile('simple', 'Angelegt durch das Addon Modulsammlung', 'relative', 'bold,italic,underline,deleted,unorderedlist', 'rex_linkmap,rex_mediapool_link');
-  }
-}
-if(rex_addon::get('rex_markitup')->isAvailable()) {
-  $editor = 'markitup';
-
+if(!rex_addon::get('rex_markitup')->isAvailable()) {
+    echo rex_view::error('Dieses Modul ben&ouml;tigt das "MarkItUp" Addon!');
+} else {
   if (!rex_markitup::profileExists('simple')) {
   rex_markitup::insertProfile('simple', 'Angelegt durch das Addon Modulsammlung', 'textile', 'bold,italic,underline,deleted,quote,sub,sup,code,unorderedlist,link[internal|external|mailto]');
   }
@@ -24,20 +10,20 @@ if(rex_addon::get('rex_markitup')->isAvailable()) {
   }
 }
 
-?><div class="modul-content">
+?><div id="sitemap" class="modul-content">
   <div>
     <div class="form-horizontal">
       <h3>Sitemap</h3>
         <div class="form-group">
         <label class="col-sm-3 control-label">Text</label>
         <div class="col-sm-9">
-          <textarea id="<?php echo $editor; ?>_1" class="form-control <?php echo $editor.' '.$editor; ?>Editor-simple" name="REX_INPUT_VALUE[1]">REX_VALUE[1]</textarea>
+          <textarea id="markitup_textile_1" class="form-control markitup markitupEditor-simple" name="REX_INPUT_VALUE[1]">REX_VALUE[1]</textarea>
         </div>
       </div>
       <div class="form-group">
         <label class="col-sm-3 control-label">Artikel anzeigen</label>
         <div class="col-sm-9">
-          <div class="select-style">
+          <div class="rex-select-style">
             <select name="REX_INPUT_VALUE[2]">
               <option value="nein"<?php if ('REX_VALUE[2]' == 'nein') echo ' selected'; ?>>nein</option>
               <option value="ja"<?php if ('REX_VALUE[2]' == 'ja') echo ' selected'; ?>>ja</option>
@@ -48,7 +34,7 @@ if(rex_addon::get('rex_markitup')->isAvailable()) {
       <div class="form-group">
         <label class="col-sm-3 control-label">Startartikel anzeigen</label>
         <div class="col-sm-9">
-          <div class="select-style">
+          <div class="rex-select-style">
             <select name="REX_INPUT_VALUE[3]">
               <option value="nein"<?php if ('REX_VALUE[3]' == 'nein') echo ' selected'; ?>>nein</option>
               <option value="ja"<?php if ('REX_VALUE[3]' == 'ja') echo ' selected'; ?>>ja</option>
@@ -59,7 +45,7 @@ if(rex_addon::get('rex_markitup')->isAvailable()) {
         <div class="form-group">
           <label class="col-sm-3 control-label">SEO Infos anzeigen</label>
           <div class="col-sm-9">
-            <div class="select-style">
+            <div class="rex-select-style">
               <select name="REX_INPUT_VALUE[4]">
                 <option value="nein"<?php if ('REX_VALUE[4]' == 'nein') echo ' selected'; ?>>nein</option>
                 <option value="ja"<?php if ('REX_VALUE[4]' == 'ja') echo ' selected'; ?>>ja</option>
@@ -127,30 +113,6 @@ if(rex_addon::get('rex_markitup')->isAvailable()) {
   font-size: 12px !important;
 }
 
-.select-style {
-    border: 1px solid #cccccc;
-    width: 100%;
-    overflow: hidden;
-    background: #fff url("data:image/png;base64,R0lGODlhDwAUAIABAAAAAP///yH5BAEAAAEALAAAAAAPABQAAAIXjI+py+0Po5wH2HsXzmw//lHiSJZmUAAAOw==") no-repeat 98% 50%;
-    margin-bottom: 6px;
-}
-.select-style select {
-    padding: 5px 8px;
-    width: 100%;
-    border: none;
-    box-shadow: none;
-    background: transparent;
-    background-image: none;
-    -webkit-appearance: none;
-    -moz-appearance:none;
-    -webkit-border-radius: 0px;
-}
-.select-style select:focus {
-    outline: none;
-}
-.select-style select:hover {
-    cursor: pointer;
-}
 
 input.form-control,
 select.form-control,
@@ -158,13 +120,8 @@ textarea.form-control {
   background: #fff !important;
 }
 
-.redactor-editor,
 .markitup {
   min-height: 200px;
-}
-
-.redactor-box {
-  border: 1px solid #ccc;
 }
 
 #anleitung .control-label {
@@ -180,7 +137,7 @@ textarea.form-control {
   padding: 10px;
   background: #DFE3E9;
   width: 100%;
-  text-align: right;
+  text-align: left;
   margin-bottom: 20px;
   border: none;
 }
