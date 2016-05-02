@@ -49,3 +49,14 @@ Lizenz
 ------
 
 siehe [LICENSE.md](LICENSE.md)
+
+
+---
+
+Credits
+------
+
+* [Thomas Blum](https://github.com/tbaddade)
+* [Gregor Harlan](https://github.com/gharlan) 
+* [Sascha Weidner](https://github.com/Sioweb)
+* [Parsedown](http://parsedown.org/) von Emanuil Rusev
