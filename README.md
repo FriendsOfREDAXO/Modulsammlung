@@ -51,8 +51,6 @@ Lizenz
 siehe [LICENSE.md](LICENSE.md)
 
 
----
-
 Credits
 ------
 
