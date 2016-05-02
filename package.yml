@@ -1,14 +1,21 @@
-
+# Alle hier gesetzten Werte können über $addon->getProperty($key) abgefragt werden
 
 package: modulsammlung
-version: '3.6.1-beta'
+version: '4.0'
 author: Oliver Kreischer
 supportpage: www.redaxo.org/de/forum
+compile: 0
 
 page:
     title: 'translate:title'
     perm: modulsammlung[]
     icon: rex-icon fa-plus-square
+    pjax: true
     subpages:
-        install: { title: 'translate:install' }
-        info: { title: 'translate:info'}
+        main: { title: 'translate:main' }
+        info:
+          title: 'Info'
+          subpages:
+            hilfe: { title: 'Hilfe'}
+            changelog: { title: 'Changelog'}
+            lizenz: { title: 'Lizenz'}

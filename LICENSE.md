@@ -1,4 +1,4 @@
-Focuspoint - Beerware License
+## Modulsammlung - Beerware License
 
 
 "THE BEER-WARE LICENSE" (Revision 42):

@@ -1,5 +1,5 @@
-Redaxo 5 Modulsammlung
-=======================
+## Redaxo 5 Modulsammlung
+
 
 Ziel diese Addons ist es einfach einige Module für Redaxo 5.x installieren zu können.
 
@@ -7,13 +7,13 @@ Da es keinen Updateprozess vorhandener Module gibt (ist auch nicht geplant) kann
 
 Selbstverständlich können (und sollen) die Module nach der Installation individuell angepasst werden.
 
-Das Frontend CSS wird nicht mitgeliefert :-)
+Das Frontend (S)CSS wird entweder nicht oder nur reduziert mitgeliefert :-)
 
 Schreibt doch bitte auftretende Fehler, Notices und Wünsche als Issue.
 
 
-Aktuell enthaltene Module
--------------------------
+## Aktuell enthaltene Module
+
 
 * 0010 - Text / Bild / Video / Link | 1-4 Spalten
 * 0020 - Abstand oder Trennlinie mit/ohne Grafik
@@ -23,8 +23,8 @@ Aktuell enthaltene Module
 * 0100 - Alle Bilder mit aus dem Medienpool mit Copyright anzeigen
 * 0110 - Sitemap
 
-Geplante Module
---------------------
+## Geplante Module
+
 
 * Text / Bildergalerie
 * Text / Download
@@ -33,8 +33,8 @@ Geplante Module
 * "Alle" - Minibeispiele
 
 
-ToDo
----------
+## ToDo
+
 
 siehe [ISSUES](https://github.com/olien/REX5-Modulsammlung/issues/)
 

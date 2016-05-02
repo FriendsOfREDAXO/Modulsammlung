@@ -12,8 +12,8 @@
 // Hier können zum Beispiel Konfigurationswerte in der rex_config initialisiert werden.
 // Das if-Statement ist notwendig, um bei einem reinstall die Konfiguration nicht zu überschreiben.
 if (!$this->hasConfig()) {
-   // $this->setConfig('url', 'http://www.example.com');
-   // $this->setConfig('ids', [1, 4, 5]);
+    $this->setConfig('url', 'http://www.example.com');
+    $this->setConfig('ids', [1, 4, 5]);
 }
 
 // Mit einer rex_functional_exception kann die Installation mit einer Fehlermeldung abgebrochen werden.

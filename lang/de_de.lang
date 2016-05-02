@@ -1,11 +1,6 @@
+modulsammlung_title = Modulsammlung
+modulsammlung_main = Modulsammlung
 
 
-modulsammlung_title            = Modulsammlung
-modulsammlung_install          = Module installieren
-modulsammlung_info             = Info
+modulsammlung_general_dummy[] = Rechte für Modulsammlung-Addon
 
-
-form_modul_name                     = Modul Name
-form_modul_install_button           = Modul installieren
-
-perm_general_gmb[] = Modulsammlung
