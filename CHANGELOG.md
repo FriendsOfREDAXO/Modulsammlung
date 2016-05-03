@@ -1,5 +1,10 @@
 ## Modulsammlung - Changelog
 
+### 03.05.2016 Version 4.1
+
+* Input / Output Code kann angezeigt werden
+* CSS Dateien werden jetzt angezeigt sofern vorhanden
+* Status hinzugefügt
 
 ### 02.05.2016 Version 4.0
 

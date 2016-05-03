@@ -1,5 +1,2 @@
- Dies ist ein Beispiel für eine Konfigurationsdatei
-; Kommentare beginnen wie in der php.ini mit ';'
-
-
 modulname = 0500 - Beispielinhalte ausgeben
+status = 2; 0 = geplant, 1 = fertig, 2 = in Bearbeitung

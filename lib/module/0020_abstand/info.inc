@@ -2,7 +2,7 @@
 
 <p>Redaxo Modul für das Einfügen eines Abstandes bzw. einer Trennlinie mit oder ohne Grafik.</p>
 
-<br/>
+<hr/>
 <b>Voraussetzungen</b>
 <p>
 <ul>

@@ -1,10 +1,2 @@
- Dies ist ein Beispiel für eine Konfigurationsdatei
-; Kommentare beginnen wie in der php.ini mit ';'
-
-
 modulname = 0010 - Text - Bild - Video - Link / 1-4 Spalten
-
-
-[options]
-bilder = 1
-downloads = 0
+status = 2; 0 = geplant, 1 = fertig, 2 = in Bearbeitung

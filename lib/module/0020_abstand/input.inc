@@ -1,59 +1,58 @@
 <div id="trenner_modul_input">
   <div id="bereich1" class="">
     <div class="form-horizontal">
-      <h3>Abstand oder Trennlinie mit/ohne Grafik</h3>
-        <div class="form-group">
-          <label class="col-sm-3 control-label">Abstand in PX</label>
-          <div class="col-sm-9">
-            <input class="form-control" name="REX_INPUT_VALUE[1]" value="REX_VALUE[1]" type="text" />
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-sm-3 control-label">Linie anzeigen</label>
-          <div class="col-sm-9">
-            <div class="rex-select-style">
-              <select name="REX_INPUT_VALUE[2]">
-                <option value="nein"<?php if ('REX_VALUE[2]' == 'nein') echo ' selected'; ?>>nein</option>
-                <option value="ja"<?php if ('REX_VALUE[2]' == 'ja') echo ' selected'; ?>>ja</option>
-              </select>
-            </div>
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-sm-3 control-label">Grafik anzeigen</label>
-          <div class="col-sm-9">
-            <div class="rex-select-style">
-              <select name="REX_INPUT_VALUE[3]">
-                <option value="nein"<?php if ('REX_VALUE[3]' == 'nein') echo ' selected'; ?>>nein</option>
-                <option value="ja"<?php if ('REX_VALUE[3]' == 'ja') echo ' selected'; ?>>ja</option>
-              </select>
-            </div>
-          </div>
-        </div>
-     <div class="form-group">
-        <label class="col-sm-3 control-label">Breite des Trenners</label>
-        <div class="col-sm-9 ">
-          <div class="rex-select-style">
-            <select id="trennerbreite" name="REX_INPUT_VALUE[4]">
-            <?php
-              foreach (array('100% Browserbreite', 'So breit wie der Inhalt') as $value) {
-                echo '<option value="'.$value.'" ';
-
-                if ( "REX_VALUE[4]"=="$value" ) {
-                  echo 'selected="selected" ';
-                }
-                echo '>'.$value.'</option>';
-                }
-            ?>
-            </select>
-          </div>
+    <h3>Abstand oder Trennlinie mit/ohne Grafik</h3>
+    <div class="form-group">
+      <label class="col-sm-3 control-label">Abstand in PX</label>
+      <div class="col-sm-9">
+        <input class="form-control" name="REX_INPUT_VALUE[1]" value="REX_VALUE[1]" type="text" />
+      </div>
+    </div>
+    <div class="form-group">
+    <label class="col-sm-3 control-label">Linie anzeigen</label>
+      <div class="col-sm-9">
+        <div class="rex-select-style">
+          <select name="REX_INPUT_VALUE[2]">
+            <option value="nein"<?php if ('REX_VALUE[2]' == 'nein') echo ' selected'; ?>>nein</option>
+            <option value="ja"<?php if ('REX_VALUE[2]' == 'ja') echo ' selected'; ?>>ja</option>
+          </select>
         </div>
       </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-3 control-label">Grafik anzeigen</label>
+      <div class="col-sm-9">
+        <div class="rex-select-style">
+          <select name="REX_INPUT_VALUE[3]">
+            <option value="nein"<?php if ('REX_VALUE[3]' == 'nein') echo ' selected'; ?>>nein</option>
+            <option value="ja"<?php if ('REX_VALUE[3]' == 'ja') echo ' selected'; ?>>ja</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  <div class="form-group">
+  <label class="col-sm-3 control-label">Breite des Trenners</label>
+    <div class="col-sm-9 ">
+      <div class="rex-select-style">
+        <select id="trennerbreite" name="REX_INPUT_VALUE[4]">
+        <?php
+          foreach (array('100% Browserbreite', 'So breit wie der Inhalt') as $value) {
+            echo '<option value="'.$value.'" ';
 
+            if ( "REX_VALUE[4]"=="$value" ) {
+              echo 'selected="selected" ';
+            }
+            echo '>'.$value.'</option>';
+          }
+        ?>
+        </select>
+      </div>
+    </div>
+  </div>
 
- <div  id="anleitung" >
- <div class="control-label panel-heading collapsed" data-toggle="collapse" data-target="#collapse-text"><span class="caret"></span>Erklärung</div>
-  <div id="collapse-text" class="panel-collapse collapse">
+  <div  id="anleitung" >
+    <div class="control-label panel-heading collapsed" data-toggle="collapse" data-target="#collapse-text"><span class="caret"></span>Erklärung</div>
+      <div id="collapse-text" class="panel-collapse collapse">
 
     <div class="form-group">
       <label class="col-sm-3 control-label">Abstand in PX</label>
