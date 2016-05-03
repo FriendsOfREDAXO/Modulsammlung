@@ -12,25 +12,34 @@ Das Frontend (S)CSS wird entweder nicht oder nur reduziert mitgeliefert :-)
 Schreibt doch bitte auftretende Fehler, Notices und Wünsche als Issue.
 
 
-## Aktuell enthaltene Module
+## Module (Liste ist aktuell nicht aktuell :-))
 
 
-* 0010 - Text / Bild / Video / Link | 1-4 Spalten
-* 0020 - Abstand oder Trennlinie mit/ohne Grafik
-* 0030 - Google Maps Modul / Routenplaner
-* 0040 - Text / Kontaktformular
-* 0060 - Nur Text (Footer, Seitenleiste etc.)
-* 0100 - Alle Bilder mit aus dem Medienpool mit Copyright anzeigen
-* 0110 - Sitemap
+* **0010 - Text / Bild / Video / Link | 1-4 Spalten**
+* 0015 - Abstand oder Trennlinie mit/ohne Grafik
+* 0020 - Text / Bildergalerie
+* 0025 - Text / Bilderslider
+* 0030 - Text / Downloads
+* **0035 - Text / Kontaktformular**
+* **0040 - Nur Text (Footer, Seitenleiste etc.)**
+* **0100 - Google Maps Modul / Routenplaner**
+* 0105 - Parallax
+* 0110 - Tabelle
+* 0115 - Akkordeon / Normal-, Tabdarstellung
+* 0110 - Modal
+* **0200 - Alle Bilder mit aus dem Medienpool mit Copyright anzeigen**
+* **0205 - SEO Sitemap**
+* 0300 - Execl 2 Table
+* 0305 - PHP / HTML eingeben
+* 0400 - Artikelliste
+* 0405 - Artikel blättern
+* 0410 - Artikel Weiterleitung
+* 0500 - Minibeispiel: Text - Textile + Markitup
+* 0505 - Minibeispiel: Text - Redactor
+* 0510 - Minibeispiel: Bild / Bildergalerie
+* **0600 - Beispielinhalte ausgeben**
 
-## Geplante Module
 
-
-* Text / Bildergalerie
-* Text / Download
-* Text / Bilderslider (100% Breite / Contentbreite) // OWL Slider?
-* evtl.  Parallax
-* "Alle" - Minibeispiele
 
 
 ## ToDo
