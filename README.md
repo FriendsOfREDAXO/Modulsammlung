@@ -64,10 +64,6 @@ Credits
 ------
 
 * [Thomas Blum](https://github.com/tbaddade)
-<<<<<<< HEAD
 * [Gregor Harlan](https://github.com/gharlan)
-=======
-* [Gregor Harlan](https://github.com/gharlan) 
->>>>>>> origin/modulsammlung
 * [Sascha Weidner](https://github.com/Sioweb)
 * [Parsedown](http://parsedown.org/) von Emanuil Rusev
