@@ -53,39 +53,34 @@
   <div  id="anleitung" >
     <div class="control-label panel-heading collapsed" data-toggle="collapse" data-target="#collapse-text"><span class="caret"></span>Erklärung</div>
       <div id="collapse-text" class="panel-collapse collapse">
-
-    <div class="form-group">
-      <label class="col-sm-3 control-label">Abstand in PX</label>
-        <div class="col-sm-9">
-          <p>Sofern das Feld "Abstand in PX" leer gelassen wird wird ein default Abstand von 30px benutzt.</p>
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Abstand in PX</label>
+          <div class="col-sm-9">
+            <p>Sofern das Feld "Abstand in PX" leer gelassen wird wird ein default Abstand von 30px benutzt.</p>
+          </div>
         </div>
-    </div>
-
-    <div class="form-group">
-      <label class="col-sm-3 control-label">Linie anzeigen</label>
-        <div class="col-sm-9">
-          <p>Eine Trennlinie wird angezeigt.</p>
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Linie anzeigen</label>
+            <div class="col-sm-9">
+              <p>Eine Trennlinie wird angezeigt.</p>
+            </div>
         </div>
-    </div>
-
-    <div class="form-group">
-      <label class="col-sm-3 control-label">Grafik anzeigen</label>
-        <div class="col-sm-9">
-          <p>Zeigt eine Trennline und eine 30x30px große Grafik aus dem Medienpool (trenner.png) an.</p>
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Grafik anzeigen</label>
+            <div class="col-sm-9">
+              <p>Zeigt eine Trennline und eine 30x30px große Grafik aus dem Medienpool (trenner.png) an.</p>
+            </div>
         </div>
-    </div>
         <div class="form-group">
           <label class="col-sm-3 control-label">Breite des Trenners</label>
             <div class="col-sm-9">
               <p>Ändert die Breite des Trenners. 100% Browserbreite ist nicht möglich sofern es eine Seitenleiste (Inhalt / Navigation) im Content gibt.</p>
             </div>
         </div>
-  </div>
-  </div>
-
+      </div>
+    </div>
   </div>
 </div>
-
 
 <style>
 #trenner_modul_input {

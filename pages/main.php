@@ -60,6 +60,18 @@ foreach ($modulesdirs as $dir) {
     $moduls_errors[] = 'output.inc nicht vorhanden in: '.$dir;
   }
 
+  if (file_exists($dir.'/metainfos.inc')) {
+    $moduls[$module_key]['metainfos'] = $dir.'/metainfos.inc';
+  } else {
+    $moduls[$module_key]['metainfos'] = '';
+  }
+
+  if (file_exists($dir.'/mediamanager.inc')) {
+    $moduls[$module_key]['mediamanager'] = $dir.'/mediamanager.inc';
+  } else {
+    $moduls[$module_key]['mediamanager'] = '';
+  }
+
 }
 
 if (count($moduls_errors) > 0) {
@@ -165,6 +177,15 @@ if (count($moduls_errors) > 0) {
         if ($modul_name == '') {
           echo rex_view::warning('Bitte einen Modulnamen angeben!');
         } else {
+
+        if($moduls[$module_key]['metainfos'] != '') {
+          include($moduls[$module_key]['metainfos']);
+        }
+
+        if($moduls[$module_key]['mediamanager'] != '') {
+          include($moduls[$module_key]['mediamanager']);
+        }
+
          $input = $moduls[$module_key]['input'];
          $output = $moduls[$module_key]['output'];
 

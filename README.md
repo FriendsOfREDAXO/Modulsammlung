@@ -15,14 +15,14 @@ Schreibt doch bitte auftretende Fehler, Notices und Wünsche als Issue.
 ## Module (Liste ist aktuell nicht aktuell :-))
 
 
-* **0010 - Text / Bild / Video / Link | 1-4 Spalten**
-* 0015 - Abstand oder Trennlinie mit/ohne Grafik
+* **0010 - Text / Bild / Video / Link (1-4 Spalten)**
+* **0015 - Abstand und/oder Trennlinie (mit oder ohne Grafik)**
 * 0020 - Text / Bildergalerie
 * 0025 - Text / Bilderslider
 * 0030 - Text / Downloads
 * **0035 - Text / Kontaktformular**
-* **0040 - Nur Text (Footer, Seitenleiste etc.)**
-* **0100 - Google Maps Modul / Routenplaner**
+* **0040 - Nur Text (Footer, Seitenleiste, Modal etc.)**
+* **0100 - Google Maps / Routenplaner**
 * 0105 - Parallax
 * 0110 - Tabelle
 * 0115 - Akkordeon / Normal-, Tabdarstellung
@@ -34,7 +34,8 @@ Schreibt doch bitte auftretende Fehler, Notices und Wünsche als Issue.
 * 0400 - Artikelliste
 * 0405 - Artikel blättern
 * 0410 - Artikel Weiterleitung
-* 0500 - Minibeispiel: Text - Textile + Markitup
+* **0500 - Minibeispiel: Text / Textile**
+* 0505 - Minibeispiel: Text / Textile - MarkItUp
 * 0505 - Minibeispiel: Text - Redactor
 * 0510 - Minibeispiel: Bild / Bildergalerie
 * **0600 - Beispielinhalte ausgeben**

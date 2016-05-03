@@ -1,10 +1,12 @@
 ## Modulsammlung - Changelog
 
-### 03.05.2016 Version 4.1
+### 03.05.2016 Version 4.1.5
 
 * Input / Output Code kann angezeigt werden
 * CSS Dateien werden jetzt angezeigt sofern vorhanden
 * Status hinzugefügt
+* Meta Info Felder können jetzt mit angelegt werden
+* Media Manager Typen können jetzt mit angelegt werden
 
 ### 02.05.2016 Version 4.0
 
