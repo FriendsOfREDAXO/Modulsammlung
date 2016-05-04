@@ -22,6 +22,7 @@ Schreibt doch bitte auftretende Fehler, Notices und Wünsche als Issue.
 * 0030 - Text / Downloads
 * **0035 - Text / Kontaktformular**
 * **0040 - Nur Text (Footer, Seitenleiste, Modal etc.)**
+* 0050 - Bildergalerie (Unite Gallery)
 * **0100 - Google Maps / Routenplaner**
 * 0105 - Parallax
 * 0110 - Tabelle
@@ -64,7 +65,4 @@ siehe [LICENSE.md](LICENSE.md)
 Credits
 ------
 
-* [Thomas Blum](https://github.com/tbaddade)
-* [Gregor Harlan](https://github.com/gharlan)
-* [Sascha Weidner](https://github.com/Sioweb)
-* [Parsedown](http://parsedown.org/) von Emanuil Rusev
+[Thomas Blum](https://github.com/tbaddade), [Gregor Harlan](https://github.com/gharlan), [Sascha Weidner](https://github.com/Sioweb), [jQuery](https://jquery.com), [Parsedown](http://parsedown.org/), [Unite Gallery](https://github.com/vvvmax/unitegallery)

@@ -19,10 +19,11 @@ function show_errors($errors = array()) {
 
 foreach ($modulesdirs as $dir) {
 
-   // echo $dir.'<br/>';
-   // echo basename($dir).'<br/>';
+    // echo $dir.'<br/>';
+    // echo basename($dir).'<br/>';
 
   $module_key = basename($dir);
+
 
   if (file_exists($dir.'/config.inc')) {
     $moduls[$module_key]['config'] = parse_ini_file($dir.'/config.inc',TRUE);
@@ -79,16 +80,19 @@ if (count($moduls_errors) > 0) {
 } else {
 
   foreach ($moduls as $module_key => $modul) {
-    /* $modulausgabe[] = '
-    <tr>
-    <td>
-    '.var_dump($modul['config']).'
-    </td>
-    </tr>
-  */
+    /*
+    $modulausgabe[] = '
+      <tr>
+        <td>
+          '.var_dump($modul['config']).'
+        </td>
+      </tr>
+    ';
+    */
 
   $statusfarbe  = '';
   $statusinfo   = '';
+  $folder       = '';
   // Status: Fertig
   if ($modul['config']['status'] == 1) {
     $statusfarbe = ' color: #36404F; ';
@@ -104,7 +108,6 @@ if (count($moduls_errors) > 0) {
     $statusfarbe = ' color: #BF5E52; ';
     $statusinfo = 'Entwicklung geplant';
   }
-
 
   $modulausgabe[] = '
     <tr>
@@ -170,6 +173,7 @@ if (count($moduls_errors) > 0) {
     </form>
   </tr>';
 
+
   if (rex_request('install') == $module_key) {
         //$modul_name           = $modul['config']['modulname'];
 
@@ -185,6 +189,15 @@ if (count($moduls_errors) > 0) {
         if($moduls[$module_key]['mediamanager'] != '') {
           include($moduls[$module_key]['mediamanager']);
         }
+
+        // Ordner in Assets kopieren
+        if (array_key_exists('assets_folder',$modul['config'])  && $modul['config']['assets_folder'] != '') {
+          $srcdir = '../redaxo/src/addons/modulsammlung/lib/module/'.$module_key.'/'.$modul['config']['assets_folder'];
+          // echo $srcdir;
+          rex_dir::copy($srcdir ,'.././assets/'.$modul['config']['assets_folder']);
+             echo rex_view::success('Der Ordner '.$modul['config']['assets_folder'].' wurde in den Assets Ordner kopiert.');
+          }
+
 
          $input = $moduls[$module_key]['input'];
          $output = $moduls[$module_key]['output'];
@@ -232,7 +245,3 @@ $content .= '
 $fragment = new rex_fragment();
 $fragment->setVar('body', $content, false);
 echo $fragment->parse('core/page/section.php');
-
-
-
-
