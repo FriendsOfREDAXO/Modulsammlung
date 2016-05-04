@@ -1,1 +1,1 @@
-<h4><b>Minibeispiel: Text / Textile + Markitup</b></h4>
+<h4><b>Minibeispiel: Text / Textile</b></h4>

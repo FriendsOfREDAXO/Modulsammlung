@@ -4,13 +4,6 @@ if(!rex_addon::get('rex_markitup')->isAvailable()) {
     echo rex_view::error('Dieses Modul ben&ouml;tigt das "MarkItUp" Addon!');
 }
 
-if ('REX_VALUE[id=1 isset=1]') {
-    $textile = 'REX_VALUE[id=1 output=html]';
-    $textile = rex_textile::parse($textile);
-}
-
-$text = '<div class="text">'.$textile.'</div>'.PHP_EOL;
-
 $artikel          = 'REX_VALUE[2]';
 $start_artikel    = 'REX_VALUE[3]';
 $seo_infos        = 'REX_VALUE[4]';
@@ -18,6 +11,8 @@ $seo_infos        = 'REX_VALUE[4]';
 if ('REX_VALUE[id=1 isset=1]') {
     $text = 'REX_VALUE[id=1 output=html]';
     $text = rex_textile::parse($text);
+} else {
+    $text = '';
 }
 
 if ($artikel == 'ja') { $artikel = 1; } else { $artikel = 0; };
@@ -102,7 +97,7 @@ if (is_array($categories) && count($categories) > 0){
 
 } else {
  echo '
-  <div id="trennlinie" class="bereichswrapper">
+  <div id="seositemap" class="bereichswrapper">
     <div class="form-horizontal output">
      <h2>Sitemap</h2>
      ';
@@ -130,20 +125,20 @@ if (is_array($categories) && count($categories) > 0){
   </div>
 
 <style>
-#trennlinie .bereichswrapper {
+#seositemap .bereichswrapper {
   margin: 5px 0 5px 0;
   background: #f5f5f5;
   padding: 5px 15px 5px 15px;
   border: 1px solid #9da6b2;
 }
 
-#trennlinie .control-label {
+#seositemap .control-label {
   font-weight: normal;
   font-size: 12px;
   margin-top: -6px;
 }
 
-#trennlinie  h2 {
+#seositemap  h2 {
   font-size: 12px !important;
   padding: 0 10px 10px 10px;
   margin-bottom: 15px;

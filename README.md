@@ -30,7 +30,6 @@ Schreibt doch bitte auftretende Fehler, Notices und Wünsche als Issue.
 * **0200 - Alle Bilder mit aus dem Medienpool mit Copyright anzeigen**
 * **0205 - SEO Sitemap**
 * 0300 - Execl 2 Table
-* 0305 - PHP / HTML eingeben
 * 0400 - Artikelliste
 * 0405 - Artikel blättern
 * 0410 - Artikel Weiterleitung
@@ -38,6 +37,7 @@ Schreibt doch bitte auftretende Fehler, Notices und Wünsche als Issue.
 * 0505 - Minibeispiel: Text / Textile - MarkItUp
 * 0505 - Minibeispiel: Text - Redactor
 * 0510 - Minibeispiel: Bild / Bildergalerie
+* **0515 - Minibeispiel: HTML**
 * **0600 - Beispielinhalte ausgeben**
 
 

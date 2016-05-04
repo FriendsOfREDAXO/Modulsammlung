@@ -1,5 +1,10 @@
 ## Modulsammlung - Changelog
 
+### 04.05.2016 Version 4.1.6
+
+* Einige Module aktualisiert
+* Seite "Modulübersicht" hinzugefügt
+
 ### 03.05.2016 Version 4.1.5
 
 * Input / Output Code kann angezeigt werden

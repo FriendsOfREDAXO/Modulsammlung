@@ -1,7 +1,7 @@
 # Alle hier gesetzten Werte können über $addon->getProperty($key) abgefragt werden
 
 package: modulsammlung
-version: '4.1.5'
+version: '4.1.6'
 author: Oliver Kreischer
 supportpage: www.redaxo.org/de/forum
 compile: 1
@@ -16,6 +16,7 @@ page:
         info:
           title: 'Info'
           subpages:
-            hilfe: { title: 'Hilfe'}
+            info: { title: 'Info'}
+            moduluebersicht: { title: 'Modulübersicht'}
             changelog: { title: 'Changelog'}
             lizenz: { title: 'Lizenz'}
