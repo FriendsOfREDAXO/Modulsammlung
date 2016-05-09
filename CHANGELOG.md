@@ -1,5 +1,10 @@
 ## Modulsammlung - Changelog
 
+### 04.05.2016 Version 4.1.7
+
+* Modul "0110 - Tabelle" hinzugefügt
+
+
 ### 04.05.2016 Version 4.1.6
 
 * Einige Module aktualisiert

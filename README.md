@@ -25,7 +25,7 @@ Schreibt doch bitte auftretende Fehler, Notices und Wünsche als Issue.
 * 0050 - Bildergalerie (Unite Gallery)
 * **0100 - Google Maps / Routenplaner**
 * 0105 - Parallax
-* 0110 - Tabelle
+* **0110 - Tabelle**
 * 0115 - Akkordeon / Normal-, Tabdarstellung
 * 0110 - Modal
 * **0200 - Alle Bilder mit aus dem Medienpool mit Copyright anzeigen**
@@ -40,7 +40,6 @@ Schreibt doch bitte auftretende Fehler, Notices und Wünsche als Issue.
 * 0510 - Minibeispiel: Bild / Bildergalerie
 * **0515 - Minibeispiel: HTML**
 * **0600 - Beispielinhalte ausgeben**
-
 
 
 
