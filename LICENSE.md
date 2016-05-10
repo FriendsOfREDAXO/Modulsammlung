@@ -1,5 +1,5 @@
-## Modulsammlung - Beerware License
-
+### Modulsammlung - Beerware License
+___
 
 "THE BEER-WARE LICENSE" (Revision 42):
 <modulsammlung@kreischer.de> wrote this addon. As long as you retain this notice you

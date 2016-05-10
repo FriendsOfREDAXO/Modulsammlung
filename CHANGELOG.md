@@ -1,4 +1,12 @@
-## Modulsammlung - Changelog
+### Modulsammlung - Changelog
+___
+
+
+
+### 10.05.2016 Version 4.1.7
+
+* Weitere Module hinzugefügt
+* Das Löschen von allen unbenutzten Modulen ist jetzt in der Modulübersicht möglich
 
 ### 04.05.2016 Version 4.1.7
 
