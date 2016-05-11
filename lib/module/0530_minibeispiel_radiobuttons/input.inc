@@ -12,13 +12,13 @@
                 if ($option == $current) {
                 echo '
                   <label class="btn active">
-                    <input type="radio" name="REX_INPUT_VALUE[1]" value="'. $option .'" checked /><i class="fa fa-circle-o fa-lg"></i><i class="fa fa-check-circle-o fa-lg"></i> <span>  '. $option .'</span>
+                    <input type="radio" name="REX_INPUT_VALUE[1]" value="'. $option .'" checked /><i class="fa fa-circle-o"></i><i class="fa fa-check-circle-o"></i> <span>  '. $option .'</span>
                   </label>';
 
                 } else {
                 echo '
                   <label class="btn">
-                  <input type="radio" name="REX_INPUT_VALUE[1]" value="'. $option .'"/><i class="fa fa-circle-o fa-lg"></i><i class="fa fa-check-circle-o  fa-lg"></i><span> '. $option .'</span>
+                  <input type="radio" name="REX_INPUT_VALUE[1]" value="'. $option .'"/><i class="fa fa-circle-o"></i><i class="fa fa-check-circle-o"></i><span> '. $option .'</span>
                   </label>';
                 }
             }
@@ -53,77 +53,86 @@
 }
 
 
-
-label.btn span {
-  font-size: 1.5em ;
+#radioexample label.btn span {
+  font-size: 1.2em ;
 }
 
-label input[type="radio"] ~ i.fa.fa-circle-o{
-    color: #c8c8c8;    display: inline;
+#radioexample label input[type="radio"] ~ i.fa.fa-circle-o{
+  color: #999;    display: inline;
+  font-size: 1.2em ;
 }
-label input[type="radio"] ~ i.fa.fa-check-circle-o{
-    display: none;
+#radioexample label input[type="radio"] ~ i.fa.fa-check-circle-o{
+  display: none;
+  font-size: 1.2em ;
 }
-label input[type="radio"]:checked ~ i.fa.fa-circle-o{
-    display: none;
+#radioexample label input[type="radio"]:checked ~ i.fa.fa-circle-o{
+  display: none;
 }
-label input[type="radio"]:checked ~ i.fa.fa-check-circle-o{
-    color: #7AA3CC;    display: inline;
+#radioexample label input[type="radio"]:checked ~ i.fa.fa-check-circle-o{
+  color: #36404F;
+  display: inline;
 }
-label:hover input[type="radio"] ~ i.fa {
-color: #7AA3CC;
+#radioexample label:hover input[type="radio"] ~ i.fa {
+  color: #36404F;
 }
-
-label input[type="checkbox"] ~ i.fa.fa-square-o{
-    color: #c8c8c8;    display: inline;
+#radioexample label input[type="checkbox"] ~ i.fa.fa-square-o{
+  color: #999;
+  display: inline;
 }
-label input[type="checkbox"] ~ i.fa.fa-check-square-o{
-    display: none;
+#radioexample label input[type="checkbox"] ~ i.fa.fa-check-square-o{
+  display: none;
 }
-label input[type="checkbox"]:checked ~ i.fa.fa-square-o{
-    display: none;
+#radioexample label input[type="checkbox"]:checked ~ i.fa.fa-square-o{
+  display: none;
 }
-label input[type="checkbox"]:checked ~ i.fa.fa-check-square-o{
-    color: #7AA3CC;    display: inline;
+#radioexample label input[type="checkbox"]:checked ~ i.fa.fa-check-square-o{
+  color: #36404F;    display: inline;
 }
-label:hover input[type="checkbox"] ~ i.fa {
-color: #7AA3CC;
-}
-
-div[data-toggle="buttons"] label.active{
-    color: #7AA3CC;
-}
-
-div[data-toggle="buttons"] label {
-display: inline-block;
-padding: 6px 12px;
-margin-bottom: 0;
-font-size: 14px;
-font-weight: normal;
-line-height: 2em;
-text-align: left;
-white-space: nowrap;
-vertical-align: top;
-cursor: pointer;
-background-color: none;
-border: 0px solid
-#c8c8c8;
-border-radius: 3px;
-color: #c8c8c8;
--webkit-user-select: none;
--moz-user-select: none;
--ms-user-select: none;
--o-user-select: none;
-user-select: none;
+#radioexample label:hover input[type="checkbox"] ~ i.fa {
+  color: #36404F;
 }
 
-div[data-toggle="buttons"] label:hover {
-color: #7AA3CC;
+#radioexample div[data-toggle="buttons"] {
+  width: 100%;
 }
 
-div[data-toggle="buttons"] label:active, div[data-toggle="buttons"] label.active {
+#radioexample div[data-toggle="buttons"] label.active{
+    color: #36404F;
+}
+
+#radioexample div[data-toggle="buttons"] label {
+  display: inline-block;
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: normal;
+  line-height: 1.6em;
+  text-align: left;
+  vertical-align: top;
+  white-space: normal;
+  cursor: pointer;
+  background-color: none;
+  border-bottom: 1px solid #e0e0e0;
+  color: #999;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+#radioexample div[data-toggle="buttons"] label:hover {
+  color: #36404F;
+}
+
+#radioexample * {
+  outline: none !important;
+}
+
+#radioexample div[data-toggle="buttons"] label:active, div[data-toggle="buttons"] label.active {
   -webkit-box-shadow: none;
   box-shadow: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
 }
 
 

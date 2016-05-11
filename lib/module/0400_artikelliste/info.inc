@@ -1,1 +1,1 @@
-<h4><b>0400 - Artikelliste</b></h4>
+<h4><b>Artikelliste</b></h4>

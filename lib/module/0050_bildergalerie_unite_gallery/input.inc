@@ -9,17 +9,28 @@
   </div>
 
   <h3 class="ueberschrift">Einstellungen</h3>
-  <div class="form-group">
-    <label class="col-sm-3 control-label">Art der Galerie</label>
-    <div class="col-sm-9">
+  <div class="form-horizontal">
+   <div class="form-group">
+   <label class="col-sm-3 control-label" for="headline-level">Art der Galerie</label>
+   <div class="col-sm-9">
+     <?php
+      $options = array(
+       'columns'=>'Tiles - Columns',
+       'justified'=>'Tiles - Justified',
+       'nested'=>'Tiles - Nested',
+       'grid'=>'Tiles Grid'
+      );
+      ?>
       <div class="rex-select-style">
-        <select id="galerieart" name="REX_INPUT_VALUE[1]">
-          <option value="standard"<?php if ('REX_VALUE[1]' == 'standard') echo ' selected'; ?>>standard</option>
-           <option value="fleximages"<?php if ('REX_VALUE[1]' == 'fleximages') echo ' selected'; ?>>mosaik</option>
+      <select name="REX_INPUT_VALUE[1]" id="select_example" class="form-control">
+      <?php foreach ($options as $k=>$v) : ?>
+      <option value="<?php echo $k; ?>"<?php if ($k == "REX_VALUE[1]") echo ' selected="selected"' ?>><?php echo $v; ?></option>
+        <?php endforeach ?>
         </select>
       </div>
     </div>
   </div>
+
  <div class="form-group">
         <label class="col-sm-3 control-label">Breite der Galerie</label>
         <div class="col-sm-9 ">

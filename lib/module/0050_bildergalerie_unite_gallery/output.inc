@@ -8,23 +8,46 @@ $class      = '';
 $truncate   = '';
 $hoehe      = 'REX_VALUE[2]';
 
+// Medialist
 if ("REX_MEDIALIST[1]" != '') {
   $imagelist = explode(',', "REX_MEDIALIST[1]");
 
-  if ('REX_VALUE[1]' == 'fleximages') {
-    $class = 'class="flex-images"';
-  } else {
-    $class = 'class="standard"';
-  }
+// Art der Galerie
+if ('REX_VALUE[1]' == 'columns') {
+  $art   = 'Tiles - Columns';
+  $class  = 'columns';
+  $js     = 'gallery_theme: "tiles"';
+}
+
+if ('REX_VALUE[1]' == 'justified') {
+  $art   = 'Tiles - Justified';
+  $class  = 'justified';
+  $js     = 'gallery_theme: "tiles",
+             tiles_type: "justified"';
+}
+
+if ('REX_VALUE[1]' == 'nested') {
+  $art   = 'Tiles - Nested';
+  $class  = 'nested';
+  $js     = 'gallery_theme: "tiles",
+             tiles_type: "nested"';
+}
+
+if ('REX_VALUE[1]' == 'grid') {
+  $art   = 'Tiles Grid';
+  $class  = 'grid';
+  $js     = 'gallery_theme: "tilesgrid"';
+}
 
 
   if ($hoehe == '') {
       $hoehe = "200";
   }
 
+
   $fe .= '
   <section id="unite_gallery" class="container">
-        <div id="galerieREX_SLICE_ID" '.$class.'>
+        <div id="galerieREX_SLICE_ID" class="'.$class.'" style="display:none;">
   ';
         foreach ($imagelist as $file) {
           $media = rex_media::get($file);
@@ -35,12 +58,9 @@ if ("REX_MEDIALIST[1]" != '') {
             $mediawidth =  $media->getValue('width');
             $mediaheight =  $media->getValue('height');
 
-            $fe .= '
-            <div class="item" data-w="'.$mediawidth.'" data-h="'.$mediaheight.'">
-              <a href="index.php?rex_media_type=galerie_big&amp;rex_media_file='.$file.'" title="' . $mediadesc . '">
-                <img src="index.php?rex_media_type=galerie_thumb&amp;rex_media_file='.$file.'" alt="' . $mediatitle . '" />
-              </a>
-            </div>';
+            $fe .= '<img alt="' . $mediatitle . '" src="index.php?rex_media_type=galerie_thumb&amp;rex_media_file='.$file.'"
+                data-image="index.php?rex_media_type=galerie_big&amp;rex_media_file='.$file.'"
+                data-description="' . $mediadesc . '">';
 
             $be .= '
               <div class="item">
@@ -51,7 +71,7 @@ if ("REX_MEDIALIST[1]" != '') {
 
       $fe .= '
     </div>
-  </section><!--/Portfoliowrap -->';
+  </section>';
 
   if ('REX_VALUE[3]' == 'verbergen') {
     $truncate = ', truncate: 1';
@@ -61,46 +81,38 @@ if ("REX_MEDIALIST[1]" != '') {
 
   if ('REX_VALUE[1]' == 'fleximages') {
   echo "
-    <script>
-    $(document).ready(function() {
-      $('#galerieREX_SLICE_ID').flexImages({rowHeight: ".$hoehe." ".$truncate."});
 
-      $('#galerieREX_SLICE_ID a').simpleLightbox({
-        overlay: true,
-        closeText: 'hhh',
-        animationSpeed: 1000,
-        disableScroll: false
-      });
-    });
-    </script>
   ";
   }
 
+  $fe .= "
+    <script type='text/javascript'>
+      $(document).ready(function(){
+        $('#galerieREX_SLICE_ID').unitegallery({
+        ".$js."
+        });
+      });
+    </script>
+    ";
 }
 
 if (!rex::isBackend()) {
   echo $fe;
 } else {
 echo '
- <div id="galerie">
+ <div id="unite_gallery">
     <div class="form-horizontal output">
      <h2>Galerie</h2>
        <div class="form-group">
          <label class="col-sm-3 control-label">Art der Galerie</label>
-         <div class="col-sm-9">';
-
-  if ('REX_VALUE[1]' == 'fleximages') {
-    echo 'mosaik';
-  } else {
-    echo 'standard';
-  }
-echo '   </div>
+         <div class="col-sm-9">
+         '.$art.'
+         </div>
        </div>
        <div class="form-group">
          <label class="col-sm-3 control-label">Breite der Galerie</label>
          <div class="col-sm-9">REX_VALUE[4]</div>
        </div>';
-
 
 
 if ('REX_VALUE[1]' == 'fleximages') {
@@ -169,3 +181,14 @@ echo '</div>
 
 
 ?>
+
+<!-- noch umbauen -->
+    <link rel='stylesheet' href='./assets/unitegallery/css/unite-gallery.css' type='text/css' />
+    <script type='text/javascript' src='./assets/unitegallery/themes/default/ug-theme-default.js'></script>
+    <link rel='stylesheet' href='./assets/unitegallery/themes/default/ug-theme-default.css' type='text/css' />
+
+    <script src='./assets/unitegallery/js/unitegallery.min.js' type='text/javascript'  ></script>
+    <link  href='./assets/unitegallery/css/unite-gallery.css' rel='stylesheet' type='text/css' />
+    <script src='./assets/unitegallery/themes/tiles/ug-theme-tiles.js' type='text/javascript'></script>
+      <script src='./assets/unitegallery/themes/tilesgrid/ug-theme-tilesgrid.js' type='text/javascript'></script>
+
