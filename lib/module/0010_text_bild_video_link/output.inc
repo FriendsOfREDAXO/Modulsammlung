@@ -10,7 +10,8 @@ $outback                          = '';
 $abstandsklasse                   = '';
 $bildposition                     = '';
 $editor                           = '';
-
+$downloads                        = '';
+$outbackfiles                     = '';
 
 if(rex_addon::get('rex_redactor')->isAvailable()) {
   $editor = 'redactor';
@@ -79,6 +80,78 @@ foreach ($reihenfolge as $nummer) {
     $zaehler = $zaehler + 1;
 
     $outback .= '<div class="bereichswrapper"><h2>Bereich '.$zaehler.'</h2>'.PHP_EOL;
+
+
+/****
+*
+*     Download
+*
+***/
+
+      if ($value['medialist_1'] !='') {
+        $outback .= '<h3>Download</h3>';
+
+        if (!function_exists('datei_groesse')) {
+          function datei_groesse($URL) {
+            $groesse = filesize($URL);
+            if($groesse<1000) {
+              return number_format($groesse, 0, ",", ".")." Bytes";
+            } elseif($groesse<1000000) {
+              return number_format($groesse/1024, 0, ",", ".")." kB";
+            } else {
+              return number_format($groesse/1048576, 0, ",", ".")." MB";
+            }
+          }
+        }
+
+        // Icon ermitteln
+        if (!function_exists('parse_icon')) {
+          function parse_icon($ext) {
+            switch (strtolower($ext)) {
+              case 'doc': return '<i class="fa fa-file-word-o"></i>';
+              case 'pdf': return '<i class="fa fa-file-pdf-o"></i>';
+              case 'zip': return '<i class="fa fa-archive-pdf-o"></i>';
+              case 'jpg': return '<i class="fa fa-file-image-o"></i>';
+              case 'png': return '<i class="fa fa-file-image-o"></i>';
+              case 'gif': return '<i class="fa fa-file-image-o"></i>';
+              // nach Belieben ergänzen, z.B. wie hier mit Icons von Font-Awesome
+              default:
+              return '';
+            }
+          }
+        }
+
+        $arr = explode(",",$value['medialist_1']);
+
+        foreach ($arr as $value_dl) {
+
+          $extension = substr(strrchr($value_dl, '.'), 1);
+          $parsed_icon = parse_icon($extension);
+          $downloadmedia = rex_media::get($value_dl);
+          $file_desc = $downloadmedia->getValue('med_description');
+
+          $outbackfiles .= '<p>'.$value_dl.'</p>';
+
+          $downloads .='
+          <p><a href="./media/'.$value_dl.'">'.$parsed_icon;
+
+           // Beschreibungstext als Linktext, falls vorhanden, ansonsten Dateiname
+           if ($file_desc != "") {
+             $downloads .= $file_desc;
+           } else {
+             $downloads .= $value_dl;
+           }
+
+           $downloads .= ' ('.datei_groesse(rex_path::media($value_dl)).')</a></p>';
+        }
+
+        $outback .= '
+          <div class="form-group">
+            <label class="col-sm-3 control-label">Dateien</label>
+            <div class="col-sm-9">'.$outbackfiles.'</div>
+          </div>'.PHP_EOL;
+
+      }
 
 /****
 *
@@ -207,6 +280,7 @@ foreach ($reihenfolge as $nummer) {
           </div>'.PHP_EOL;
       }
 
+
 /****
 *
 *     Video
@@ -304,6 +378,9 @@ foreach ($reihenfolge as $nummer) {
             </div>'.PHP_EOL;
         }
       }
+
+
+
 
 
 /****
@@ -446,6 +523,8 @@ foreach ($reihenfolge as $nummer) {
               </div>'.PHP_EOL;
         }
       }
+
+
   }
 
     $outback .= $outback_link;
@@ -460,6 +539,7 @@ foreach ($reihenfolge as $nummer) {
          $html_block[$zaehler] .= $text;
          $html_block[$zaehler] .= $link;
          $html_block[$zaehler] .= $bild;
+         $html_block[$zaehler] .= $downloads;
       break;
       case 'nachueberschrift':
          $html_block[$zaehler]  = '';
@@ -469,6 +549,7 @@ foreach ($reihenfolge as $nummer) {
          $html_block[$zaehler] .= $video;
          $html_block[$zaehler] .= $text;
          $html_block[$zaehler] .= $link;
+         $html_block[$zaehler] .= $downloads;
       break;
       case 'nachteaser':
          $html_block[$zaehler]  = '';
@@ -478,6 +559,7 @@ foreach ($reihenfolge as $nummer) {
          $html_block[$zaehler] .= $video;
          $html_block[$zaehler] .= $text;
          $html_block[$zaehler] .= $link;
+         $html_block[$zaehler] .= $downloads;
       break;
       default:
          $html_block[$zaehler]  = '';
@@ -487,10 +569,15 @@ foreach ($reihenfolge as $nummer) {
          $html_block[$zaehler] .= $video;
          $html_block[$zaehler] .= $text;
          $html_block[$zaehler] .= $link;
+         $html_block[$zaehler] .= $downloads;
+
       break;
     }
   }
 }
+
+
+
 
 // HTML
 

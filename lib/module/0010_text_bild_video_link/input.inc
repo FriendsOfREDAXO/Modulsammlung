@@ -19,7 +19,6 @@ if(!rex_addon::get('rex_markitup')->isAvailable()) {
   }
 }
 
-
 $values = '';
 $values = array();
 $values[1] = rex_var::toArray('REX_VALUE[1]');
@@ -313,9 +312,6 @@ if($anzeige_video) {
 
 '.PHP_EOL;
 }
-
-
-
 
 //
 // Download
