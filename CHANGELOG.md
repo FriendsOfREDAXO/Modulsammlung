@@ -1,6 +1,10 @@
 ### Modulsammlung - Changelog
 ___
 
+### 12.05.2016 Version 4.1.7
+
+* Weitere Module hinzugefügt
+
 
 ### 11.05.2016 Version 4.1.7
 

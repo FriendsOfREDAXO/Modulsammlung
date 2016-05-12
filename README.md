@@ -38,11 +38,12 @@ ___
 * **0500 - Minibeispiel: Text / Textile**
 * **0505 - Minibeispiel: Text / Textile - MarkItUp**
 * **0510 - Minibeispiel: Text / Redactor**
-* _0515 - Minibeispiel: Bild / Bilderliste_
+* **0515 - Minibeispiel: Bild / Bilderliste**
 * **0520 - Minibeispiel: HTML**
 * **0525 - Minibeispiel: Select / Multiselect**
 * **0530 - Minibeispiel: Radiobuttons**
 * **0535 - Minibeispiel: Checkboxen**
+* **0540 - Minibeispiel: Link / Linkliste**
 * **0600 - Beispielinhalte ausgeben**
 
 

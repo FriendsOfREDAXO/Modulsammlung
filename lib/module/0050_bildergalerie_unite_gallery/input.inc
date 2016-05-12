@@ -22,7 +22,7 @@
       );
       ?>
       <div class="rex-select-style">
-      <select name="REX_INPUT_VALUE[1]" id="select_example" class="form-control">
+      <select name="REX_INPUT_VALUE[1]" id="galerieart" class="form-control">
       <?php foreach ($options as $k=>$v) : ?>
       <option value="<?php echo $k; ?>"<?php if ($k == "REX_VALUE[1]") echo ' selected="selected"' ?>><?php echo $v; ?></option>
         <?php endforeach ?>
@@ -35,12 +35,12 @@
         <label class="col-sm-3 control-label">Breite der Galerie</label>
         <div class="col-sm-9 ">
           <div class="rex-select-style">
-            <select id="glaeriebreite" name="REX_INPUT_VALUE[4]">
+            <select id="glaeriebreite" name="REX_INPUT_VALUE[2]">
             <?php
               foreach (array('So breit wie der Inhalt','100% Browserbreite') as $value) {
                 echo '<option value="'.$value.'" ';
 
-                if ( "REX_VALUE[4]"=="$value" ) {
+                if ( "REX_VALUE[2]"=="$value" ) {
                   echo 'selected="selected" ';
                 }
                 echo '>'.$value.'</option>';
@@ -51,22 +51,18 @@
         </div>
       </div>
 
-  <div class="form-group weitereeinstellungen">
-    <label class="col-sm-3 control-label">Höhe der Bilder</label>
+  <div class="form-group we_breite">
+    <label class="col-sm-3 control-label">Breite der Bilder</label>
     <div class="col-sm-9">
-      <input class="form-control" name="REX_INPUT_VALUE[2]" value="REX_VALUE[2]" type="text" />
+      <input class="form-control" name="REX_INPUT_VALUE[3]" value="REX_VALUE[3]" type="text" />
     </div>
   </div>
 
-  <div class="form-group weitereeinstellungen">
-    <label class="col-sm-3 control-label">unvollständige Zeilen</label>
+
+  <div class="form-group we_hoehe">
+    <label class="col-sm-3 control-label">Höhe der Bilder</label>
     <div class="col-sm-9">
-      <div class="rex-select-style">
-        <select name="REX_INPUT_VALUE[3]">
-          <option value="anzeigen"<?php if ('REX_VALUE[3]' == 'anzeigen') echo ' selected'; ?>>anzeigen</option>
-           <option value="verbergen"<?php if ('REX_VALUE[3]' == 'verbergen') echo ' selected'; ?>>verbergen</option>
-        </select>
-      </div>
+      <input class="form-control" name="REX_INPUT_VALUE[4]" value="REX_VALUE[4]" type="text" />
     </div>
   </div>
 
@@ -89,35 +85,52 @@
     </div>
 
     <div class="form-group">
-      <label class="col-sm-3 control-label">Höhe der Bilder</label>
+      <label class="col-sm-3 control-label">Breite der Bilder</label>
         <div class="col-sm-9">
-          <p>Aus dieser Angabe ergibt sich die Höhe der Zeilen. Sofern kein Wert angegeben wird wird eine Höhe von 200px benutzt.</p>
+          <p>Aus dieser Angabe ergibt sich die Breite der Bilder. Sofern kein Wert angegeben wird wird eine Höhe von 200px benutzt.</p>
         </div>
     </div>
+
 
     <div class="form-group">
-      <label class="col-sm-3 control-label">Unvollständige Zeilen</label>
+      <label class="col-sm-3 control-label">Höhe der Bilder</label>
         <div class="col-sm-9">
-          <p>Die letzte Zeile der Galerie kann - bedingt durch die Anzahl der Bilder - "unvollständig" sein. Das kann durch die Auswahl von "verbergen" unterbunden werden. Bilder die dazu führen, dass eine Zeile unvollständig angezeigt wird werden dann nicht angezeigt.</p>
+          <p>Aus dieser Angabe ergibt sich die Höhe der Bilder. Sofern kein Wert angegeben wird wird eine Höhe von 200px benutzt.</p>
         </div>
     </div>
-  </div>
-
 </div>
 
 <script>
 
 <?php
-  if ('REX_VALUE[1]' == 'standart') {
-    echo "$('.weitereeinstellungen').hide();";
+  if ('REX_VALUE[1]' == 'columns' || 'REX_VALUE[1]' == 'nested') {
+    echo "$('.we_breite').show();";
+    echo "$('.we_hoehe').hide();";
+  }
+  if ('REX_VALUE[1]' == 'justified') {
+    echo "$('.we_breite').hide();";
+    echo "$('.we_hoehe').show();";
+  }
+  if ('REX_VALUE[1]' == 'grid') {
+    echo "$('.we_breite').show();";
+    echo "$('.we_hoehe').show();";
   }
 ?>
 
 $('#galerieart').change(function(){
-  if(this.value == "fleximages") {
-    $('.weitereeinstellungen').show();
-  } else {
-    $('.weitereeinstellungen').hide();
+  if(this.value == "columns" || this.value == "nested" ) {
+    $('.we_breite').show();
+    $('.we_hoehe').hide();
+  }
+
+  if(this.value == "justified") {
+    $('.we_breite').hide();
+    $('.we_hoehe').show();
+  }
+
+  if(this.value == "grid") {
+    $('.we_breite').show();
+    $('.we_hoehe').show();
   }
 });
 
