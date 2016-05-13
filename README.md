@@ -3,11 +3,12 @@
 
 Ziel diese Addons ist es einfach einige Module für Redaxo 5.x installieren zu können.
 
-Da es keinen Updateprozess vorhandener Module gibt (ist auch nicht geplant) kann das Addon nach der Installation der gewünschten Module eigentlich wieder gelöscht werden.
-
-Selbstverständlich können (und sollen) die Module nach der Installation individuell angepasst werden.
+Die Module können/sollen und müssen teilweise nach der Installation individuell angepasst werden.
 
 Das Frontend (S)CSS wird entweder nicht oder nur reduziert mitgeliefert :-)
+
+Da es keinen Updateprozess vorhandener Module gibt (ist auch nicht geplant) kann das Addon nach der Installation der gewünschten Module eigentlich wieder gelöscht werden um zu verhindern, dass evtl. irgendein Anweder wild Module installiert die noch konfiguriert werden müssten.
+
 
 
 Schreibt doch bitte auftretende Fehler, Notices und Wünsche als Issue.

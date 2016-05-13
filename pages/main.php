@@ -1,6 +1,5 @@
 <?php
 
-
 $dir = '../redaxo/src/addons/modulsammlung/lib/module';
 $modulesdirs = glob($dir.'/*',GLOB_ONLYDIR);
 
@@ -73,6 +72,11 @@ foreach ($modulesdirs as $dir) {
     $moduls[$module_key]['mediamanager'] = '';
   }
 
+  if (file_exists($dir.'/template.inc')) {
+    $moduls[$module_key]['template'] = $dir.'/template.inc';
+  } else {
+    $moduls[$module_key]['template'] = '';
+  }
 }
 
 if (count($moduls_errors) > 0) {
@@ -188,6 +192,10 @@ if (count($moduls_errors) > 0) {
 
         if($moduls[$module_key]['mediamanager'] != '') {
           include($moduls[$module_key]['mediamanager']);
+        }
+
+        if($moduls[$module_key]['template'] != '') {
+          include($moduls[$module_key]['template']);
         }
 
         // Ordner in Assets kopieren

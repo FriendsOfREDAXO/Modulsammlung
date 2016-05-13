@@ -13,7 +13,7 @@
 <br/>
 <p><b>Bitte beachten</b></p>
 <p>Es werden nicht automatisch die benötigeten JS und CSS Dateien eingbunden!</p>
-<p>Es wird der komplette des Ordners "dist" von <a href="https://github.com/vvvmax/unitegallery" target="_blank" >hier</a> in dem Ordner <i>./assets/unitegallery</i> kopiert. Somit stehen dort die erforderlichen JS und CSS Dateien zur Verfügung.</p>
+<p>Es wird der komplette Inhalt des Ordners <i>dist</i> von <a href="https://github.com/vvvmax/unitegallery" target="_blank" >hier</a> in dem Ordner <i>./assets/unitegallery</i> kopiert. Somit stehen dort die erforderlichen JS und CSS Dateien zur Verfügung.</p>
 
 <p>Die benötigten Dateien müssen also von Hand in das/die Frontend-Template/s eingebunden werden.</p>
 

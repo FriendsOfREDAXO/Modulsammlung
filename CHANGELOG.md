@@ -1,6 +1,11 @@
 ### Modulsammlung - Changelog
 ___
 
+### 12.05.2016 Version 4.1.8
+
+* Textkorrekturen
+* Modul "0030 - Text / Downloads" fast fertig gestellt (Beschreibung fehlt noch :-)
+
 ### 12.05.2016 Version 4.1.7
 
 * Weitere Module hinzugefügt
