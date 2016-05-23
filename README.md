@@ -21,10 +21,10 @@ ___
 * **0015 - Abstand und/oder Trennlinie (mit oder ohne Grafik)**
 * _0020 - Text / Bildergalerie_
 * _0025 - Text / Bilderslider_
-* _0030 - Text / Downloads_
+* **0030 - Text / Downloads**
 * **0035 - Text / Kontaktformular**
 * **0040 - Nur Text (Footer, Seitenleiste, Modal etc.)**
-* _0050 - Bildergalerie (Unite Gallery)_
+* **0050 - Bildergalerie (Unite Gallery)**
 * **0100 - Google Maps / Routenplaner**
 * _0105 - Parallax_
 * **0110 - Tabelle**
@@ -34,7 +34,7 @@ ___
 * **0205 - SEO Sitemap**
 * _0300 - Execl 2 Table_
 * **0400 - Artikelliste**
-* _0405 - Artikel blättern_
+* **0405 - Artikel blättern**
 * **0410 - Interne Weiterleitung**
 * **0500 - Minibeispiel: Text / Textile**
 * **0505 - Minibeispiel: Text / Textile - MarkItUp**

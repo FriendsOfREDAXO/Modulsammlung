@@ -1,6 +1,12 @@
 ### Modulsammlung - Changelog
 ___
 
+### 23.05.2016 Version 4.2.2
+
+* Beschreibung für "0030 - Text / Downloads" geschrieben
+* Versionsnummer korrigiert... :-)
+* Modul "0405 - Artikel blättern" hinzugefügt
+
 ### 12.05.2016 Version 4.1.8
 
 * Textkorrekturen
