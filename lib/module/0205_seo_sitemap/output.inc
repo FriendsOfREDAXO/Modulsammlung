@@ -24,7 +24,15 @@ function ModulPrintCatList($categories, $printArticles, $printStartArticles, $sh
     echo '<ul>';
       foreach ($categories as $cat) {
         if ($cat->isOnline()){
-          echo '<li><a href="'.$cat->getURL().'">'.$cat->getName().'</a>';
+
+        $session = rex_backend_login::hasSession();
+          if ($session) {
+            $edit = '<a target="_blank" class="seositemapedit" href="/redaxo/index.php?page=content/metainfo&article_id='.$cat->getId().'&clang='.rex_clang::getCurrentId().'">Bearbeiten</a>';
+          } else {
+            $edit = '';
+          }
+
+          echo '<li><a href="'.$cat->getURL().'">'.$cat->getName().'</a>'.$edit;
           if(($showSeoInfo && !$printArticles) || ($showSeoInfo && $printArticles && !$printStartArticles) ){
             //Anzeige des Startartikels (wenn online)
             $art = $cat->getStartArticle();
@@ -48,8 +56,18 @@ function ModulPrintCatList($categories, $printArticles, $printStartArticles, $sh
           if(is_array($articles) && count($articles) > 0) {
             $tmp_str = '';
             foreach ($articles as $art) {
+
+          $session = rex_backend_login::hasSession();
+            if ($session) {
+              $edit = '<a target="_blank" class="seositemapedit" href="/redaxo/index.php?page=content/metainfo&article_id='.$art->getId().'&clang='.rex_clang::getCurrentId().'">Bearbeiten</a>';
+            } else {
+              $edit = '';
+            }
+
+
+
               if( ($art->isOnline()&& !$art->isStartArticle()) || ($art->isOnline()&& $printStartArticles) ){
-                $tmp_str .= '<li><a href="'.$art->getURL().'">'.$art->getName().'</a>';
+                $tmp_str .= '<li><a href="'.$art->getURL().'">'.$art->getName().'</a>'.$edit;
                 if($showSeoInfo) {
                   $articleDescription = $art->getValue("yrewrite_description");
                   $articleTitle       = $art->getValue("yrewrite_title");

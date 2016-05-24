@@ -384,8 +384,21 @@ echo '
           <input class="form-control" type="text" name="REX_INPUT_VALUE[18]" value="REX_VALUE[18]" />
         </div>
     </div>
-  </div>
+  </div>'.PHP_EOL;
+
+if($anzeige_download) {
+  echo '
+      <h3>Download</h3>
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Download Seite</label>
+          <div class="col-sm-9">
+            REX_LINK[id=5 widget=1]
+          </div>
+        </div>'.PHP_EOL;
+}
+echo '
 </div>
+
 
 <div id="anleitung" class="tab-pane fade in active">
   <div class="form-horizontal">

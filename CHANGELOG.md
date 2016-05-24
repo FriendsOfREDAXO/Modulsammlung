@@ -1,6 +1,12 @@
 ### Modulsammlung - Changelog
 ___
 
+
+### 24.05.2016 Version 4.2.2
+
+* Modul "0205 - SEO Sitemap" um einen "Bearbeiten" Link erweitert
+* Im "0010 - Text / Bild / Video / Link (1-4 Spalten)" Link zum Download Hilfs-Template (wird nicht mitgeliefert) eingebaut
+
 ### 23.05.2016 Version 4.2.2
 
 * Beschreibung für "0030 - Text / Downloads" geschrieben

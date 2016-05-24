@@ -133,7 +133,7 @@ foreach ($reihenfolge as $nummer) {
           $outbackfiles .= '<p>'.$value_dl.'</p>';
 
           $downloads .='
-          <p><a href="./media/'.$value_dl.'">'.$parsed_icon;
+          <a href="'.rex_getUrl('REX_LINK[id=5 output="id"]', $this->clang, array ('file' => $value_dl) ).'">'.$parsed_icon;
 
            // Beschreibungstext als Linktext, falls vorhanden, ansonsten Dateiname
            if ($file_desc != "") {
@@ -150,6 +150,23 @@ foreach ($reihenfolge as $nummer) {
             <label class="col-sm-3 control-label">Dateien</label>
             <div class="col-sm-9">'.$outbackfiles.'</div>
           </div>'.PHP_EOL;
+
+
+        if('REX_LINK[5]' != '') {
+          $outback .= '
+            <div class="form-group">
+               <label class="col-sm-3 control-label">Download Seite</label>
+               <div class="col-sm-9"><a href="index.php?page=content&article_id=REX_LINK[id=1 output=id]">REX_LINK[id=5 output=name]</a></div>
+            </div>';
+        } else {
+          $outback .= '
+            <div class="form-group">
+               <label class="col-sm-3 control-label">Download Seite</label>
+               <div class="col-sm-9 warning"><b>ACHTUNG:</b><br/>Sie müssen unbedingt den Link zur Download Seite angeben!</div>
+            </div>';
+        };
+
+
 
       }
 

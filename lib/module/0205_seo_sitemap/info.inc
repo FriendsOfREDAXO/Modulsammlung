@@ -2,3 +2,4 @@
 <p>Diese Modul stellt die Sitemap einer Webseite da.<p>
 <p>Artikel, Startartikel und SEO Infos können ein- / ausgeschaltet werden.</p>
 <p>Im laufendem Betrieb einer Webseite ist es wohl sinnvoller die SEO Infos auszuschalten :-)</p>
+
