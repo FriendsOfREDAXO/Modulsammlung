@@ -8,4 +8,3 @@
   foreach($value_multiselect as $result) {
       echo $result, '<br>';
 }
-?>

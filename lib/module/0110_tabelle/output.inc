@@ -36,4 +36,3 @@ if (!rex::isBackend()) {
 } else {
   echo $out;
 }
-?>

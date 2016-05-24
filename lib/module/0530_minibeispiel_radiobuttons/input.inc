@@ -134,9 +134,4 @@
   -webkit-appearance: none;
   -moz-appearance: none;
 }
-
-
-
-
-
 </style>

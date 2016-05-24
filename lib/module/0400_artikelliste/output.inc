@@ -57,5 +57,3 @@ if(!rex::isBackend()) {
 </style>
 ';
 }
-
-?>

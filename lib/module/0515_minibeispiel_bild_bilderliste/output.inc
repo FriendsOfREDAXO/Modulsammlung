@@ -1,5 +1,4 @@
 <?php
-
   echo '<b>Bild</b>';
   $medium = rex_media::get("REX_MEDIA[1]");
   $image  = '<img src="'.$medium->getUrl().'" alt="'.$medium->getTitle().'" height="'.$medium->getHeight().'" width="'.$medium->getWidth().'" /><p>'.$medium->getValue('copyright').'</p>';
@@ -32,7 +31,5 @@
       }
     }
     echo $bilderliste;
-?>
-
 
 

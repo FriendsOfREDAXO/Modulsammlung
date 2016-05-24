@@ -4,4 +4,3 @@
       $text = rex_textile::parse($text);
   }
   echo $text;
-?>

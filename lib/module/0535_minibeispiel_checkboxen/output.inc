@@ -3,4 +3,3 @@
   foreach($value_checkbox as $result) {
       echo $result, '<br/>';
 }
-?>

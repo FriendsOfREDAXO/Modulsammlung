@@ -860,4 +860,3 @@ echo '
 }
 </style>'.PHP_EOL;
 }
-?>

@@ -167,5 +167,3 @@ if (is_array($categories) && count($categories) > 0){
 
 </style>'.PHP_EOL;
 }
-
-?>

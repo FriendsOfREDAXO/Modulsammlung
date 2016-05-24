@@ -45,5 +45,3 @@ if(!rex::isBackend()) {
 
 </style>'.PHP_EOL;
 }
-
-?>
