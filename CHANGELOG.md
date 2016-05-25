@@ -1,6 +1,9 @@
 ### Modulsammlung - Changelog
 ___
 
+### 25.05.2016 Version 4.2.4
+
+* Modul "0300 - Excel 2 Table" hinzugefügt
 
 ### 24.05.2016 Version 4.2.2
 

@@ -32,7 +32,7 @@ ___
 * _0110 - Modal_
 * **0200 - Alle Bilder mit aus dem Medienpool mit Copyright anzeigen**
 * **0205 - SEO Sitemap**
-* _0300 - Execl 2 Table_
+* **0300 - Execl 2 Table**
 * **0400 - Artikelliste**
 * **0405 - Artikel blättern**
 * **0410 - Interne Weiterleitung**
@@ -65,4 +65,4 @@ siehe [LICENSE.md](LICENSE.md)
 
 ___
 ### Credits
-[redaxo](http://www.redaxo.org/), [Thomas Blum](https://github.com/tbaddade), [Gregor Harlan](https://github.com/gharlan), [Sascha Weidner](https://github.com/Sioweb), [Thorben Jaworr](https://github.com/eaCe), [jQuery](https://jquery.com), [Parsedown](http://parsedown.org/), [Unite Gallery](https://github.com/vvvmax/unitegallery)
+[redaxo](http://www.redaxo.org/), [Thomas Blum](https://github.com/tbaddade), [Gregor Harlan](https://github.com/gharlan), [Sascha Weidner](https://github.com/Sioweb), [Thorben Jaworr](https://github.com/eaCe), [jQuery](https://jquery.com), [Parsedown](http://parsedown.org/), [Unite Gallery](https://github.com/vvvmax/unitegallery), [PHP spreadsheet reader](https://github.com/nuovo/spreadsheet-reader), [php-excel-reader](https://code.google.com/archive/p/php-excel-reader/)
