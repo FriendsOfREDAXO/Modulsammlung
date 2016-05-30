@@ -7,7 +7,7 @@ $bilder_breite  = 'REX_VALUE[3]';
 $bilder_hoehe   = 'REX_VALUE[4]';
 
 if ($bilder_hoehe  == '') { $bilder_hoehe  = "200"; }
-if ($bilder_hoehe == '') { $bilder_breite = "200"; }
+if ($bilder_breite == '') { $bilder_breite = "200"; }
 
 if ($galeriebreite == '100% Browserbreite') {
   $container = 'container-fluid';
@@ -48,7 +48,7 @@ if ('REX_VALUE[1]' == 'grid') {
   $class  = 'grid';
   $js     = 'gallery_theme: "tilesgrid",
              tile_width: '.$bilder_breite.',
-              tile_height: '.$bilder_hoehe.'';
+             tile_height: '.$bilder_hoehe.'';
 }
 
 $fe .= '
@@ -155,7 +155,7 @@ echo '</div>
   width: 90px;
   height: 90px;
   border: 1px solid #9da6b2;
-  margin-bottom: 5px;
+  margin: 0 5px 0 0;
   background: #DFE3E9;
 }
 

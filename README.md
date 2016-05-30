@@ -20,11 +20,11 @@ ___
 * **0010 - Text / Bild / Video / Link (1-4 Spalten)**
 * **0015 - Abstand und/oder Trennlinie (mit oder ohne Grafik)**
 * _0020 - Text / Bildergalerie_
-* _0025 - Text / Bilderslider_
 * **0030 - Text / Downloads**
 * **0035 - Text / Kontaktformular**
 * **0040 - Nur Text (Footer, Seitenleiste, Modal etc.)**
 * **0050 - Bildergalerie (Unite Gallery)**
+* **0055 - Bilderslider mit/ohne Text**
 * **0100 - Google Maps / Routenplaner**
 * _0105 - Parallax_
 * **0110 - Tabelle**

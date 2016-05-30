@@ -1,6 +1,12 @@
 ### Modulsammlung - Changelog
 ___
 
+
+### 30.05.2016 Version 4.2.5
+
+* Modul "0055 - Bilderslider mit/ohne Text" hinzugefügt
+* Fehlerkorrekturen
+
 ### 25.05.2016 Version 4.2.4
 
 * Modul "0300 - Excel 2 Table" hinzugefügt

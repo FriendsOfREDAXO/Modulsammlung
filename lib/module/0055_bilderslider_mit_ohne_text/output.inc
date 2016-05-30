@@ -1,0 +1,197 @@
+<?php
+
+$output_fe[]          = '';
+$output_be_bilder     = '';
+$breite               = 'REX_VALUE[5]';
+$container            = '';
+$autoplay             = 'false';
+$paginierung          = 'false';
+$navigation           = 'false';
+$output_backend_text  = '';
+$text                 = '';
+
+if ($breite == '100% Browserbreite') {
+  $container = 'container-fluid';
+} else {
+  $container = 'container';
+}
+
+// Medialist
+if ("REX_MEDIALIST[1]" != '') {
+  $imagelist = explode(',', "REX_MEDIALIST[1]");
+  foreach ($imagelist as $file) {
+    $media = rex_media::get($file);
+    if ($media) {
+      $mediatitle = $media->getValue('title');
+      $mediadesc = str_replace(array("\r\n", "\n", "\r"), ' ', $media->getValue('med_description'));
+
+      $output_fe[] .= '<img src="index.php?rex_media_type=owl_carousel&amp;rex_media_file='.$file.'" alt="' . $mediatitle . '">';
+
+      $output_be_bilder .= '
+        <div class="item">
+          <img src="index.php?rex_media_type=rex_mediapool_preview&amp;rex_media_file='.$file.'" alt="'.$file.'">
+        </div>';
+    }
+  }
+} else {
+  $output_be_bilder = '<div class="warning"><b>ACHTUNG:</b><br/>Sie haben keine Dateien für den Slider angegeben. Das ist recht sinnfrei wenn dieses Modul benutzt wird!</div>';
+}
+
+if ('REX_VALUE[1]' != 'nein') {
+  $autoplay = 'true';
+}
+if ('REX_VALUE[2]' != 'nein') {
+  $paginierung = 'true';
+}
+if ('REX_VALUE[3]' != 'nein') {
+  $navigation = 'true';
+}
+$anzahl = 'REX_VALUE[4]';
+
+if('REX_VALUE[6]' != '') {
+  $text = 'REX_VALUE[id=6 output=html]';
+  $text = rex_textile::parse($text);
+  $output_backend_text = '
+    <div class="form-group">
+       <label class="col-sm-3 control-label">Text</label>
+       <div class="col-sm-9">'.$text.'</div>
+    </div>';
+}
+
+
+$output_fe[] = '
+  <script>
+    $(document).ready(function() {
+      $("#owl-REX_SLICE_ID").owlCarousel({
+        autoPlay : '.$autoplay.',
+        pagination: '.$paginierung.',
+        navigation : '.$navigation.',
+        navigationText:  ["{{ prev }}","{{ next }}"],
+        items: '.$anzahl.',
+      });
+    });
+  </script>';
+
+if (!rex::isBackend()) {
+  echo '
+  <div class="'.$container.'">
+    <div class="row">';
+
+  if ($text != '') {
+    echo '
+    <div class="col-xs-12 col-sm-6">';
+    echo '<div id="owl-REX_SLICE_ID" class="owl-carousel">';
+          print implode($output_fe);
+    echo '</div>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+    '.$text.'
+    </div>';
+
+  } else {
+    echo '<div id="owl-REX_SLICE_ID" class="owl-carousel">';
+          print implode($output_fe);
+    echo '</div>';
+  }
+
+  echo '</div>
+  </div>';
+} else {
+  echo '
+ <div id="slider_text">
+    <div class="form-horizontal output">
+     <h2>Slider mit/ohne Text</h2>
+       <div class="form-group">
+         <label class="col-sm-3 control-label">Sliderbilder</label>
+         <div class="col-sm-9">'.$output_be_bilder.'</div>
+       </div>
+       <div class="form-group">
+         <label class="col-sm-3 control-label">Automatisch abspielen</label>
+         <div class="col-sm-9">REX_VALUE[1]</div>
+       </div>
+       <div class="form-group">
+         <label class="col-sm-3 control-label">Paginierung anzeigen</label>
+         <div class="col-sm-9">REX_VALUE[2]</div>
+       </div>
+       <div class="form-group">
+         <label class="col-sm-3 control-label">Navigation anzeigen</label>
+         <div class="col-sm-9">REX_VALUE[3]</div>
+       </div>
+       <div class="form-group">
+         <label class="col-sm-3 control-label">Anzahl der Bilder</label>
+         <div class="col-sm-9">REX_VALUE[4]</div>
+       </div>
+       <div class="form-group">
+         <label class="col-sm-3 control-label">Breite des Sliders</label>
+         <div class="col-sm-9">REX_VALUE[5]</div>
+       </div>
+       '.$output_backend_text .'
+</div>
+  </div>
+<style>
+#slider_text .bereichswrapper {
+  margin: 5px 0 5px 0;
+  background: #f5f5f5;
+  padding: 5px 15px 5px 15px;
+  border: 1px solid #9da6b2;
+}
+
+#slider_text .control-label {
+  font-weight: normal;
+  font-size: 12px;
+  margin-top: -6px;
+}
+
+#slider_text h2 {
+  font-size: 12px !important;
+  padding: 0 10px 10px 10px;
+  margin-bottom: 15px;
+  width: 100%;
+  font-weight: bold;
+  border-bottom: 1px solid #31404F;
+}
+
+#slider_text .item {
+  position: relative;
+  display: inline-block;
+  width: 90px;
+  height: 90px;
+  border: 1px solid #9da6b2;
+  margin: 0 5px 0 0;
+  background: #DFE3E9;
+}
+
+#slider_text .item img {
+    position:absolute;
+    top:0;
+    bottom:0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+ #slider_text .warning {
+    color: #f00;
+  }
+
+</style>'.PHP_EOL;
+}
+
+
+
+?>
+
+
+<?php
+/*
+  Der folgende Abschnitt gehört eighentlich nicht in die Modulausgabe.
+  Bitte die JS und CSS Dateien selbst im Frontend Template implementieren und diesen Abschnitt hier löschen.
+*/
+if (!rex::isBackend()) {
+  echo "
+    <link rel='stylesheet' href='./assets/owl_carousel/owl.carousel.css' type='text/css' />
+    <link rel='stylesheet' href='./assets/owl_carousel/owl.theme.css' type='text/css' />
+    <script src='./assets/owl_carousel/owl.carousel.js' type='text/javascript'  ></script>
+
+  ";
+}
