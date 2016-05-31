@@ -1,6 +1,10 @@
 ### Modulsammlung - Changelog
 ___
 
+### 31.05.2016 Version 4.2.6
+
+* Fehlerkorrekturen
+
 
 ### 30.05.2016 Version 4.2.5
 

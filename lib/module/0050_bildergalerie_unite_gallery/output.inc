@@ -48,7 +48,7 @@ if ('REX_VALUE[1]' == 'grid') {
   $class  = 'grid';
   $js     = 'gallery_theme: "tilesgrid",
              tile_width: '.$bilder_breite.',
-             tile_height: '.$bilder_hoehe.'';
+              tile_height: '.$bilder_hoehe.'';
 }
 
 $fe .= '
@@ -64,10 +64,10 @@ foreach ($imagelist as $file) {
     $mediawidth =  $media->getValue('width');
     $mediaheight =  $media->getValue('height');
 
-    $fe .= '<img alt="' . $mediatitle . '" src="index.php?rex_media_type=galerie_thumb&amp;rex_media_file='.$file.'" data-image="index.php?rex_media_type=galerie_big&amp;rex_media_file='.$file.'" data-description="' . $mediadesc . '">';
+    $fe .= '<img alt="' . $mediatitle . '" src="index.php?rex_media_type=galerie_thumb&rex_media_file='.$file.'" data-image="index.php?rex_media_type=galerie_big&rex_media_file='.$file.'" data-description="' . $mediadesc . '">';
 
     $be .= '<div class="item">
-              <img src="index.php?rex_media_type=rex_mediapool_preview&amp;rex_media_file='.$file.'" alt="'.$file.'">
+              <img src="index.php?rex_media_type=rex_mediapool_preview&rex_media_file='.$file.'" alt="'.$file.'">
             </div>';
     }
   }
@@ -180,13 +180,15 @@ echo '</div>
   Bitte die JS und CSS Dateien selbst im Frontend Template implementieren und diesen Abschnitt hier löschen.
 */
 if (!rex::isBackend()) {
-  echo "
-    <link rel='stylesheet' href='./assets/unitegallery/css/unite-gallery.css' type='text/css' />
-    <script type='text/javascript' src='./assets/unitegallery/themes/default/ug-theme-default.js'></script>
-    <link rel='stylesheet' href='./assets/unitegallery/themes/default/ug-theme-default.css' type='text/css' />
-    <script src='./assets/unitegallery/js/unitegallery.min.js' type='text/javascript'  ></script>
-    <link  href='./assets/unitegallery/css/unite-gallery.css' rel='stylesheet' type='text/css' />
-    <script src='./assets/unitegallery/themes/tiles/ug-theme-tiles.js' type='text/javascript'></script>
-      <script src='./assets/unitegallery/themes/tilesgrid/ug-theme-tilesgrid.js' type='text/javascript'></script>
-  ";
+  echo '
+    <link href="'.rex_url::base('assets/unitegallery/css/unite-gallery.css').'" type="text/css" rel="stylesheet"/>
+    <script src="'.rex_url::base('assets/unitegallery/themes/default/ug-theme-default.js').'" type="text/javascript" ></script>
+    <link href="'.rex_url::base('assets/unitegallery/themes/default/ug-theme-default.css').'" type="text/css" rel="stylesheet" />
+    <script src="'.rex_url::base('assets/unitegallery/js/unitegallery.min.js').'" type="text/javascript" ></script>
+    <link  href="'.rex_url::base('assets/unitegallery/css/unite-gallery.css').'" rel="stylesheet" type="text/css" />
+    <script src="'.rex_url::base('assets/unitegallery/themes/tiles/ug-theme-tiles.js').'" type="text/javascript"></script>
+    <script src="'.rex_url::base('assets/unitegallery/themes/tilesgrid/ug-theme-tilesgrid.js').'" type="text/javascript"></script>
+  ';
 }
+
+

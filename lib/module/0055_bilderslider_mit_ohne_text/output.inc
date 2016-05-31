@@ -1,7 +1,8 @@
 <?php
 
-$output_fe[]          = '';
+$output_fe_bilder     = '';
 $output_be_bilder     = '';
+$output_fe_js         = '';
 $breite               = 'REX_VALUE[5]';
 $container            = '';
 $autoplay             = 'false';
@@ -25,11 +26,11 @@ if ("REX_MEDIALIST[1]" != '') {
       $mediatitle = $media->getValue('title');
       $mediadesc = str_replace(array("\r\n", "\n", "\r"), ' ', $media->getValue('med_description'));
 
-      $output_fe[] .= '<img src="index.php?rex_media_type=owl_carousel&amp;rex_media_file='.$file.'" alt="' . $mediatitle . '">';
+      $output_fe_bilder .= '<img src="index.php?rex_media_type=owl_carousel&rex_media_file='.$file.'" alt="' . $mediatitle . ' width="100%" >';
 
       $output_be_bilder .= '
         <div class="item">
-          <img src="index.php?rex_media_type=rex_mediapool_preview&amp;rex_media_file='.$file.'" alt="'.$file.'">
+          <img src="index.php?rex_media_type=rex_mediapool_preview&rex_media_file='.$file.'" alt="'.$file.'">
         </div>';
     }
   }
@@ -59,7 +60,7 @@ if('REX_VALUE[6]' != '') {
 }
 
 
-$output_fe[] = '
+$output_fe_js = '
   <script>
     $(document).ready(function() {
       $("#owl-REX_SLICE_ID").owlCarousel({
@@ -81,7 +82,7 @@ if (!rex::isBackend()) {
     echo '
     <div class="col-xs-12 col-sm-6">';
     echo '<div id="owl-REX_SLICE_ID" class="owl-carousel">';
-          print implode($output_fe);
+    echo $output_fe_bilder;
     echo '</div>
     </div>
     <div class="col-xs-12 col-sm-6">
@@ -90,12 +91,13 @@ if (!rex::isBackend()) {
 
   } else {
     echo '<div id="owl-REX_SLICE_ID" class="owl-carousel">';
-          print implode($output_fe);
+    echo $output_fe_bilder;
     echo '</div>';
   }
 
   echo '</div>
   </div>';
+  echo $output_fe_js;
 } else {
   echo '
  <div id="slider_text">
@@ -188,10 +190,9 @@ if (!rex::isBackend()) {
   Bitte die JS und CSS Dateien selbst im Frontend Template implementieren und diesen Abschnitt hier löschen.
 */
 if (!rex::isBackend()) {
-  echo "
-    <link rel='stylesheet' href='./assets/owl_carousel/owl.carousel.css' type='text/css' />
-    <link rel='stylesheet' href='./assets/owl_carousel/owl.theme.css' type='text/css' />
-    <script src='./assets/owl_carousel/owl.carousel.js' type='text/javascript'  ></script>
-
-  ";
+  echo '
+    <link rel="stylesheet" href="'.rex_url::base('assets/owl_carousel/owl.carousel.css').'" type="text/css" />
+    <link rel="stylesheet" href="'.rex_url::base('assets/owl_carousel/owl.theme.css').'" type="text/css" />
+    <script src="'.rex_url::base('assets/owl_carousel/owl.carousel.js').'" type="text/javascript" ></script>
+  ';
 }
