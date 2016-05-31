@@ -167,10 +167,6 @@ if (!rex::isBackend()) {
 </style>'.PHP_EOL;
 }
 
-
-
-
-
 /*
   Der folgende Abschnitt gehört eighentlich nicht in die Modulausgabe.
   Bitte die JS und CSS Dateien selbst im Frontend Template implementieren und diesen Abschnitt hier löschen.
@@ -180,5 +176,3 @@ if (!rex::isBackend()) {
     <script src="'.rex_url::base('assets/enllax/jquery.enllax.min.js').'" type="text/javascript" ></script>
   ';
 }
-?>
-<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
