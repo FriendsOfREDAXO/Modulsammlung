@@ -1,8 +1,9 @@
 ### Modulsammlung - Changelog
 ___
 
-### 31.05.2016 Version 4.2.6
+### 31.05.2016 Version 4.2.7
 
+* Modul "0105 - Parallax" hinzugefügt
 * Fehlerkorrekturen
 
 

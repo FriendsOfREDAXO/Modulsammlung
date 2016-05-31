@@ -26,7 +26,7 @@ ___
 * **0050 - Bildergalerie (Unite Gallery)**
 * **0055 - Bilderslider mit/ohne Text**
 * **0100 - Google Maps / Routenplaner**
-* _0105 - Parallax_
+* **0105 - Parallax**
 * **0110 - Tabelle**
 * _0115 - Akkordeon / Normal-, Tabdarstellung_
 * _0110 - Modal_
@@ -65,4 +65,4 @@ siehe [LICENSE.md](LICENSE.md)
 
 ___
 ### Credits
-[redaxo](http://www.redaxo.org/), [Thomas Blum](https://github.com/tbaddade), [Gregor Harlan](https://github.com/gharlan), [Sascha Weidner](https://github.com/Sioweb), [Thorben Jaworr](https://github.com/eaCe), [jQuery](https://jquery.com), [Parsedown](http://parsedown.org/), [Unite Gallery](https://github.com/vvvmax/unitegallery), [PHP spreadsheet reader](https://github.com/nuovo/spreadsheet-reader), [php-excel-reader](https://code.google.com/archive/p/php-excel-reader/)
+[redaxo](http://www.redaxo.org/), [Thomas Blum](https://github.com/tbaddade), [Gregor Harlan](https://github.com/gharlan), [Sascha Weidner](https://github.com/Sioweb), [Thorben Jaworr](https://github.com/eaCe), [jQuery](https://jquery.com), [Parsedown](http://parsedown.org/), [Unite Gallery](https://github.com/vvvmax/unitegallery), [PHP spreadsheet reader](https://github.com/nuovo/spreadsheet-reader), [php-excel-reader](https://code.google.com/archive/p/php-excel-reader/), [Owl Carousel](https://github.com/OwlFonk/OwlCarousel), [Enllax](http://mmkjony.github.io/enllax.js/)
