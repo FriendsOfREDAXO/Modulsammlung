@@ -1,6 +1,11 @@
 ### Modulsammlung - Changelog
 ___
 
+### 07.06.2016 Version 4.2.8
+
+* Fehlerkorrektur im Modul 0010 - Text / Bild / Video / Link (1-4 Spalten)
+  Danke an Tim Filler für den Hinweis!
+
 ### 31.05.2016 Version 4.2.7
 
 * Modul "0105 - Parallax" hinzugefügt
