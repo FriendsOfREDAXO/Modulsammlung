@@ -35,7 +35,7 @@ ___
 * **0405 - Artikel blättern**
 * **0410 - Interne Weiterleitung**
 * **0500 - Minibeispiel: Text / Textile**
-* **0505 - Minibeispiel: Text / Textile - MarkItUp**
+* **0505 - Minibeispiel: Text / MarkItUp (Textile)**
 * **0510 - Minibeispiel: Text / Redactor 2**
 * **0515 - Minibeispiel: Bild / Bilderliste**
 * **0520 - Minibeispiel: HTML**

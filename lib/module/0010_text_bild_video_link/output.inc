@@ -13,14 +13,9 @@ $editor                           = '';
 $downloads                        = '';
 $outbackfiles                     = '';
 
-if(rex_addon::get('rex_redactor')->isAvailable()) {
-  $editor = 'redactor';
-}
 if(rex_addon::get('rex_markitup')->isAvailable()) {
   $editor = 'markitup';
-    if (!rex_addon::get('textile')->isAvailable()) {
-      echo rex_view::error('Dieses Modul benötigt das "textile" Addon!');
-  }
+  echo rex_view::error('Dieses Modul benötigt das "MarkItUp" Addon!');
 }
 
 if ($mediamanagertyp == '') {

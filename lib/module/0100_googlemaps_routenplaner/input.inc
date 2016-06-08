@@ -5,9 +5,6 @@ if(!rex_addon::get('rex_markitup')->isAvailable()) {
   if (!rex_markitup::profileExists('supersimple')) {
   rex_markitup::insertProfile('supersimple', 'Angelegt durch das Addon Modulsammlung', 'textile', 'bold,italic,underline');
   }
-  if (!rex_addon::get('textile')->isAvailable()) {
-      echo rex_view::error('Dieses Modul benötigt das "textile" Addon!');
-  }
 }
 
 ?>

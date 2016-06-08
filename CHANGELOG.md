@@ -1,6 +1,14 @@
 ### Modulsammlung - Changelog
 ___
 
+
+### 08.06.2016 Version 4.3.0
+
+* Modul "0505 - Minibeispiel: Text / Textile - MarkItUp" umbenannt in "0505 - Minibeispiel: Text / MarkItUp (Textile)"
+* Textile Abfrage aus einigen Modulen entfernt
+
+
+
 ### 08.06.2016 Version 4.2.9
 
 * Update Modul "0510 - Minibeispiel: Text / Redactor" zu "0510 - Minibeispiel: Text / Redactor 2"
