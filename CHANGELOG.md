@@ -1,6 +1,11 @@
 ### Modulsammlung - Changelog
 ___
 
+### 08.06.2016 Version 4.2.9
+
+* Update Modul "0510 - Minibeispiel: Text / Redactor" zu "0510 - Minibeispiel: Text / Redactor 2"
+
+
 ### 07.06.2016 Version 4.2.8
 
 * Fehlerkorrektur im Modul 0010 - Text / Bild / Video / Link (1-4 Spalten)

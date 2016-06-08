@@ -9,8 +9,6 @@ Das Frontend (S)CSS wird entweder nicht oder nur reduziert mitgeliefert :-)
 
 Da es keinen Updateprozess vorhandener Module gibt (ist auch nicht geplant) kann das Addon nach der Installation der gewünschten Module eigentlich wieder gelöscht werden um zu verhindern, dass evtl. irgendein Anweder wild Module installiert die noch konfiguriert werden müssten.
 
-
-
 Schreibt doch bitte auftretende Fehler, Notices und Wünsche als Issue.
 
 ___
@@ -38,7 +36,7 @@ ___
 * **0410 - Interne Weiterleitung**
 * **0500 - Minibeispiel: Text / Textile**
 * **0505 - Minibeispiel: Text / Textile - MarkItUp**
-* **0510 - Minibeispiel: Text / Redactor**
+* **0510 - Minibeispiel: Text / Redactor 2**
 * **0515 - Minibeispiel: Bild / Bilderliste**
 * **0520 - Minibeispiel: HTML**
 * **0525 - Minibeispiel: Select / Multiselect**
