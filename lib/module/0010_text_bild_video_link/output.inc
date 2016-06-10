@@ -13,7 +13,7 @@ $editor                           = '';
 $downloads                        = '';
 $outbackfiles                     = '';
 
-if(rex_addon::get('rex_markitup')->isAvailable()) {
+if(!rex_addon::get('rex_markitup')->isAvailable()) {
   $editor = 'markitup';
   echo rex_view::error('Dieses Modul benötigt das "MarkItUp" Addon!');
 }
