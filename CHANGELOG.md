@@ -1,6 +1,10 @@
 ### Modulsammlung - Changelog
 ___
 
+### 23.06.2016 Version 4.3.3
+
+* Modul "0415 - Artikel einbinden" hinzugefügt. Danke an Tim Filler
+
 ### 1.06.2016 Version 4.3.2
 
 * Fehlerkorrektur

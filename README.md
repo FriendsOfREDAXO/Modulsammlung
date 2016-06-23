@@ -34,6 +34,7 @@ ___
 * **0400 - Artikelliste**
 * **0405 - Artikel blättern**
 * **0410 - Interne Weiterleitung**
+* **0415 - Artikel einbinden**
 * **0500 - Minibeispiel: Text / Textile**
 * **0505 - Minibeispiel: Text / MarkItUp (Textile)**
 * **0510 - Minibeispiel: Text / Redactor 2**

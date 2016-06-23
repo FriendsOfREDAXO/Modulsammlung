@@ -10,7 +10,7 @@ if(!rex::isBackend()) {
  echo '
   <div id="interne_weiterleitung" class="bereichswrapper">
     <div class="form-horizontal output">
-     <h2>Interen Weiterleitung</h2>
+     <h2>Interne Weiterleitung</h2>
      ';
 
   echo '<div class="form-group">
