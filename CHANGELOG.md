@@ -1,7 +1,11 @@
 ### Modulsammlung - Changelog
 ___
 
-### 23.06.2016 Version 4.3.3
+### 23.06.2016 Version 4.3.4
+
+- Verzicht auf SCSS im Addon
+
+### 23.06.2016 Version 4.3.4
 
 * Modul "0415 - Artikel einbinden" hinzugefügt. Danke an Tim Filler
 
