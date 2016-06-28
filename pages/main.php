@@ -134,7 +134,7 @@ if (count($moduls_errors) > 0) {
             <p class="accordiontitle">Input</p>
              '.rex_string::highlight($modul['input']).'
             <p class="accordiontitle">Output</p>
-             '.rex_string::highlight($modul['input']).'
+             '.rex_string::highlight($modul['output']).'
           </div>
 
 

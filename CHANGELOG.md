@@ -1,7 +1,14 @@
 ### Modulsammlung - Changelog
 ___
 
-### 23.06.2016 Version 4.3.4
+
+### 28.06.2016 Version 4.3.5
+
+- Anstelle des Ouput Quelletxtes eines Moduls wurde nochmal der Input Code angezeigt.
+- Modul "0405 - Artikel blättern" Umbau zur UL LI Ausgabe
+
+
+### 27.06.2016 Version 4.3.4
 
 - Verzicht auf SCSS im Addon
 

@@ -5,28 +5,32 @@ if(!rex::isBackend()) {
   $prev               = 0;
   $next               = 0;
   $last               = 0;
+  $divider = '<li> - </li>';
   $currentCategoryId  = rex_category::getCurrent()->getValue('id');
   $currentArtikelId   = rex_article::getCurrentId();
-  $artikelStatus      = rex_article::getCurrent()->getValue('status');
+
+  $links = array();
 
   foreach($articles = rex_category::getCurrent()->getArticles(true) as $article) {
     if($article !== NULL) {
       $id = $article->getId();
       if($id == $currentArtikelId AND $id != $currentCategoryId) {
         $prev = $last;
-        $output[] = '<a id="zurueck" href="'.rex_getUrl($prev).'">'.$article->getValue('name').'</a> - ';
+        $article = new rex_article_content($last);
+        $links[] = '<li><a id="zurueck" href="'.rex_getUrl($prev).'">'.$article->getValue('name').'</a></li>';
       }
+
       if($last == $currentArtikelId) {
         $next = $id;
-        $output[] = '<a id="weiter" href="'.rex_getUrl($next).'">'.$article->getValue('name').'</a>';
+        $article = new rex_article_content($next);
+        $links[] = '<li><a id="weiter" href="'.rex_getUrl($next).'">'.$article->getValue('name').'</a></li>';
         break;
       }
       $last = $id;
     }
   }
-
+  $output[] = '<ul>'.implode($divider, $links).'</ul>';
   echo implode($output);
-
 } else {
   echo '
   <div id="artikelblaettern" class="bereichswrapper">
