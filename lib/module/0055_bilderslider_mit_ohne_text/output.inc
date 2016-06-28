@@ -50,8 +50,7 @@ if ('REX_VALUE[3]' != 'nein') {
 $anzahl = 'REX_VALUE[4]';
 
 if('REX_VALUE[6]' != '') {
-  $text = 'REX_VALUE[id=6 output=html]';
-  $text = rex_textile::parse($text);
+  $text = rex_markitup::parseOutput ('textile', 'REX_VALUE[id=6 output="html"]');
   $output_backend_text = '
     <div class="form-group">
        <label class="col-sm-3 control-label">Text</label>
@@ -186,7 +185,7 @@ if (!rex::isBackend()) {
 
 <?php
 /*
-  Der folgende Abschnitt gehört eighentlich nicht in die Modulausgabe.
+  Der folgende Abschnitt gehört eigentlich nicht in die Modulausgabe.
   Bitte die JS und CSS Dateien selbst im Frontend Template implementieren und diesen Abschnitt hier löschen.
 */
 if (!rex::isBackend()) {

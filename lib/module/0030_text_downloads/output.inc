@@ -3,6 +3,7 @@ $output_frontend[]   = '';
 $output_backend[]    = '';
 $download_be_dateien = '';
 $download_fe_dateien = '';
+$text                = '';
 
 if (!function_exists('datei_groesse')) {
   function datei_groesse($URL) {
@@ -46,8 +47,7 @@ if('REX_VALUE[1]' != '') {
 }
 
 if('REX_VALUE[2]' != '') {
-  $text = 'REX_VALUE[id=2 output=html]';
-  $text = rex_textile::parse($text);
+  $text = rex_markitup::parseOutput ('textile', 'REX_VALUE[id=2 output="html"]');
   $output_backend[] = '
     <div class="form-group">
        <label class="col-sm-3 control-label">Text</label>

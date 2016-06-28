@@ -1,5 +1,12 @@
 <?php
 
+// HIER DEN API KEY EINGEBEN
+$gmapikey = '';
+
+if ($gmapikey != '') {
+  $gmapikey = 'key='.$gmapikey.'&';
+}
+
 /*
 Benötige CSS Angaben:
 
@@ -38,8 +45,7 @@ if ($breite == '100% Browserbreite') {
 }
 
 if ('REX_VALUE[id=10 isset=1]') {
-    $textile = 'REX_VALUE[id=10 output=html]';
-    $erklaerungstext = rex_textile::parse($textile);
+    $erklaerungstext = rex_markitup::parseOutput ('textile', 'REX_VALUE[id=10 output="html"]');
 }
 
 
@@ -60,7 +66,7 @@ if(!rex::isBackend()) {
   if ($mapidx==1) $mapidx = '';
 
   if ($mapidx==''){
-    echo '<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;language='.$sprache.'&amp;region='.strtoupper($sprache).'"></script>';
+    echo '<script type="text/javascript" src="//maps.googleapis.com/maps/api/js?'.$gmapikey.'sensor=false&amp;language='.$sprache.'&amp;region='.strtoupper($sprache).'"></script>';
   }
 
   echo '<script type="text/javascript">';
@@ -279,3 +285,5 @@ echo'
 
   '.PHP_EOL;
 }
+
+

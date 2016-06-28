@@ -3,7 +3,7 @@ if(!rex_addon::get('rex_markitup')->isAvailable()) {
     echo rex_view::error('Dieses Modul ben&ouml;tigt das "MarkItUp" Addon!');
 } else {
   if (!rex_markitup::profileExists('simple')) {
-  rex_markitup::insertProfile('simple', 'Angelegt durch das Addon Modulsammlung', 'textile', 'bold,italic,underline,deleted,quote,sub,sup,code,unorderedlist,link[internal|external|mailto]');
+  rex_markitup::insertProfile('simple', 'Angelegt durch das Addon Modulsammlung', 'textile', 'bold,italic,underline,deleted,quote,sub,sup,code,unorderedlist,grouplink[internal|external|mailto]');
   }
 }
 ?>
@@ -183,4 +183,9 @@ if(!rex_addon::get('rex_markitup')->isAvailable()) {
 #slider_modul_input #anleitung .panel-heading:hover  {
   color: #000;
 }
+
+#markitup_textile_1 {
+  min-height: 200px;
+}
+
 </style>

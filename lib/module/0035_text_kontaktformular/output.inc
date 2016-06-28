@@ -6,7 +6,6 @@ if(!rex_addon::get('rex_markitup')->isAvailable()) {
 $textnebenformular    = '';
 $email                = 'REX_VALUE[2]';
 $textdanke            = '';
-$textile_danke        = '';
 $emailabsender        = 'REX_VALUE[4]';
 
 if ($emailabsender == '') {
@@ -14,13 +13,11 @@ if ($emailabsender == '') {
 }
 
 if ('REX_VALUE[id=1 isset=1]') {
-    $textile = 'REX_VALUE[id=1 output=html]';
-    $textnebenformular = rex_textile::parse($textile);
+    $textnebenformular = rex_markitup::parseOutput ('textile', 'REX_VALUE[id=1 output="html"]');;
 }
 
 if ('REX_VALUE[id=3 isset=1]') {
-    $textile_danke = 'REX_VALUE[id=3 output=html]';
-    $textdanke = rex_textile::parse($textile_danke);
+    $textdanke = rex_markitup::parseOutput ('textile', 'REX_VALUE[id=3 output="html"]');;
 }
 
 
@@ -46,7 +43,7 @@ validate|empty|name|Bitte geben Sie eine Nachricht ein.|
 action|email|'.$emailabsender.'|'.$email.'|Nachricht von der Webseite (Kontaktformular)|<b>Name:</b> ###name###<br/><b>E-Mail:</b> ###email###<br/><br/><b>Nachricht:</b><br/>###nachricht###
 
 submit|label|Senden|||
-action|showtext|'.$textile_danke.'|||2
+action|showtext|'.$textdanke.'|||2
 
 ';
 

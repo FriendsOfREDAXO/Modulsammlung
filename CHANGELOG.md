@@ -1,6 +1,15 @@
 ### Modulsammlung - Changelog
 ___
 
+### 28.06.2016 Version 4.3.6
+
+- Modulupdate: "0010 - Text / Bild / Video / Link (1-4 Spalten)"
+- Modulupdate: "0030 - Text / Download"
+- Modulupdate: "0035 - Text / Kontaktformular"
+- Modulupdate: "0040 - Nur Text (Footer, Seitenleiste, Modal etc.)"
+- Modulupdate: "0055 - Bilderslider mit/ohne Text"
+- Modulupdate: "0100 - Google Maps / Routenplaner" (API KEY)
+- Modulupdate: "0510 - Minibeispiel: Text / Redactor 2"
 
 ### 28.06.2016 Version 4.3.5
 

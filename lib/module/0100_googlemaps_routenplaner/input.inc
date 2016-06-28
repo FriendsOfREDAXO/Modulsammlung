@@ -1,4 +1,13 @@
 <?php
+
+// HIER DEN API KEY EINGEBEN
+$gmapikey = '';
+
+if ($gmapikey != '') {
+  $gmapikey = 'key='.$gmapikey.'&';
+};
+
+
 if(!rex_addon::get('rex_markitup')->isAvailable()) {
     echo rex_view::error('Dieses Modul ben&ouml;tigt das "MarkItUp" Addon!');
 } else {
@@ -6,12 +15,14 @@ if(!rex_addon::get('rex_markitup')->isAvailable()) {
   rex_markitup::insertProfile('supersimple', 'Angelegt durch das Addon Modulsammlung', 'textile', 'bold,italic,underline');
   }
 }
-
 ?>
+
+
 
 <div class="modul-content">
   <div id="bereich1" class="">
-    <div class="form-horizontal">
+
+      <div class="form-horizontal">
       <h3>Adresse</h3>
       <div class="form-group">
         <label class="col-sm-3 control-label">Adresse / Infotext</label>
@@ -167,7 +178,7 @@ if(!rex_addon::get('rex_markitup')->isAvailable()) {
       <div class="form-group">
         <label class="col-sm-3 control-label">Erklärungstext</label>
         <div class="col-sm-9">
-           <textarea id="erklaerungstext markitup_textile_1" class="form-control markitup markitupEditor-supersimple" name="REX_INPUT_VALUE[10]">REX_VALUE[10]</textarea>
+           <textarea id="erklaerungstext" class="form-control markitupEditor-supersimple" name="REX_INPUT_VALUE[10]">REX_VALUE[10]</textarea>
         </div>
       </div>
 
@@ -359,14 +370,9 @@ input[placeholder] {
 
 }
 
-.redactor-editor,
-.markitup {
+#erklaerungstext {
   min-height: 200px;
 }
-.redactor-box {
-  border: 1px solid #ccc;
-}
-
 
 
 #anleitung .control-label {
@@ -423,7 +429,8 @@ function loadScript(src){
   script.src = src;
 }
 if(typeof google === "undefined") {
-  loadScript('http://maps.googleapis.com/maps/api/js?v=3&sensor=false&libraries=places&callback=initialize');
+
+  loadScript('//maps.googleapis.com/maps/api/js?<?php echo $gmapikey; ?>v=3&sensor=false&libraries=places&callback=initialize');
 }
 
 // vars
