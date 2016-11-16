@@ -7,7 +7,7 @@
         <div class="btn-group btn-group-vertical" data-toggle="buttons">
           <?php
             $options = array('Wert 1', 'Wert 2', 'Wert A', 'Wert B');
-            $current = rex_var::toArray('REX_VALUE[1]');
+            $current[] = rex_var::toArray('REX_VALUE[1]');
             foreach ( $options as $option) {
               if ($option == in_array($option, $current)) {
                 echo '
@@ -139,9 +139,4 @@
   -webkit-appearance: none;
   -moz-appearance: none;
 }
-
-
-
-
-
 </style>

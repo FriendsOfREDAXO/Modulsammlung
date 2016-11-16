@@ -1,5 +1,5 @@
 <?php
-if(!rex_addon::get('rex_markitup')->isAvailable()) {
+if(!rex_addon::get('markitup')->isAvailable()) {
     echo rex_view::error('Dieses Modul ben&ouml;tigt das "MarkItUp" Addon!');
 }
 
@@ -13,11 +13,11 @@ if ($emailabsender == '') {
 }
 
 if ('REX_VALUE[id=1 isset=1]') {
-    $textnebenformular = rex_markitup::parseOutput ('textile', 'REX_VALUE[id=1 output="html"]');;
+    $textnebenformular = markitup::parseOutput ('textile', 'REX_VALUE[id=1 output="html"]');
 }
 
 if ('REX_VALUE[id=3 isset=1]') {
-    $textdanke = rex_markitup::parseOutput ('textile', 'REX_VALUE[id=3 output="html"]');;
+    $textdanke = markitup::parseOutput ('textile', 'REX_VALUE[id=3 output="html"]');
 }
 
 
@@ -43,7 +43,7 @@ validate|empty|name|Bitte geben Sie eine Nachricht ein.|
 action|email|'.$emailabsender.'|'.$email.'|Nachricht von der Webseite (Kontaktformular)|<b>Name:</b> ###name###<br/><b>E-Mail:</b> ###email###<br/><br/><b>Nachricht:</b><br/>###nachricht###
 
 submit|label|Senden|||
-action|showtext|'.$textdanke.'|||2
+action|showtext|'.$textdanke.'|||1
 
 ';
 

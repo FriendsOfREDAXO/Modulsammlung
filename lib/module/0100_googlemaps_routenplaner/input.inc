@@ -8,11 +8,11 @@ if ($gmapikey != '') {
 };
 
 
-if(!rex_addon::get('rex_markitup')->isAvailable()) {
+if(!rex_addon::get('markitup')->isAvailable()) {
     echo rex_view::error('Dieses Modul ben&ouml;tigt das "MarkItUp" Addon!');
 } else {
-  if (!rex_markitup::profileExists('supersimple')) {
-  rex_markitup::insertProfile('supersimple', 'Angelegt durch das Addon Modulsammlung', 'textile', 'bold,italic,underline');
+  if (!markitup::profileExists('supersimple')) {
+    markitup::insertProfile ('supersimple', 'Angelegt durch das Addon Modulsammlung', 'textile', 300, 800, 'relative', 'bold,italic,underline');
   }
 }
 ?>

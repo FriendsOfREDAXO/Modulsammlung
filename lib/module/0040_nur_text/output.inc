@@ -1,9 +1,9 @@
 <?php
-if(!rex_addon::get('rex_markitup')->isAvailable()) {
+if(!rex_addon::get('markitup')->isAvailable()) {
     echo rex_view::error('Dieses Modul ben&ouml;tigt das "MarkItUp" Addon!');
 }
 
-$text = '<div class="text">'.rex_markitup::parseOutput ('textile', 'REX_VALUE[id=1 output="html"]').'</div>'.PHP_EOL;
+$text = '<div class="text">'.markitup::parseOutput ('textile', 'REX_VALUE[id=1 output="html"]').'</div>'.PHP_EOL;
 
 if(!rex::isBackend()) {
 

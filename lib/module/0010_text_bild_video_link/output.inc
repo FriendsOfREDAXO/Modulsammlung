@@ -13,7 +13,7 @@ $editor                           = '';
 $downloads                        = '';
 $outbackfiles                     = '';
 
-if(!rex_addon::get('rex_markitup')->isAvailable()) {
+if(!rex_addon::get('markitup')->isAvailable()) {
   $editor = 'markitup';
   echo rex_view::error('Dieses Modul benötigt das "MarkItUp" Addon!');
 }
@@ -373,7 +373,7 @@ foreach ($reihenfolge as $nummer) {
         // Text
         $text = '';
         if ($value['text'] !='') {
-          $value['text'] =    rex_markitup::parseOutput ('textile',  $value['text']);
+          $value['text'] =    markitup::parseOutput ('textile',  $value['text']);
           $text = '<div class="text">'.$value['text'].'</div>'.PHP_EOL;
 
           if ($value['ueberschrift_art'] == 'faq') {

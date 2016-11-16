@@ -1,6 +1,21 @@
 ### Modulsammlung - Changelog
 ___
 
+### 16.11.2016 Version 4.3.7
+
+- Modul "0010 - Text / Bild / Video / Link (1-4 Spalten)" korrgiert
+- Modul "0030 - Text / Download" korrgiert
+- Modul "0035 - Text / Kontaktformular" korrigiert
+- Modul "0040 - Nur Text (Footer, Seitenleiste, Modal etc.)" korrigiert
+- Modul "0055 - Bilderslider mit/ohne Text" korrigiert
+- Modul "0100 - Google Maps / Routenplaner" korrigiert
+- Modul "0505 - Minibeispiel: Text / MarkItUp (Textile)" korrigiert
+- Modul "0500 - Minibeispiel: Text / Textile" korrigiert
+- Modul "0510 - Minibeispiel: Text / Redactor 2" korrigiert
+- Modul "0535 - Minibeispiel: Checkboxen" korrigiert
+- kleinere Korrekturen
+
+
 ### 28.06.2016 Version 4.3.6
 
 - Modulupdate: "0010 - Text / Bild / Video / Link (1-4 Spalten)"

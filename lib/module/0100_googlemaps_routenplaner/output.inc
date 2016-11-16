@@ -17,7 +17,7 @@ Benötige CSS Angaben:
 
 */
 
-if(!rex_addon::get('rex_markitup')->isAvailable()) {
+if(!rex_addon::get('markitup')->isAvailable()) {
     echo rex_view::error('Dieses Modul ben&ouml;tigt das "MarkItUp" Addon!');
 }
 
@@ -45,7 +45,7 @@ if ($breite == '100% Browserbreite') {
 }
 
 if ('REX_VALUE[id=10 isset=1]') {
-    $erklaerungstext = rex_markitup::parseOutput ('textile', 'REX_VALUE[id=10 output="html"]');
+    $erklaerungstext = markitup::parseOutput ('textile', 'REX_VALUE[id=10 output="html"]');
 }
 
 

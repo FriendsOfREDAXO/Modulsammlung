@@ -18,7 +18,7 @@ if ($func == 'deleteunusedmoduls') {
         $sql_del->setWhere('id = '.$row['id']);
 
         if ($sql_del->delete()) {
-          echo 'Modul mit der ID '.$row['id'].' erfolgreich gelöscht.<br/>';
+          echo '<div class="alert alert-success">Modul mit der ID '.$row['id'].' erfolgreich gelöscht.</div>';
         }
 
     }

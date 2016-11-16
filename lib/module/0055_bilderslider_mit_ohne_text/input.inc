@@ -1,12 +1,13 @@
 <?php
-if(!rex_addon::get('rex_markitup')->isAvailable()) {
+if(!rex_addon::get('markitup')->isAvailable()) {
     echo rex_view::error('Dieses Modul ben&ouml;tigt das "MarkItUp" Addon!');
 } else {
-  if (!rex_markitup::profileExists('simple')) {
-  rex_markitup::insertProfile('simple', 'Angelegt durch das Addon Modulsammlung', 'textile', 'bold,italic,underline,deleted,quote,sub,sup,code,unorderedlist,grouplink[internal|external|mailto]');
+  if (!markitup::profileExists('supersimple')) {
+    markitup::insertProfile ('supersimple', 'Angelegt durch das Addon Modulsammlung', 'textile', 300, 800, 'relative', 'bold,italic,underline');
   }
 }
 ?>
+
 <div id="slider_modul_input">
   <div id="bereich1" class="">
     <div class="form-horizontal">
@@ -91,7 +92,7 @@ if(!rex_addon::get('rex_markitup')->isAvailable()) {
   <div class="form-group">
     <label class="col-sm-3 control-label">Text</label>
     <div class="col-sm-9">
-        <textarea id="markitup_textile_1" class="form-control markitup markitupEditor-simple" name="REX_INPUT_VALUE[6]">REX_VALUE[6]</textarea>
+      <textarea class="form-control markitupEditor-supersimple" id="value-6" name="REX_INPUT_VALUE[6]">REX_VALUE[6]</textarea>
     </div>
   </div>
 
