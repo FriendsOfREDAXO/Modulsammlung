@@ -1,9 +1,10 @@
 # Alle hier gesetzten Werte können über $addon->getProperty($key) abgefragt werden
 
 package: modulsammlung
-version: '4.3.7'
-author: Oliver Kreischer
+version: '4.5'
+author: 'Friends Of REDAXO'
 supportpage: www.redaxo.org/de/forum
+info: 'Idee und Realisierung der ersten Version: Oliver Kreicher / concedra.de'
 compile: 0
 
 page:

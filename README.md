@@ -45,6 +45,14 @@ ___
 * **0535 - Minibeispiel: Checkboxen**
 * **0540 - Minibeispiel: Link / Linkliste**
 * **0600 - Beispielinhalte ausgeben**
+* **0700 - MBlock - MForm - Teammitglieder**
+* **0705 - MBlock - MForm - Link und Linklist**
+* **0710 - MBlock - MForm - Media und Medialist**
+* **0715 - MBlock - MForm - Diverse Formularelemente**
+* **0800 - MBlock - HTML - Teammitglieder**
+* **0805 - MBlock - HTML - Link und Linklist**
+* **0810 - MBlock - HTML - Media und Medialist**
+* **0715 - MBlock - HTML - Diverse Formularelemente**
 
 
 ___
@@ -62,6 +70,31 @@ ___
 
 siehe [LICENSE.md](LICENSE.md)
 
+
 ___
 ### Credits
-[redaxo](http://www.redaxo.org/), [Thomas Blum](https://github.com/tbaddade), [Gregor Harlan](https://github.com/gharlan), [Sascha Weidner](https://github.com/Sioweb), [Thorben Jaworr](https://github.com/eaCe), [jQuery](https://jquery.com), [Parsedown](http://parsedown.org/), [Unite Gallery](https://github.com/vvvmax/unitegallery), [PHP spreadsheet reader](https://github.com/nuovo/spreadsheet-reader), [php-excel-reader](https://code.google.com/archive/p/php-excel-reader/), [Owl Carousel](https://github.com/OwlFonk/OwlCarousel), [Enllax](http://mmkjony.github.io/enllax.js/)
+
+* [Friends Of REDAXO](https://github.com/FriendsOfREDAXO) Gemeinsame REDAXO-Entwicklung!
+* [REDAXO](http://www.redaxo.org/)
+* [Thomas Blum](https://github.com/tbaddade)
+* [Joachim Dörr](https://github.com/joachimdoerr)
+* [Enllax](http://mmkjony.github.io/enllax.js/)
+* [Unite Gallery](https://github.com/vvvmax/unitegallery)
+* [Gregor Harlan](https://github.com/gharlan)
+* [Thorben Jaworr](https://github.com/eaCe)
+* [jQuery](https://jquery.com)
+* [Owl Carousel](https://github.com/OwlFonk/OwlCarousel)
+* [Parsedown](http://parsedown.org/)
+* [PHP spreadsheet reader](https://github.com/nuovo/spreadsheet-reader)
+* [php-excel-reader](https://code.google.com/archive/p/php-excel-reader/)
+* [Sascha Weidner](https://github.com/Sioweb)
+
+
+---
+
+Idee und Realisierung der ersten Version: [Oliver Kreischer / concedra.de](http://concedra.de)
+
+
+
+
+

@@ -1,8 +1,18 @@
 ### Modulsammlung - Changelog
 ___
 
-### 16.11.2016 Version 4.3.7
+### 16.11.2016 Version 4.5
 
+- Versionsupdate
+- Umzug nach FOR
+- neues Modul: "0700 - MBlock - MForm - Teammitglieder"
+- neues Modul: "0705 - MBlock - MForm - Link und Linklist"
+- neues Modul: "0710 - MBlock - MForm - Media und Medialist"
+- neues Modul: "0715 - MBlock - MForm - Diverse Formularelemente"
+- neues Modul: "0800 - MBlock - HTML - Teammitglieder"
+- neues Modul: "0805 - MBlock - HTML - Link und Linklist"
+- neues Modul: "0810 - MBlock - HTML - Media und Medialist"
+- neues Modul: "0715 - MBlock - HTML - Diverse Formularelemente"
 - Modul "0010 - Text / Bild / Video / Link (1-4 Spalten)" korrgiert
 - Modul "0030 - Text / Download" korrgiert
 - Modul "0035 - Text / Kontaktformular" korrigiert
