@@ -58,7 +58,7 @@ ___
 ___
 ### ToDo
 
-siehe [ISSUES](https://github.com/olien/REX5-Modulsammlung/issues/)
+siehe [ISSUES](https://github.com/FriendsOfREDAXO/REX5-Modulsammlung/issues)
 
 ___
 ### Changelog
