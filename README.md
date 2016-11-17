@@ -1,7 +1,8 @@
-## Redaxo 5 Modulsammlung
+## REDAXO 5 Modulsammlung
 
+Ziel diese Addons ist es einfach einige Module für REDAXO 5.x installieren zu können.
 
-Ziel diese Addons ist es einfach einige Module für Redaxo 5.x installieren zu können.
+![Screenshot](https://raw.githubusercontent.com/FriendsOfREDAXO/REX5-Modulsammlung/assets/modulsammlung_01.png)
 
 Die Module können/sollen und müssen teilweise nach der Installation individuell angepasst werden.
 
@@ -54,6 +55,8 @@ ___
 * **0810 - MBlock - HTML - Media und Medialist**
 * **0815 - MBlock - HTML - Diverse Formularelemente**
 
+
+![Screenshot](https://raw.githubusercontent.com/FriendsOfREDAXO/REX5-Modulsammlung/assets/modulsammlung_02.png)
 
 ___
 ### ToDo
