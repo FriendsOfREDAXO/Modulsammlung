@@ -1,6 +1,11 @@
 ### Modulsammlung - Changelog
 ___
 
+
+### 24.11.2016 Version 4.5.1
+
+- Modul "0105 - Parallax" durch Modul "0105 - Parallax (skrollr)" ersetzt
+
 ### 16.11.2016 Version 4.5
 
 - Versionsupdate

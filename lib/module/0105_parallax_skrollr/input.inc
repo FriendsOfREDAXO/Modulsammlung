@@ -1,13 +1,12 @@
 <?php
-if(!rex_addon::get('rex_markitup')->isAvailable()) {
+if(!rex_addon::get('markitup')->isAvailable()) {
     echo rex_view::error('Dieses Modul ben&ouml;tigt das "MarkItUp" Addon!');
 } else {
-  if (!rex_markitup::profileExists('simple')) {
-  rex_markitup::insertProfile('simple', 'Angelegt durch das Addon Modulsammlung', 'textile', 'bold,italic,underline,deleted,quote,sub,sup,code,unorderedlist,link[internal|external|mailto]');
+  if (!markitup::profileExists('simple')) {
+    markitup::insertProfile('simple', 'Angelegt durch das Addon Modulsammlung', 'textile', 300, 800, 'relative', 'bold,italic,underline,deleted,quote,sub,sup,code,unorderedlist,grouplink[internal|external|mailto]');
   }
 }
 ?>
-
 <div id="parallax" class="modul-content">
   <div class="form-horizontal">
     <h3>Parallax</h3>
@@ -32,14 +31,32 @@ if(!rex_addon::get('rex_markitup')->isAvailable()) {
       </div>
     </div>
     <div class="form-group">
-      <label class="col-sm-3 control-label">Scrollgeschwindigkeit</label>
+      <label class="col-sm-3 control-label">Bildposition 1</label>
       <div class="col-sm-9">
         <div class="rex-select-style">
-          <select id="trennerbreite" name="REX_INPUT_VALUE[3]">
+          <select id="bildpos1" name="REX_INPUT_VALUE[3]">
             <?php
-              foreach (array('0.0', '0.2', '0.3', '0.4', '0.5', '0.6', '0.7', '0.8', '0.9', '1.0') as $value) {
+              foreach (array('0%', '10%', '20%', '30%', '40%', '50%', '60%', '70%', '80%', '90%', '100%') as $value) {
               echo '<option value="'.$value.'" ';
               if ( "REX_VALUE[3]"=="$value" ) {
+                echo 'selected="selected" ';
+              }
+                echo '>'.$value.'</option>';
+              }
+            ?>
+          </select>
+        </div>
+      </div>
+    </div>
+	<div class="form-group">
+      <label class="col-sm-3 control-label">Bildposition 2</label>
+      <div class="col-sm-9">
+        <div class="rex-select-style">
+          <select id="bildpos2" name="REX_INPUT_VALUE[4]">
+            <?php
+              foreach (array('0%', '10%', '20%', '30%', '40%', '50%', '60%', '70%', '80%', '90%', '100%') as $value) {
+              echo '<option value="'.$value.'" ';
+              if ( "REX_VALUE[4]"=="$value" ) {
                 echo 'selected="selected" ';
               }
                 echo '>'.$value.'</option>';
@@ -52,19 +69,19 @@ if(!rex_addon::get('rex_markitup')->isAvailable()) {
     <div class="form-group">
       <label class="col-sm-3 control-label">Höhe</label>
       <div class="col-sm-9">
-        <input class="form-control" name="REX_INPUT_VALUE[4]" value="REX_VALUE[4]" type="text" />
+        <input class="form-control" name="REX_INPUT_VALUE[5]" value="REX_VALUE[5]" type="text" />
       </div>
     </div>
     <div class="form-group">
       <label class="col-sm-3 control-label">Breite</label>
       <div class="col-sm-9 ">
         <div class="rex-select-style">
-          <select id="trennerbreite" name="REX_INPUT_VALUE[5]">
+          <select id="breite" name="REX_INPUT_VALUE[6]">
             <?php
               foreach (array('100% Browserbreite', 'So breit wie der Inhalt') as $value) {
                 echo '<option value="'.$value.'" ';
 
-                if ( "REX_VALUE[5]"=="$value" ) {
+                if ( "REX_VALUE[6]"=="$value" ) {
                   echo 'selected="selected" ';
                 }
                 echo '>'.$value.'</option>';
@@ -76,7 +93,6 @@ if(!rex_addon::get('rex_markitup')->isAvailable()) {
     </div>
   </div>
 </div>
-
 <style>
 #parallax.modul-content {
   background: #f5f5f5;
@@ -94,12 +110,7 @@ if(!rex_addon::get('rex_markitup')->isAvailable()) {
 
 #parallax.modul-content .control-label {
   font-weight: normal;
+  margin-top: 2px;
   font-size: 12px !important;
 }
 </style>
-
-
-
-
-
-

@@ -2,9 +2,10 @@
 
 $output_fe[]     = '';
 $output_be[]     = '';
-$breite          = 'REX_VALUE[5]';
-$hoehe           = 'REX_VALUE[4]';
-$geschwindigkeit = 'REX_VALUE[3]';
+$breite          = 'REX_VALUE[6]';
+$hoehe           = 'REX_VALUE[5]';
+$pos1			 = 'REX_VALUE[3]';
+$pos2			 = 'REX_VALUE[4]';
 $ueberschrift    = 'REX_VALUE[1]';
 $text            = 'REX_VALUE[2]';
 $output_backend_ueberschrift = '';
@@ -17,7 +18,6 @@ if ($breite == '100% Browserbreite') {
 }
 
 if ($hoehe  == '') { $hoehe  = "350"; }
-if ($geschwindigkeit  == '') { $geschwindigkeit  = "0.3"; }
 
 
 if($ueberschrift != '') {
@@ -31,7 +31,8 @@ if($ueberschrift != '') {
 
 if($text != '') {
   $text = 'REX_VALUE[id=2 output=html]';
-  $text = rex_textile::parse($text);
+  $text = markitup::parseOutput ('textile', $text);
+   
   $output_backend_text = '
     <div class="form-group">
        <label class="col-sm-3 control-label">Text</label>
@@ -40,21 +41,22 @@ if($text != '') {
 }
 
 
-if(!rex_addon::get('rex_markitup')->isAvailable()) {
+if(!rex_addon::get('markitup')->isAvailable()) {
     echo rex_view::error('Dieses Modul ben&ouml;tigt das "MarkItUp" Addon!');
 }
 
 $medium = rex_media::get("REX_MEDIA[1]");
 
   if ($medium != '') {
-    $output_fe[] = '<div id="parallax_REX_SLICE_ID" class="prallax" data-enllax-ratio="'.$geschwindigkeit.'" style="height: '.$hoehe.'px; background-image: url(index.php?rex_media_type=parallax&rex_media_file=REX_MEDIA[1])">';
+    $output_fe[] = '<div id="parallax_REX_SLICE_ID" class="prallax" data-top-bottom="background-position: 50% '.$pos1.';" data-bottom-top="background-position: 50% '.$pos2.';" style="height: '.$hoehe.'px; background-image: url(index.php?rex_media_type=parallax&rex_media_file=REX_MEDIA[1])">';
 
     if ($ueberschrift != '' || $text != '') {
       $output_fe[] = '
-          <div class="parallax_text_wrapper">
-            <h3 class="parallax_ueberschrift">'.$ueberschrift.'</h3>
-            <span class="parallax_text">'.$ueberschrift.'</span>
-          </div>';
+      	<div class="parallaxcontent">
+  			<span class="parallax_ueberschrift">'.$ueberschrift.'</span>
+  			<span class="parallax_text">'.$text.'</span>
+		</div>          
+      ';
     }
 
     $output_fe[] = '</div>';
@@ -74,19 +76,15 @@ if (!rex::isBackend()) {
   echo '
   <div class="'.$container.'">
     <div class="row">';
-
-
-    echo '<div id="owl-REX_SLICE_ID" class="owl-carousel">';
       print implode($output_fe);
-    echo '</div>';
-
-
   echo '</div>
   </div>
   <script>
    $(document).ready(function() {
-      $("parallax_REX_SLICE_ID").enllax();
-    });
+	   	skrollr.init({
+			forceHeight: false
+		});
+	});
   </script>
   ';
 
@@ -104,8 +102,12 @@ if (!rex::isBackend()) {
       '.$output_backend_ueberschrift.'
       '.$output_backend_text.'
        <div class="form-group">
-         <label class="col-sm-3 control-label">Scrollgeschwindigkeit</label>
-         <div class="col-sm-9">REX_VALUE[3]</div>
+         <label class="col-sm-3 control-label">Bildposition 1</label>
+         <div class="col-sm-9">'.$pos1.'</div>
+       </div>
+       <div class="form-group">
+         <label class="col-sm-3 control-label">Bildposition 2</label>
+         <div class="col-sm-9">'.$pos2.'</div>
        </div>
        <div class="form-group">
          <label class="col-sm-3 control-label">Höhe</label>
@@ -169,10 +171,10 @@ if (!rex::isBackend()) {
 
 /*
   Der folgende Abschnitt gehört eighentlich nicht in die Modulausgabe.
-  Bitte die JS und CSS Dateien selbst im Frontend Template implementieren und diesen Abschnitt hier löschen.
+  Bitte die JS Dateie selbst im Frontend Template implementieren und diesen Abschnitt hier löschen.
 */
 if (!rex::isBackend()) {
   echo '
-    <script src="'.rex_url::base('assets/enllax/jquery.enllax.min.js').'" type="text/javascript" ></script>
+    <script src="'.rex_url::base('assets/skrollr/skrollr.min.js').'" type="text/javascript" ></script>
   ';
 }

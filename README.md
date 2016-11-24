@@ -1,8 +1,9 @@
-## REDAXO 5 Modulsammlung
+## Modulsammlung für REDAXO 5
 
 Ziel diese Addons ist es einfach einige Module für REDAXO 5.x installieren zu können.
 
-![Screenshot](https://raw.githubusercontent.com/FriendsOfREDAXO/REX5-Modulsammlung/assets/modulsammlung_01.png)
+<img src="https://raw.githubusercontent.com/FriendsOfREDAXO/REX5-Modulsammlung/assets/modulsammlung_01.png" style="max-width: 888px" />
+
 
 Die Module können/sollen und müssen teilweise nach der Installation individuell angepasst werden.
 
@@ -25,7 +26,7 @@ ___
 * **0050 - Bildergalerie (Unite Gallery)**
 * **0055 - Bilderslider mit/ohne Text**
 * **0100 - Google Maps / Routenplaner**
-* **0105 - Parallax**
+* **0105 - Parallax (skrollr)**
 * **0110 - Tabelle**
 * _0115 - Akkordeon / Normal-, Tabdarstellung_
 * _0110 - Modal_
@@ -56,7 +57,8 @@ ___
 * **0815 - MBlock - HTML - Diverse Formularelemente**
 
 
-![Screenshot](https://raw.githubusercontent.com/FriendsOfREDAXO/REX5-Modulsammlung/assets/modulsammlung_02.png)
+<img src="https://raw.githubusercontent.com/FriendsOfREDAXO/REX5-Modulsammlung/assets/modulsammlung_02.png" style="max-width: 888px" />
+
 
 ___
 ### ToDo
@@ -77,26 +79,11 @@ siehe [LICENSE.md](LICENSE.md)
 ___
 ### Credits
 
-* [Friends Of REDAXO](https://github.com/FriendsOfREDAXO) Gemeinsame REDAXO-Entwicklung!
-* [REDAXO](http://www.redaxo.org/)
-* [Thomas Blum](https://github.com/tbaddade)
-* [Joachim Dörr](https://github.com/joachimdoerr)
-* [Enllax](http://mmkjony.github.io/enllax.js/)
-* [Unite Gallery](https://github.com/vvvmax/unitegallery)
-* [Gregor Harlan](https://github.com/gharlan)
-* [Thorben Jaworr](https://github.com/eaCe)
-* [jQuery](https://jquery.com)
-* [Owl Carousel](https://github.com/OwlFonk/OwlCarousel)
-* [Parsedown](http://parsedown.org/)
-* [PHP spreadsheet reader](https://github.com/nuovo/spreadsheet-reader)
-* [php-excel-reader](https://code.google.com/archive/p/php-excel-reader/)
-* [Sascha Weidner](https://github.com/Sioweb)
-
+[Friends Of REDAXO](https://github.com/FriendsOfREDAXO), [REDAXO](http://www.redaxo.org/), [Unite Gallery](https://github.com/vvvmax/unitegallery), [skrollr](https://github.com/Prinzhorn/skrollr), [Owl Carousel](https://github.com/OwlFonk/OwlCarousel), [PHP spreadsheet reader](https://github.com/nuovo/spreadsheet-reader), [php-excel-reader](https://code.google.com/archive/p/php-excel-reader/)
 
 ---
 
 Idee und Realisierung der ersten Version: [Oliver Kreischer / concedra.de](http://concedra.de)
-
 
 
 
