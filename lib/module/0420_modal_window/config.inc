@@ -1,2 +1,2 @@
-modulname = "0420 - Nur Text (Footer, Seitenleiste, Modal etc.)"
+modulname = "0420 - Bootstrap Modal Window (zeitgesteuert)"
 status = 1; 0 = geplant, 1 = fertig, 2 = in Bearbeitung

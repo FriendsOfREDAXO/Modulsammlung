@@ -1,48 +1,89 @@
 <?php
-if(!rex_addon::get('markitup')->isAvailable()) {
-    echo rex_view::error('Dieses Modul ben&ouml;tigt das "MarkItUp" Addon!');
+if (!rex_addon::get('markitup')->isAvailable() OR !rex_addon::get("yform")->isAvailable() OR !rex_plugin::get("yform", "tools")->isAvailable()) {
+    echo rex_view::error('Dieses Modul ben&ouml;tigt das "MarkItUp", "yForm" und das Plugin "yForm/tools" Addon!');
 }
 
-$text = '<div class="text">'.markitup::parseOutput ('textile', 'REX_VALUE[id=1 output="html"]').'</div>'.PHP_EOL;
 
-if(!rex::isBackend()) {
+$modal_title = 'REX_VALUE[id=2]';
+$modal_text = markitup::parseOutput('textile', 'REX_VALUE[id=1 output="html"]');
 
-echo $text;
+$now_date = date('Y-m-d H:i');
 
-} else {
- echo '
-  <div id="nurtext" class="bereichswrapper">
-    <div class="form-horizontal output">
-     <h2 class="ueberschrift" >Nur Text</h2>
-       <div class="form-group">
-         <label class="col-sm-3 control-label">Nur Text</label>
-         <div class="col-sm-9">'.$text.'</div>
-       </div>
-    </div>
-  </div>
+$date = DateTime::createFromFormat('d-m-Y H:i', "REX_VALUE[3]");
+$start_date = $date->format('Y-m-d H:i');
 
-<style>
-#nurtext .bereichswrapper {
-  margin: 5px 0 5px 0;
-  background: #f5f5f5;
-  padding: 5px 15px 5px 15px;
-  border: 1px solid #9da6b2;
+$date = DateTime::createFromFormat('d-m-Y H:i', "REX_VALUE[4]");
+$end_date = $date->format('Y-m-d H:i');
+
+
+if ($end_date == '') {
+    if (rex::isBackend()) {
+        echo rex_view::info('Es wurde kein Enddatum eingetragen. Block ist deaktiviert!');
+    }
 }
 
-#nurtext .control-label {
-  font-weight: normal;
-  font-size: 12px;
-  margin-top: -6px;
+if ($start_date > $now_date AND $start_date != '') {
+
+    if (rex::isBackend()) {
+        echo rex_view::info('Das Startdatum liegt in der Zukunft. Dieser Block ist noch deaktiviert!');
+    }
 }
 
-#nurtext  h2.ueberschrift {
-  font-size: 12px !important;
-  padding: 0 10px 10px 10px;
-  margin-bottom: 15px;
-  width: 100%;
-  font-weight: bold;
-  border-bottom: 1px solid #31404F;
+if ($start_date <= $now_date AND $end_date <= $now_date AND $end_date != '') {
+
+    if (rex::isBackend()) {
+        echo rex_view::info('Der Zeitraum ist abgelaufen. Dieser Block wurde deaktiviert!');
+    }
 }
 
-</style>'.PHP_EOL;
+if ($start_date <= $now_date AND $end_date >= $now_date AND ($start_date OR $end_date) != '') {
+
+    if (!rex::isBackend()) {
+
+        $output = array();
+
+        $output[] = '<div id="infoModal" class="rex_infoModal modal fade" role="dialog">';
+        $output[] = '<div class="modal-dialog">';
+        $output[] = '<div class="modal-content">';
+        # modal title
+        $output[] = '<div class="modal-header">';
+        $output[] = ' <button type="button" class="close" data-dismiss="modal">&times;</button>';
+        $output[] = ' <h4 class="modal-title">' . $modal_title . '</h4>';
+        $output[] = '</div>';
+        #modal content
+        $output[] = '<div class="modal-body">';
+        $output[] = $modal_text;
+        $output[] = '</div>';
+        # modal footer
+        $output[] = '<div class="modal-footer">';
+        $output[] = ' <button type="button" class="btn btn-default" data-dismiss="modal">Fenster schließen</button>';
+        $output[] = '</div>';
+
+        $output[] = '</div>';
+        $output[] = '</div>';
+        $output[] = '</div>';
+
+        echo join("\n", $output);
+
+        $modal_js =
+            PHP_EOL . '  <script>' .
+            PHP_EOL . '  jQuery(document).ready(function () {' .
+            PHP_EOL . '    jQuery(".rex_infoModal").modal("show");' .
+            PHP_EOL . '  });' .
+            PHP_EOL . '  </script>' . PHP_EOL;
+
+        rex_extension::register('OUTPUT_FILTER', function (rex_extension_point $ep) use ($modal_js) {
+            $suchmuster = '</body>';
+            $ersetzen = $modal_js . "\n</body>";
+            $ep->setSubject(str_replace($suchmuster, $ersetzen, $ep->getSubject()));
+        });
+
+    } else {
+        echo '<h3>'.$modal_title . '</h3>';
+        echo $modal_text;
+
+        echo '<p>Startzeit: REX_VALUE[3]</p>';
+        echo '<p>Endzeit: REX_VALUE[4]</p>';
+    }
 }
+?>
