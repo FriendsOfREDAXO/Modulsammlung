@@ -1,6 +1,9 @@
 ### Modulsammlung - Changelog
 ___
 
+### 24.11.2016 Version 4.5.2
+
+- Modul "0420 - Bootstrap Modal Window" von Christian Kolloch hinzugefügt.
 
 ### 24.11.2016 Version 4.5.1
 
