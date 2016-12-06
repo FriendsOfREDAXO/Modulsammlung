@@ -1,6 +1,10 @@
 ### Modulsammlung - Changelog
 ___
 
+### 06.12.2016 Version 4.5.3
+
+- Modul "0010 - Text / Bild / Video / Link (1-4 Spalten)" angepasst
+
 ### 24.11.2016 Version 4.5.2
 
 - Modul "0420 - Bootstrap Modal Window" von Christian Kolloch hinzugefügt.

@@ -4,16 +4,20 @@ $anzeige_text           = 1;//text
 $anzeige_bild           = 1;//bild
 $anzeige_link           = 1;//link
 $anzeige_video          = 1;//video
-$anzeige_download       = 0;//download
+$anzeige_download       = 1;//download
 
 $ausgabeform            = '';
 
-if(!rex_addon::get('markitup')->isAvailable()) {
-    echo rex_view::error('Dieses Modul ben&ouml;tigt das "MarkItUp" Addon!');
-} else {
-  if (!markitup::profileExists('simple')) {
-    markitup::insertProfile('simple', 'Angelegt durch das Addon Modulsammlung', 'textile', 300, 800, 'relative', 'bold,italic,underline,deleted,quote,sub,sup,code,unorderedlist,grouplink[internal|external|mailto]');
-  }
+if(!rex_addon::get('markitup')->isAvailable() && !rex_addon::get('redactor2')->isAvailable()) {
+    echo rex_view::error('Dieses Modul ben&ouml;tigt das "MarkItUp" oder das "Redactor 2" Addon!');
+}
+
+if (rex_addon::get('markitup')->isAvailable() && !markitup::profileExists('simple')) {
+  markitup::insertProfile('simple', 'Angelegt durch das Addon Modulsammlung', 'textile', 300, 800, 'relative', 'bold,italic,underline,deleted,quote,sub,sup,code,unorderedlist,grouplink[internal|external|mailto]');
+}
+
+if (rex_addon::get('redactor2')->isAvailable() && !redactor2::profileExists('simple')) {
+    redactor2::insertProfile('simple', 'Angelegt durch das Addon Modulsammlung', '300', '800', 'relative','bold, italic, underline, deleted, sub, sup,  unorderedlist, orderedlist, grouplink[email|external|internal|media], cleaner');
 }
 
 $values = '';
@@ -188,10 +192,16 @@ echo '
 
       <div class="form-group">
         <label class="col-sm-3 control-label">Fließext</label>
-        <div class="col-sm-9">
-           <textarea id="markitup_textile_' . $i . '" class="form-control markitup markitupEditor-simple" name="REX_INPUT_VALUE[' . $i . '][text]">' . (isset($values[$i]['text']) ? $values[$i]['text'] : '') . '</textarea>
-        </div>
-      </div>'.PHP_EOL;
+        <div class="col-sm-9">';
+
+        if (rex_addon::get('redactor2')->isAvailable()) {
+          echo ' <textarea class="form-control redactorEditor2-simple" id="value-' . $i . '" name="REX_INPUT_VALUE[' . $i . '][text]">' . (isset($values[$i]['text']) ? $values[$i]['text'] : '') . '</textarea>';
+        } else {
+          echo ' <textarea id="markitup_textile_' . $i . '" class="form-control markitup markitupEditor-simple" name="REX_INPUT_VALUE[' . $i . '][text]">' . (isset($values[$i]['text']) ? $values[$i]['text'] : '') . '</textarea>';
+        }
+
+echo '</div>
+    </div>'.PHP_EOL;
 }
 
 //
@@ -364,9 +374,30 @@ echo '
         <div class="col-sm-9 grid">
           '.$grid.'
         </div>
+    </div>';
+
+if($anzeige_download) {
+echo '
+    <h3>Links zur Download Hilfsseite</h3>
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Download Hilfsseite</label>
+          <div class="col-sm-9">
+            REX_LINK[id=5 widget=1]
+          </div>
+        </div>
+
+';
+}
+
+echo '
+    <h3>Sonstiges</h3>
+   <div class="form-group">
+      <label class="col-sm-3 control-label">Individuelle Container CSS Klasse</label>
+        <div class="col-sm-9">
+          <input class="form-control" type="text" name="REX_INPUT_VALUE[16]" value="REX_VALUE[16]" />
+        </div>
     </div>
 
-    <h3>Sonstiges</h3>
 
    <div class="form-group">
       <label class="col-sm-3 control-label">Individuelle CSS Klasse</label>
@@ -382,17 +413,6 @@ echo '
         </div>
     </div>
   </div>'.PHP_EOL;
-
-if($anzeige_download) {
-  echo '
-      <h3>Download</h3>
-        <div class="form-group">
-          <label class="col-sm-3 control-label">Download Seite</label>
-          <div class="col-sm-9">
-            REX_LINK[id=5 widget=1]
-          </div>
-        </div>'.PHP_EOL;
-}
 echo '
 </div>
 
@@ -564,8 +584,8 @@ echo '
 
 if($anzeige_video) {
 echo '
-  <div class="control-label panel-heading collapsed" data-toggle="collapse" data-target="#collapse-text"><span class="caret"></span>Video (YouTube / Vimeo)</h3></div>
-  <div id="collapse-text" class="panel-collapse collapse">
+  <div class="control-label panel-heading collapsed" data-toggle="collapse" data-target="#collapse-youtube"><span class="caret"></span>Video (YouTube / Vimeo)</h3></div>
+  <div id="collapse-youtube" class="panel-collapse collapse">
     <div class="form-group">
       <label class="col-sm-3 control-label">YouTube ID</label>
         <div class="col-sm-9">
@@ -591,6 +611,13 @@ echo '
 echo '
   <div class="control-label panel-heading collapsed" data-toggle="collapse" data-target="#collapse-weitereeinstellungen"><span class="caret"></span>Weitere Einstellungen</h3></div>
   <div id="collapse-weitereeinstellungen" class="panel-collapse collapse">
+
+    <div class="form-group">
+      <label class="col-sm-3 control-label">Individuelle Container CSS Klasse</label>
+        <div class="col-sm-9">
+          <p>Nähere Angaben zu diesem Punkt erhalten Sie von Ihrem Webentwickler.</p>
+        </div>
+    </div>
 
     <div class="form-group">
       <label class="col-sm-3 control-label">Individuelle CSS Klasse</label>

@@ -1,25 +1,24 @@
 <?php
-$grid                             = 'REX_VALUE[20]';
-$individuelle_css_klasse          = 'REX_VALUE[17]';
-$mediamanagertyp                  = 'REX_VALUE[18]';
-$out                              = '';
-$zaehler                          = '';
-$nummer                           = '';
-$REX['project_vars']['sidenavi']  = '';
-$outback                          = '';
-$abstandsklasse                   = '';
-$bildposition                     = '';
-$editor                           = '';
-$downloads                        = '';
-$outbackfiles                     = '';
 
-if(!rex_addon::get('markitup')->isAvailable()) {
+$grid                              = 'REX_VALUE[20]';
+$individuelle_css_klasse_container = 'REX_VALUE[16]';
+$individuelle_css_klasse_container = 'REX_VALUE[16]';
+$individuelle_css_klasse           = 'REX_VALUE[17]';
+$mediamanagertyp                   = 'REX_VALUE[18]';
+$out                               = '';
+$zaehler                           = '';
+$nummer                            = '';
+$outback                           = '';
+$abstandsklasse                    = '';
+$bildposition                      = '';
+$editor                            = '';
+$downloads                         = '';
+$outbackfiles                      = '';
+
+
+if(!rex_addon::get('markitup')->isAvailable() && !rex_addon::get('redactor2')->isAvailable()) {
   $editor = 'markitup';
-  echo rex_view::error('Dieses Modul benötigt das "MarkItUp" Addon!');
-}
-
-if ($mediamanagertyp == '') {
-    $mediamanagertyp = 'standard';
+  echo rex_view::error('Dieses Modul benötigt das "MarkItUp" oder das "Redactor 2" Addon!');
 }
 
 $html_block = array();
@@ -75,95 +74,6 @@ foreach ($reihenfolge as $nummer) {
     $zaehler = $zaehler + 1;
 
     $outback .= '<div class="bereichswrapper"><h2>Bereich '.$zaehler.'</h2>'.PHP_EOL;
-
-
-/****
-*
-*     Download
-*
-***/
-
-      if ($value['medialist_1'] !='') {
-        $outback .= '<h3>Download</h3>';
-
-        if (!function_exists('datei_groesse')) {
-          function datei_groesse($URL) {
-            $groesse = filesize($URL);
-            if($groesse<1000) {
-              return number_format($groesse, 0, ",", ".")." Bytes";
-            } elseif($groesse<1000000) {
-              return number_format($groesse/1024, 0, ",", ".")." kB";
-            } else {
-              return number_format($groesse/1048576, 0, ",", ".")." MB";
-            }
-          }
-        }
-
-        // Icon ermitteln
-        if (!function_exists('parse_icon')) {
-          function parse_icon($ext) {
-            switch (strtolower($ext)) {
-              case 'doc': return '<i class="fa fa-file-word-o"></i>';
-              case 'pdf': return '<i class="fa fa-file-pdf-o"></i>';
-              case 'zip': return '<i class="fa fa-archive-pdf-o"></i>';
-              case 'jpg': return '<i class="fa fa-file-image-o"></i>';
-              case 'png': return '<i class="fa fa-file-image-o"></i>';
-              case 'gif': return '<i class="fa fa-file-image-o"></i>';
-              // nach Belieben ergänzen, z.B. wie hier mit Icons von Font-Awesome
-              default:
-              return '';
-            }
-          }
-        }
-
-        $arr = explode(",",$value['medialist_1']);
-
-        foreach ($arr as $value_dl) {
-
-          $extension = substr(strrchr($value_dl, '.'), 1);
-          $parsed_icon = parse_icon($extension);
-          $downloadmedia = rex_media::get($value_dl);
-          $file_desc = $downloadmedia->getValue('med_description');
-
-          $outbackfiles .= '<p>'.$value_dl.'</p>';
-
-          $downloads .='
-          <a href="'.rex_getUrl('REX_LINK[id=5 output="id"]', $this->clang, array ('file' => $value_dl) ).'">'.$parsed_icon;
-
-           // Beschreibungstext als Linktext, falls vorhanden, ansonsten Dateiname
-           if ($file_desc != "") {
-             $downloads .= $file_desc;
-           } else {
-             $downloads .= $value_dl;
-           }
-
-           $downloads .= ' ('.datei_groesse(rex_path::media($value_dl)).')</a></p>';
-        }
-
-        $outback .= '
-          <div class="form-group">
-            <label class="col-sm-3 control-label">Dateien</label>
-            <div class="col-sm-9">'.$outbackfiles.'</div>
-          </div>'.PHP_EOL;
-
-
-        if('REX_LINK[5]' != '') {
-          $outback .= '
-            <div class="form-group">
-               <label class="col-sm-3 control-label">Download Seite</label>
-               <div class="col-sm-9"><a href="index.php?page=content&article_id=REX_LINK[id=1 output=id]">REX_LINK[id=5 output=name]</a></div>
-            </div>';
-        } else {
-          $outback .= '
-            <div class="form-group">
-               <label class="col-sm-3 control-label">Download Seite</label>
-               <div class="col-sm-9 warning"><b>ACHTUNG:</b><br/>Sie müssen unbedingt den Link zur Download Seite angeben!</div>
-            </div>';
-        };
-
-
-
-      }
 
 /****
 *
@@ -373,7 +283,13 @@ foreach ($reihenfolge as $nummer) {
         // Text
         $text = '';
         if ($value['text'] !='') {
-          $value['text'] =    markitup::parseOutput ('textile',  $value['text']);
+
+          if (rex_addon::get('redactor2')->isAvailable()) {
+            $value['text'] = $value['text'];
+          } else {
+            $value['text'] = markitup::parseOutput ('textile',  $value['text']);
+          }
+
           $text = '<div class="text">'.$value['text'].'</div>'.PHP_EOL;
 
           if ($value['ueberschrift_art'] == 'faq') {
@@ -413,7 +329,12 @@ foreach ($reihenfolge as $nummer) {
           $width = 'width="100%"';
         }
 
-        $bild_img  = '<img src="'.rex_url::frontendController().'?rex_media_type='.$mediamanagertyp.'&rex_media_file='.$filename.'" alt="'.$value['alt'].'" '.$width.' />'.PHP_EOL;
+        if($mediamanagertyp == '') {
+          $mediamanagertyp = 'standard';
+        }
+
+
+        $bild_img  = '<img src="'.rex_url::frontendController().'?rex_media_type='.$mediamanagertyp.'&amp;rex_media_file='.$filename.'" alt="'.$value['alt'].'" '.$width.' />'.PHP_EOL;
 
         if ($value['bildlink'] == 'ja') {
           $bild_img = $linkanfang.$bild_img.$linkende;
@@ -532,6 +453,93 @@ foreach ($reihenfolge as $nummer) {
 
 
   }
+
+/****
+*
+*     Download
+*
+***/
+
+      if ($value['medialist_1'] !='') {
+        $outback .= '<h3>Download</h3>';
+
+        if (!function_exists('datei_groesse')) {
+          function datei_groesse($URL) {
+            $groesse = filesize($URL);
+            if($groesse<1000) {
+              return number_format($groesse, 0, ",", ".")." Bytes";
+            } elseif($groesse<1000000) {
+              return number_format($groesse/1024, 0, ",", ".")." kB";
+            } else {
+              return number_format($groesse/1048576, 0, ",", ".")." MB";
+            }
+          }
+        }
+
+        // Icon ermitteln
+        if (!function_exists('parse_icon')) {
+          function parse_icon($ext) {
+            switch (strtolower($ext)) {
+              case 'doc': return '<i class="fa fa-file-word-o"></i>';
+              case 'pdf': return '<i class="fa fa-file-pdf-o"></i>';
+              case 'zip': return '<i class="fa fa-archive-pdf-o"></i>';
+              case 'jpg': return '<i class="fa fa-file-image-o"></i>';
+              case 'png': return '<i class="fa fa-file-image-o"></i>';
+              case 'gif': return '<i class="fa fa-file-image-o"></i>';
+              // nach Belieben ergänzen, z.B. wie hier mit Icons von Font-Awesome
+              default:
+              return '';
+            }
+          }
+        }
+
+        $arr = explode(",",$value['medialist_1']);
+
+        foreach ($arr as $value_dl) {
+
+          $extension = substr(strrchr($value_dl, '.'), 1);
+          $parsed_icon = parse_icon($extension);
+          $downloadmedia = rex_media::get($value_dl);
+          $file_desc = $downloadmedia->getValue('med_description');
+
+          $outbackfiles .= '<p>'.$value_dl.'</p>';
+
+          $downloads .='
+          <a class="downloadlink" href="'.rex_getUrl('REX_LINK[id=5 output="id"]', $this->clang, array ('file' => $value_dl) ).'">'.$parsed_icon;
+
+           // Beschreibungstext als Linktext, falls vorhanden, ansonsten Dateiname
+           if ($file_desc != "") {
+             $downloads .= $file_desc;
+           } else {
+             $downloads .= $value_dl;
+           }
+
+           $downloads .= ' ('.datei_groesse(rex_path::media($value_dl)).')</a></p>';
+        }
+
+        $outback .= '
+          <div class="form-group">
+            <label class="col-sm-3 control-label">Dateien</label>
+            <div class="col-sm-9">'.$outbackfiles.'</div>
+          </div>'.PHP_EOL;
+
+        if('REX_LINK[5]' != '') {
+          $outback .= '
+            <div class="form-group">
+               <label class="col-sm-3 control-label">Download Seite</label>
+               <div class="col-sm-9"><a href="index.php?page=content&article_id=REX_LINK[id=1 output=id]">REX_LINK[id=5 output=name]</a></div>
+            </div>';
+        } else {
+          $outback .= '
+            <div class="form-group">
+               <label class="col-sm-3 control-label">Download Seite</label>
+               <div class="col-sm-9 warning"><b>ACHTUNG:</b><br/>Sie müssen unbedingt den Link zur Download Seite angeben!</div>
+            </div>';
+        };
+
+
+
+      }
 
     $outback .= $outback_link;
     $outback .= '</div>'.PHP_EOL;
@@ -706,6 +714,16 @@ echo '
       </div>
     </div>'.PHP_EOL;
 
+  if ($individuelle_css_klasse_container !='') {
+    echo '
+      <div class="form-group">
+        <label class="col-sm-3 control-label">Individuelle Conatiner CSS Klasse</label>
+        <div class="col-sm-9">
+           '.$individuelle_css_klasse_container.'
+        </div>
+      </div>'.PHP_EOL;
+  }
+
   if ($individuelle_css_klasse !='') {
     echo '
       <div class="form-group">
@@ -731,35 +749,23 @@ echo '
 
 } else {
 
-// Sofern $REX['project_vars']['sidenavi'] nicht leer ist wird immer die Klasse container-fluid benutzt
-$REX['project_vars']['sidenavi'] = rex::getProperty('project_vars');
-
-if (isset($REX['project_vars']) && isset($REX['project_vars']['sidenavi']) && $REX['project_vars']['sidenavi'] != '') {
   echo  '
-    <div class="container-fluid">
-      <div class="row">
-        '.$out.'
+    <div class="container-fluid '.$individuelle_css_klasse_container.'">
+      <div class="container">
+        <div class="row">
+          '.$out.'
+        </div>
       </div>
-    </div>
+   </div>
   '.PHP_EOL;
-} else {
-  echo '
-    <div class="container">
-      <div class="row">
-        '.$out.'
-      </div>
-    </div>
-  '.PHP_EOL;
-}
+
 }
 
 if(rex::isBackend()) {
 
 echo '
 <style>
-
-
-@media (max-width:767px) {
+ @media (max-width:767px) {
   .output .control-label {
     margin-left: 10px;
     color: #a5abb1
@@ -768,7 +774,6 @@ echo '
     padding-left: 25px;
   }
 }
-
 
 .warning {
   color: #f00;
@@ -779,14 +784,12 @@ echo '
   background: #f5f5f5;
   padding: 0 15px 30px 15px;
   border: 1px solid #9da6b2;
-
 }
 
 .control-label {
   font-weight: normal;
   font-size: 12px;
   margin-top: -6px;
-
 }
 
 .output h2 {
@@ -814,10 +817,10 @@ echo '
 }
 
 .gridimage {
-    width: 340px;
-    height: 60px;
-    border: 1px solid #ccc;
-    margin: 0 0 8px 0;
+  width: 340px;
+  height: 60px;
+  border: 1px solid #ccc;
+  margin: 0 0 8px 0;
 }
 
 .img12 {
