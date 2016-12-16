@@ -545,6 +545,16 @@ foreach ($reihenfolge as $nummer) {
     $outback .= '</div>'.PHP_EOL;
 
     switch($value['bildposition']) {
+        case 'oben':
+          $html_block[$zaehler] = '';
+          $html_block[$zaehler] .= $bild;
+          $html_block[$zaehler] .= $ueberschrift;
+          $html_block[$zaehler] .= $teasertext;
+          $html_block[$zaehler] .= $video;
+          $html_block[$zaehler] .= $text;
+          $html_block[$zaehler] .= $link;
+          $html_block[$zaehler] .= $downloads;
+        break;
       case 'unten':
          $html_block[$zaehler]  = '';
          $html_block[$zaehler] .= $ueberschrift;
