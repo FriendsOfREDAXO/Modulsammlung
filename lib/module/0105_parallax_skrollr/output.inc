@@ -1,13 +1,17 @@
 <?php
+if(!rex_addon::get('markitup')->isAvailable() && !rex_addon::get('redactor2')->isAvailable()) {
+  $editor = 'markitup';
+  echo rex_view::error('Dieses Modul benötigt das "MarkItUp" oder das "Redactor 2" Addon!');
+}
 
-$output_fe[]     = '';
-$output_be[]     = '';
-$breite          = 'REX_VALUE[6]';
-$hoehe           = 'REX_VALUE[5]';
-$pos1			 = 'REX_VALUE[3]';
-$pos2			 = 'REX_VALUE[4]';
-$ueberschrift    = 'REX_VALUE[1]';
-$text            = 'REX_VALUE[2]';
+$output_fe[]      	= '';
+$output_be[]      	= '';
+$breite           		= 'REX_VALUE[6]';
+$hoehe            		= 'REX_VALUE[5]';
+$pos1			        = 'REX_VALUE[3]';
+$pos2			        = 'REX_VALUE[4]';
+$ueberschrift     	= 'REX_VALUE[1]';
+$text             		= 'REX_VALUE[2]';
 $output_backend_ueberschrift = '';
 $output_backend_text = '';
 
@@ -19,7 +23,6 @@ if ($breite == '100% Browserbreite') {
 
 if ($hoehe  == '') { $hoehe  = "350"; }
 
-
 if($ueberschrift != '') {
   $output_backend_ueberschrift = '
     <div class="form-group">
@@ -28,11 +31,13 @@ if($ueberschrift != '') {
     </div>';
 }
 
-
 if($text != '') {
   $text = 'REX_VALUE[id=2 output=html]';
-  $text = markitup::parseOutput ('textile', $text);
-   
+
+  if (rex_addon::get('markitup')->isAvailable()) {
+    $text = markitup::parseOutput ('textile', $text);
+  }
+
   $output_backend_text = '
     <div class="form-group">
        <label class="col-sm-3 control-label">Text</label>
@@ -41,22 +46,19 @@ if($text != '') {
 }
 
 
-if(!rex_addon::get('markitup')->isAvailable()) {
-    echo rex_view::error('Dieses Modul ben&ouml;tigt das "MarkItUp" Addon!');
-}
-
 $medium = rex_media::get("REX_MEDIA[1]");
-
   if ($medium != '') {
     $output_fe[] = '<div id="parallax_REX_SLICE_ID" class="prallax" data-top-bottom="background-position: 50% '.$pos1.';" data-bottom-top="background-position: 50% '.$pos2.';" style="height: '.$hoehe.'px; background-image: url(index.php?rex_media_type=parallax&rex_media_file=REX_MEDIA[1])">';
-
     if ($ueberschrift != '' || $text != '') {
-      $output_fe[] = '
-      	<div class="parallaxcontent">
-  			<span class="parallax_ueberschrift">'.$ueberschrift.'</span>
-  			<span class="parallax_text">'.$text.'</span>
-		</div>          
-      ';
+      $output_fe[] = '<div class="parallaxcontent">';
+
+      if ($ueberschrift != '') {
+        $output_fe[] = ' <span class="parallax_ueberschrift">'.$ueberschrift.'</span>';
+      }
+      if ($text != '') {
+        $output_fe[] = ' <span class="parallax_text">'.$text.'</span>';
+      }
+      $output_fe[] = '</div>';
     }
 
     $output_fe[] = '</div>';
@@ -64,13 +66,8 @@ $medium = rex_media::get("REX_MEDIA[1]");
   $output_be_bild = 'REX_MEDIA[1]<br/><br/><img src="index.php?rex_media_type=rex_mediapool_detail&rex_media_file=REX_MEDIA[1]" alt="'.$medium->getTitle().'" height="" width="" /><p>'.$medium->getValue('copyright').'</p>';
 
   } else {
-  $output_be_bild = '<div class="warning"><b>ACHTUNG:</b><br/>Sie haben keine Dateie angegeben. Das ist recht sinnfrei wenn dieses Modul benutzt wird!</div>';
-
+    $output_be_bild = '<div class="warning">Kein Bild angegeben. Soll das so?</div>';
   }
-
-
-
-
 
 if (!rex::isBackend()) {
   echo '
@@ -81,9 +78,12 @@ if (!rex::isBackend()) {
   </div>
   <script>
    $(document).ready(function() {
-	   	skrollr.init({
-			forceHeight: false
-		});
+        skrollr.init({          
+            mobileCheck: function() {
+                //hack - forces mobile version to be off
+                return false;
+            }
+        });
 	});
   </script>
   ';
@@ -170,7 +170,7 @@ if (!rex::isBackend()) {
 }
 
 /*
-  Der folgende Abschnitt gehört eighentlich nicht in die Modulausgabe.
+  Der folgende Abschnitt gehört eigentlich nicht in die Modulausgabe.
   Bitte die JS Dateie selbst im Frontend Template implementieren und diesen Abschnitt hier löschen.
 */
 if (!rex::isBackend()) {

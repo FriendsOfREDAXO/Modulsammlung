@@ -4,7 +4,7 @@ $anzeige_text           = 1;//text
 $anzeige_bild           = 1;//bild
 $anzeige_link           = 1;//link
 $anzeige_video          = 1;//video
-$anzeige_download       = 1;//download
+$anzeige_download       = 0;//download
 
 $ausgabeform            = '';
 
@@ -337,9 +337,22 @@ if($anzeige_download) {
 }
 
 echo '
+    <h3>Sonstiges</h3>
+      <div class="form-group">
+        <label class="col-sm-3 control-label">Indiv. CSS Klasse</label>
+          <div class="col-sm-9">
+              <input class="form-control" name="REX_INPUT_VALUE[' . $i . '][individuelle_css_klasse]" value="' . (isset($values[$i]['individuelle_css_klasse']) ? $values[$i]['individuelle_css_klasse'] : '') . '" type="text" />
+        </div>
+    </div>
+</script>
+
+'.PHP_EOL;
+
+
+
+echo '
   </div>
 </div>'.PHP_EOL;
-
 }
 
 //
@@ -392,17 +405,9 @@ echo '
 echo '
     <h3>Sonstiges</h3>
    <div class="form-group">
-      <label class="col-sm-3 control-label">Individuelle Container CSS Klasse</label>
+      <label class="col-sm-3 control-label">Container CSS Klasse</label>
         <div class="col-sm-9">
           <input class="form-control" type="text" name="REX_INPUT_VALUE[16]" value="REX_VALUE[16]" />
-        </div>
-    </div>
-
-
-   <div class="form-group">
-      <label class="col-sm-3 control-label">Individuelle CSS Klasse</label>
-        <div class="col-sm-9">
-          <input class="form-control" type="text" name="REX_INPUT_VALUE[17]" value="REX_VALUE[17]" />
         </div>
     </div>
 
@@ -613,14 +618,14 @@ echo '
   <div id="collapse-weitereeinstellungen" class="panel-collapse collapse">
 
     <div class="form-group">
-      <label class="col-sm-3 control-label">Individuelle Container CSS Klasse</label>
+      <label class="col-sm-3 control-label">Container CSS Klasse</label>
         <div class="col-sm-9">
           <p>Nähere Angaben zu diesem Punkt erhalten Sie von Ihrem Webentwickler.</p>
         </div>
     </div>
 
     <div class="form-group">
-      <label class="col-sm-3 control-label">Individuelle CSS Klasse</label>
+      <label class="col-sm-3 control-label">Indiv, CSS Klasse</label>
         <div class="col-sm-9">
           <p>Nähere Angaben zu diesem Punkt erhalten Sie von Ihrem Webentwickler.</p>
         </div>
@@ -867,3 +872,4 @@ jQuery(document).ready(function($) {
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAVQAAAA8CAIAAAC2INVhAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAhBJREFUeNrs3U9LInEcwOFNBzEypfIiizKEl069Bd8/ePFgJY1YtxQ1Evrj3/3tzmUvuxsZ25TPc4jRoMO3+ThfKZm9zWbzDdg9OSMA8QPiB8QPiB8QPyB+QPyA+IFsi/7+7dlsZkavdHh4aJJ8onPSlR+s/YD4AfED4gfED4gfED8gfkD8gPgB8QPiBz5A9F4/6O7u7unpKY5jM32zl5eX8Xg8n89LpdLx8XEu56WZzMe/Wq2SJAlnrfjfbDQaXVxcrNfr9OH+/v75+XmxWDQZsrv2Pz4+drvdUL5pvtlisbi8vAzln56ehubL5XJYo3q9nsmQ3St/p9OZTCbmuKWw7YftKaz6jUbj528litrt9nQ6NRmyG//R0VGhUAgnbthaTXOb901hzz85OUkfpjdQDC8BJkN246/X6+Hr8/Oz+Lfx/Zf0eLlcXl9fh4NqtWoyZDd+3tf9/f3V1VV4w39wcBDe/xsI4t8Jg8Hg5uYm7Py1Wq3ZbObzeTNB/F9fv9+/vb0NwZ+dnVn4Ef8Obfuh/HAQx3GhUHh4eEifL5fLhoP4v7LhcJgeJEny+/OtVstwyHT8URT5375tVCqVcME3B/6nvfRPyn/iPjOv5449fK5z0kdHYEeJH8QPiB8QPyB+QPyA+AHxA+IHxA+IHxA/8LH+8ak+wJUfED8gfkD8gPgB8QPiB8QPiB/4ED8EGADiTZ6qytwGIAAAAABJRU5ErkJggg==);
 }
 </style>
+

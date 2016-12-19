@@ -2,8 +2,10 @@
 
 $grid                              = 'REX_VALUE[20]';
 $individuelle_css_klasse_container = 'REX_VALUE[16]';
-$individuelle_css_klasse_container = 'REX_VALUE[16]';
-$individuelle_css_klasse           = 'REX_VALUE[17]';
+$individuelle_css_klasse1          = '';
+$individuelle_css_klasse2          = '';
+$individuelle_css_klasse3          = '';
+$individuelle_css_klasse4          = '';
 $mediamanagertyp                   = 'REX_VALUE[18]';
 $out                               = '';
 $zaehler                           = '';
@@ -89,7 +91,7 @@ foreach ($reihenfolge as $nummer) {
         $outback_link .= '<h3>Link</h3>'.PHP_EOL;
 
         if ($value['link_intern'] != 0) {
-          $linkanfang = '<a href="'.rex_geturl($value['link_intern'], rex_clang::getCurrentId()).'">';
+          $linkanfang = '<a class="collink" href="'.rex_geturl($value['link_intern'], rex_clang::getCurrentId()).'">';
           $article=rex_article::get($value['link_intern']);
           $name=$article->getName();
 
@@ -104,7 +106,7 @@ foreach ($reihenfolge as $nummer) {
 
         if ($value['link_extern'] != '') {
 
-          $linkanfang = '<a class="extern" href="'.$value['link_extern'].'">';
+          $linkanfang = '<a class="extern collink" href="'.$value['link_extern'].'">';
 
           $outback_link .= '
             <div class="form-group">
@@ -447,11 +449,9 @@ foreach ($reihenfolge as $nummer) {
             <div class="form-group ">
               <label class="col-sm-3 control-label">Copyright</label>
               <div class="col-sm-9">'.$copyright.'</div>
-              </div>'.PHP_EOL;
+            </div>'.PHP_EOL;
         }
       }
-
-
   }
 
 /****
@@ -536,25 +536,37 @@ foreach ($reihenfolge as $nummer) {
                <div class="col-sm-9 warning"><b>ACHTUNG:</b><br/>Sie müssen unbedingt den Link zur Download Seite angeben!</div>
             </div>';
         };
-
-
-
       }
 
     $outback .= $outback_link;
+
+
+  if ($value['individuelle_css_klasse'] !='') {
+    $outback .='
+      <h3>Sonstiges</h3>
+      <div class="form-group">
+        <label class="col-sm-3 control-label">Individuelle CSS Klasse</label>
+        <div class="col-sm-9">
+           '.$value['individuelle_css_klasse'].'
+        </div>
+      </div>'.PHP_EOL;
+  }
+
     $outback .= '</div>'.PHP_EOL;
 
+    $individuelle_css_klasse[$zaehler] = $value['individuelle_css_klasse'];
+
     switch($value['bildposition']) {
-        case 'oben':
-          $html_block[$zaehler] = '';
-          $html_block[$zaehler] .= $bild;
-          $html_block[$zaehler] .= $ueberschrift;
-          $html_block[$zaehler] .= $teasertext;
-          $html_block[$zaehler] .= $video;
-          $html_block[$zaehler] .= $text;
-          $html_block[$zaehler] .= $link;
-          $html_block[$zaehler] .= $downloads;
-        break;
+	  case 'oben':
+        $html_block[$zaehler] = '';
+        $html_block[$zaehler] .= $bild;
+        $html_block[$zaehler] .= $ueberschrift;
+        $html_block[$zaehler] .= $teasertext;
+        $html_block[$zaehler] .= $video;
+        $html_block[$zaehler] .= $text;
+        $html_block[$zaehler] .= $link;
+        $html_block[$zaehler] .= $downloads;
+      break;	    
       case 'unten':
          $html_block[$zaehler]  = '';
          $html_block[$zaehler] .= $ueberschrift;
@@ -608,56 +620,56 @@ foreach ($reihenfolge as $nummer) {
 switch ($grid) {
   case '12':
     $out .= '
-      <div class="col-xs-12 '.$individuelle_css_klasse.'">
+      <div class="col-xs-12 '.$individuelle_css_klasse[1].'">
         '.$html_block[1].'
       </div>'.PHP_EOL;
   break;
   case '6_6':
     $out .= '
-      <div class="col-xs-12 col-sm-6 '.$individuelle_css_klasse.'">
+      <div class="col-xs-12 col-sm-6 '.$individuelle_css_klasse[1].'">
         '.$html_block[1].'
       </div>
-      <div class="col-xs-12 col-sm-6 '.$individuelle_css_klasse.'">
+      <div class="col-xs-12 col-sm-6 '.$individuelle_css_klasse[2].'">
         '.$html_block[2].'
       </div>'.PHP_EOL;
   break;
   case '4_4_4':
     $out .= '
-      <div class="col-xs-12 col-sm-4 '.$individuelle_css_klasse.'">
+      <div class="col-xs-12 col-sm-4 '.$individuelle_css_klasse[1].'">
         '.$html_block[1].'
       </div>
-      <div class="col-xs-12 col-sm-4 '.$individuelle_css_klasse.'">
+      <div class="col-xs-12 col-sm-4 '.$individuelle_css_klasse[2].'">
         '.$html_block[2].'
       </div>
-      <div class="col-xs-12 col-sm-4 '.$individuelle_css_klasse.'">
+      <div class="col-xs-12 col-sm-4 '.$individuelle_css_klasse[3].'">
         '.$html_block[3].'
       </div>'.PHP_EOL;
   break;
   case '3_3_3_3':
     $out .= '
-      <div class="col-xs-12 col-sm-6 col-md-3 '.$individuelle_css_klasse.'">
+      <div class="col-xs-12 col-sm-6 col-md-3 '.$individuelle_css_klasse[1].'">
         '.$html_block[1].'
       </div>
-      <div class="col-xs-12 col-sm-6 col-md-3 '.$individuelle_css_klasse.'">
+      <div class="col-xs-12 col-sm-6 col-md-3 '.$individuelle_css_klasse[2].'">
         '.$html_block[2].'
       </div>
-      <div class="col-xs-12 col-sm-6 col-md-3 '.$individuelle_css_klasse.'">
+      <div class="col-xs-12 col-sm-6 col-md-3 '.$individuelle_css_klasse[3].'">
         '.$html_block[3].'
       </div>
-      <div class="col-xs-12 col-sm-6 col-md-3 '.$individuelle_css_klasse.'">
+      <div class="col-xs-12 col-sm-6 col-md-3 '.$individuelle_css_klasse[4].'">
         '.$html_block[4].'
       </div>'.PHP_EOL;
   break;
 
   case '6_3_3':
     $out .= '
-      <div class="col-xs-12 col-sm-6 '.$individuelle_css_klasse.'">
+      <div class="col-xs-12 col-sm-6 '.$individuelle_css_klasse[1].'">
         '.$html_block[1].'
       </div>
-      <div class="col-xs-12 col-sm-3 '.$individuelle_css_klasse.'">
+      <div class="col-xs-12 col-sm-3 '.$individuelle_css_klasse[2].'">
         '.$html_block[2].'
       </div>
-      <div class="col-xs-12 col-sm-3 '.$individuelle_css_klasse.'">
+      <div class="col-xs-12 col-sm-3 '.$individuelle_css_klasse[3].'">
         '.$html_block[3].'
       </div>'.PHP_EOL;
   break;
@@ -665,44 +677,44 @@ switch ($grid) {
 
   case '3_6_3':
     $out .= '
-      <div class="col-xs-12 col-sm-3 '.$individuelle_css_klasse.'">
+      <div class="col-xs-12 col-sm-3 '.$individuelle_css_klasse[1].'">
         '.$html_block[1].'
       </div>
-      <div class="col-xs-12 col-sm-6 '.$individuelle_css_klasse.'">
+      <div class="col-xs-12 col-sm-6 '.$individuelle_css_klasse[2].'">
         '.$html_block[2].'
       </div>
-      <div class="col-xs-12 col-sm-3 '.$individuelle_css_klasse.'">
+      <div class="col-xs-12 col-sm-3 '.$individuelle_css_klasse[3].'">
         '.$html_block[3].'
       </div>'.PHP_EOL;
   break;
 
   case '3_3_6':
     $out .= '
-      <div class="col-xs-12 col-sm-3 '.$individuelle_css_klasse.'">
+      <div class="col-xs-12 col-sm-3 '.$individuelle_css_klasse[1].'">
         '.$html_block[1].'
       </div>
-      <div class="col-xs-12 col-sm-3 '.$individuelle_css_klasse.'">
+      <div class="col-xs-12 col-sm-3 '.$individuelle_css_klasse[2].'">
         '.$html_block[2].'
       </div>
-      <div class="col-xs-12 col-sm-6 '.$individuelle_css_klasse.'">
+      <div class="col-xs-12 col-sm-6 '.$individuelle_css_klasse[3].'">
         '.$html_block[3].'
       </div>'.PHP_EOL;
   break;
   case '8_4':
     $out .= '
-      <div class="col-xs-12 col-sm-8 '.$individuelle_css_klasse.'">
+      <div class="col-xs-12 col-sm-8 '.$individuelle_css_klasse[1].'">
         '.$html_block[1].'
       </div>
-      <div class="col-xs-12 col-sm-4 '.$individuelle_css_klasse.'">
+      <div class="col-xs-12 col-sm-4 '.$individuelle_css_klasse[2].'">
         '.$html_block[2].'
       </div>'.PHP_EOL;
   break;
   case '4_8':
     $out .= '
-      <div class="col-xs-12 col-sm-4 '.$individuelle_css_klasse.'">
+      <div class="col-xs-12 col-sm-4 '.$individuelle_css_klasse[1].'">
         '.$html_block[1].'
       </div>
-      <div class="col-xs-12 col-sm-8 '.$individuelle_css_klasse.'">
+      <div class="col-xs-12 col-sm-8 '.$individuelle_css_klasse[2].'">
         '.$html_block[2].'
       </div>'.PHP_EOL;
   break;
@@ -730,16 +742,6 @@ echo '
         <label class="col-sm-3 control-label">Individuelle Conatiner CSS Klasse</label>
         <div class="col-sm-9">
            '.$individuelle_css_klasse_container.'
-        </div>
-      </div>'.PHP_EOL;
-  }
-
-  if ($individuelle_css_klasse !='') {
-    echo '
-      <div class="form-group">
-        <label class="col-sm-3 control-label">Individuelle CSS Klasse</label>
-        <div class="col-sm-9">
-           '.$individuelle_css_klasse.'
         </div>
       </div>'.PHP_EOL;
   }
@@ -862,3 +864,4 @@ echo '
 }
 </style>'.PHP_EOL;
 }
+
