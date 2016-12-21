@@ -50,3 +50,10 @@ Gerne diskutieren wir auch Live in unserem [Redaxo Slack Channel](http://www.red
 ### Eigene Module hinzufügen
 
 *Folgt...*
+
+
+---
+
+**Credits**
+
+[@FriendsOfREDAXO](https://github.com/FriendsOfREDAXO)

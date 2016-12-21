@@ -1,6 +1,15 @@
 ### Modulsammlung - Changelog
 ___
 
+
+### 21.12.2016 Version 4.6.0
+
+- Addon um die Möglichkeit erweitert Templates zu installieren
+
+### 20.12.2016 Version 4.5.4
+
+- Plugin "Dokumentation" hinzugefügt
+
 ### 19.12.2016 Version 4.5.4
 
 - Modul "0010 - Text / Bild / Video / Link (1-4 Spalten)" korrigiert und erweitert

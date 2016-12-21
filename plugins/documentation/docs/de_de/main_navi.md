@@ -1,45 +1,42 @@
-Alle Punkte sind müssen noch bearbeitet werden...
-
-- [0010 - Text / Bild / Video / Link (1-4 Spalten)](*.md)
-- [0015 - Abstand und/oder Trennlinie (mit oder ohne Grafik)](*.md)
-- [0030 - Text / Downloads](*.md)
-- [0035 - Text / Kontaktformular](*.md)
-- [0040 - Nur Text (Footer, Seitenleiste, Modal etc.)](*.md)
-- [0050 - Bildergalerie (Unite Gallery)](*.md)
-- [0055 - Bilderslider mit/ohne Text](*.md)
-- [0100 - Google Maps / Routenplaner](*.md)
-- [0105 - Parallax (skrollr)](*.md)
-- [0110 - Tabelle](*.md)
-- [0200 - Alle Bilder mit aus dem Medienpool mit Copyright anzeigen](*.md)
-- [0205 - SEO Sitemap](*.md)
-- [0300 - Execl 2 Table](*.md)
-- [0400 - Artikelliste](*.md)
-- [0405 - Artikel blättern](*.md)
-- [0410 - Interne Weiterleitung](*.md)
-- [0415 - Artikel einbinden](*.md)
-- [0420 - Bootstrap Modal Window](*.md)
-- [0500 - Minibeispiel: Text / Textile](*.md)
-- [0505 - Minibeispiel: Text / MarkItUp (Textile)](*.md)
-- [0510 - Minibeispiel: Text / Redactor 2](*.md)
-- [0515 - Minibeispiel: Bild / Bilderliste](*.md)
-- [0520 - Minibeispiel: HTML](*.md)
-- [0525 - Minibeispiel: Select / Multiselect](*.md)
-- [0530 - Minibeispiel: Radiobuttons](*.md)
-- [0535 - Minibeispiel: Checkboxen](*.md)
-- [0540 - Minibeispiel: Link / Linkliste](*.md)
-- [0600 - Beispielinhalte ausgeben](*.md)
-- [0700 - MBlock - MForm - Teammitglieder](*.md)
-- [0705 - MBlock - MForm - Link und Linklist](*.md)
-- [0710 - MBlock - MForm - Media und Medialist](*.md)
-- [0715 - MBlock - MForm - Diverse Formularelemente](*.md)
-- [0800 - MBlock - HTML - Teammitglieder](*.md)
-- [0805 - MBlock - HTML - Link und Linklist](*.md)
-- [0810 - MBlock - HTML - Media und Medialist](*.md)
-- [0815 - MBlock - HTML - Diverse Formularelemente](*.md)
-
+**Module**
+- 0010 - Text / Bild / Video / Link (1-4 Spalten)
+- 0015 - Abstand und/oder Trennlinie (mit oder ohne Grafik)
+- 0030 - Text / Downloads
+- 0035 - Text / Kontaktformular
+- 0040 - Nur Text (Footer, Seitenleiste, Modal etc.)
+- 0050 - Bildergalerie (Unite Gallery)
+- 0055 - Bilderslider mit/ohne Text
+- 0100 - Google Maps / Routenplaner
+- 0105 - Parallax (skrollr)
+- 0110 - Tabelle
+- 0200 - Alle Bilder mit aus dem Medienpool mit Copyright anzeigen
+- 0205 - SEO Sitemap
+- 0300 - Execl 2 Table
+- 0400 - Artikelliste
+- 0405 - Artikel blättern
+- 0410 - Interne Weiterleitung
+- 0415 - Artikel einbinden
+- 0420 - Bootstrap Modal Window
+- 0500 - Minibeispiel: Text / Textile
+- 0505 - Minibeispiel: Text / MarkItUp (Textile)
+- 0510 - Minibeispiel: Text / Redactor 2
+- 0515 - Minibeispiel: Bild / Bilderliste
+- [0520 - Minibeispiel: HTML](0520.md)
+- 0525 - Minibeispiel: Select / Multiselect
+- 0530 - Minibeispiel: Radiobuttons
+- 0535 - Minibeispiel: Checkboxen
+- 0540 - Minibeispiel: Link / Linkliste
+- 0600 - Beispielinhalte ausgeben
+- 0700 - MBlock - MForm - Teammitglieder
+- 0705 - MBlock - MForm - Link und Linklist
+- 0710 - MBlock - MForm - Media und Medialist
+- 0715 - MBlock - MForm - Diverse Formularelemente
+- 0800 - MBlock - HTML - Teammitglieder
+- 0805 - MBlock - HTML - Link und Linklist
+- 0810 - MBlock - HTML - Media und Medialist
+- 0815 - MBlock - HTML - Diverse Formularelemente
 
 ---
 
-**Credits**
-
-[@FriendsOfREDAXO](https://github.com/FriendsOfREDAXO)
+**Templates**
+- 0000 - Test
