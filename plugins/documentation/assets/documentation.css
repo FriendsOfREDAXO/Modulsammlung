@@ -1,0 +1,98 @@
+.addon_documentation h1 {
+    font-size: 22px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+.addon_documentation h2 {
+    font-size: 16px;
+    margin-top: 40px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    letter-spacing: 0.02em;
+    border-bottom: 1px solid #ccc;
+    padding: 13px 15px 10px;
+    background: #dfe3e9 !important;
+}
+.addon_documentation h3 {
+    margin-top: 40px;
+    margin-bottom: 5px;
+}
+
+.addon_documentation blockquote {
+    margin: 20px 0;
+    background: #f3f6fb;
+}
+.addon_documentation blockquote h2 {
+    margin: -10px -20px 20px;
+    background: transparent;
+	border-top: 1px #ccc;
+}
+
+.addon_documentation ol {
+    padding-left: 18px;
+}
+
+.addon_documentation ul {
+    margin-bottom: 10px;
+	padding-bottom: 5px;;
+    padding-left: 16px;
+}
+.addon_documentation ul li {
+    list-style-type: square;
+    list-style-position: outside;
+}
+.addon_documentation ul ul {
+    padding-top: 5px;
+}
+.addon_documentation ul ul li {
+    list-style-type: circle;
+    list-style-position: outside;
+    padding-bottom: 0;
+}
+
+.addon_documentation p,
+.addon_documentation li {
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.addon_documentation hr {
+    margin-top: 40px;
+    border-top: 1px solid #ddd;
+}
+
+.addon_documentation table {
+    width: 100%;
+    max-width: 100%;
+    border: 1px solid #ddd;
+    margin: 20px 0 30px;
+}
+.addon_documentation th {
+    background: #f7f7f7;
+    border-bottom: 2px solid #ddd;
+    border-collapse: separate;
+}
+.addon_documentation th,
+.addon_documentation td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    line-height: 1.42857143;
+    vertical-align: top;
+    font-size: 13px;
+}
+.addon_documentation table tr:hover {
+    background: #fafafa;
+}
+
+.addon_documentation-navi a.current {
+    font-weight: bold;
+}
+
+.addon_documentation a[href^="http://"],
+.addon_documentation a[href^="https://"] {
+    margin-right:5px;
+}
+.addon_documentation a[href^="http://"] sup,
+.addon_documentation a[href^="https://"] sup {
+    font-size:0.8em;
+}

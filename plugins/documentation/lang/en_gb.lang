@@ -1,0 +1,9 @@
+documentation_menu_entry = Documentation
+
+documentation_navigation_title = Navigation
+documentation_content_title = Contents
+
+documentation_noparser = No Markdown Parser available! Please first install a parser (Addon markitup or textile)
+
+documentation_navinotfound = Navigation-File <strong>{0}</strong> not found!<br>This file is mandatory!
+documentation_filenotfound = File <strong>{0}</strong> not found. Contents does not exist (yet). <br><br>We're happy if you want to help: <a href="{1}" target="_blank">{1}</a>
