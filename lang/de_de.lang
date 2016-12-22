@@ -1,6 +1,49 @@
+
 modulsammlung_title = Modulsammlung
-modulsammlung_main = Module
-
-
 modulsammlung_general_dummy[] = Rechte für Modulsammlung-Addon
 
+
+modulsammlung_module              = Module
+modulsammlung_modul               = Modul
+modulsammlung_moduluebersicht     = Modulübersicht
+modulsammlung_config_fehler       = config.inc nicht vorhanden in:
+modulsammlung_info_fehler         = info.inc nicht vorhanden in:
+modulsammlung_input_fehler        = input.inc nicht vorhanden in:
+modulsammlung_output_fehler       = output.inc nicht vorhanden in:
+modulsammlung_template_fehler     = template.inc nicht vorhanden in:
+
+modulsammlung_fertig              = Fertig
+modulsammlung_in_bearbeitung      = In Bearbeitung
+modulsammlung_entwicklung_geplant = Entwicklung geplant
+modulsammlung_input               = Input
+modulsammlung_output              = Output
+modulsammlung_acc_template        = Template
+
+modulsammlung_css                   = CSS
+modulsammlung_scss                  = SCSS
+
+modulsammlung_info                  = Info
+modulsammlung_styles                = Styles
+modulsammlung_modul_installieren    = Modul installieren
+modulsammlung_template_installieren = Template installieren
+
+modulsammlung_modul_angelegt        = Folgendes Modul wurde angelegt:
+modulsammlung_modulname_fehler      = Bitte einen Modulnamen angeben!
+
+modulsammlung_template_angelegt     = Folgendes Template wurde angelegt:
+modulsammlung_templatename_fehler   = Bitte einen Templatenamen angeben!
+
+modulsammlung_kopierter_ordner      = Folgender Ordner wurde in den Assets Ordner kopiert:
+
+modulsammlung_templates = Templates
+modulsammlung_template  = Template
+
+modulsammlung_changelog = Changelog
+modulsammlung_lizenz = Lizenz
+
+modulsammlung_modul_id            = Modul ID
+modulsammlung_modul_bezeichnung   = Modul Bezeichnung
+modulsammlung_modul_verwendung    = Verwendung
+modulsammlung_modul_benutzung     = Aktuelle Modulbenuzung
+modulsammlung_module_loeschen     = Unbenutze Module löschen
+modulsammlung_modul_geloescht     = Modul gelöscht: ID

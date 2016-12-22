@@ -27,13 +27,13 @@ foreach ($modulesdirs as $dir) {
   if (file_exists($dir.'/config.inc')) {
     $templates[$module_key]['config'] = parse_ini_file($dir.'/config.inc',TRUE);
   } else {
-    $templates_errors[] = 'config.inc nicht vorhanden in: '.$dir;
+    $templates_errors[] = $this->i18n('config_fehler').' '.$dir;
   }
 
   if (file_exists($dir.'/info.inc')) {
     $templates[$module_key]['info'] = file_get_contents($dir.'/info.inc');
   } else {
-    $templates_errors[] = 'info.inc nicht vorhanden in: '.$dir;
+    $templates_errors[] = $this->i18n('info_fehler').' '.$dir;
   }
 
   if (file_exists($dir.'/styles_scss.inc')) {
@@ -62,7 +62,7 @@ foreach ($modulesdirs as $dir) {
   if (file_exists($dir.'/template.inc')) {
     $templates[$module_key]['template'] = file_get_contents($dir.'/template.inc');
   } else {
-    $templates[$module_key]['template'] = '';
+    $templates_errors[] = $this->i18n('template_fehler').' '.$dir;
   }
 
 }
@@ -88,17 +88,17 @@ if (count($templates_errors) > 0) {
   // Status: Fertig
   if ($modul['config']['status'] == 1) {
     $statusfarbe = ' color: #36404F; ';
-    $statusinfo = 'Fertig';
+    $statusinfo = $this->i18n('fertig');
   }
   // Status: in Bearbeitung
   if ($modul['config']['status'] == 2) {
     $statusfarbe = ' color: #6999D7; ';
-    $statusinfo = 'In Bearbeitung';
+    $statusinfo = $this->i18n('in_bearbeitung');
   }
   // Status: geplant
   if ($modul['config']['status'] == 0) {
     $statusfarbe = ' color: #BF5E52; ';
-    $statusinfo = 'Entwicklung geplant';
+    $statusinfo = $this->i18n('entwicklung_geplant');
   }
 
   $templateausgabe[] = '
@@ -107,7 +107,7 @@ if (count($templates_errors) > 0) {
       <td class="rex-table-template">
 
 <i data-toggle="collapse" data-target="#'.$module_key.'_code" class="rex-template rex-icon rex-icon-module" style="'.$statusfarbe.' font-size: 2rem; margin: 7px 0 0 8px;" title="'.$statusinfo.'"></i></td>
-        <td data-title="Template">
+        <td data-title="'.$this->i18n('template').'">
           <input class="form-control" type="text" name="modul_name" value="'.$modul['config']['templatename'].'">
           <input type="hidden" name="install" value="'.$module_key.'">
           <div id="'.$module_key.'_info" class="collapse">
@@ -119,7 +119,7 @@ if (count($templates_errors) > 0) {
             </div>
 
           <div id="'.$module_key.'_code" class="collapse">
-            <p class="accordiontitle">Template</p>
+            <p class="accordiontitle">'.$this->i18n('template').'</p>
              '.rex_string::highlight($modul['template']).'
           </div>
 
@@ -130,12 +130,12 @@ if (count($templates_errors) > 0) {
 
       if($modul['styles_scss']) {
              $templateausgabe[] = '
-             <p class="accordiontitle">SCSS</p>
+             <p class="accordiontitle">'.$this->i18n('scss').'</p>
              '.rex_string::highlight($modul['styles_scss']);
       }
       if($modul['styles_css']) {
              $templateausgabe[] = '
-             <p class="accordiontitle">CSS</p>
+             <p class="accordiontitle">'.$this->i18n('css').'</p>
              '.rex_string::highlight($modul['styles_css']);
       }
  $templateausgabe[] = '
@@ -144,19 +144,19 @@ if (count($templates_errors) > 0) {
 
         </td>
       <td>
-        <span class="btn btn-success" data-toggle="collapse" data-target="#'.$module_key.'_info">Info</span>
+        <span class="btn btn-success" data-toggle="collapse" data-target="#'.$module_key.'_info">'.$this->i18n('info').'</span>
       </td>
       <td>
       ';
   if ($templates[$module_key]['styles_scss'] OR $templates[$module_key]['styles_css']) {
-    $templateausgabe[] = '<span class="btn btn-success" data-toggle="collapse" data-target="#'.$module_key.'_scss">Styles</span>'  ;
+    $templateausgabe[] = '<span class="btn btn-success" data-toggle="collapse" data-target="#'.$module_key.'_scss">'.$this->i18n('styles').'</span>'  ;
   }
 
 
   $templateausgabe[] = '</td>
       <td>';
       if ($modul['config']['status'] != 0) {
-  $templateausgabe[] = '<input type="submit" class="btn btn-primary" class="rex-button" value="Template installieren" />';
+  $templateausgabe[] = '<input type="submit" class="btn btn-primary" class="rex-button" value="'.$this->i18n('template_installieren').'" />';
       }
   $templateausgabe[] = '
       </td>
@@ -169,7 +169,7 @@ if (count($templates_errors) > 0) {
 
         $modul_name           = rex_post("modul_name", 'string');
         if ($modul_name == '') {
-          echo rex_view::warning('Bitte eine Templatebezeichnung angeben!');
+          echo rex_view::warning($this->i18n('templatename_fehler'));
         } else {
 
         if($templates[$module_key]['metainfos'] != '') {
@@ -185,7 +185,7 @@ if (count($templates_errors) > 0) {
           $srcdir = '../redaxo/src/addons/modulsammlung/lib/module/'.$module_key.'/'.$modul['config']['assets_folder'];
           // echo $srcdir;
           rex_dir::copy($srcdir ,'.././assets/'.$modul['config']['assets_folder']);
-             echo rex_view::success('Der Ordner '.$modul['config']['assets_folder'].' wurde in den Assets Ordner kopiert.');
+             echo rex_view::success($this->i18n('kopierter_ordner').' '.$modul['config']['assets_folder']);
           }
 
 
@@ -198,7 +198,7 @@ if (count($templates_errors) > 0) {
          $mi->setValue('name', $modul_name);
          $mi->insert();
          $modul_id = (int) $mi->getLastId();
-         echo rex_view::success('Das Template "' . $modul_name . '" wurde angelegt. ');
+          echo rex_view::success($this->i18n('template_angelegt').' '.$modul_name);
         }
       }
 
@@ -212,7 +212,7 @@ $content = '
       <thead>
         <tr>
           <th class="rex-table-template"></th>
-          <th class="td_title">Templates</th>
+          <th class="td_title">'.$this->i18n('templates').'</th>
           <th class="td_info"></th>
           <th class="td_scss"></th>
           <th class="td_install"></th>

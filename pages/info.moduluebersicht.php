@@ -18,7 +18,7 @@ if ($func == 'deleteunusedmoduls') {
         $sql_del->setWhere('id = '.$row['id']);
 
         if ($sql_del->delete()) {
-          echo '<div class="alert alert-success">Modul mit der ID '.$row['id'].' erfolgreich gelöscht.</div>';
+          echo '<div class="alert alert-success">'.$this->i18n('modul_geloescht').$row['id'].'</div>';
         }
 
     }
@@ -53,18 +53,18 @@ if ($func == 'deleteunusedmoduls') {
 $content = '
 <table class="tg">
   <tr>
-    <th class="tg-031e">Modul ID</th>
-    <th class="tg-031e">Modul Bezeichnung</th>
-    <th class="tg-031e">Verwendung</th>
+    <th class="tg-031e">'.$this->i18n('modul_id').'</th>
+    <th class="tg-031e">'.$this->i18n('modul_bezeichnung').'</th>
+    <th class="tg-031e">'.$this->i18n('modul_verwendung').'</th>
   </tr>
   '.$modulinfos.'
 </table>';
 
-$content .= '<button id="moduledelete" class="btn btn-delete">Unbenutze Module löschen</button>';
+$content .= '<button id="moduledelete" class="btn btn-delete">'.$this->i18n('module_loeschen').'</button>';
 
 $fragment = new rex_fragment();
 $fragment->setVar('class', 'info', false);
-$fragment->setVar('title', "Aktuelle Modulbenutzung", false);
+$fragment->setVar('title', $this->i18n('modul_benutzung'), false);
 $fragment->setVar('body', $content, false);
 echo $fragment->parse('core/page/section.php');
 ?>

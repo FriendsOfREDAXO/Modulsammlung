@@ -2,6 +2,16 @@
 ___
 
 
+### 22.12.2016 Version 4.6.1
+
+- install.php entfernt
+- uninstall.php entfernt
+- config.php entfernt
+- einige Übersetzungen eingepflegt
+- Templateseite deaktiviert bis es mal ein Template gibt...
+- readme aktualisiert
+- pjax ausgestellt
+
 ### 21.12.2016 Version 4.6.0
 
 - Addon um die Möglichkeit erweitert Templates zu installieren

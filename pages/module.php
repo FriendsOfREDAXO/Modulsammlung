@@ -1,12 +1,10 @@
 <?php
-
 $dir = '../redaxo/src/addons/modulsammlung/lib/module';
 $modulesdirs = glob($dir.'/*',GLOB_ONLYDIR);
 
 $moduls = array();
 $moduls_errors = array();
 $modulausgabe = array();
-
 
 function show_errors($errors = array()) {
   echo '<ul>';
@@ -17,25 +15,22 @@ function show_errors($errors = array()) {
 }
 
 foreach ($modulesdirs as $dir) {
-
-    // echo $dir.'<br/>';
-    // echo basename($dir).'<br/>';
+  // echo $dir.'<br/>';
+  // echo basename($dir).'<br/>';
 
   $module_key = basename($dir);
-
 
   if (file_exists($dir.'/config.inc')) {
     $moduls[$module_key]['config'] = parse_ini_file($dir.'/config.inc',TRUE);
   } else {
-    $moduls_errors[] = 'config.inc nicht vorhanden in: '.$dir;
+    $moduls_errors[] = $this->i18n('config_fehler').' '.$dir;
   }
 
   if (file_exists($dir.'/info.inc')) {
     $moduls[$module_key]['info'] = file_get_contents($dir.'/info.inc');
   } else {
-    $moduls_errors[] = 'info.inc nicht vorhanden in: '.$dir;
+    $moduls_errors[] = $this->i18n('info_fehler').' '.$dir;
   }
-
 
   if (file_exists($dir.'/styles_scss.inc')) {
     $moduls[$module_key]['styles_scss'] = file_get_contents($dir.'/styles_scss.inc');
@@ -51,13 +46,13 @@ foreach ($modulesdirs as $dir) {
   if (file_exists($dir.'/input.inc')) {
     $moduls[$module_key]['input'] = file_get_contents($dir.'/input.inc');
   } else {
-    $moduls_errors[] = 'input.inc nicht vorhanden in: '.$dir;
+    $moduls_errors[] = $this->i18n('input_fehler').' '.$dir;
   }
 
   if (file_exists($dir.'/output.inc')) {
     $moduls[$module_key]['output'] = file_get_contents($dir.'/output.inc');
   } else {
-    $moduls_errors[] = 'output.inc nicht vorhanden in: '.$dir;
+    $moduls_errors[] = $this->i18n('output_fehler').' '.$dir;
   }
 
   if (file_exists($dir.'/metainfos.inc')) {
@@ -100,112 +95,98 @@ if (count($moduls_errors) > 0) {
   // Status: Fertig
   if ($modul['config']['status'] == 1) {
     $statusfarbe = ' color: #36404F; ';
-    $statusinfo = 'Fertig';
+    $statusinfo = $this->i18n('fertig');
   }
   // Status: in Bearbeitung
   if ($modul['config']['status'] == 2) {
     $statusfarbe = ' color: #6999D7; ';
-    $statusinfo = 'In Bearbeitung';
+    $statusinfo = $this->i18n('in_bearbeitung');
   }
   // Status: geplant
   if ($modul['config']['status'] == 0) {
     $statusfarbe = ' color: #BF5E52; ';
-    $statusinfo = 'Entwicklung geplant';
+    $statusinfo = $this->i18n('entwicklung_geplant');
   }
 
   $modulausgabe[] = '
     <tr>
       <form action="' . rex_url::currentBackendPage() . '" method="POST">
       <td class="rex-table-icon">
-
-<i data-toggle="collapse" data-target="#'.$module_key.'_code" class="rex-icon rex-icon-module" style="'.$statusfarbe.' font-size: 2rem; margin: 7px 0 0 8px;" title="'.$statusinfo.'"></i></td>
-        <td data-title="Modul">
-          <input class="form-control" type="text" name="modul_name" value="'.$modul['config']['modulname'].'">
-          <input type="hidden" name="install" value="'.$module_key.'">
-          <div id="'.$module_key.'_info" class="collapse">
-
-            <p class="accordiontitle">Info</p>
-            <div style="padding: 10px; background: #f5f5f5; border: 1px solid #ccc;">
-              '.$modul['info'].'
-            </div>
-            </div>
-
-          <div id="'.$module_key.'_code" class="collapse">
-            <p class="accordiontitle">Input</p>
-             '.rex_string::highlight($modul['input']).'
-            <p class="accordiontitle">Output</p>
-             '.rex_string::highlight($modul['output']).'
+        <i data-toggle="collapse" data-target="#'.$module_key.'_code" class="rex-icon rex-icon-module" style="'.$statusfarbe.' font-size: 2rem; margin: 7px 0 0 8px;" title="'.$statusinfo.'"></i>
+      </td>
+      <td data-title="'.$this->i18n('modul').'">
+        <input class="form-control" type="text" name="modul_name" value="'.$modul['config']['modulname'].'">
+        <input type="hidden" name="install" value="'.$module_key.'">
+        <div id="'.$module_key.'_info" class="collapse">
+          <p class="accordiontitle">Info</p>
+          <div style="padding: 10px; background: #f5f5f5; border: 1px solid #ccc;">
+            '.$modul['info'].'
           </div>
+        </div>
+        <div id="'.$module_key.'_code" class="collapse">
+          <p class="accordiontitle">'.$this->i18n('input').'</p>
+          '.rex_string::highlight($modul['input']).'
+          <p class="accordiontitle">'.$this->i18n('output').'</p>
+          '.rex_string::highlight($modul['output']).'
+        </div>
+        <div id="'.$module_key.'_scss" class="collapse">
+          <div style="padding: 10px 0 10px 0;" >';
 
-
-            <div id="'.$module_key.'_scss" class="collapse">
-              <div style="padding: 10px 0 10px 0;" >
-              ';
-
-      if($modul['styles_scss']) {
-             $modulausgabe[] = '
-             <p class="accordiontitle">SCSS</p>
-             '.rex_string::highlight($modul['styles_scss']);
-      }
-      if($modul['styles_css']) {
-             $modulausgabe[] = '
-             <p class="accordiontitle">CSS</p>
-             '.rex_string::highlight($modul['styles_css']);
-      }
- $modulausgabe[] = '
+          if($modul['styles_scss']) {
+            $modulausgabe[] = '
+              <p class="accordiontitle">'.$this->i18n('scss').'</p>
+              '.rex_string::highlight($modul['styles_scss']);
+          }
+          if($modul['styles_css']) {
+            $modulausgabe[] = '
+              <p class="accordiontitle">'.$this->i18n('css').'</p>
+              '.rex_string::highlight($modul['styles_css']);
+          }
+        $modulausgabe[] = '
             </div>
           </div>
-
+        </td>
+        <td>
+          <span class="btn btn-success" data-toggle="collapse" data-target="#'.$module_key.'_info">'.$this->i18n('info').'</span>
         </td>
       <td>
-        <span class="btn btn-success" data-toggle="collapse" data-target="#'.$module_key.'_info">Info</span>
-      </td>
-      <td>
       ';
-  if ($moduls[$module_key]['styles_scss'] OR $moduls[$module_key]['styles_css']) {
-    $modulausgabe[] = '<span class="btn btn-success" data-toggle="collapse" data-target="#'.$module_key.'_scss">Styles</span>'  ;
-  }
-
-
+      if ($moduls[$module_key]['styles_scss'] OR $moduls[$module_key]['styles_css']) {
+        $modulausgabe[] = '<span class="btn btn-success" data-toggle="collapse" data-target="#'.$module_key.'_scss">'.$this->i18n('styles').'</span>'  ;
+      }
   $modulausgabe[] = '</td>
       <td>';
-      if ($modul['config']['status'] != 0) {
-  $modulausgabe[] = '<input type="submit" class="btn btn-primary" class="rex-button" value="Modul installieren" />';
+       if ($modul['config']['status'] != 0) {
+  $modulausgabe[] = '<input type="submit" class="btn btn-primary" class="rex-button" value="'.$this->i18n('modul_installieren').'" />';
       }
   $modulausgabe[] = '
       </td>
     </form>
   </tr>';
 
-
   if (rex_request('install') == $module_key) {
-        //$modul_name           = $modul['config']['modulname'];
+    //$modul_name           = $modul['config']['modulname'];
 
-        $modul_name           = rex_post("modul_name", 'string');
-        if ($modul_name == '') {
-          echo rex_view::warning('Bitte einen Modulnamen angeben!');
-        } else {
-
+    $modul_name           = rex_post("modul_name", 'string');
+      if ($modul_name == '') {
+        echo rex_view::warning($this->i18n('modulname_fehler'));
+      } else {
         if($moduls[$module_key]['metainfos'] != '') {
           include($moduls[$module_key]['metainfos']);
         }
-
         if($moduls[$module_key]['mediamanager'] != '') {
           include($moduls[$module_key]['mediamanager']);
         }
-
         if($moduls[$module_key]['template'] != '') {
           include($moduls[$module_key]['template']);
         }
-
         // Ordner in Assets kopieren
         if (array_key_exists('assets_folder',$modul['config'])  && $modul['config']['assets_folder'] != '') {
           $srcdir = '../redaxo/src/addons/modulsammlung/lib/module/'.$module_key.'/'.$modul['config']['assets_folder'];
           // echo $srcdir;
           rex_dir::copy($srcdir ,'.././assets/'.$modul['config']['assets_folder']);
-             echo rex_view::success('Der Ordner '.$modul['config']['assets_folder'].' wurde in den Assets Ordner kopiert.');
+             echo rex_view::success($this->i18n('kopierter_ordner').' '.$modul['config']['assets_folder']);
           }
-
 
          $input = $moduls[$module_key]['input'];
          $output = $moduls[$module_key]['output'];
@@ -218,13 +199,11 @@ if (count($moduls_errors) > 0) {
          $mi->setValue('name', $modul_name);
          $mi->insert();
          $modul_id = (int) $mi->getLastId();
-         echo rex_view::success('Das Modul "' . $modul_name . '" wurde angelegt. ');
+         echo rex_view::success($this->i18n('modul_angelegt').' '.$modul_name);
         }
       }
-
-
- }
-}
+    }
+  }
 $content = '
 <div id="modulsammlung">
   <div class="row">
@@ -232,7 +211,7 @@ $content = '
       <thead>
         <tr>
           <th class="rex-table-icon"></th>
-          <th class="td_title">Modul</th>
+          <th class="td_title">'.$this->i18n('module').'</th>
           <th class="td_info"></th>
           <th class="td_scss"></th>
           <th class="td_install"></th>
@@ -248,7 +227,6 @@ $content .= '
     </table>
   </div>
 </div>';
-
 
 $fragment = new rex_fragment();
 $fragment->setVar('body', $content, false);
