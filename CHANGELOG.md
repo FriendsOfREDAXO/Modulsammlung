@@ -1,6 +1,9 @@
 ### Modulsammlung - Changelog
 ___
 
+### 23.12.2016 Version 4.6.2
+
+- Doku ergänzt
 
 ### 22.12.2016 Version 4.6.1
 
