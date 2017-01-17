@@ -1,6 +1,11 @@
 ### Modulsammlung - Changelog
 ___
 
+### 23.12.2016 Version 4.6.3
+
+- Modul "0515 - Minibeispiel: Bild / Bilderliste" überarbeitet
+- Projektlead hinzugefügt
+
 ### 23.12.2016 Version 4.6.2
 
 - Doku ergänzt
