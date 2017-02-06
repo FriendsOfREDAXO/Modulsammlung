@@ -65,8 +65,8 @@ if(!rex::isBackend()) {
 
   if ($mapidx==1) $mapidx = '';
 
-  if ($mapidx==''){
-    echo '<script type="text/javascript" src="//maps.googleapis.com/maps/api/js?'.$gmapikey.'sensor=false&amp;language='.$sprache.'&amp;region='.strtoupper($sprache).'"></script>';
+if ($mapidx==''){
+    echo '<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?'.$gmapikey.'&amp;language='.$sprache.'&amp;region='.strtoupper($sprache).'"></script>';
   }
 
   echo '<script type="text/javascript">';

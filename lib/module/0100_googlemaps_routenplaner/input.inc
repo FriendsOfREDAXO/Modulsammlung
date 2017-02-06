@@ -429,8 +429,7 @@ function loadScript(src){
   script.src = src;
 }
 if(typeof google === "undefined") {
-
-  loadScript('//maps.googleapis.com/maps/api/js?<?php echo $gmapikey; ?>v=3&sensor=false&libraries=places&callback=initialize');
+loadScript('https://maps.googleapis.com/maps/api/js?<?php echo $gmapikey; ?>v=3&libraries=places&callback=initialize');
 }
 
 // vars
