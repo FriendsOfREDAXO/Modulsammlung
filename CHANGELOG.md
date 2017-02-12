@@ -1,15 +1,12 @@
 ### Modulsammlung - Changelog
 ___
 
-<<<<<<< HEAD
 ### 06.02.2017 Version 4.6.4
 
 - Google Maps Modul aktualisiert. Danke an Markus
   (https://github.com/FriendsOfREDAXO/Modulsammlung/issues/61)
 - "Templates" wieder aktiviert
 
-=======
->>>>>>> origin/master
 ### 23.12.2016 Version 4.6.3
 
 - Modul "0515 - Minibeispiel: Bild / Bilderliste" überarbeitet
@@ -153,7 +150,7 @@ ___
 
 * Beschreibung für "0030 - Text / Downloads" geschrieben
 * Versionsnummer korrigiert... :-)
-* Modul "0405 - Artikel blättern" hinzugefügt
+* Modul "0405 - Artikel blättern" hinzugefügt
 
 ### 12.05.2016 Version 4.1.8
 
