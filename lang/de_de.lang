@@ -4,6 +4,9 @@ modulsammlung_general_dummy[] = Rechte für Modulsammlung-Addon
 
 
 modulsammlung_module              = Module
+
+modulsammlung_module_mform_mblock = Module mit MForm / MBlock
+
 modulsammlung_modul               = Modul
 modulsammlung_moduluebersicht     = Modulübersicht
 modulsammlung_config_fehler       = config.inc nicht vorhanden in:
