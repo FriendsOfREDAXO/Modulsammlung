@@ -1,7 +1,11 @@
 ### Modulsammlung - Changelog
 ___
 
-### 20.02.2017 Version 4.6.5
+### 20.02.2017 Version 4.6.7
+
+- Falsche Versionsnummer
+
+### 20.02.2017 Version 4.6.6
 
 - Seite "Module mit MForm / MBlock" hinzugefügt
 
