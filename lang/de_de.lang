@@ -47,6 +47,6 @@ modulsammlung_lizenz = Lizenz
 modulsammlung_modul_id            = Modul ID
 modulsammlung_modul_bezeichnung   = Modul Bezeichnung
 modulsammlung_modul_verwendung    = Verwendung
-modulsammlung_modul_benutzung     = Aktuelle Modulbenuzung
+modulsammlung_modul_benutzung     = Aktuelle Modulbenutzung
 modulsammlung_module_loeschen     = Unbenutze Module löschen
 modulsammlung_modul_geloescht     = Modul gelöscht: ID
