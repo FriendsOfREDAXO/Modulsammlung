@@ -4,7 +4,7 @@ Ziel des Addons *Modulsammlung* ist es einfach einige Module für REDAXO 5.x ins
 
 Das Frontend (S)CSS wird entweder nicht oder nur reduziert mitgeliefert (es wird nicht mit dem Modul installiert.) :-)
 
-Da es keinen Updateprozess vorhandener Module gibt (ist auch nicht geplant) kann das Addon nach der Installation der gewünschten Module eigentlich wieder gelöscht werden um zu verhindern, dass evtl. irgendein Anweder wild Module installiert die noch konfiguriert werden müssten.
+Da es keinen Updateprozess vorhandener Module gibt (ist auch nicht geplant) kann das Addon nach der Installation der gewünschten Module eigentlich wieder gelöscht werden um zu verhindern, dass evtl. irgendein Anwender wild Module installiert die noch konfiguriert werden müssten.
 
 [Eigene Module](#eigenemodule) können natürlich einfach hinzugefügt werden.
 
@@ -18,7 +18,7 @@ Nach der Installtion ist unter dem Punkt "Modulsammlung" die Auswahl der Module 
 * Durch Klick auf "Modul installieren" kann das gewünschte Modul installiert werden.
 * Der Name des Moduls welches installiert wird kann vorher in dem Textfeld individuell angepasst werden.
 * Bereits installierte Module werden nicht gelöscht oder überschrieben.
-* Wird ein Modul nehrfach installiert wird es auch mehrfach (mit einer anderen ID) angelegt.
+* Wird ein Modul mehrfach installiert wird es auch mehrfach (mit einer anderen ID) angelegt.
 
 ### Weitere Infos zu einem Modul
 
@@ -36,7 +36,7 @@ Eigene Module können **supereinfach** der Sammlung hinzugefügt werden!
 
 1. im Ordner `modulsammlung/lib/module/` einen Ordner mit dem gewünschten Namen anlegen
 2. mindestens die Dateien `info.inc`,`config.inc`,`input.inc` und `output.inc` anlegen
-3. in der `info.inc` bitte kurz eintragen (in HTML) welche Funktionen und Vorraussetzungen das MOdul hat. Hier ist auch der Platz für den Hinweis auf Besonderheiten des Moduls.
+3. in der `info.inc` bitte kurz eintragen (in HTML) welche Funktionen und Vorraussetzungen das Modul hat. Hier ist auch der Platz für den Hinweis auf Besonderheiten des Moduls.
 4. `config.inc` füllen (Modulname / Status)
 5. den Modul Input Code in der Datei `input.inc` speichern
 6. den Modul Output Code in der Datei `output.inc` speichern
@@ -44,13 +44,13 @@ Eigene Module können **supereinfach** der Sammlung hinzugefügt werden!
 
 **Kür**
 
-In der Modulüberischt kann nützlicher (S)CSS Code dargestellt werden. Sofern das gewünscht ist bitte eine Datei mit dem Namen `styles_scss.inc` bzw. `styles_css.inc` anlegen und dort den (S)CSS Code eintragen. Das Addon erkennt automatiosch ob die Datei vorhanen ist und bindet diese ein.
+In der Modulübersicht kann nützlicher (S)CSS Code dargestellt werden. Sofern das gewünscht ist bitte eine Datei mit dem Namen `styles_scss.inc` bzw. `styles_css.inc` anlegen und dort den (S)CSS Code eintragen. Das Addon erkennt automatisch ob die Datei vorhanden ist und bindet diese ein.
 
-Miot der gleichen Vorgehensweise können bei der Modulinatsalltion Templates (`template.inc`) und Medianmanager Typen / Effekte angelegt werden (`mediamanager.inc`).
+Mit der gleichen Vorgehensweise können bei der Modulinstallation Templates (`template.inc`) und Medianmanager Typen / Effekte angelegt werden (`mediamanager.inc`).
 
 **Superkür**
 
- Jetzt fehlt nur noch ein Eintrag in die Doku und ein PR auf GitHub siehe [Verbesserungen einbringen](#verbesserungen)
+Jetzt fehlt nur noch ein Eintrag in die Doku und ein PR auf GitHub siehe [Verbesserungen einbringen](#verbesserungen)
 
 
 ## Wie kann ich mitmachen?
@@ -63,7 +63,7 @@ Selbstversändlich freuen wir uns wenn Du [Wünsche äussers / Fehler meldest](#
 <a name="wuensche_fehler"></a>
 ### Wünsche äussern / Fehler melden
 
-Solltes Du einen Wunsch für ein bestimmtes Modul habe oder einen Fehler in einem Modul (oder in dem Addon) gefunden habe ist der beste Weg ein [ISSUES](https://github.com/FriendsOfREDAXO/REX5-Modulsammlung/issues) auf GitHub zu schreiben.
+Solltest Du einen Wunsch für ein bestimmtes Modul haben oder einen Fehler in einem Modul (oder in dem Addon) gefunden habe ist der beste Weg ein [ISSUES](https://github.com/FriendsOfREDAXO/REX5-Modulsammlung/issues) auf GitHub zu schreiben.
 
 <a name="verbesserungen"></a>
 ### Verbesserungen einbringen
