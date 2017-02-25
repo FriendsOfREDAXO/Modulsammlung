@@ -4,7 +4,7 @@ package: modulsammlung
 version: '4.6.7'
 author: 'Friends Of REDAXO'
 supportpage: https://github.com/FriendsOfREDAXO/REX5-Modulsammlung/issues
-info: 'Idee und Realisierung der ersten Version: Oliver Kreicher / concedra.de'
+info: 'Idee und Realisierung der ersten Version: Oliver Kreischer / concedra.de'
 compile: 0
 
 page:
