@@ -1,6 +1,10 @@
 ### Modulsammlung - Changelog
 ___
 
+### 25.02.2017 Version 4.6.9
+
+- Update en_gb.lang - Danke an @ynamite!
+- Neues Modul: "0820_mblock_mform_owl_carousel" - Danke an @elricco
 
 ### 25.02.2017 Version 4.6.8
 
