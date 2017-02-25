@@ -1,0 +1,52 @@
+
+modulsammlung_title = Module collection
+modulsammlung_general_dummy[] = Permissions for Module collection AddOn
+
+
+modulsammlung_module              = Modules
+
+modulsammlung_module_mform_mblock = Modules with MForm / MBlock
+
+modulsammlung_modul               = Module
+modulsammlung_moduluebersicht     = Modules overview
+modulsammlung_config_fehler       = config.inc missing in:
+modulsammlung_info_fehler         = info.inc missing in:
+modulsammlung_input_fehler        = input.inc missing in:
+modulsammlung_output_fehler       = output.inc missing in:
+modulsammlung_template_fehler     = template.inc missing in:
+
+modulsammlung_fertig              = Done
+modulsammlung_in_bearbeitung      = In development
+modulsammlung_entwicklung_geplant = Development planned
+modulsammlung_input               = Input
+modulsammlung_output              = Output
+modulsammlung_acc_template        = Template
+
+modulsammlung_css                   = CSS
+modulsammlung_scss                  = SCSS
+
+modulsammlung_info                  = Info
+modulsammlung_styles                = Styles
+modulsammlung_modul_installieren    = Install module
+modulsammlung_template_installieren = Install template
+
+modulsammlung_modul_angelegt        = The following module has been created:
+modulsammlung_modulname_fehler      = Please enter a module name!
+
+modulsammlung_template_angelegt     = The following template has been created:
+modulsammlung_templatename_fehler   = Please enter a template name!
+
+modulsammlung_kopierter_ordner      = The following folder was copied to the assets folder:
+
+modulsammlung_templates = Templates
+modulsammlung_template  = Template
+
+modulsammlung_changelog = Change log
+modulsammlung_lizenz = Licence
+
+modulsammlung_modul_id            = Module ID
+modulsammlung_modul_bezeichnung   = Module description
+modulsammlung_modul_verwendung    = Usage
+modulsammlung_modul_benutzung     = Current module usage
+modulsammlung_module_loeschen     = Delete unused modules
+modulsammlung_modul_geloescht     = Module deleted: ID
