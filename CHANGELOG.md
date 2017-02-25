@@ -1,6 +1,11 @@
 ### Modulsammlung - Changelog
 ___
 
+
+### 25.02.2017 Version 4.6.8
+
+- Pfade korrigiert. Danke an @elricco
+
 ### 20.02.2017 Version 4.6.7
 
 - Falsche Versionsnummer
