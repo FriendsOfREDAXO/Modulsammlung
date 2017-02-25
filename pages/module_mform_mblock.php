@@ -182,7 +182,7 @@ if (count($moduls_errors) > 0) {
         }
         // Ordner in Assets kopieren
         if (array_key_exists('assets_folder',$modul['config'])  && $modul['config']['assets_folder'] != '') {
-          $srcdir = '../redaxo/src/addons/modulsammlung/lib/module/'.$module_key.'/'.$modul['config']['assets_folder'];
+          $srcdir = '../redaxo/src/addons/modulsammlung/lib/module_mform_mblock/'.$module_key.'/'.$modul['config']['assets_folder'];
           // echo $srcdir;
           rex_dir::copy($srcdir ,'.././assets/'.$modul['config']['assets_folder']);
              echo rex_view::success($this->i18n('kopierter_ordner').' '.$modul['config']['assets_folder']);
