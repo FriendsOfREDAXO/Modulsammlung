@@ -1,6 +1,11 @@
 ### Modulsammlung - Changelog
 ___
 
+### 14.03.2017 Version 4.7.0
+
+- Update Modul: "0100 - Google Maps / Routenplaner". Der MArker bleibt jetzt beim Browserresize zentriert. Danke an @mbodon
+
+
 ### 25.02.2017 Version 4.6.9
 
 - Update en_gb.lang - Danke an @ynamite!
