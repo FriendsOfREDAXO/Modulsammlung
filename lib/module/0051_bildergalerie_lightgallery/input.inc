@@ -1,4 +1,4 @@
-<!-- // --- MODUL | 03 . Galerie (INPUT) -->
+<!-- // --- MODUL | 03 . lightGalerie (INPUT) -->
 
 <?php
 //--- REX_VALUES
