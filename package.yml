@@ -22,5 +22,6 @@ page:
             subpages:
                 info: { title: 'Info'}
                 moduluebersicht: { title: 'translate:moduluebersicht'}
+                templateuebersicht: { title: 'translate:templateuebersicht'}
                 changelog: { title: 'translate:changelog'}
                 lizenz: { title: 'translate:lizenz'}

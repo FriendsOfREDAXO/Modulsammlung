@@ -40,6 +40,13 @@ modulsammlung_kopierter_ordner      = Folgender Ordner wurde in den Assets Ordne
 
 modulsammlung_templates = Templates
 modulsammlung_template  = Template
+modulsammlung_templateuebersicht     = Templateübersicht
+modulsammlung_template_id            = Template ID
+modulsammlung_template_bezeichnung   = Template Bezeichnung
+modulsammlung_template_verwendung    = Verwendung
+modulsammlung_template_benutzung     = Aktuelle Templatebenutzung
+
+
 
 modulsammlung_changelog = Changelog
 modulsammlung_lizenz = Lizenz

@@ -1,9 +1,16 @@
 ### Modulsammlung - Changelog
 ___
 
+
+### 20.04.2017 Version 4.7.1
+
+- Modul "LightGallery" wieder entfernt da die Modulinstallation direkt im AddOn möglich ist.
+- Doku minmal erweitert
+- Übersicht der installierten und verwendeten Templates (unter Info) 
+
 ### 14.03.2017 Version 4.7.0
 
-- Update Modul: "0100 - Google Maps / Routenplaner". Der MArker bleibt jetzt beim Browserresize zentriert. Danke an @mbodon
+- Update Modul: "0100 - Google Maps / Routenplaner". Der Marker bleibt jetzt beim Browserresize zentriert. Danke an @mbodon
 
 
 ### 25.02.2017 Version 4.6.9

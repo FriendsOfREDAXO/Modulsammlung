@@ -40,6 +40,12 @@ modulsammlung_kopierter_ordner      = The following folder was copied to the ass
 
 modulsammlung_templates = Templates
 modulsammlung_template  = Template
+#modulsammlung_templateuebersicht   = Templates overview
+modulsammlung_template_id            = Template ID
+modulsammlung_template_bezeichnung   = Template description
+modulsammlung_template_verwendung    = Usage
+modulsammlung_template_benutzung     = Current Template usage
+
 
 modulsammlung_changelog = Change log
 modulsammlung_lizenz = Licence
