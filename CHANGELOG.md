@@ -1,6 +1,10 @@
 ### Modulsammlung - Changelog
 ___
 
+### 26.04.2017 Version 4.7.2
+
+- Template "0010 - Quickstart" aus der Doku (https://redaxo.org/doku/master/tutorial-quickstart) hinzugefügt
+- Beispieltemplate entfernt
 
 ### 20.04.2017 Version 4.7.1
 
