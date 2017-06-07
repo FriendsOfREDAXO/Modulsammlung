@@ -26,7 +26,7 @@
 - 0530 - Minibeispiel: Radiobuttons
 - 0535 - Minibeispiel: Checkboxen
 - 0540 - Minibeispiel: Link / Linkliste
-- 0600 - Beispielinhalte ausgeben
+- [0600 - Beispielinhalte ausgeben](0600.md)
 - 0700 - MBlock - MForm - Teammitglieder
 - 0705 - MBlock - MForm - Link und Linklist
 - 0710 - MBlock - MForm - Media und Medialist

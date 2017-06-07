@@ -1,7 +1,7 @@
 # Alle hier gesetzten Werte können über $addon->getProperty($key) abgefragt werden
 
 package: modulsammlung
-version: '4.6.9'
+version: '4.7.2'
 author: 'Friends Of REDAXO'
 supportpage: https://github.com/FriendsOfREDAXO/REX5-Modulsammlung/issues
 info: 'Idee und Realisierung der ersten Version: Oliver Kreischer / concedra.de'
@@ -22,5 +22,6 @@ page:
             subpages:
                 info: { title: 'Info'}
                 moduluebersicht: { title: 'translate:moduluebersicht'}
+                templateuebersicht: { title: 'translate:templateuebersicht'}
                 changelog: { title: 'translate:changelog'}
                 lizenz: { title: 'translate:lizenz'}

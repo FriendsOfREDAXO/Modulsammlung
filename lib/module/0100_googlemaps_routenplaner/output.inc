@@ -4,7 +4,7 @@
 $gmapikey = '';
 
 if ($gmapikey != '') {
-  $gmapikey = 'key='.$gmapikey.'&';
+    $gmapikey = 'key='.$gmapikey.'&';
 }
 
 /*
@@ -39,9 +39,9 @@ $breite               = 'REX_VALUE[12]';
 $container            = '';
 
 if ($breite == '100% Browserbreite') {
-  $container = 'container-fluid';
+    $container = 'container-fluid';
 } else {
-  $container = 'container';
+    $container = 'container';
 }
 
 if ('REX_VALUE[id=10 isset=1]') {
@@ -50,28 +50,28 @@ if ('REX_VALUE[id=10 isset=1]') {
 
 
 if ($sprache == '') {
-  $sprache = 'de';
+    $sprache = 'de';
 }
 
 if ($sendenbutton == '') {
-  $sendenbutton = 'Bitte eine Bezeichnung (z.B: Route anzeigen) eingeben. ';
+    $sendenbutton = 'Bitte eine Bezeichnung (z.B: Route anzeigen) eingeben. ';
 }
 
 if(!rex::isBackend()) {
 
-  if (!isset($REX['GoogleMap']['MapCounter'])) $REX['GoogleMap']['MapCounter'] = 0;
-  $REX['GoogleMap']['MapCounter']++;
-  $mapidx = $REX['GoogleMap']['MapCounter'];
+    if (!isset($REX['GoogleMap']['MapCounter'])) $REX['GoogleMap']['MapCounter'] = 0;
+    $REX['GoogleMap']['MapCounter']++;
+    $mapidx = $REX['GoogleMap']['MapCounter'];
 
-  if ($mapidx==1) $mapidx = '';
+    if ($mapidx==1) $mapidx = '';
 
-if ($mapidx==''){
-    echo '<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?'.$gmapikey.'&amp;language='.$sprache.'&amp;region='.strtoupper($sprache).'"></script>';
-  }
+    if ($mapidx==''){
+        echo '<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?'.$gmapikey.'&amp;language='.$sprache.'&amp;region='.strtoupper($sprache).'"></script>';
+    }
 
-  echo '<script type="text/javascript">';
-  if ($routenplaner_anzeige == 'ja'){
-    echo "
+    echo '<script type="text/javascript">';
+    if ($routenplaner_anzeige == 'ja'){
+        echo "
     var directionDisplay".$mapidx.";
     var directionsService".$mapidx." = new google.maps.DirectionsService();
     function calcRoute".$mapidx."(mapidx, zieladresse, lat, lng) {
@@ -93,9 +93,9 @@ if ($mapidx==''){
       });
     }
     ";
-  }
+    }
 
-echo "
+    echo "
     function initializemap".$mapidx."(){
 
       var myLatlng = new google.maps.LatLng(".$lat.",".$lng.");
@@ -108,6 +108,12 @@ echo "
       };
       var map".$mapidx." = new google.maps.Map(document.getElementById('map_canvas".$mapidx."'), myOptions);
 
+      google.maps.event.addDomListener(window, 'resize', function() {
+        var center = map".$mapidx.".getCenter();
+        google.maps.event.trigger(map".$mapidx.", 'resize');
+        map".$mapidx.".setCenter(center);
+      });
+
       var marker = new google.maps.Marker({
         position: myLatlng,
         title: '".$adresse."',
@@ -116,16 +122,16 @@ echo "
       });
 ";
 
- if ($routenplaner_anzeige == 'ja'){
- echo "
+    if ($routenplaner_anzeige == 'ja'){
+        echo "
       directionsDisplay".$mapidx." = new google.maps.DirectionsRenderer();
       directionsDisplay".$mapidx.".setMap(map".$mapidx.");
       directionsDisplay".$mapidx.".setPanel(document.getElementById('directions-panel".$mapidx."'));
       ";
-}
+    }
 
-if ($infotext != ''){
-echo "
+    if ($infotext != ''){
+        echo "
       var contentString = '".$infotext."';
       var infowindow = new google.maps.InfoWindow({
         content: contentString
@@ -135,16 +141,16 @@ echo "
         infowindow.open(map".$mapidx.", marker);
       });
 ";
-}
+    }
 
-echo "
+    echo "
 
  };
     google.maps.event.addDomListener(window, 'load', initializemap".$mapidx.");
   </script>";
 
 
-echo "
+    echo "
 
   <!-- Google Maps (+ Routenplaner) ".$mapidx." -->
     <div class='".$container."'>
@@ -157,12 +163,12 @@ echo "
     </div>
   ";
 
-  if ($routenplaner_anzeige == 'ja'){
+    if ($routenplaner_anzeige == 'ja'){
 
-  echo '
+        echo '
   <div class="container">
   <div class="row">';
-    $formularausgabe = "
+        $formularausgabe = "
         <form id='routenplaner".$mapidx."' class='routenplaner' action='javascript:void(0);' onsubmit=\"return calcRoute".$mapidx."('".$mapidx."', '".$adresse."', '".$lat."', '".$lng."')\">
           <fieldset>
             <input type='text' id='start".$mapidx."' value='' />
@@ -171,13 +177,13 @@ echo "
         </form>
     ";
 
-    if ($erklaerungstext != ''){
-      echo '<div class="col-xs-6">'.$erklaerungstext.'</div>';
-      echo '<div class="col-xs-6">'.$formularausgabe.'</div>';
-    } else {
-      echo '<div class="col-xs-12">'.$formularausgabe.'</div>';
-    }
-    echo "
+        if ($erklaerungstext != ''){
+            echo '<div class="col-xs-6">'.$erklaerungstext.'</div>';
+            echo '<div class="col-xs-6">'.$formularausgabe.'</div>';
+        } else {
+            echo '<div class="col-xs-12">'.$formularausgabe.'</div>';
+        }
+        echo "
     </div>
     </div>
     <div class='container'>
@@ -185,11 +191,11 @@ echo "
           <div id='directions-panel".$mapidx."' class='directions-panel'></div>
     </div>
     <!-- /Google Maps Routenplaner ".$mapidx." -->";
-  }
+    }
 } else {
 
- echo '
-  <div id="trennlinie" class="bereichswrapper">
+    echo '
+  <div id="googlemap" class="bereichswrapper">
     <div class="form-horizontal output">
      <h2>Adresse</h2>
        <div class="form-group">
@@ -227,16 +233,16 @@ echo "
          <div class="col-sm-9">'.$markerfarbe.'</div>
        </div>';
 
-if ($infotext != '') {
-echo ' <div class="form-group">
+    if ($infotext != '') {
+        echo ' <div class="form-group">
          <label class="col-sm-3 control-label">Infotext</label>
          <div class="col-sm-9">'.html_entity_decode($infotext).'</div>
        </div>';
-}
+    }
 
-if ($routenplaner_anzeige == 'ja') {
+    if ($routenplaner_anzeige == 'ja') {
 
-echo'  <h2>Routenplaner</h2>
+        echo'  <h2>Routenplaner</h2>
        <div class="form-group">
          <label class="col-sm-3 control-label">Routenplaner anzeigen</label>
          <div class="col-sm-9">'.$routenplaner_anzeige.'</div>
@@ -246,33 +252,33 @@ echo'  <h2>Routenplaner</h2>
          <div class="col-sm-9">'.$sendenbutton.'</div>
        </div>';
 
-  if ($erklaerungstext != '') {
-  echo'  <div class="form-group">
+        if ($erklaerungstext != '') {
+            echo'  <div class="form-group">
            <label class="col-sm-3 control-label">erklaerungstext</label>
            <div class="col-sm-9">'.$erklaerungstext.'</div>
          </div>';
-  }
-}
-echo'
+        }
+    }
+    echo'
     </div>
   </div>
 
 
 <style>
-#trennlinie.bereichswrapper {
+#googlemap.bereichswrapper {
   margin: 5px 0 5px 0;
   background: #f5f5f5;
   padding: 5px 15px 5px 15px;
   border: 1px solid #9da6b2;
 }
 
-#trennlinie .control-label {
+#googlemap .control-label {
   font-weight: normal;
   font-size: 12px;
   margin-top: -6px;
 }
 
-#trennlinie  h2 {
+#googlemap  h2 {
   font-size: 12px !important;
   padding: 0 10px 10px 10px;
   margin-bottom: 15px;
@@ -285,5 +291,3 @@ echo'
 
   '.PHP_EOL;
 }
-
-

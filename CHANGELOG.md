@@ -1,6 +1,22 @@
 ### Modulsammlung - Changelog
 ___
 
+### 26.04.2017 Version 4.7.2
+
+- Template "0010 - Quickstart" aus der Doku (https://redaxo.org/doku/master/tutorial-quickstart) hinzugefügt
+- Beispieltemplate entfernt
+
+### 20.04.2017 Version 4.7.1
+
+- Modul "LightGallery" wieder entfernt da die Modulinstallation direkt im AddOn möglich ist.
+- Doku minmal erweitert
+- Übersicht der installierten und verwendeten Templates (unter Info) 
+
+### 14.03.2017 Version 4.7.0
+
+- Update Modul: "0100 - Google Maps / Routenplaner". Der Marker bleibt jetzt beim Browserresize zentriert. Danke an @mbodon
+
+
 ### 25.02.2017 Version 4.6.9
 
 - Update en_gb.lang - Danke an @ynamite!
