@@ -1,0 +1,59 @@
+
+modulsammlung_title = Coleção de módulos
+modulsammlung_general_dummy[] = Permissões para coleção de módulos AddOn
+
+
+modulsammlung_module              = Módulos
+
+modulsammlung_module_mform_mblock = Módulos com MForm / MBlock
+
+modulsammlung_modul               = Módulo
+modulsammlung_moduluebersicht     = Visão geral de módulos
+modulsammlung_config_fehler       = config.inc faltando em:
+modulsammlung_info_fehler         = info.inc faltando em:
+modulsammlung_input_fehler        = input.inc  faltando em:
+modulsammlung_output_fehler       = output.inc faltando em:
+modulsammlung_template_fehler     = template.inc faltando em:
+
+modulsammlung_fertig              = Feito
+modulsammlung_in_bearbeitung      = Em desenvolvimento
+modulsammlung_entwicklung_geplant = Desenvolvimento planejado
+modulsammlung_input               = Input
+modulsammlung_output              = Output
+modulsammlung_acc_template        = Template
+
+modulsammlung_css                   = CSS
+modulsammlung_scss                  = SCSS
+
+modulsammlung_info                  = Info
+modulsammlung_styles                = Estilos
+modulsammlung_modul_installieren    = Intalar módulo
+modulsammlung_template_installieren = Instalar template
+
+modulsammlung_modul_angelegt        = O módulo a seguir foi criado:
+modulsammlung_modulname_fehler      = Por favor, insira um nome para o módulo
+
+modulsammlung_template_angelegt     = O template a seguir foi criado:
+modulsammlung_templatename_fehler   = Por favor, insira um nome para o template!
+
+modulsammlung_kopierter_ordner      = A pasta a seguir foi copiada para a pasta de ativos:
+
+modulsammlung_templates = Templates
+modulsammlung_template  = Template
+modulsammlung_templateuebersicht     = Visão geral do template
+modulsammlung_template_id            = Id do template
+modulsammlung_template_bezeichnung   = Descrição do template
+modulsammlung_template_verwendung    = Uso
+modulsammlung_template_benutzung     = Uso de template atual
+
+
+
+modulsammlung_changelog = Changelog
+modulsammlung_lizenz = Licença
+
+modulsammlung_modul_id            = Id do módulo
+modulsammlung_modul_bezeichnung   = Descrição do módulo
+modulsammlung_modul_verwendung    = Uso
+modulsammlung_modul_benutzung     = Uso do módulo atual
+modulsammlung_module_loeschen     = Deletar módulos não utilizados
+modulsammlung_modul_geloescht     = Módulo deletado: ID
