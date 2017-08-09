@@ -39,4 +39,5 @@
 ---
 
 **Templates**
-- 0000 - Test
+- [0010 - Quickstart](t_0010.md)
+

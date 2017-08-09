@@ -1,6 +1,10 @@
 ### Modulsammlung - Changelog
 ___
 
+### 09.08.2017 Version 4.7.3
+
+- Modul "0050 - Bildergalerie (Unite Gallery)" korrigiert
+
 ### 26.04.2017 Version 4.7.2
 
 - Template "0010 - Quickstart" aus der Doku (https://redaxo.org/doku/master/tutorial-quickstart) hinzugefügt
@@ -10,7 +14,7 @@ ___
 
 - Modul "LightGallery" wieder entfernt da die Modulinstallation direkt im AddOn möglich ist.
 - Doku minmal erweitert
-- Übersicht der installierten und verwendeten Templates (unter Info) 
+- Übersicht der installierten und verwendeten Templates (unter Info)
 
 ### 14.03.2017 Version 4.7.0
 
