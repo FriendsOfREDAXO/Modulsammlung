@@ -66,7 +66,7 @@ if ('REX_MEDIALIST[1]' !='') {
 
     $download_be_dateien .= $value_dl.'<br/>';
 
-    $download_fe_dateien .='<li><a href="'.rex_getUrl('REX_LINK[1]', $this->clang, array ('file' => $value_dl) ).'">'.$parsed_icon;
+    $download_fe_dateien .='<li><a href="index.php?rex_media_type=download&rex_media_file='.$value_dl.'">'.$parsed_icon;
 
     if ($file_desc != "") {
       $download_fe_dateien .= $file_desc;
@@ -98,20 +98,6 @@ $output_frontend[] = '
       <ul>'.$download_fe_dateien.'</ul>
     </div>';
 
-
-if('REX_LINK[1]' != '') {
-  $output_backend[] = '
-    <div class="form-group">
-       <label class="col-sm-3 control-label">Download Seite</label>
-       <div class="col-sm-9"><a href="index.php?page=content&article_id=REX_LINK[id=1 output=id]">REX_LINK[id=1 output=name]</a></div>
-    </div>';
-} else {
-  $output_backend[] = '
-    <div class="form-group">
-       <label class="col-sm-3 control-label">Download Seite</label>
-       <div class="col-sm-9 warning"><b>ACHTUNG:</b><br/>Sie müssen unbedingt den Link zur Download Seite angeben!</div>
-    </div>';
-};
 
 
 if(!rex::isBackend()) {

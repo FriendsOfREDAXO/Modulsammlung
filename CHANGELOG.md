@@ -1,6 +1,10 @@
 ### Modulsammlung - Changelog
 ___
 
+### 09.08.2017 Version 4.7.4
+
+- Modul "0030 - Text / Download" überarbeitet
+
 ### 09.08.2017 Version 4.7.3
 
 - Modul "0050 - Bildergalerie (Unite Gallery)" korrigiert

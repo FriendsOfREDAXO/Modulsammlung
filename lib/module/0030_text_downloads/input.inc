@@ -30,27 +30,8 @@ if(!rex_addon::get('markitup')->isAvailable()) {
           REX_MEDIALIST[id="1" widget="1"]
       </div>
     </div>
-    <div class="form-group">
-      <label class="col-sm-3 control-label">Download Seite</label>
-        <div class="col-sm-9">
-          REX_LINK[id=1 widget=1]
-        </div>
-    </div>
   </div>
 
-  <div  id="anleitung" >
-    <div class="control-label panel-heading collapsed" data-toggle="collapse" data-target="#collapse-text">
-      <span class="caret"></span>Erklärung</h3>
-    </div>
-    <div id="collapse-text" class="panel-collapse collapse">
-      <div class="form-group">
-        <label class="col-sm-3 control-label">Text</label>
-        <div class="col-sm-9">
-          <p>Text, der neben den Download Links dargestellt wird.</p>
-        </div>
-    </div>
-    </div>
-  </div>
 </div>
 
 
@@ -85,28 +66,4 @@ textarea.form-control {
   min-height: 200px;
 }
 
-#anleitung .control-label {
-
-}
-
-#anleitung {
-  margin-top: 30px;
-}
-
-#anleitung .panel-heading {
-  font-size: 14px !important;
-  padding: 10px;
-  background: #DFE3E9;
-  width: 100%;
-  text-align: left;
-  margin-bottom: 20px;
-  border: none;
-}
-#anleitung .panel-heading span {
-  margin-right: 5px;
-}
-
-#anleitung .panel-heading:hover  {
-  color: #000;
-}
 </style>
