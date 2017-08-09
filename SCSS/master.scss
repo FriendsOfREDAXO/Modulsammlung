@@ -1,7 +1,6 @@
 
 // Tabelle
 #modulsammlung {
-
   table {
     margin: 0;
     thead {
@@ -10,12 +9,9 @@
     tbody {
       border: none;
     }
-
     .td_title {
       width: 100%;
     }
-
-
   }
 
 }
@@ -26,14 +22,13 @@
     padding: 10px;
     ul {
       font-size: 10px;
-        li {
-          a {
-            padding: 6px 8px 6px 8px;
-          }
+      li {
+        a {
+          padding: 6px 8px 6px 8px;
         }
+      }
     }
   }
-
 }
 
 .accordiontitle {

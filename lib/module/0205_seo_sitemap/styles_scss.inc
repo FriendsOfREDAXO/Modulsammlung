@@ -5,7 +5,7 @@
         margin: 0 0 5px 0;
         padding: 2px 15px 2px 10px;
         font-size: 1.3em;
-        color: $blue;
+        color: #22365B;
         text-decoration: none;
         &:before {
           font-family: 'FontAwesome';

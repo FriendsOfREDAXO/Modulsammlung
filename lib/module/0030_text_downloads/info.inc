@@ -1,10 +1,10 @@
-<h4><b>0030 - Text / Download</b></h4>
+<h4><b>Text / Download</b></h4>
 
 Diese Modul ermöglicht es einen Text &amp; Downloads zu verwalten.
 <br/><br/>
 <p><b>Voraussetzungen</b></p>
 <ul>
-  <li> MarkItUp (+Textile) Addon<br/>Beim ersten Aufruf des Moduls wird das jeweilige Profil angelegt. Danach sollte MarkItUp funktionieren.</li>
+  <li>MarkItUp Addon<br/>Beim ersten Aufruf des Moduls wird das jeweilige Profil angelegt. Danach sollte MarkItUp funktionieren.</li>
 </ul>
 
 <br/>

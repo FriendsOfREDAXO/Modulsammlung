@@ -10,7 +10,7 @@
 - 0105 - Parallax (skrollr)
 - 0110 - Tabelle
 - 0200 - Alle Bilder mit aus dem Medienpool mit Copyright anzeigen
-- 0205 - SEO Sitemap
+- [0205 - SEO Sitemap](0205.md)
 - 0300 - Execl 2 Table
 - 0400 - Artikelliste
 - 0405 - Artikel blättern
