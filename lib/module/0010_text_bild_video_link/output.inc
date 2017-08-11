@@ -18,7 +18,7 @@ $downloads                         = '';
 $outbackfiles                      = '';
 
 
-if(!rex_addon::get('markitup')->isAvailable() && !rex_addon::get('redactor2')->isAvailable()) {
+if(!rex_addon::get('markitup')->isAvailable() && !rex_addon::get('rex_redactor2')->isAvailable()) {
   $editor = 'markitup';
   echo rex_view::error('Dieses Modul benötigt das "MarkItUp" oder das "Redactor 2" Addon!');
 }
@@ -286,7 +286,7 @@ foreach ($reihenfolge as $nummer) {
         $text = '';
         if ($value['text'] !='') {
 
-          if (rex_addon::get('redactor2')->isAvailable()) {
+          if (rex_addon::get('rex_redactor2')->isAvailable()) {
             $value['text'] = $value['text'];
           } else {
             $value['text'] = markitup::parseOutput ('textile',  $value['text']);
@@ -557,7 +557,7 @@ foreach ($reihenfolge as $nummer) {
     $individuelle_css_klasse[$zaehler] = $value['individuelle_css_klasse'];
 
     switch($value['bildposition']) {
-	  case 'oben':
+    case 'oben':
         $html_block[$zaehler] = '';
         $html_block[$zaehler] .= $bild;
         $html_block[$zaehler] .= $ueberschrift;
@@ -566,7 +566,7 @@ foreach ($reihenfolge as $nummer) {
         $html_block[$zaehler] .= $text;
         $html_block[$zaehler] .= $link;
         $html_block[$zaehler] .= $downloads;
-      break;	    
+      break;
       case 'unten':
          $html_block[$zaehler]  = '';
          $html_block[$zaehler] .= $ueberschrift;

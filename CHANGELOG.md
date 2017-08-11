@@ -1,6 +1,10 @@
 ### Modulsammlung - Changelog
 ___
 
+### 11.08.2017 Version 4.7.6
+
+- Modul "0010 - Text / Bild / Video / Link (1-4 Spalten)" Redactor2 Anpassungen
+
 ### 09.08.2017 Version 4.7.5
 
 - Modul "0205 - SEO Sitemap" überarbeitet

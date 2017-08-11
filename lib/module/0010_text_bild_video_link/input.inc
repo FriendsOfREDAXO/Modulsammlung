@@ -8,7 +8,7 @@ $anzeige_download       = 0;//download
 
 $ausgabeform            = '';
 
-if(!rex_addon::get('markitup')->isAvailable() && !rex_addon::get('redactor2')->isAvailable()) {
+if(!rex_addon::get('markitup')->isAvailable() && !rex_addon::get('rex_redactor2')->isAvailable()) {
     echo rex_view::error('Dieses Modul ben&ouml;tigt das "MarkItUp" oder das "Redactor 2" Addon!');
 }
 
@@ -16,8 +16,8 @@ if (rex_addon::get('markitup')->isAvailable() && !markitup::profileExists('simpl
   markitup::insertProfile('simple', 'Angelegt durch das Addon Modulsammlung', 'textile', 300, 800, 'relative', 'bold,italic,underline,deleted,quote,sub,sup,code,unorderedlist,grouplink[internal|external|mailto]');
 }
 
-if (rex_addon::get('redactor2')->isAvailable() && !redactor2::profileExists('simple')) {
-    redactor2::insertProfile('simple', 'Angelegt durch das Addon Modulsammlung', '300', '800', 'relative','bold, italic, underline, deleted, sub, sup,  unorderedlist, orderedlist, grouplink[email|external|internal|media], cleaner');
+if (rex_addon::get('rex_redactor2')->isAvailable() && !rex_redactor2::profileExists('simple')) {
+    rex_redactor2::insertProfile('simple', 'Angelegt durch das Addon Modulsammlung', '300', '800', 'relative','bold, italic, underline, deleted, sub, sup,  unorderedlist, orderedlist, grouplink[email|external|internal|media], cleaner');
 }
 
 $values = '';
@@ -194,7 +194,7 @@ echo '
         <label class="col-sm-3 control-label">Fließext</label>
         <div class="col-sm-9">';
 
-        if (rex_addon::get('redactor2')->isAvailable()) {
+        if (rex_addon::get('rex_redactor2')->isAvailable()) {
           echo ' <textarea class="form-control redactorEditor2-simple" id="value-' . $i . '" name="REX_INPUT_VALUE[' . $i . '][text]">' . (isset($values[$i]['text']) ? $values[$i]['text'] : '') . '</textarea>';
         } else {
           echo ' <textarea id="markitup_textile_' . $i . '" class="form-control markitup markitupEditor-simple" name="REX_INPUT_VALUE[' . $i . '][text]">' . (isset($values[$i]['text']) ? $values[$i]['text'] : '') . '</textarea>';
