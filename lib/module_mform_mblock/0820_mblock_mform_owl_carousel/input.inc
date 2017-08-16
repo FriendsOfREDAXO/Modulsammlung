@@ -98,6 +98,9 @@ $omform->addSelectField("$oid.0.autoplayHoverPause", array('false'=>'Nein','true
 // margin
 $omform->addInputField("number","$oid.0.margin", array('label'=>'Margin(px) <i class="rex-icon fa-info-circle" data-toggle="tooltip" data-placement="top" title="margin-right(px) on item. Default is 0"></i>'));
 
+// autowidth
+$omform->addSelectField("$oid.0.autoWidth", array('true'=>'Ja','false'=>'Nein'), array('label'=>'autoWidth <i class="rex-icon fa-info-circle" data-toggle="tooltip" data-placement="top" title="Set non grid content. Try using width style on divs."></i>'));
+
 // fieldset
 $omform->addFieldset('<a class="expertOptions" data-toggle="collapse" data-target="#expertOptions">Experten - Einstellungen OwlCarousel</a>');
 // html
@@ -122,9 +125,6 @@ $omform->addSelectField("$oid.0.freeDrag", array('false'=>'Nein','true'=>'Ja'), 
 
 // stagePadding
 $omform->addInputField("number","$oid.0.stagePadding", array('label'=>'stagePadding <i class="rex-icon fa-info-circle" data-toggle="tooltip" data-placement="top" title="Padding left and right on stage (can see neighbours). Default is 0"></i>'));
-
-// autowidth
-$omform->addSelectField("$oid.0.autowidth", array('true'=>'Ja','false'=>'Nein'), array('label'=>'autowidth <i class="rex-icon fa-info-circle" data-toggle="tooltip" data-placement="top" title="Set non grid content. Try using width style on divs."></i>'));
 
 // startPosition
 $omform->addTextField("$oid.0.startPosition", array('label'=>'startPosition <i class="rex-icon fa-info-circle" data-toggle="tooltip" data-placement="top" title="Start position or URL Hash string like \'#id\'."></i>'));
@@ -171,11 +171,11 @@ $omform->addTextField("$oid.0.videoHeight", array('label'=>'videoHeight <i class
 // videoWidth
 $omform->addTextField("$oid.0.videoWidth", array('label'=>'videoWidth <i class="rex-icon fa-info-circle" data-toggle="tooltip" data-placement="top" title="Type: Number/Boolen. Set width for videos. Default: false"></i>'));
 
-// animationOut
-$omform->addTextField("$oid.0.animationOut", array('label'=>'animationOut <i class="rex-icon fa-info-circle" data-toggle="tooltip" data-placement="top" title="Type: String/Boolen. Class for CSS3 animation out. Default: false"></i>'));
+// animateOut
+$omform->addTextField("$oid.0.animateOut", array('label'=>'animateOut <i class="rex-icon fa-info-circle" data-toggle="tooltip" data-placement="top" title="Type: String/Boolen. Class for CSS3 animation out. Default: false"></i>'));
 
-// animationInClass
-$omform->addTextField("$oid.0.animationInClass", array('label'=>'animationInClass <i class="rex-icon fa-info-circle" data-toggle="tooltip" data-placement="top" title="Type: String/Boolen. Class for CSS3 animation in. Default: false"></i>'));
+// animateIn
+$omform->addTextField("$oid.0.animateIn", array('label'=>'animateIn <i class="rex-icon fa-info-circle" data-toggle="tooltip" data-placement="top" title="Type: String/Boolen. Class for CSS3 animation in. Default: false"></i>'));
 
 // nestedItemSelector
 $omform->addTextField("$oid.0.nestedItemSelector", array('label'=>'nestedItemSelector <i class="rex-icon fa-info-circle" data-toggle="tooltip" data-placement="top" title="Type: String/Class. Use it if owl items are deep nested inside some generated content. E.g \'youritem\'. Dont use dot before class name. Default: false"></i>'));
