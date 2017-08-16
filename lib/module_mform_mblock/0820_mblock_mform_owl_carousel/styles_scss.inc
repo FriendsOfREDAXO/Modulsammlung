@@ -101,7 +101,7 @@
         &:hover {
             span {
                 border: 2px solid #000;
-                background: $gray;
+                background: #CCC;
             }
         }
     }
