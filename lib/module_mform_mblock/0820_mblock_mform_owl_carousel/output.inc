@@ -68,14 +68,14 @@ else {
 
     foreach($items as $item) {
         //get media item
-        $file = rex_media::get($item['REX_INPUT_MEDIA_1']);
+        $file = rex_media::get($item['REX_MEDIA_1']);
         $mediaPath = $file->getUrl();
         $mediaTitle = $file->getTitle();
 
         // Todo:implement data-hashes
 
-        $output .= '        <div class="item'.($owlConfiguration[0]['lazyLoad'] == 'true' && $owlConfiguration[0]['useImg'] == 'false' ? ' lazyload" data-src="index.php?rex_media_type=owlCarousel_content&amp;rex_media_file=' . $item['REX_INPUT_MEDIA_1'] . '"  data-src-retina="index.php?rex_media_type=owlCarousel_content_retina&amp;rex_media_file=' . $item['REX_INPUT_MEDIA_1'] . '"' : '"').'>';
-        $output .= ($owlConfiguration[0]['useImg'] == 'true' ? '            <img'.($owlConfiguration[0]['lazyLoad'] == 'true' ? ' class="lazyload" data-src="index.php?rex_media_type=owlCarousel_content&amp;rex_media_file=' . $item['REX_INPUT_MEDIA_1'] . '"  data-src-retina="index.php?rex_media_type=owlCarousel_content_retina&amp;rex_media_file=' . $item['REX_INPUT_MEDIA_1'] . '"' : '').' src="index.php?rex_media_type=owlCarousel_content&amp;rex_media_file=' . $item['REX_INPUT_MEDIA_1'] . '" alt="' . $mediaTitle . '">' : '');
+        $output .= '        <div class="item'.($owlConfiguration[0]['lazyLoad'] == 'true' && $owlConfiguration[0]['useImg'] == 'false' ? ' lazyload" data-src="index.php?rex_media_type=owlCarousel_content&amp;rex_media_file=' . $item['REX_MEDIA_1'] . '"  data-src-retina="index.php?rex_media_type=owlCarousel_content_retina&amp;rex_media_file=' . $item['REX_MEDIA_1'] . '"' : '"').'>';
+        $output .= ($owlConfiguration[0]['useImg'] == 'true' ? '            <img'.($owlConfiguration[0]['lazyLoad'] == 'true' ? ' class="lazyload" data-src="index.php?rex_media_type=owlCarousel_content&amp;rex_media_file=' . $item['REX_MEDIA_1'] . '"  data-src-retina="index.php?rex_media_type=owlCarousel_content_retina&amp;rex_media_file=' . $item['REX_MEDIA_1'] . '"' : '').' src="index.php?rex_media_type=owlCarousel_content&amp;rex_media_file=' . $item['REX_MEDIA_1'] . '" alt="' . $mediaTitle . '">' : '');
         $output .= '            <div class="container">';
         $output .= '                <div class="carousel-caption">';
         $output .= '                    '.($item['element'] != 0 ? '<div class="svg-circle"></div>' : '');
@@ -134,12 +134,12 @@ else {
                 <?php echo ($owlConfiguration[0]['responsiveClass'] == 'true' ? 'responsiveClass: true,' : 'responsiveClass: ' . $owlConfiguration[0]['responsiveClass'] . ',').PHP_EOL; ?>
                 <?php echo (($owlConfiguration[0]['responsiveClass'] == 'true' && $owlConfiguration[0]['responsive']) != '' ? $owlConfiguration[0]['responsive'] . ',' : '').PHP_EOL; ?>
                 <?php echo ($owlConfiguration[0]['responsiveRefreshRate'] == '' ? '' : 'responsiveRefreshRate: ' . $owlConfiguration[0]['responsiveClass'] . ',').PHP_EOL; ?>
-                <?php echo ($owlConfiguration[0]['responsiveRefrveBaseElement'] == '' ? '' : 'responsiveBaseElement: ' . $owlConfiguration[0]['responsiveBaseElement'] . ',').PHP_EOL; ?>
+                <?php echo ($owlConfiguration[0]['responsiveBaseElement'] == '' ? '' : 'responsiveBaseElement: ' . $owlConfiguration[0]['responsiveBaseElement'] . ',').PHP_EOL; ?>
                 <?php echo ($owlConfiguration[0]['video'] == 'false' ? '' : 'video: ' . $owlConfiguration[0]['video'] . ',').PHP_EOL; ?>
                 <?php echo ($owlConfiguration[0]['videoHeight'] == '' ? '' : 'videoHeight: ' . $owlConfiguration[0]['videoHeight'] . ',').PHP_EOL; ?>
                 <?php echo ($owlConfiguration[0]['videoWidth'] == '' ? '' : 'videoWidth: ' . $owlConfiguration[0]['videoWidth'] . ',').PHP_EOL; ?>
                 <?php echo ($owlConfiguration[0]['animateOut'] == '' ? '' : 'animateOut: \'' . $owlConfiguration[0]['animateOut'] . '\',').PHP_EOL; ?>
-                <?php echo ($owlConfiguration[0]['animateInClass'] == '' ? '' : 'animateInClass: \'' . $owlConfiguration[0]['animateInClass'] . '\',').PHP_EOL; ?>
+                <?php echo ($owlConfiguration[0]['animateIn'] == '' ? '' : 'animateIn: \'' . $owlConfiguration[0]['animateIn'] . '\',').PHP_EOL; ?>
                 <?php echo ($owlConfiguration[0]['nestedItemSelector'] == '' ? '' : 'nestedItemSelector: \'' . $owlConfiguration[0]['nestedItemSelector'] . '\',').PHP_EOL; ?>
                 <?php echo ($owlConfiguration[0]['itemElement'] == '' ? '' : 'itemElement: \'' . $owlConfiguration[0]['itemElement'] . '\',').PHP_EOL; ?>
                 <?php echo ($owlConfiguration[0]['stageElement'] == '' ? '' : 'stageElement: \'' . $owlConfiguration[0]['stageElement'] . '\',').PHP_EOL; ?>
