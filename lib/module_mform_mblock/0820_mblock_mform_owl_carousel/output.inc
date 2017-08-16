@@ -32,13 +32,13 @@ if(rex::isBackend()) {
 
     foreach($items as $item) {
         //get media item
-        $file = rex_media::get($item['REX_INPUT_MEDIA_1']);
+        $file = rex_media::get($item['REX_MEDIA_1']);
         $mediaPath = $file->getUrl();
         $mediaTitle = $file->getTitle();
 
         $output .= '        <div class="row">';
         $output .= '            <div class="col-sm-4">';
-        $output .= '            <img class="img-responsive" src="index.php?rex_media_type=owlCarousel_backend&amp;rex_media_file=' . $item['REX_INPUT_MEDIA_1'] . '" alt="' . $mediaTitle . '">';
+        $output .= '            <img class="img-responsive" src="index.php?rex_media_type=owlCarousel_backend&amp;rex_media_file=' . $item['REX_MEDIA_1'] . '" alt="' . $mediaTitle . '">';
         $output .= '            </div>';
         $output .= '            <div class="col-sm-5">';
         $output .= '                <strong>Text:</strong><br>' . $item['slidertext'];
