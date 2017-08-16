@@ -185,7 +185,6 @@ if (!rex::isBackend()) {
     <script src="'.rex_url::base('assets/unitegallery/themes/default/ug-theme-default.js').'" type="text/javascript" ></script>
     <link href="'.rex_url::base('assets/unitegallery/themes/default/ug-theme-default.css').'" type="text/css" rel="stylesheet" />
     <script src="'.rex_url::base('assets/unitegallery/js/unitegallery.min.js').'" type="text/javascript" ></script>
-    <link  href="'.rex_url::base('assets/unitegallery/css/unite-gallery.css').'" rel="stylesheet" type="text/css" />
     <script src="'.rex_url::base('assets/unitegallery/themes/tiles/ug-theme-tiles.js').'" type="text/javascript"></script>
     <script src="'.rex_url::base('assets/unitegallery/themes/tilesgrid/ug-theme-tilesgrid.js').'" type="text/javascript"></script>
   ';
