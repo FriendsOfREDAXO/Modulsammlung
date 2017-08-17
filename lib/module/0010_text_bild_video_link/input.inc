@@ -4,7 +4,7 @@ $anzeige_text           = 1;//text
 $anzeige_bild           = 1;//bild
 $anzeige_link           = 1;//link
 $anzeige_video          = 1;//video
-$anzeige_download       = 0;//download
+$anzeige_download       = 1;//download
 
 $ausgabeform            = '';
 
@@ -315,8 +315,6 @@ if($anzeige_video) {
               <input class="form-control" name="REX_INPUT_VALUE[' . $i . '][vimeo_video_id]" value="' . (isset($values[$i]['vimeo_video_id']) ? $values[$i]['vimeo_video_id'] : '') . '" type="text" />
         </div>
     </div>
-</script>
-
 '.PHP_EOL;
 }
 
@@ -337,15 +335,19 @@ if($anzeige_download) {
 }
 
 echo '
-    <h3>Sonstiges</h3>
+    <h3>Sonstige Einstellungen</h3>
       <div class="form-group">
-        <label class="col-sm-3 control-label">Indiv. CSS Klasse</label>
+        <label class="col-sm-3 control-label">Individuelle CSS ID</label>
+          <div class="col-sm-9">
+              <input class="form-control" name="REX_INPUT_VALUE[' . $i . '][individuelle_css_id]" value="' . (isset($values[$i]['individuelle_css_id']) ? $values[$i]['individuelle_css_id'] : '') . '" type="text" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-3 control-label">Individuelle CSS Klasse</label>
           <div class="col-sm-9">
               <input class="form-control" name="REX_INPUT_VALUE[' . $i . '][individuelle_css_klasse]" value="' . (isset($values[$i]['individuelle_css_klasse']) ? $values[$i]['individuelle_css_klasse'] : '') . '" type="text" />
         </div>
     </div>
-</script>
-
 '.PHP_EOL;
 
 
@@ -389,19 +391,6 @@ echo '
         </div>
     </div>';
 
-if($anzeige_download) {
-echo '
-    <h3>Links zur Download Hilfsseite</h3>
-        <div class="form-group">
-          <label class="col-sm-3 control-label">Download Hilfsseite</label>
-          <div class="col-sm-9">
-            REX_LINK[id=5 widget=1]
-          </div>
-        </div>
-
-';
-}
-
 echo '
     <h3>Sonstiges</h3>
    <div class="form-group">
@@ -410,7 +399,12 @@ echo '
           <input class="form-control" type="text" name="REX_INPUT_VALUE[16]" value="REX_VALUE[16]" />
         </div>
     </div>
-
+   <div class="form-group">
+      <label class="col-sm-3 control-label">Container CSS ID</label>
+        <div class="col-sm-9">
+          <input class="form-control" type="text" name="REX_INPUT_VALUE[17]" value="REX_VALUE[17]" />
+        </div>
+    </div>
    <div class="form-group">
       <label class="col-sm-3 control-label">Media Manager Typ</label>
         <div class="col-sm-9">
@@ -618,14 +612,14 @@ echo '
   <div id="collapse-weitereeinstellungen" class="panel-collapse collapse">
 
     <div class="form-group">
-      <label class="col-sm-3 control-label">Container CSS Klasse</label>
+      <label class="col-sm-3 control-label">Container CSS ID / Klasse</label>
         <div class="col-sm-9">
           <p>Nähere Angaben zu diesem Punkt erhalten Sie von Ihrem Webentwickler.</p>
         </div>
     </div>
 
     <div class="form-group">
-      <label class="col-sm-3 control-label">Indiv, CSS Klasse</label>
+      <label class="col-sm-3 control-label">Individuelle CSS ID / Klasse</label>
         <div class="col-sm-9">
           <p>Nähere Angaben zu diesem Punkt erhalten Sie von Ihrem Webentwickler.</p>
         </div>

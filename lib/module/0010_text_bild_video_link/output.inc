@@ -2,10 +2,15 @@
 
 $grid                              = 'REX_VALUE[20]';
 $individuelle_css_klasse_container = 'REX_VALUE[16]';
+$individuelle_css_id_container     = 'REX_VALUE[17]';
 $individuelle_css_klasse1          = '';
 $individuelle_css_klasse2          = '';
 $individuelle_css_klasse3          = '';
 $individuelle_css_klasse4          = '';
+$individuelle_css_id1               = '';
+$individuelle_css_id2              = '';
+$individuelle_css_id3              = '';
+$individuelle_css_id4              = '';
 $mediamanagertyp                   = 'REX_VALUE[18]';
 $out                               = '';
 $zaehler                           = '';
@@ -17,6 +22,9 @@ $editor                            = '';
 $downloads                         = '';
 $outbackfiles                      = '';
 
+if($mediamanagertyp == '') {
+  $mediamanagertyp = 'standard';
+}
 
 if(!rex_addon::get('markitup')->isAvailable() && !rex_addon::get('rex_redactor2')->isAvailable()) {
   $editor = 'markitup';
@@ -227,7 +235,7 @@ foreach ($reihenfolge as $nummer) {
             $outback .= '
             <div class="form-group">
               <label class="col-sm-3 control-label">Youtube Video ID</label>
-              <div class="col-sm-9">ff'.$value['youtube_video_id'].'</div>
+              <div class="col-sm-9">'.$value['youtube_video_id'].'</div>
             </div>'.PHP_EOL;
         }
 
@@ -244,7 +252,7 @@ foreach ($reihenfolge as $nummer) {
         $outback .= '
             <div class="form-group">
               <label class="col-sm-3 control-label">Vimeo Video ID</label>
-              <div class="col-sm-9">ff'.$value['vimeo_video_id'].'</div>
+              <div class="col-sm-9">'.$value['vimeo_video_id'].'</div>
             </div>'.PHP_EOL;
         }
 
@@ -330,11 +338,6 @@ foreach ($reihenfolge as $nummer) {
         } else {
           $width = 'width="100%"';
         }
-
-        if($mediamanagertyp == '') {
-          $mediamanagertyp = 'standard';
-        }
-
 
         $bild_img  = '<img src="'.rex_url::frontendController().'?rex_media_type='.$mediamanagertyp.'&amp;rex_media_file='.$filename.'" alt="'.$value['alt'].'" '.$width.' />'.PHP_EOL;
 
@@ -505,7 +508,7 @@ foreach ($reihenfolge as $nummer) {
           $outbackfiles .= '<p>'.$value_dl.'</p>';
 
           $downloads .='
-          <a class="downloadlink" href="'.rex_getUrl('REX_LINK[id=5 output="id"]', $this->clang, array ('file' => $value_dl) ).'">'.$parsed_icon;
+          <li><a class="downloadlink" href="index.php?rex_media_type=download&amp;rex_media_file='.$value_dl.'">'.$parsed_icon;
 
            // Beschreibungstext als Linktext, falls vorhanden, ansonsten Dateiname
            if ($file_desc != "") {
@@ -514,7 +517,8 @@ foreach ($reihenfolge as $nummer) {
              $downloads .= $value_dl;
            }
 
-           $downloads .= ' ('.datei_groesse(rex_path::media($value_dl)).')</a></p>';
+           $downloads .= ' ('.datei_groesse(rex_path::media($value_dl)).')</a></li>';
+           $downloads =  '<ul class="downloads">'.$downloads.'</ul>';
         }
 
         $outback .= '
@@ -523,27 +527,28 @@ foreach ($reihenfolge as $nummer) {
             <div class="col-sm-9">'.$outbackfiles.'</div>
           </div>'.PHP_EOL;
 
-        if('REX_LINK[5]' != '') {
-          $outback .= '
-            <div class="form-group">
-               <label class="col-sm-3 control-label">Download Seite</label>
-               <div class="col-sm-9"><a href="index.php?page=content&article_id=REX_LINK[id=1 output=id]">REX_LINK[id=5 output=name]</a></div>
-            </div>';
-        } else {
-          $outback .= '
-            <div class="form-group">
-               <label class="col-sm-3 control-label">Download Seite</label>
-               <div class="col-sm-9 warning"><b>ACHTUNG:</b><br/>Sie müssen unbedingt den Link zur Download Seite angeben!</div>
-            </div>';
-        };
       }
 
     $outback .= $outback_link;
 
 
-  if ($value['individuelle_css_klasse'] !='') {
+  if ($value['individuelle_css_id'] !='' OR $value['individuelle_css_id'] !='') {
     $outback .='
-      <h3>Sonstiges</h3>
+      <h3>Sonstiges</h3>'.PHP_EOL;
+  }
+
+  if ($value['individuelle_css_id'] ) {
+      $outback .='
+      <div class="form-group">
+        <label class="col-sm-3 control-label">Individuelle CSS ID</label>
+        <div class="col-sm-9">
+           '.$value['individuelle_css_id'].'
+        </div>
+      </div>'.PHP_EOL;
+  }
+
+  if ($value['individuelle_css_klasse'] ) {
+      $outback .='
       <div class="form-group">
         <label class="col-sm-3 control-label">Individuelle CSS Klasse</label>
         <div class="col-sm-9">
@@ -555,9 +560,10 @@ foreach ($reihenfolge as $nummer) {
     $outback .= '</div>'.PHP_EOL;
 
     $individuelle_css_klasse[$zaehler] = $value['individuelle_css_klasse'];
+    $individuelle_css_id[$zaehler] = ' ID = "'.$value['individuelle_css_id'].'" ';
 
     switch($value['bildposition']) {
-    case 'oben':
+	  case 'oben':
         $html_block[$zaehler] = '';
         $html_block[$zaehler] .= $bild;
         $html_block[$zaehler] .= $ueberschrift;
@@ -620,56 +626,56 @@ foreach ($reihenfolge as $nummer) {
 switch ($grid) {
   case '12':
     $out .= '
-      <div class="col-xs-12 '.$individuelle_css_klasse[1].'">
+      <div class="col-xs-12 '.$individuelle_css_klasse[1].'" '.$individuelle_css_id[1].'">
         '.$html_block[1].'
       </div>'.PHP_EOL;
   break;
   case '6_6':
     $out .= '
-      <div class="col-xs-12 col-sm-6 '.$individuelle_css_klasse[1].'">
+      <div class="col-xs-12 col-sm-6 '.$individuelle_css_klasse[1].'" '.$individuelle_css_id[1].'">
         '.$html_block[1].'
       </div>
-      <div class="col-xs-12 col-sm-6 '.$individuelle_css_klasse[2].'">
+      <div class="col-xs-12 col-sm-6 '.$individuelle_css_klasse[2].'" '.$individuelle_css_id[2].'">
         '.$html_block[2].'
       </div>'.PHP_EOL;
   break;
   case '4_4_4':
     $out .= '
-      <div class="col-xs-12 col-sm-4 '.$individuelle_css_klasse[1].'">
+      <div class="col-xs-12 col-sm-4 '.$individuelle_css_klasse[1].'" '.$individuelle_css_id[1].'">
         '.$html_block[1].'
       </div>
-      <div class="col-xs-12 col-sm-4 '.$individuelle_css_klasse[2].'">
+      <div class="col-xs-12 col-sm-4 '.$individuelle_css_klasse[2].'" '.$individuelle_css_id[2].'">
         '.$html_block[2].'
       </div>
-      <div class="col-xs-12 col-sm-4 '.$individuelle_css_klasse[3].'">
+      <div class="col-xs-12 col-sm-4 '.$individuelle_css_klasse[3].'" '.$individuelle_css_id[3].'">
         '.$html_block[3].'
       </div>'.PHP_EOL;
   break;
   case '3_3_3_3':
     $out .= '
-      <div class="col-xs-12 col-sm-6 col-md-3 '.$individuelle_css_klasse[1].'">
+      <div class="col-xs-12 col-sm-6 col-md-3 '.$individuelle_css_klasse[1].'" '.$individuelle_css_id[1].'">
         '.$html_block[1].'
       </div>
-      <div class="col-xs-12 col-sm-6 col-md-3 '.$individuelle_css_klasse[2].'">
+      <div class="col-xs-12 col-sm-6 col-md-3 '.$individuelle_css_klasse[2].'" '.$individuelle_css_id[2].'">
         '.$html_block[2].'
       </div>
-      <div class="col-xs-12 col-sm-6 col-md-3 '.$individuelle_css_klasse[3].'">
+      <div class="col-xs-12 col-sm-6 col-md-3 '.$individuelle_css_klasse[3].'" '.$individuelle_css_id[3].'">
         '.$html_block[3].'
       </div>
-      <div class="col-xs-12 col-sm-6 col-md-3 '.$individuelle_css_klasse[4].'">
+      <div class="col-xs-12 col-sm-6 col-md-3 '.$individuelle_css_klasse[4].'" '.$individuelle_css_id[4].'">
         '.$html_block[4].'
       </div>'.PHP_EOL;
   break;
 
   case '6_3_3':
     $out .= '
-      <div class="col-xs-12 col-sm-6 '.$individuelle_css_klasse[1].'">
+      <div class="col-xs-12 col-sm-6 '.$individuelle_css_klasse[1].'" '.$individuelle_css_id[1].'">
         '.$html_block[1].'
       </div>
-      <div class="col-xs-12 col-sm-3 '.$individuelle_css_klasse[2].'">
+      <div class="col-xs-12 col-sm-3 '.$individuelle_css_klasse[2].'" '.$individuelle_css_id[2].'">
         '.$html_block[2].'
       </div>
-      <div class="col-xs-12 col-sm-3 '.$individuelle_css_klasse[3].'">
+      <div class="col-xs-12 col-sm-3 '.$individuelle_css_klasse[3].'" '.$individuelle_css_id[3].'">
         '.$html_block[3].'
       </div>'.PHP_EOL;
   break;
@@ -677,44 +683,44 @@ switch ($grid) {
 
   case '3_6_3':
     $out .= '
-      <div class="col-xs-12 col-sm-3 '.$individuelle_css_klasse[1].'">
+      <div class="col-xs-12 col-sm-3 '.$individuelle_css_klasse[1].'" '.$individuelle_css_id[1].'">
         '.$html_block[1].'
       </div>
-      <div class="col-xs-12 col-sm-6 '.$individuelle_css_klasse[2].'">
+      <div class="col-xs-12 col-sm-6 '.$individuelle_css_klasse[2].'" '.$individuelle_css_id[2].'">
         '.$html_block[2].'
       </div>
-      <div class="col-xs-12 col-sm-3 '.$individuelle_css_klasse[3].'">
+      <div class="col-xs-12 col-sm-3 '.$individuelle_css_klasse[3].'" '.$individuelle_css_id[3].'">
         '.$html_block[3].'
       </div>'.PHP_EOL;
   break;
 
   case '3_3_6':
     $out .= '
-      <div class="col-xs-12 col-sm-3 '.$individuelle_css_klasse[1].'">
+      <div class="col-xs-12 col-sm-3 '.$individuelle_css_klasse[1].'" '.$individuelle_css_id[1].'">
         '.$html_block[1].'
       </div>
-      <div class="col-xs-12 col-sm-3 '.$individuelle_css_klasse[2].'">
+      <div class="col-xs-12 col-sm-3 '.$individuelle_css_klasse[2].'" '.$individuelle_css_id[2].'">
         '.$html_block[2].'
       </div>
-      <div class="col-xs-12 col-sm-6 '.$individuelle_css_klasse[3].'">
+      <div class="col-xs-12 col-sm-6 '.$individuelle_css_klasse[3].'" '.$individuelle_css_id[3].'">
         '.$html_block[3].'
       </div>'.PHP_EOL;
   break;
   case '8_4':
     $out .= '
-      <div class="col-xs-12 col-sm-8 '.$individuelle_css_klasse[1].'">
+      <div class="col-xs-12 col-sm-8 '.$individuelle_css_klasse[1].'" '.$individuelle_css_id[1].'">
         '.$html_block[1].'
       </div>
-      <div class="col-xs-12 col-sm-4 '.$individuelle_css_klasse[2].'">
+      <div class="col-xs-12 col-sm-4 '.$individuelle_css_klasse[2].'" '.$individuelle_css_id[2].'">
         '.$html_block[2].'
       </div>'.PHP_EOL;
   break;
   case '4_8':
     $out .= '
-      <div class="col-xs-12 col-sm-4 '.$individuelle_css_klasse[1].'">
+      <div class="col-xs-12 col-sm-4 '.$individuelle_css_klasse[1].'" '.$individuelle_css_id[1].'">
         '.$html_block[1].'
       </div>
-      <div class="col-xs-12 col-sm-8 '.$individuelle_css_klasse[2].'">
+      <div class="col-xs-12 col-sm-8 '.$individuelle_css_klasse[2].'" '.$individuelle_css_id[2].'">
         '.$html_block[2].'
       </div>'.PHP_EOL;
   break;
@@ -735,6 +741,16 @@ echo '
         <div class="gridimage img'.$grid.'"></div>
       </div>
     </div>'.PHP_EOL;
+
+  if ($individuelle_css_id_container !='') {
+    echo '
+      <div class="form-group">
+        <label class="col-sm-3 control-label">Individuelle Conatiner CSS ID</label>
+        <div class="col-sm-9">
+           '.$individuelle_css_id_container.'
+        </div>
+      </div>'.PHP_EOL;
+  }
 
   if ($individuelle_css_klasse_container !='') {
     echo '
@@ -761,8 +777,12 @@ echo '
 
 } else {
 
+  if ($individuelle_css_id_container !='') {
+    $individuelle_css_id_container = 'id="'.$individuelle_css_id_container.'"1';
+  }
+
   echo  '
-    <div class="container-fluid '.$individuelle_css_klasse_container.'">
+    <div '.$individuelle_css_id_container.' class="container-fluid '.$individuelle_css_klasse_container.'">
       <div class="container">
         <div class="row">
           '.$out.'
