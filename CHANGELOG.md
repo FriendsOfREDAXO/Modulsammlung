@@ -1,6 +1,10 @@
 ### Modulsammlung - Changelog
 ___
 
+### 11.08.2017 Version 4.7.7.1
+
+- Fehlerkorrekturen
+
 ### 11.08.2017 Version 4.7.7
 
 - Modul "0010 - Text / Bild / Video / Link (1-4 Spalten)" überarbeitet
