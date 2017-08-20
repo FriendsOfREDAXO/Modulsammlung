@@ -4,13 +4,13 @@ Ziel diese Addons ist es einfach einige Module für REDAXO 5.x installieren zu k
 
 Weitere Informationen finden sich in der Dokumentation (Plugin installieren :-)).
 
-<img src="https://raw.githubusercontent.com/FriendsOfREDAXO/REX5-Modulsammlung/assets/modulsammlung_01.png" style="max-width: 888px" />
+<img src="https://raw.githubusercontent.com/FriendsOfREDAXO/Modulsammlung/assets/modulsammlung_03.png" style="max-width: 888px" />
 
-___
-* ToDo -> [ISSUES](https://github.com/FriendsOfREDAXO/REX5-Modulsammlung/issues)
+---
+
+* ToDo -> [ISSUES](https://github.com/FriendsOfREDAXO/Modulsammlung/issues)
 * Changelog -> [CHANGELOG.md](CHANGELOG.md)
 * Lizenz ->  [LICENSE.md](LICENSE.md)
-
 
 ---
 
