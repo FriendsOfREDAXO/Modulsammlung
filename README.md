@@ -1,6 +1,6 @@
 ## Modulsammlung für REDAXO 5
 
-Ziel diese Addons ist es einfach einige Module für REDAXO 5.x installieren zu können.
+Ziel dieses Addons ist es einfach einige Module für REDAXO 5.x installieren zu können.
 
 Weitere Informationen finden sich in der Dokumentation (Plugin installieren :-)).
 
