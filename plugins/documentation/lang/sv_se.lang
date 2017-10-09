@@ -1,0 +1,9 @@
+documentation_menu_entry = Dokumentation
+
+documentation_navigation_title = Navigation
+documentation_content_title = Innehåll
+
+documentation_noparser = Ingen Markdown parser tillgänglig! Installera först en parser (AddOn MarkItUp eller textile)
+
+documentation_navinotfound = Navigationsfil <strong> {0} </ strong> hittades inte! <br> Den här filen är obligatorisk!
+documentation_filenotfound = Filen <strong> {0} </ strong> hittades inte. Innehållet finns inte (ännu). <br> <br> Vi är glada om du vill hjälpa till: <a href="{1}" target="_blank"> {1} </a>
