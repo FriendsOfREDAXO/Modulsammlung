@@ -1,0 +1,59 @@
+
+modulsammlung_title = Modulsamling
+modulsammlung_general_dummy[] = Behörigheter till modulsamling-addon
+
+
+modulsammlung_module              = Moduler
+
+modulsammlung_module_mform_mblock = Moduler med MForm / MBlock
+
+modulsammlung_modul               = Modul
+modulsammlung_moduluebersicht     = Modulöversikt
+modulsammlung_config_fehler       = config.inc saknas i:
+modulsammlung_info_fehler         = info.inc saknas i:
+modulsammlung_input_fehler        = input.inc saknas i:
+modulsammlung_output_fehler       = output.inc saknas i:
+modulsammlung_template_fehler     = template.inc saknas i:
+
+modulsammlung_fertig              = Färdig
+modulsammlung_in_bearbeitung      = Under utveckling
+modulsammlung_entwicklung_geplant = Utveckling planerad
+modulsammlung_input               = Input
+modulsammlung_output              = Output
+modulsammlung_acc_template        = Mall
+
+modulsammlung_css                   = CSS
+modulsammlung_scss                  = SCSS
+
+modulsammlung_info                  = Info
+modulsammlung_styles                = Styles
+modulsammlung_modul_installieren    = Installera modul
+modulsammlung_template_installieren = Installera mall
+
+modulsammlung_modul_angelegt        = Följande modul skapades:
+modulsammlung_modulname_fehler      = Var god ange ett modulnamn!
+
+modulsammlung_template_angelegt     = Följande mall skapades:
+modulsammlung_templatename_fehler   = Var god ange ett mallnamn!
+
+modulsammlung_kopierter_ordner      = Följande mapp kopierades in i assets-mappen:
+
+modulsammlung_templates = Mallar
+modulsammlung_template  = Mall
+modulsammlung_templateuebersicht     = Mallöversikt
+modulsammlung_template_id            = Mall ID
+modulsammlung_template_bezeichnung   = Mall beteckning
+modulsammlung_template_verwendung    = Användandet
+modulsammlung_template_benutzung     = Aktuell mallanvändning
+
+
+
+modulsammlung_changelog = Changelog
+modulsammlung_lizenz = Licens
+
+modulsammlung_modul_id            = Modul ID
+modulsammlung_modul_bezeichnung   = Modul beteckning
+modulsammlung_modul_verwendung    = Användandet
+modulsammlung_modul_benutzung     = Aktuell modulanvändning
+modulsammlung_module_loeschen     = Radera oanvända moduler
+modulsammlung_modul_geloescht     = Moduler raderades: ID
