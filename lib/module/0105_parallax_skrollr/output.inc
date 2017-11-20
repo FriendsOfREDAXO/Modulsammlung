@@ -78,7 +78,8 @@ if (!rex::isBackend()) {
   </div>
   <script>
    $(document).ready(function() {
-        skrollr.init({          
+        skrollr.init({
+            forceHeight: false,
             mobileCheck: function() {
                 //hack - forces mobile version to be off
                 return false;

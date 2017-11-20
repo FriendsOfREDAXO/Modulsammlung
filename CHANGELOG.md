@@ -1,6 +1,11 @@
 ### Modulsammlung - Changelog
 ___
 
+### 20.11.2017 Version 4.7.8
+
+- Fehlerkorrektur Modul "0105 - Parallax (skrollr)" #80
+- Neues Modul "0103 - Google Map aus yform Tabelle" von Wolfgang Bund
+
 ### 11.08.2017 Version 4.7.7.1
 
 - Fehlerkorrekturen
