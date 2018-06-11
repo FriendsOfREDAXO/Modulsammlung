@@ -1,6 +1,10 @@
 ### Modulsammlung - Changelog
 ___
 
+### 11.06.2018 Version 4.7.9
+
+- Fehlerkorrektur Modul "0010 - Text / Bild / Video / Link (1-4 Spalten)" #85
+
 ### 20.11.2017 Version 4.7.8
 
 - Fehlerkorrektur Modul "0105 - Parallax (skrollr)" #80
