@@ -1,0 +1,59 @@
+
+modulsammlung_title = Colección de Módulos
+modulsammlung_general_dummy[] = Derechos para el complemento de Colección de módulos
+
+
+modulsammlung_module              = Módulos
+
+modulsammlung_module_mform_mblock = Módulos con MForm / MBlock
+
+modulsammlung_modul               = Módulo
+modulsammlung_moduluebersicht     = Descripción general del módulo
+modulsammlung_config_fehler       = config.inc no presente en:
+modulsammlung_info_fehler         = info.inc no disponible en:
+modulsammlung_input_fehler        = input.inc no disponible en:
+modulsammlung_output_fehler       = output.inc no disponible en:
+modulsammlung_template_fehler     = template.inc no disponible en:
+
+modulsammlung_fertig              = Listo
+modulsammlung_in_bearbeitung      = En progreso
+modulsammlung_entwicklung_geplant = Desarrollo planeado
+modulsammlung_input               = Entrada
+modulsammlung_output              = Salida
+modulsammlung_acc_template        = Plantilla
+
+modulsammlung_css                   = CSS
+modulsammlung_scss                  = SCSS
+
+modulsammlung_info                  = Info
+modulsammlung_styles                = Estilos
+modulsammlung_modul_installieren    = Instalar módulo
+modulsammlung_template_installieren = Instalar plantilla
+
+modulsammlung_modul_angelegt        = El siguiente módulo ha sido creado:
+modulsammlung_modulname_fehler      = Por favor, especifique un nombre de módulo!
+
+modulsammlung_template_angelegt     = Se creó la siguiente plantilla:
+modulsammlung_templatename_fehler   = Por favor, especifique un nombre de plantilla!
+
+modulsammlung_kopierter_ordner      = La siguiente carpeta ha sido copiada a la carpeta de Activos:
+
+modulsammlung_templates = Plantillas
+modulsammlung_template  = Plantilla
+modulsammlung_templateuebersicht     = Descripción general de plantilla
+modulsammlung_template_id            = ID de plantilla
+modulsammlung_template_bezeichnung   = Nombre de la plantilla
+modulsammlung_template_verwendung    = Uso
+modulsammlung_template_benutzung     = Uso actual de la plantilla
+
+
+
+modulsammlung_changelog = Cambios
+modulsammlung_lizenz = Licencia
+
+modulsammlung_modul_id            = ID del módulo
+modulsammlung_modul_bezeichnung   = Nombre del módulo
+modulsammlung_modul_verwendung    = Uso
+modulsammlung_modul_benutzung     = Uso actual del módulo
+modulsammlung_module_loeschen     = Eliminar módulos no utilizados
+modulsammlung_modul_geloescht     = Módulo eliminado: ID

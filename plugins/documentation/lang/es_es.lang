@@ -1,0 +1,9 @@
+documentation_menu_entry = Documentación
+
+documentation_navigation_title = Navegación
+documentation_content_title = Contenido
+
+documentation_noparser = ¡No hay analizador de Markdown disponible! Instale primero un analizador (Addon markitup o textile)
+
+documentation_navinotfound = ¡No se encontró el archivo de navegación <strong>{0}</strong>! <br>¡Este archivo es obligatorio!
+documentation_filenotfound = No se encontró el archivo <strong>{0}</strong>. El contenido no existe (aún). <br><br>Estamos entusiasmados con la ayuda: <a href="{1}" target="_blank">{1}</a>
