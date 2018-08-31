@@ -1,4 +1,5 @@
 <?php
+$output_frontend     = '';
 $output_frontend[]   = '';
 $output_backend[]    = '';
 $download_be_dateien = '';

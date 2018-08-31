@@ -2,9 +2,14 @@
 ___
 
 
+### 31.08.2018 Version 4.8.1
+
+- Fix: Tipp zu Download-Modul #84 Danke an Maidenaustria
+
 ### 31.08.2018 Version 4.8.0
 
 - Fix: Den Pfad zu den Modulen und Templates mit REDAXO Mitteln holen #83
+ 
 
 ### 11.06.2018 Version 4.7.9
 
