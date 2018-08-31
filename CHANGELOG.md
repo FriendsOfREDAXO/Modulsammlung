@@ -1,6 +1,9 @@
 ### Modulsammlung - Changelog
 ___
 
+### 31.08.2018 Version 4.8.2
+
+- Fehlerbehebung im "Text / Bild / Video / Link | 1-4 Spalten Modul" #77
 
 ### 31.08.2018 Version 4.8.1
 

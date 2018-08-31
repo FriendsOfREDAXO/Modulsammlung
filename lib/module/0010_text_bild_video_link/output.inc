@@ -559,8 +559,12 @@ foreach ($reihenfolge as $nummer) {
 
     $outback .= '</div>'.PHP_EOL;
 
-    $individuelle_css_klasse[$zaehler] = $value['individuelle_css_klasse'];
-    $individuelle_css_id[$zaehler] = ' ID = "'.$value['individuelle_css_id'].'" ';
+   $individuelle_css_klasse[$zaehler] = $value['individuelle_css_klasse'];
+   $individuelle_css_id[$zaehler] = $value['individuelle_css_id'];
+
+   if ($individuelle_css_id[$zaehler] !='' ) {
+    $individuelle_css_id[$zaehler] = 'id="'.$individuelle_css_id[$zaehler].'"';
+   }
 
     switch($value['bildposition']) {
 	  case 'oben':
@@ -626,56 +630,56 @@ foreach ($reihenfolge as $nummer) {
 switch ($grid) {
   case '12':
     $out .= '
-      <div class="col-xs-12 '.$individuelle_css_klasse[1].'" '.$individuelle_css_id[1].'">
+      <div class="col-xs-12 '.$individuelle_css_klasse[1].'" '.$individuelle_css_id[1].'>
         '.$html_block[1].'
       </div>'.PHP_EOL;
   break;
   case '6_6':
     $out .= '
-      <div class="col-xs-12 col-sm-6 '.$individuelle_css_klasse[1].'" '.$individuelle_css_id[1].'">
+      <div class="col-xs-12 col-sm-6 '.$individuelle_css_klasse[1].'" '.$individuelle_css_id[1].'>
         '.$html_block[1].'
       </div>
-      <div class="col-xs-12 col-sm-6 '.$individuelle_css_klasse[2].'" '.$individuelle_css_id[2].'">
+      <div class="col-xs-12 col-sm-6 '.$individuelle_css_klasse[2].'" '.$individuelle_css_id[2].'>
         '.$html_block[2].'
       </div>'.PHP_EOL;
   break;
   case '4_4_4':
     $out .= '
-      <div class="col-xs-12 col-sm-4 '.$individuelle_css_klasse[1].'" '.$individuelle_css_id[1].'">
+      <div class="col-xs-12 col-sm-4 '.$individuelle_css_klasse[1].'" '.$individuelle_css_id[1].'>
         '.$html_block[1].'
       </div>
-      <div class="col-xs-12 col-sm-4 '.$individuelle_css_klasse[2].'" '.$individuelle_css_id[2].'">
+      <div class="col-xs-12 col-sm-4 '.$individuelle_css_klasse[2].'" '.$individuelle_css_id[2].'>
         '.$html_block[2].'
       </div>
-      <div class="col-xs-12 col-sm-4 '.$individuelle_css_klasse[3].'" '.$individuelle_css_id[3].'">
+      <div class="col-xs-12 col-sm-4 '.$individuelle_css_klasse[3].'" '.$individuelle_css_id[3].'>
         '.$html_block[3].'
       </div>'.PHP_EOL;
   break;
   case '3_3_3_3':
     $out .= '
-      <div class="col-xs-12 col-sm-6 col-md-3 '.$individuelle_css_klasse[1].'" '.$individuelle_css_id[1].'">
+      <div class="col-xs-12 col-sm-6 col-md-3 '.$individuelle_css_klasse[1].'" '.$individuelle_css_id[1].'>
         '.$html_block[1].'
       </div>
-      <div class="col-xs-12 col-sm-6 col-md-3 '.$individuelle_css_klasse[2].'" '.$individuelle_css_id[2].'">
+      <div class="col-xs-12 col-sm-6 col-md-3 '.$individuelle_css_klasse[2].'" '.$individuelle_css_id[2].'>
         '.$html_block[2].'
       </div>
-      <div class="col-xs-12 col-sm-6 col-md-3 '.$individuelle_css_klasse[3].'" '.$individuelle_css_id[3].'">
+      <div class="col-xs-12 col-sm-6 col-md-3 '.$individuelle_css_klasse[3].'" '.$individuelle_css_id[3].'>
         '.$html_block[3].'
       </div>
-      <div class="col-xs-12 col-sm-6 col-md-3 '.$individuelle_css_klasse[4].'" '.$individuelle_css_id[4].'">
+      <div class="col-xs-12 col-sm-6 col-md-3 '.$individuelle_css_klasse[4].'" '.$individuelle_css_id[4].'>
         '.$html_block[4].'
       </div>'.PHP_EOL;
   break;
 
   case '6_3_3':
     $out .= '
-      <div class="col-xs-12 col-sm-6 '.$individuelle_css_klasse[1].'" '.$individuelle_css_id[1].'">
+      <div class="col-xs-12 col-sm-6 '.$individuelle_css_klasse[1].'" '.$individuelle_css_id[1].'>
         '.$html_block[1].'
       </div>
-      <div class="col-xs-12 col-sm-3 '.$individuelle_css_klasse[2].'" '.$individuelle_css_id[2].'">
+      <div class="col-xs-12 col-sm-3 '.$individuelle_css_klasse[2].'" '.$individuelle_css_id[2].'>
         '.$html_block[2].'
       </div>
-      <div class="col-xs-12 col-sm-3 '.$individuelle_css_klasse[3].'" '.$individuelle_css_id[3].'">
+      <div class="col-xs-12 col-sm-3 '.$individuelle_css_klasse[3].'" '.$individuelle_css_id[3].'>
         '.$html_block[3].'
       </div>'.PHP_EOL;
   break;
@@ -683,44 +687,44 @@ switch ($grid) {
 
   case '3_6_3':
     $out .= '
-      <div class="col-xs-12 col-sm-3 '.$individuelle_css_klasse[1].'" '.$individuelle_css_id[1].'">
+      <div class="col-xs-12 col-sm-3 '.$individuelle_css_klasse[1].'" '.$individuelle_css_id[1].'>
         '.$html_block[1].'
       </div>
-      <div class="col-xs-12 col-sm-6 '.$individuelle_css_klasse[2].'" '.$individuelle_css_id[2].'">
+      <div class="col-xs-12 col-sm-6 '.$individuelle_css_klasse[2].'" '.$individuelle_css_id[2].'>
         '.$html_block[2].'
       </div>
-      <div class="col-xs-12 col-sm-3 '.$individuelle_css_klasse[3].'" '.$individuelle_css_id[3].'">
+      <div class="col-xs-12 col-sm-3 '.$individuelle_css_klasse[3].'" '.$individuelle_css_id[3].'>
         '.$html_block[3].'
       </div>'.PHP_EOL;
   break;
 
   case '3_3_6':
     $out .= '
-      <div class="col-xs-12 col-sm-3 '.$individuelle_css_klasse[1].'" '.$individuelle_css_id[1].'">
+      <div class="col-xs-12 col-sm-3 '.$individuelle_css_klasse[1].'" '.$individuelle_css_id[1].'>
         '.$html_block[1].'
       </div>
-      <div class="col-xs-12 col-sm-3 '.$individuelle_css_klasse[2].'" '.$individuelle_css_id[2].'">
+      <div class="col-xs-12 col-sm-3 '.$individuelle_css_klasse[2].'" '.$individuelle_css_id[2].'>
         '.$html_block[2].'
       </div>
-      <div class="col-xs-12 col-sm-6 '.$individuelle_css_klasse[3].'" '.$individuelle_css_id[3].'">
+      <div class="col-xs-12 col-sm-6 '.$individuelle_css_klasse[3].'" '.$individuelle_css_id[3].'>
         '.$html_block[3].'
       </div>'.PHP_EOL;
   break;
   case '8_4':
     $out .= '
-      <div class="col-xs-12 col-sm-8 '.$individuelle_css_klasse[1].'" '.$individuelle_css_id[1].'">
+      <div class="col-xs-12 col-sm-8 '.$individuelle_css_klasse[1].'" '.$individuelle_css_id[1].'>
         '.$html_block[1].'
       </div>
-      <div class="col-xs-12 col-sm-4 '.$individuelle_css_klasse[2].'" '.$individuelle_css_id[2].'">
+      <div class="col-xs-12 col-sm-4 '.$individuelle_css_klasse[2].'" '.$individuelle_css_id[2].'>
         '.$html_block[2].'
       </div>'.PHP_EOL;
   break;
   case '4_8':
     $out .= '
-      <div class="col-xs-12 col-sm-4 '.$individuelle_css_klasse[1].'" '.$individuelle_css_id[1].'">
+      <div class="col-xs-12 col-sm-4 '.$individuelle_css_klasse[1].'" '.$individuelle_css_id[1].'>
         '.$html_block[1].'
       </div>
-      <div class="col-xs-12 col-sm-8 '.$individuelle_css_klasse[2].'" '.$individuelle_css_id[2].'">
+      <div class="col-xs-12 col-sm-8 '.$individuelle_css_klasse[2].'" '.$individuelle_css_id[2].'>
         '.$html_block[2].'
       </div>'.PHP_EOL;
   break;
@@ -778,7 +782,7 @@ echo '
 } else {
 
   if ($individuelle_css_id_container !='') {
-    $individuelle_css_id_container = 'id="'.$individuelle_css_id_container.'"1';
+    $individuelle_css_id_container = 'id="'.$individuelle_css_id_container.'"';
   }
 
   echo  '
