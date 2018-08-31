@@ -13,7 +13,7 @@ Da es keinen Updateprozess vorhandener Module gibt (ist auch nicht geplant) kann
 
 ### Module installieren
 
-Nach der Installtion ist unter dem Punkt "Modulsammlung" die Auswahl der Module erreichbar.
+Nach der Installation ist unter dem Punkt "Modulsammlung" die Auswahl der Module erreichbar.
 
 * Durch Klick auf "Modul installieren" kann das gewünschte Modul installiert werden.
 * Der Name des Moduls welches installiert wird kann vorher in dem Textfeld individuell angepasst werden.
@@ -58,12 +58,12 @@ Jetzt fehlt nur noch ein Eintrag in die Doku und ein PR auf GitHub siehe [Verbes
 Ohne die Mithilfe vieler gäbe es dieses Addon bzw. die meisten der enthaltenen Module nicht.
 Mach mit. *Sei cool!*
 
-Selbstversändlich freuen wir uns wenn Du [Wünsche äussers / Fehler meldest](#wuensche_fehler) oder direkt [Verbesserungen einbringst](#verbesserungen). Noch größer ist die Freude aller wenn Du [eigene Module hinzufügst](#eigenemodule) :-)
+Selbstversändlich freuen wir uns wenn Du [Wünsche äusserst / Fehler meldest](#wuensche_fehler) oder direkt [Verbesserungen einbringst](#verbesserungen). Noch größer ist die Freude aller wenn Du [eigene Module hinzufügst](#eigenemodule) :-)
 
 <a name="wuensche_fehler"></a>
 ### Wünsche äussern / Fehler melden
 
-Solltest Du einen Wunsch für ein bestimmtes Modul haben oder einen Fehler in einem Modul (oder in dem Addon) gefunden habe ist der beste Weg ein [ISSUES](https://github.com/FriendsOfREDAXO/REX5-Modulsammlung/issues) auf GitHub zu schreiben.
+Solltest Du einen Wunsch für ein bestimmtes Modul haben oder einen Fehler in einem Modul (oder in dem Addon) gefunden habe ist der beste Weg ein [ISSUES](https://github.com/FriendsOfREDAXO/Modulsammlung/issues) auf GitHub zu schreiben.
 
 <a name="verbesserungen"></a>
 ### Verbesserungen einbringen
