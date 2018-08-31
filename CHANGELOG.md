@@ -1,6 +1,11 @@
 ### Modulsammlung - Changelog
 ___
 
+
+### 01.09.2018 Version 4.8.3
+
+- Bootstrap CSS Link korrigiert: Template: "0010 - Quickstart"
+
 ### 31.08.2018 Version 4.8.2
 
 - Fehlerbehebung im "Text / Bild / Video / Link | 1-4 Spalten Modul" #77
