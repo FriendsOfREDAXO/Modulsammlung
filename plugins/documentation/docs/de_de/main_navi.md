@@ -3,7 +3,7 @@
 - 0015 - Abstand und/oder Trennlinie (mit oder ohne Grafik)
 - [0030 - Text / Download](0030.md)
 - 0035 - Text / Kontaktformular
-- 0040 - Nur Text (Footer, Seitenleiste, Modal etc.)
+- [0040 - Nur Text (Footer, Seitenleiste, Modal etc.)](0040.md)
 - 0050 - Bildergalerie (Unite Gallery)
 - 0055 - Bilderslider mit/ohne Text
 - 0100 - Google Maps / Routenplaner
