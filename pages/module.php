@@ -1,5 +1,5 @@
 <?php
-$dir = '../redaxo/src/addons/modulsammlung/lib/module';
+$dir = rex_path::addon('modulsammlung','lib/module');
 $modulesdirs = glob($dir.'/*',GLOB_ONLYDIR);
 
 $moduls = array();

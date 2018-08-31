@@ -1,5 +1,5 @@
 <?php
-$dir = '../redaxo/src/addons/modulsammlung/lib/module_mform_mblock';
+$dir = rex_path::addon('modulsammlung','lib/module_mform_mblock');
 $modulesdirs = glob($dir.'/*',GLOB_ONLYDIR);
 
 $moduls = array();

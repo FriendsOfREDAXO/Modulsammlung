@@ -1,6 +1,7 @@
 <?php
 
-$dir = '../redaxo/src/addons/modulsammlung/lib/templates';
+$dir = rex_path::addon('modulsammlung','lib/templates');
+
 $modulesdirs = glob($dir.'/*',GLOB_ONLYDIR);
 
 $templates = array();
