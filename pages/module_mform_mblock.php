@@ -211,7 +211,7 @@ $content = '
       <thead>
         <tr>
           <th class="rex-table-icon"></th>
-          <th class="td_title">'.$this->i18n('module').'</th>
+          <th class="td_title">'.$this->i18n('modulsammlung_module_mform_mblock').'</th>
           <th class="td_info"></th>
           <th class="td_scss"></th>
           <th class="td_install"></th>

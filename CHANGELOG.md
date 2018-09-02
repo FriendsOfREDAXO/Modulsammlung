@@ -1,6 +1,10 @@
 ### Modulsammlung - Changelog
 ___
 
+### 02.09.2018 Version 4.8.4
+
+- kleinere Anpassungen
+- Doku komplett geändert.
 
 ### 01.09.2018 Version 4.8.3
 

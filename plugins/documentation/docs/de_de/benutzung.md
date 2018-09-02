@@ -9,6 +9,10 @@ Nach der Installation ist unter dem Punkt "Modulsammlung" die Auswahl der Module
 * Bereits installierte Module werden nicht gelöscht oder überschrieben.
 * Wird ein Modul mehrfach installiert wird es auch mehrfach (mit einer anderen ID) angelegt.
 
+### Module testen
+
+Mithilfe des Quickstart Templates können die Module getestet werden. Einfach das Template installieren, aktiv setzen und einem Artikel zuweisen. Dort sollten dann die meisten Module out-of-the-box funktionieren. 
+
 ### Weitere Infos zu einem Modul
 
 - Durch Klick auf das Datenbank Icon links neben der Modulbezeichnung wird der Modulcode dargestellt.
