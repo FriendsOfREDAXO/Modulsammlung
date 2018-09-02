@@ -155,9 +155,9 @@ $content = $fragment->parse('core/page/section.php');
 echo '
 <section class="addon_documentation">
     <div class="row">
-        <div class="col-md-5 addon_documentation-navi">' . $navi . $langselect . '
+        <div class="col-md-4 addon_documentation-navi">' . $navi . $langselect . '
         </div>
-        <div class="col-md-7 addon_documentation-content">' . $content . '
+        <div class="col-md-8 addon_documentation-content">' . $content . '
         </div>
     </div>
 </section>
