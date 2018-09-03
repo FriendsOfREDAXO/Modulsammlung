@@ -1,10 +1,13 @@
 ### Modulsammlung - Changelog
 ___
 
-### 02.09.2018 Version 4.8.4
+### 03.09.2018 Version 4.8.4
 
-- kleinere Anpassungen
-- Doku komplett geändert.
+- README angepasst
+
+### 01.09.2018 Version 4.8.3
+
+- Bootstrap CSS Link korrigiert: Template: "0010 - Quickstart"
 
 ### 01.09.2018 Version 4.8.3
 

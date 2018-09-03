@@ -14,6 +14,18 @@ Weitere Informationen finden sich in der Dokumentation (Plugin installieren :-))
 
 ---
 
+### Gib uns einen Stern bei GitHub
+
+Die Sterne sind für die Aussenwirkung total wichtig, da Sie die Sichbarkeit unserer Entwicklungen erhöhen.
+
+Sollte Dir das AddOn gefallen gib uns doch bitte einen Stern auf GitHub dafür.
+https://github.com/FriendsOfREDAXO/Modulsammlung
+
+Und wenn Du gerade dabei bist würde sich auch [REDAXO](https://github.com/redaxo/redaxo) und alle anderen [FOR Projekte](https://github.com/FriendsOfREDAXO) über einen Stern freuen :-))
+
+---
+
+
 ### Autor
 
 **Friends Of REDAXO**
@@ -21,9 +33,7 @@ Weitere Informationen finden sich in der Dokumentation (Plugin installieren :-))
 * http://www.redaxo.org
 * https://github.com/FriendsOfREDAXO
 
-**Projekt-Lead**
-
-[Oliver Kreischer](https://github.com/olien)
+**Projekt-Lead:** [Oliver Kreischer](https://github.com/olien)
 
 ___
 ### Credits
