@@ -1,13 +1,14 @@
 ### Modulsammlung - Changelog
 ___
 
+### 03.09.2018 Version 4.8.5
+
+- Template: "0010 - Quickstart": jQuery eingebunden 
+
+
 ### 03.09.2018 Version 4.8.4
 
 - README angepasst
-
-### 01.09.2018 Version 4.8.3
-
-- Bootstrap CSS Link korrigiert: Template: "0010 - Quickstart"
 
 ### 01.09.2018 Version 4.8.3
 
