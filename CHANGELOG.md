@@ -1,6 +1,12 @@
 ### Modulsammlung - Changelog
 ___
 
+### 03.09.2018 Version 4.8.6
+
+- Modul "0030 - Text / Download": Infotext geändert
+- Kleinere Anpassungen. 
+- Modul hinzugefügt: "0511 - Minibeispiel: Text / CKEditor5"
+
 ### 03.09.2018 Version 4.8.5
 
 - Template: "0010 - Quickstart": jQuery eingebunden 
