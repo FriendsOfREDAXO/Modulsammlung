@@ -16,7 +16,7 @@ Weitere Informationen finden sich in der Dokumentation (Plugin installieren :-))
 
 ### Gib uns einen Stern bei GitHub
 
-Die Sterne sind für die Aussenwirkung total wichtig, da Sie die Sichbarkeit unserer Entwicklungen erhöhen.
+Die Sterne sind für die Aussenwirkung total wichtig, da sie die Sichbarkeit unserer Entwicklungen erhöhen.
 
 Sollte Dir das AddOn gefallen gib uns doch bitte einen Stern auf GitHub dafür.
 https://github.com/FriendsOfREDAXO/Modulsammlung
