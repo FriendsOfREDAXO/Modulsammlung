@@ -4,12 +4,12 @@ ___
 ### 03.09.2018 Version 4.8.6
 
 - Modul "0030 - Text / Download": Infotext geändert
-- Kleinere Anpassungen. 
+- Kleinere Anpassungen.
 - Modul hinzugefügt: "0511 - Minibeispiel: Text / CKEditor5"
 
 ### 03.09.2018 Version 4.8.5
 
-- Template: "0010 - Quickstart": jQuery eingebunden 
+- Template: "0010 - Quickstart": jQuery eingebunden
 
 
 ### 03.09.2018 Version 4.8.4
@@ -31,7 +31,7 @@ ___
 ### 31.08.2018 Version 4.8.0
 
 - Fix: Den Pfad zu den Modulen und Templates mit REDAXO Mitteln holen #83
- 
+
 
 ### 11.06.2018 Version 4.7.9
 
