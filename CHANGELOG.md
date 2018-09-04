@@ -1,6 +1,11 @@
 ### Modulsammlung - Changelog
 ___
 
+
+### 04.09.2018 Version 4.8.7
+
+- Update README fixed #90
+
 ### 03.09.2018 Version 4.8.6
 
 - Modul "0030 - Text / Download": Infotext geändert
