@@ -44,7 +44,7 @@ Weitere Informationen finden sich in der Dokumentation (Plugin installieren :-))
 - 0540 - Minibeispiel: Link / Linkliste
 - 0600 - Beispielinhalte ausgeben
 
-**Module mit MForm / MBlock	**
+**Module mit MForm / MBlock**
 
 - 0700 - MBlock - MForm - Teammitglieder
 - 0705 - MBlock - MForm - Link und Linklist
