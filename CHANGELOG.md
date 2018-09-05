@@ -1,7 +1,9 @@
 ### Modulsammlung - Changelog
 ___
 
+### 05.09.2018 Version 4.10.0
 
+- Modul "0110 - Tabelle" überarbeitet. Danke an Vedat Özdemir!
 
 ### 05.09.2018 Version 4.9.0
 
