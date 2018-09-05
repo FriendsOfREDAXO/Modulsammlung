@@ -2,6 +2,12 @@
 ___
 
 
+
+### 05.09.2018 Version 4.9.0
+
+- Tab "Weitere Beispiele" hinzugefügt
+- Modul "1000 - Einfache Artikelliste mit Fragementen" hinzugefügt (Danke an Thomas) fixed #91
+
 ### 04.09.2018 Version 4.8.7
 
 - Update README fixed #90

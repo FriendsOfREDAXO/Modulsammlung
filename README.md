@@ -56,6 +56,10 @@ Weitere Informationen finden sich in der Dokumentation (Plugin installieren :-))
 - 0715 - MBlock - HTML - Diverse Formularelemente
 - 0820 - MBlock - MForm - Owl Carousel (Slider)
 
+**Weitere Beispiele**
+
+- 1000 - Einfache Artikelliste mit Fragementen
+
 **Templates**
 
 - 0010 - Quickstart
