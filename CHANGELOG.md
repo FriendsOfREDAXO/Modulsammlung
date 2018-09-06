@@ -1,6 +1,10 @@
 ### Modulsammlung - Changelog
 ___
 
+### 06.09.2018 Version 4.11.0
+
+- Modul hinzugefügt: "0550 - Minibeispiel Gits einbetten" fixed #92
+
 ### 05.09.2018 Version 4.10.0
 
 - Modul "0110 - Tabelle" überarbeitet. Danke an Vedat Özdemir!
