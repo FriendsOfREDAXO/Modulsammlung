@@ -42,6 +42,7 @@ Weitere Informationen finden sich in der Dokumentation (Plugin installieren :-))
 - 0530 - Minibeispiel: Radiobuttons
 - 0535 - Minibeispiel: Checkboxen
 - 0540 - Minibeispiel: Link / Linkliste
+- 0550 - Minibeispiel Gits einbetten
 - 0600 - Beispielinhalte ausgeben
 
 **Module mit MForm / MBlock**
