@@ -17,7 +17,7 @@
 
 <p>Die benötigten Dateien müssen also von Hand in das/die Frontend-Template/s eingebunden werden.</p>
 
-<p>Eine Anleitung gibt es <a href="https://github.com/OwlFonk/OwlCarousel" target="_blank">hier</a>.</p>
+<p>Eine Anleitung gibt es <a href="https://github.com/OwlCarousel2/OwlCarousel2/" target="_blank">hier</a>.</p>
 
 <hr/>
 <p>Es ist natürlich möglich die Dateien "von Hand" an anderer Stelle zu kopieren und auch auf andere Weise einzubinden...</p>
