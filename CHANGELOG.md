@@ -1,6 +1,10 @@
 ### Modulsammlung - Changelog
 ___
 
+### 14.11.2018 Version 4.12.0
+
+- Update: "55 - Bilderslider mit/ohne Text" auf OWL Carousel 2
+
 ### 06.09.2018 Version 4.11.0
 
 - Modul hinzugefügt: "0550 - Minibeispiel Gits einbetten" fixed #92

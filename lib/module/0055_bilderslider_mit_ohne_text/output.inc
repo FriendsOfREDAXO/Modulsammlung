@@ -12,46 +12,51 @@ $output_backend_text  = '';
 $text                 = '';
 
 if ($breite == '100% Browserbreite') {
-  $container = 'container-fluid';
+    $container = 'container-fluid';
 } else {
-  $container = 'container';
+    $container = 'container';
 }
 
 // Medialist
 if ("REX_MEDIALIST[1]" != '') {
-  $imagelist = explode(',', "REX_MEDIALIST[1]");
-  foreach ($imagelist as $file) {
-    $media = rex_media::get($file);
-    if ($media) {
-      $mediatitle = $media->getValue('title');
-      $mediadesc = str_replace(array("\r\n", "\n", "\r"), ' ', $media->getValue('med_description'));
+    $imagelist = explode(',', "REX_MEDIALIST[1]");
+    foreach ($imagelist as $file) {
+        $media = rex_media::get($file);
+        if ($media) {
+            $mediatitle = $media->getValue('title');
+            $mediadesc = str_replace(array("\r\n", "\n", "\r"), ' ', $media->getValue('med_description'));
 
-      $output_fe_bilder .= '<img src="index.php?rex_media_type=owl_carousel&rex_media_file='.$file.'" alt="' . $mediatitle . ' width="100%" >';
+            $output_fe_bilder .= '<img src="index.php?rex_media_type=owl_carousel&rex_media_file='.$file.'" alt="' . $mediatitle . ' width="100%" >';
 
-      $output_be_bilder .= '
+            $output_be_bilder .= '
         <div class="item">
           <img src="index.php?rex_media_type=rex_mediapool_preview&rex_media_file='.$file.'" alt="'.$file.'">
         </div>';
+        }
     }
-  }
 } else {
-  $output_be_bilder = '<div class="warning"><b>ACHTUNG:</b><br/>Sie haben keine Dateien für den Slider angegeben. Das ist recht sinnfrei wenn dieses Modul benutzt wird!</div>';
+    $output_be_bilder = '<div class="warning"><b>ACHTUNG:</b><br/>Sie haben keine Dateien für den Slider angegeben. Das ist recht sinnfrei wenn dieses Modul benutzt wird!</div>';
 }
 
 if ('REX_VALUE[1]' != 'nein') {
-  $autoplay = 'true';
+    $autoplay = '
+    autoplay:true,
+    autoplayTimeout:1000,
+    autoplayHoverPause:true,';
+} else{
+    $autoplay = '';
 }
 if ('REX_VALUE[2]' != 'nein') {
-  $paginierung = 'true';
+    $paginierung = 'true';
 }
 if ('REX_VALUE[3]' != 'nein') {
-  $navigation = 'true';
+    $navigation = 'true';
 }
 $anzahl = 'REX_VALUE[4]';
 
 if('REX_VALUE[6]' != '') {
-  $text = markitup::parseOutput ('textile', 'REX_VALUE[id=6 output="html"]');
-  $output_backend_text = '
+    $text = markitup::parseOutput ('textile', 'REX_VALUE[id=6 output="html"]');
+    $output_backend_text = '
     <div class="form-group">
        <label class="col-sm-3 control-label">Text</label>
        <div class="col-sm-9">'.$text.'</div>
@@ -63,9 +68,9 @@ $output_fe_js = '
   <script>
     $(document).ready(function() {
       $("#owl-REX_SLICE_ID").owlCarousel({
-        autoPlay : '.$autoplay.',
-        pagination: '.$paginierung.',
-        navigation : '.$navigation.',
+        '.$autoplay.'
+        dots: '.$paginierung.',
+        nav : '.$navigation.',
         navigationText:  ["{{ prev }}","{{ next }}"],
         items: '.$anzahl.',
       });
@@ -73,32 +78,32 @@ $output_fe_js = '
   </script>';
 
 if (!rex::isBackend()) {
-  echo '
+    echo '
   <div class="'.$container.'">
     <div class="row">';
 
-  if ($text != '') {
-    echo '
+    if ($text != '') {
+        echo '
     <div class="col-xs-12 col-sm-6">';
-    echo '<div id="owl-REX_SLICE_ID" class="owl-carousel">';
-    echo $output_fe_bilder;
-    echo '</div>
+        echo '<div id="owl-REX_SLICE_ID" class="owl-carousel owl-theme">';
+        echo $output_fe_bilder;
+        echo '</div>
     </div>
     <div class="col-xs-12 col-sm-6">
     '.$text.'
     </div>';
 
-  } else {
-    echo '<div id="owl-REX_SLICE_ID" class="owl-carousel">';
-    echo $output_fe_bilder;
-    echo '</div>';
-  }
+    } else {
+        echo '<div id="owl-REX_SLICE_ID" class="owl-carousel owl-theme">';
+        echo $output_fe_bilder;
+        echo '</div>';
+    }
 
-  echo '</div>
+    echo '</div>
   </div>';
-  echo $output_fe_js;
+    echo $output_fe_js;
 } else {
-  echo '
+    echo '
  <div id="slider_text">
     <div class="form-horizontal output">
      <h2>Slider mit/ohne Text</h2>
@@ -189,9 +194,9 @@ if (!rex::isBackend()) {
   Bitte die JS und CSS Dateien selbst im Frontend Template implementieren und diesen Abschnitt hier löschen.
 */
 if (!rex::isBackend()) {
-  echo '
-    <link rel="stylesheet" href="'.rex_url::base('assets/owl_carousel/owl.carousel.css').'" type="text/css" />
-    <link rel="stylesheet" href="'.rex_url::base('assets/owl_carousel/owl.theme.css').'" type="text/css" />
-    <script src="'.rex_url::base('assets/owl_carousel/owl.carousel.js').'" type="text/javascript" ></script>
+    echo '
+    <link rel="stylesheet" href="'.rex_url::base('assets/owl_carousel/owl.carousel.min.css').'" type="text/css" />
+    <link rel="stylesheet" href="'.rex_url::base('assets/owl_carousel/owl.theme.default.min.css').'" type="text/css" />
+    <script src="'.rex_url::base('assets/owl_carousel/owl.carousel.min.js').'" type="text/javascript" ></script>
   ';
 }

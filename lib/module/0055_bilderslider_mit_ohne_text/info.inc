@@ -1,6 +1,6 @@
 <h4><b>Bilderslider mit/ohne Text</b></h4>
 
-<p>Diese Modul dient dazu Bilder mittels des <a href="https://github.com/OwlFonk/OwlCarousel" target="_blank">OwlCarousels</a> auszugeben.</p>
+<p>Diese Modul dient dazu Bilder mittels <a href="http://owlcarousel2.github.io/OwlCarousel2/" target="_blank">Owl Carousel 2</a> auszugeben.</p>
 
 <br/>
 <b>Voraussetzungen</b>
@@ -17,7 +17,7 @@
 
 <p>Die benötigten Dateien müssen also von Hand in das/die Frontend-Template/s eingebunden werden.</p>
 
-<p>Eine Anleitung gibt es <a href="https://github.com/OwlFonk/OwlCarousel" target="_blank">hier</a>.</p>
+<p>Eine Anleitung gibt es <a href="http://owlcarousel2.github.io/OwlCarousel2/docs/started-welcome.html" target="_blank">hier</a>.</p>
 
 <hr/>
 <p>Es ist natürlich möglich die Dateien "von Hand" an anderer Stelle zu kopieren und auch auf andere Weise einzubinden...</p>
