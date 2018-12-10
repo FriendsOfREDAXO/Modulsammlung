@@ -1,6 +1,10 @@
 ### Modulsammlung - Changelog
 ___
 
+### 10.12.2018 Version 4.13.0
+
+- Neues Modul: "0320 - Instagram-Feed ausgeben" Danke an [Daniel Springer](https://github.com/medienfeuer)
+
 ### 14.11.2018 Version 4.12.0
 
 - Update: "55 - Bilderslider mit/ohne Text" auf OWL Carousel 2
