@@ -38,6 +38,9 @@ modulsammlung_templatename_fehler   = Var god ange ett mallnamn!
 
 modulsammlung_kopierter_ordner      = Följande mapp kopierades in i assets-mappen:
 
+kopierte_fragmente = Fragmenten kopierades till mappen "fragment" i AddOn
+
+
 modulsammlung_templates = Mallar
 modulsammlung_template  = Mall
 modulsammlung_templateuebersicht     = Mallöversikt
@@ -46,7 +49,8 @@ modulsammlung_template_bezeichnung   = Mall beteckning
 modulsammlung_template_verwendung    = Användandet
 modulsammlung_template_benutzung     = Aktuell mallanvändning
 
-
+more_examples   = Fler exempel
+modulsammlung_module_more_examples   = Fler modul exempel
 
 modulsammlung_changelog = Changelog
 modulsammlung_lizenz = Licens
