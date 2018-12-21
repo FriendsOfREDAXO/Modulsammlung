@@ -38,6 +38,9 @@ modulsammlung_templatename_fehler   = Por favor, especifique un nombre de planti
 
 modulsammlung_kopierter_ordner      = La siguiente carpeta ha sido copiada a la carpeta de Activos:
 
+kopierte_fragmente = Los fragmentos se copiaron en la carpeta "fragmentos" de AddOn
+
+
 modulsammlung_templates = Plantillas
 modulsammlung_template  = Plantilla
 modulsammlung_templateuebersicht     = Descripción general de plantilla
@@ -46,7 +49,8 @@ modulsammlung_template_bezeichnung   = Nombre de la plantilla
 modulsammlung_template_verwendung    = Uso
 modulsammlung_template_benutzung     = Uso actual de la plantilla
 
-
+more_examples   = Otros ejemplos
+modulsammlung_module_more_examples   = Otros ejemplos de módulos
 
 modulsammlung_changelog = Cambios
 modulsammlung_lizenz = Licencia
