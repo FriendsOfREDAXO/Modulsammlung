@@ -38,6 +38,9 @@ modulsammlung_templatename_fehler   = Please enter a template name!
 
 modulsammlung_kopierter_ordner      = The following folder was copied to the assets folder:
 
+kopierte_fragmente = The fragments have been copied to the addons "fragments" folder
+
+
 modulsammlung_templates = Templates
 modulsammlung_template  = Template
 modulsammlung_templateuebersicht     = Templates overview
@@ -46,6 +49,8 @@ modulsammlung_template_bezeichnung   = Template description
 modulsammlung_template_verwendung    = Usage
 modulsammlung_template_benutzung     = Current Template usage
 
+more_examples   = Additional examples
+modulsammlung_module_more_examples   = Additional module examples
 
 modulsammlung_changelog = Change log
 modulsammlung_lizenz = Licence
