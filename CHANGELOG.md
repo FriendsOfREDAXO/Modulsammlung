@@ -1,7 +1,13 @@
 ### Modulsammlung - Changelog
 ___
 
-### 10.12.2018 Version 4.13.0
+
+### 10.12.2018 Version 4.13.2
+
+- Fix: https://github.com/FriendsOfREDAXO/Modulsammlung/issues/103
+
+
+### 10.12.2018 Version 4.13.2
 
 - Neues Modul: "0320 - Instagram-Feed ausgeben" Danke an [Daniel Springer](https://github.com/medienfeuer)
 
