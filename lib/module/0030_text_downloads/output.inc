@@ -1,7 +1,7 @@
 <?php
 $output_frontend     = '';
-$output_frontend[]   = '';
-$output_backend[]    = '';
+$output_frontend[]   = [];
+$output_backend[]    = [];
 $download_be_dateien = '';
 $download_fe_dateien = '';
 $text                = '';
