@@ -1,4 +1,4 @@
-.prallax{
+.parallax{
     display: inline-block;
     width: 100%;
     font-family: sans-serif;
