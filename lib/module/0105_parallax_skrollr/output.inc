@@ -48,7 +48,7 @@ if($text != '') {
 
 $medium = rex_media::get("REX_MEDIA[1]");
   if ($medium != '') {
-    $output_fe[] = '<div id="parallax_REX_SLICE_ID" class="prallax" data-top-bottom="background-position: 50% '.$pos1.';" data-bottom-top="background-position: 50% '.$pos2.';" style="height: '.$hoehe.'px; background-image: url(index.php?rex_media_type=parallax&rex_media_file=REX_MEDIA[1])">';
+    $output_fe[] = '<div id="parallax_REX_SLICE_ID" class="parallax" data-top-bottom="background-position: 50% '.$pos1.';" data-bottom-top="background-position: 50% '.$pos2.';" style="height: '.$hoehe.'px; background-image: url(index.php?rex_media_type=parallax&rex_media_file=REX_MEDIA[1])">';
     if ($ueberschrift != '' || $text != '') {
       $output_fe[] = '<div class="parallaxcontent">';
 
