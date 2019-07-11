@@ -1,6 +1,9 @@
 ### Modulsammlung - Changelog
 ___
 
+### 11.07.2019 Version 4.13.3
+
+- Fix: https://github.com/FriendsOfREDAXO/Modulsammlung/issues/105
 
 ### 10.12.2018 Version 4.13.2
 
