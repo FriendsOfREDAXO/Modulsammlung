@@ -2,6 +2,11 @@
 ___
 
 
+### 08.08.2019 Version 4.13.3
+
+- Neues Modul: "0036 - Text / Kontaktformular-Generator"
+
+
 ### 10.12.2018 Version 4.13.2
 
 - Fix: https://github.com/FriendsOfREDAXO/Modulsammlung/issues/103
