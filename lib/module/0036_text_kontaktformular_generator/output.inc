@@ -5,7 +5,7 @@
  * Version: 6.2.0
  *==================================================*/
 //   SETTINGS
-$form_tag_class 	     = 'formgen doajax'; // CSS Klasse des FORM-Tags
+$form_tag_class 	     = 'doform formgen doajax'; // CSS Klasse des FORM-Tags
 $form_field_wrp		     = 'formblock'; // Wrapper-Class für die Formularfelder
 $form_warn_css               = 'class="formerror"'; // Label-Stildefinition für Fehler
 $form_warnblock_css          = 'formerror'; // Wrapper-Fehler-Klasse
