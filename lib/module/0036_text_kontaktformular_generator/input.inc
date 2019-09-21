@@ -3,7 +3,7 @@
  *=============================================
  * REDAXO-Modul: Formulargenerator
  * Bereich: Eingabe 
- * Version: 6.2.0;
+ * Version: 6.2.1;
  * ab Redaxo Version: 5
  * Hinweise:
  * Formulargenerator für PHPMAILER
@@ -237,7 +237,7 @@ if ($uploadon==true) { ?>
 	          <textarea name="REX_INPUT_VALUE[5]" class="form-control" style="width:100%;height:80px;">REX_VALUE[5]</textarea>
 	          <span class="formgen_sample1"><strong>Platzhalter für Bestätigungstext:</strong> <br />
     %Betreff%, %Datum% , %Zeit%, %Absender%, %Mail%, %Vorname%, %Nachname% </span>, <br />
-    %Besuchermail% (wird durch sender gesetzt)<br/>
+    %Usermail% (wird durch Adresse mit Validierung sender gesetzt)<br/>
 	    </div>
 </div>	
 
