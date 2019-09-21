@@ -1,6 +1,11 @@
 ### Modulsammlung - Changelog
 ___
 
+### 21.09.2019 Version 4.13.4
+
+- "0036 - Text / Kontaktformular-Generator"
+- Fixed: %Besuchermail% bzw. %Usermail%
+
 
 ### 08.08.2019 Version 4.13.3
 
