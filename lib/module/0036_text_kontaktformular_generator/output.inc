@@ -1101,7 +1101,10 @@ $mail->Priority = null;
 
 // =================MAIL-RESPONDER-ENDE=========================
     unset($_SESSION["formcheck"]); //
-echo '<div class="formthanks" id="doformREX_SLICE_ID">REX_VALUE[id=6 output=html]</div>';
+    $bestaetigung  = '';
+    $bestaetigung  ='<div class="formthanks" id="doformREX_SLICE_ID">REX_VALUE[id=6 output=html]</div>';
+    $bestaetigung  = str_replace("%Usermail%", $absendermail, $bestaetigung);
+    echo $bestaetigung;
  $noform = 1;
 } else {
     $noform = 0;
