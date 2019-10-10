@@ -69,7 +69,7 @@ Weitere Informationen finden sich in der Dokumentation (Plugin installieren :-))
 ---
 
 Fehlt Dir ein Modul/ein Beispiel?
-Einfach [hier](https://github.com/FriendsOfREDAXO/Modulsammlung/issues) ein Issue aufmachen oder das Moduldirekt per PR bereitstellen. Wie das funktioniert steht in dem Doku-Plugin. 
+Einfach [hier](https://github.com/FriendsOfREDAXO/Modulsammlung/issues) ein Issue aufmachen oder das Modul direkt per PR bereitstellen. Wie das funktioniert steht in dem Doku-Plugin. 
 
 
 ---
