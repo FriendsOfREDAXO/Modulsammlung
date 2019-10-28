@@ -3,7 +3,7 @@
  *=============================================
  * REDAXO-Modul: Formulargenerator
  * Bereich: Eingabe 
- * Version: 6.2.1;
+ * Version: 6.2.2;
  * ab Redaxo Version: 5
  * Hinweise:
  * Formulargenerator für PHPMAILER
@@ -19,7 +19,7 @@
 
 $uploadon=true;  // UPLOADS AKTIVIEREN true oder false, beachte: Ausgabe $form_upload_folder
 $bccon=true;  // BCC-Feld AKTIVIEREN true oder false
-$weditor='cke5'; // Welches WYSIWYG-addon soll verwendet werden? z.B.: redactor2 ckeditor oder tinymce 
+$weditor='cke5'; // Welches WYSIWYG-addon soll verwendet werden? z.B.: redactor2, cke5,  ckeditor oder tinymce 
 $editstyle='cke5-editor'; // Lege die CSS-Klasse für den WYSIWYG-Editor fest (z.B. ckeditor oder tinyMCEEditor) 
 
 // Definition des Standard-Formulars 
