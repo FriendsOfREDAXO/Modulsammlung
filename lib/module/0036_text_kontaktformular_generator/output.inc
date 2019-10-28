@@ -2,7 +2,7 @@
 /**==================================================
  * REDAXO-Modul: Formulargenerator do form!
  * Bereich: Ausgabe
- * Version: 6.2.1
+ * Version: 6.2.2
  *==================================================*/
 //   SETTINGS
 $form_tag_class 	     = 'doform doajax'; // CSS Klasse des FORM-Tags
@@ -33,11 +33,6 @@ $form_ignore_fields          = array(
     'info',
     'exlink'
 );
-//  Captcha
-$captchaID                   = 000; // ID zum Captcha-Artikel der das Captcha-Template nutzt
-$captchasource               = htmlspecialchars(rex_getUrl($captchaID));
-// Alternative: Externe Einbindung eines Captchas
-// $captchasource="/redaxo/captcha/captcha.php";
 // Fehlermeldungen / Mehrsprachig
 // Sprache 0 -- Hier Deutsch
 if (rex_clang::getCurrentId() == 1) {
