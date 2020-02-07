@@ -88,7 +88,7 @@
         }
 
         function add_dyn_table_row() {
-            var count = $('div#dyntable_show table tr.control th').size();
+            var count = $('div#dyntable_show table tr.control th').length;
             var rowout = '';
             for (var i=0; i<(count-1); i++){
                 rowout = rowout+'<td class="dyn_content"><textarea style="width:95%"></textarea></td>';
