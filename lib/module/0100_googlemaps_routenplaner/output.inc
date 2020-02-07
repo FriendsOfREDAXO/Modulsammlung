@@ -154,7 +154,7 @@ if(!rex::isBackend()) {
 
   <!-- Google Maps (+ Routenplaner) ".$mapidx." -->
     <div class='".$container."'>
-      <di class='row'>
+      <div class='row'>
         <div id='googelmapsroutenplaner".$mapidx."' class='googelmapsroutenplaner'>
         <div class='row'>
         <div id='map_canvas".$mapidx."' class='map_canvas'></div>
