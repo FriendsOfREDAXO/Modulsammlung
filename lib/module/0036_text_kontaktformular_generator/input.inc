@@ -1,9 +1,9 @@
 <?php
 /**
  *=============================================
- * REDAXO-Modul: Formulargenerator
+ * REDAXO-Modul: Formulargenerator uikit
  * Bereich: Eingabe 
- * Version: 6.2.2;
+ * Version: 6.3.0;
  * ab Redaxo Version: 5
  * Hinweise:
  * Formulargenerator für PHPMAILER
@@ -19,7 +19,7 @@
 
 $uploadon=true;  // UPLOADS AKTIVIEREN true oder false, beachte: Ausgabe $form_upload_folder
 $bccon=true;  // BCC-Feld AKTIVIEREN true oder false
-$weditor='cke5'; // Welches WYSIWYG-addon soll verwendet werden? z.B.: redactor2, cke5,  ckeditor oder tinymce 
+$weditor='cke5'; // Welches WYSIWYG-addon soll verwendet werden? z.B.: redactor2 ckeditor oder tinymce 
 $editstyle='cke5-editor'; // Lege die CSS-Klasse für den WYSIWYG-Editor fest (z.B. ckeditor oder tinyMCEEditor) 
 
 // Definition des Standard-Formulars 
@@ -237,7 +237,7 @@ if ($uploadon==true) { ?>
 	          <textarea name="REX_INPUT_VALUE[5]" class="form-control" style="width:100%;height:80px;">REX_VALUE[5]</textarea>
 	          <span class="formgen_sample1"><strong>Platzhalter für Bestätigungstext:</strong> <br />
     %Betreff%, %Datum% , %Zeit%, %Absender%, %Mail%, %Vorname%, %Nachname% </span>, <br />
-    %Usermail% (wird durch Adresse mit Validierung sender gesetzt)<br/>
+    %Besuchermail% (wird durch sender gesetzt)<br/>
 	    </div>
 </div>	
 
@@ -320,6 +320,6 @@ checkbox|Ich habe die <a href="/datenschutz/">Datenschutzerklärung</a> gelesen|
   <br />
 <br />
 </div>
-
-
 </div>
+
+
