@@ -563,6 +563,8 @@ for ($i = 0; $i < count($form_elements); $i++) {
                                 $valid_ok = FALSE;
                             } else {
                                 $absendermail = $inhalt;
+                                $responsemail  = str_replace("%Usermail%", $absendermail, $responsemail);
+                                $responsemail  = str_replace("%Besuchermail%", $absendermail, $responsemail);
                                 // Neu: 14.01.2014 - Sender als Checkfield
                                 if ($element[5] == "sendercheck") {
                                     $_SESSION["formcheck"] = $inhalt;
