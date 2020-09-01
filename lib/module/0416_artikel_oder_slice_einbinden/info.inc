@@ -10,7 +10,7 @@ Mit diesem Modul bindet man einen ausgewählen Slice eines anderen Artikels ein 
 Presave-Action	
 </p> 
 
-<code>
+<pre>
 
 if ($this->getValue(2) == '0') {
    // Der Block wird nicht gespeichert
@@ -19,4 +19,4 @@ if ($this->getValue(2) == '0') {
    $this->messages[] = 'Bitte noch einen Slice/Block auswaehlen';
 }	
 
-</code>
+</pre>
