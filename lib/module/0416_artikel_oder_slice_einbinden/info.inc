@@ -11,13 +11,12 @@ Presave-Action
 </p> 
 
 <pre>
-<?php 	
+	
 if ($this->getValue(2) == '0') {
    // Der Block wird nicht gespeichert
    $this->save = false;
    // Meldung ausgeben
    $this->messages[] = 'Bitte noch einen Slice/Block auswaehlen';
 }	
-	
-	
+
 </pre>
