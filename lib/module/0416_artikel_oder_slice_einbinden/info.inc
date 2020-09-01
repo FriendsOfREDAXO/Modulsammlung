@@ -11,7 +11,7 @@ Presave-Action
 </p> 
 
 <pre>
-	
+\x3c\x3f\x70\x68\x70	
 if ($this->getValue(2) == '0') {
    // Der Block wird nicht gespeichert
    $this->save = false;
