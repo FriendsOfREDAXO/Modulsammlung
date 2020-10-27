@@ -1,10 +1,9 @@
 <?php
-$output_frontend     = '';
-$output_frontend[]   = [];
-$output_backend[]    = [];
+$output_frontend   = array();
+$output_backend    = array();
 $download_be_dateien = '';
 $download_fe_dateien = '';
-$text                = '';
+
 
 if (!function_exists('datei_groesse')) {
   function datei_groesse($URL) {
