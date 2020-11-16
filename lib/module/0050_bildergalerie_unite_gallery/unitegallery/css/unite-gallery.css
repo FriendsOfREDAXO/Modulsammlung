@@ -17,7 +17,16 @@
 .ug-item-wrapper img{
 	width:auto;
 	max-width:none;
+	margin:0px;
+	padding:0px;
 }
+
+.ug-videoplayer-wrapper video{
+	height:100%;
+	width:100%;
+	visibility: visible !important;
+}
+
 
 .---------General_Styles--------{}
 
@@ -398,12 +407,10 @@
 
 /* bw desaturate effect lightweight */
 img.ug-bw-effect{
-	-webkit-filter: grayscale(1); 
-	-webkit-filter: grayscale(100%); 
-	-moz-filter: grayscale(100%);
-	filter: gray; 
 	filter: grayscale(100%);
     filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale"); /* Firefox 10+, Firefox on Android */	
+	-moz-filter: grayscale(100%);
+	-webkit-filter: grayscale(100%); 
 }
 
 /* blur effect desaturate effect lightweight */
@@ -874,6 +881,36 @@ img.ug-sepia-effect{
 	color:#F3F3F3;
 	font-size: 16px;
 }
+
+.------------------LOADMORE_BUTTON---------------------{}
+
+.ug-loadmore-wrapper{
+	margin-top:20px;
+	text-align:center;	
+}
+
+.ug-loadmore-wrapper .ug-loadmore-button{
+	display:inline-block;
+	padding:5px;
+	border:1px solid #939393;
+	text-decoration:none;
+	color: #4F4F4F;
+}
+
+.ug-loadmore-wrapper .ug-loadmore-error{
+	color:red;
+}
+
+.ug-loadmore-wrapper .ug-loadmore-button:hover{
+	background-color:#F0F0F0;	
+	color:#515151;
+}
+
+.ug-loadmore-wrapper .ug-loadmore-loader{
+	color: #515151;
+}
+
+
 
 .------------------CATEGORY_TABS---------------------{}
 
