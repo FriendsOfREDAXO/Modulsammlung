@@ -1,3 +1,121 @@
+
+version 1.7.45
+
+-bug fix: fixed fullscreen button on webkit with touch events
+
+version 1.7.44
+
+-bug fix: fixed text panel size when the gallery is hidden
+
+version 1.7.43
+
+-bug fix: fixed tiles type resize after 10 seconds
+
+version 1.7.42
+
+-feature: added load more functionality support
+
+version 1.7.41
+
+-bug fix: fixed issue for small screen galleries
+
+version 1.7.40
+
+-bug fix: fixed some ratio related js issue
+
+version 1.7.39
+
+-bug fix: fixed easing functions jquery 3.0 compatability
+
+version 1.7.38
+
+-bug fix: fixed some js error in case of iframes in the page
+
+version 1.7.37
+
+-bug fix: fixed the thumb image as big image bug
+
+version 1.7.36
+
+-protection: made some protection against video visibility:hidden
+-protection: added some protection against js scripts that add additional items inside the gallery
+-change: add a check if the gallery resized once in 2 seconds
+
+version 1.7.35
+
+-bug fix: fixed some errors related to jquery 3.0
+
+version 1.7.34
+
+-bug fix: the lightbox was switched to wide even on normal screens
+
+version 1.7.33
+
+-bug fix: fixed no thumb image bug
+
+version 1.7.32
+
+-bug fix: fixed left arrow inside arrows not in place bug
+
+version 1.7.31
+
+-bug fix: on keyboard event only first gallery affected
+
+version 1.7.30
+
+-bug fix: made option for removing "src" from the image and replace it by data-image=""
+
+version 1.7.29
+
+-bug fix: fixed slash in paths issues
+
+version 1.7.28
+
+-feature: updated tiles grid with options: grid_min_cols, grid_space_between_mobile for better responsiveness
+-protection: added protection for margin and padding in the slider
+
+version 1.7.27
+
+-feature: added "open_lightbox" and "close_lightbox" to the API
+
+version 1.7.26
+
+-feature: added option for: data-thumb-mobile and data-image-mobile in the items for mobile urls
+
+version 1.7.25
+
+-bug fix: fixed lightbox compact bottom text issue
+-bug fix: loading youtube API only from https
+-protection: added protection to html5 video player for css size change
+
+version 1.7.24
+
+-bug fix: escaped "'" character in image url's
+
+version 1.7.23
+
+-feature: added theme_next_video_onend function in video gallery theme
+
+-bug fix: fixed the api events issue on tab change
+-bug fix: fixed option: theme_text_type in default theme
+
+version 1.7.22
+
+-bug fix: fixed bug related to video sizes in lightbox
+-bug fix: fixed bug when right button was disabled on non fixed thumbs
+
+version 1.7.21
+
+-bug fix: fixed one row only bug in tiles grid
+
+version 1.7.20
+
+-bug fix: fixed youtube player destroy function, was a bug there
+
+version 1.7.19
+
+change: changed functionality to: tile_videoplay_icon_always_on
+
 version 1.7.18
 
 -bug fix: fixed various bugs from 17.7.17
