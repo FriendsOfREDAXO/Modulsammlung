@@ -11,9 +11,9 @@ $sql->setQuery("SELECT rex_template.id as id,rex_template.name, COUNT(s.template
 
 foreach ($sql->getArray() as $row)   {
 	if ($row['occurence'] == 0) {
-		$green = "class='grey'";
+		$green = "class=''";
 	} else {
-		$green = "class='green'";
+		$green = "class='success'";
 	}
 
 	$templateinfos .= '
@@ -26,7 +26,7 @@ foreach ($sql->getArray() as $row)   {
 }
 
 $content = '
-<table class="tg">
+<table class="table">
   <tr>
     <th class="tg-031e">'.$this->i18n('template_id').'</th>
     <th class="tg-031e">'.$this->i18n('template_bezeichnung').'</th>
@@ -40,13 +40,3 @@ $fragment->setVar('class', 'info', false);
 $fragment->setVar('title', $this->i18n('template_benutzung'), false);
 $fragment->setVar('body', $content, false);
 echo $fragment->parse('core/page/section.php');
-?>
-<style type="text/css">
-	.tg  {border-collapse:collapse;border-spacing:0; width: 100%;}
-	.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px !important;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
-	.tg th{font-family:Arial, sans-serif;font-size:14px;padding: 5px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal; font-weight: bold;}
-	.tg tr.green {background: #BADEC0; font-weight: bold;}
-	.tg tr.grey {background: #eee; color: #000;}
-
-</style>
-
