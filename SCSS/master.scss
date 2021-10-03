@@ -1,41 +1,78 @@
-
 // Tabelle
 #modulsammlung {
-  table {
-    margin: 0;
-    thead {
-      border: none;
-    }
-    tbody {
-      border: none;
-    }
-    .td_title {
-      width: 100%;
-    }
-  }
+    table {
+        margin: 0;
 
+        thead {
+            border: none;
+        }
+
+        tbody {
+            border: none;
+        }
+
+        .td_title {
+            width: 100%;
+        }
+    }
 }
 
 #modulsammlung {
-  .rex-nav-pagination {
-    font-size: 10px;
-    padding: 10px;
-    ul {
-      font-size: 10px;
-      li {
-        a {
-          padding: 6px 8px 6px 8px;
+    .rex-nav-pagination {
+        font-size: 10px;
+        padding: 10px;
+
+        ul {
+            font-size: 10px;
+
+            li {
+                a {
+                    padding: 6px 8px 6px 8px;
+                }
+            }
         }
-      }
     }
-  }
 }
 
-.accordiontitle {
-  font-weight: bold;
-  margin: 10px 0 0 0;
-  font-size: 11px;
-  padding: 3px 0 3px 15px;
-  width: 100%;
-  background: #ccc;
+#modulsammlung {
+    .accordiontitle {
+        font-weight: bold;
+        margin: 10px 0 0 0;
+        font-size: 11px;
+        padding: 3px 0 3px 15px;
+        width: 100%;
+        background: #ccc;
+    }
+
+    .accordioncontent {
+        padding: 10px;
+        background: #f5f5f5;
+        border: 1px solid #ccc;
+    }
+}
+
+@mixin _modulsammlung-dark {
+
+    #modulsammlung {
+        .accordiontitle {
+            background-color: rgba(21, 28, 34, 0.8);
+            color: rgba(255, 255, 255, 0.75);
+        }
+
+        .accordioncontent {
+            color: rgba(255, 255, 255, 0.75);
+            background-color: rgba(27, 35, 44, 0.8);
+            border-color: rgba(21, 28, 34, 0.8);
+        }
+    }
+}
+
+body.rex-theme-dark {
+    @include _modulsammlung-dark;
+}
+
+@media (prefers-color-scheme: dark) {
+    body:not(.rex-theme-light) {
+        @include _modulsammlung-dark;
+    }
 }
