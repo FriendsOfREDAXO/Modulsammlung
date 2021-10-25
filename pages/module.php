@@ -119,7 +119,7 @@ if (count($moduls_errors) > 0) {
         <input type="hidden" name="install" value="'.$module_key.'">
         <div id="'.$module_key.'_info" class="collapse">
           <p class="accordiontitle">Info</p>
-          <div style="padding: 10px; background: #f5f5f5; border: 1px solid #ccc;">
+          <div class="accordioncontent">
             '.$modul['info'].'
           </div>
         </div>
