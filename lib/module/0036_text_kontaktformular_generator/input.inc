@@ -3,7 +3,7 @@
  *=============================================
  * REDAXO-Modul: Formulargenerator uikit
  * Bereich: Eingabe 
- * Version: 6.3.0;
+ * Version: 6.3.1;
  * ab Redaxo Version: 5
  * Hinweise:
  * Formulargenerator für PHPMAILER
