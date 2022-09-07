@@ -5,7 +5,7 @@
 /**==================================================
  * REDAXO-Modul: Formulargenerator
  * Bereich: Ausgabe
- * Version: 6.3.0
+ * Version: 6.3.1
  *==================================================*/
 //   SETTINGS
 $form_tag_class 	     = 'doform doajax'; // CSS Klasse des FORM-Tags
