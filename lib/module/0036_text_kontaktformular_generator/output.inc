@@ -457,9 +457,13 @@ for ($i = 0; $i < count($form_elements); $i++) {
                 $e                     = 1;
                 $warning_set           = 1;
             }
+	    if(!isset($element[4])
+	       {
+                $element[4] = '';
+	       }
             $formoutput[] = $hidden . '
               <div class="'.$form_field_wrp.' ' . $warnblock["el_" . $i] . '"> <span class="checkspan"><label ' . $warning["el_" . $i] . ' for="el_' . $i . '" >' . $element[1] . $req . '</label>
-                <input type="checkbox" title="' . $element[4] . '" class="uk-checkbox" name="FORM[' . $form_ID . '][el_' . $i . ']" id="el_' . $i . '"value="X" ' . $cchecked . ' /></span></div>';
+                <input type="checkbox" title="' . $element[4]  . '" class="uk-checkbox" name="FORM[' . $form_ID . '][el_' . $i . ']" id="el_' . $i . '"value="X" ' . $cchecked . ' /></span></div>';
             break;
         // Radio-Buttons von Markus Feustel 07.01.2008
         case "radio":
@@ -826,6 +830,7 @@ for ($i = 0; $i < count($form_elements); $i++) {
                     $warnblock["el_" . $i] = $form_warnblock_css;
                     $warning_set           = 1;
                 }
+		$domailfile = [];    
                 // alexplus: http://forum.redaxo.de/ftopic11635-150.html          
                 if (!$upload_keineDateivorhanden && $error_message == '') {
                     $targetPath     = $form_upload_folder;
@@ -954,7 +959,8 @@ if (isset($FORM[$form_ID][$form_ID . 'send']) && $FORM[$form_ID][$form_ID . 'sen
     if ("REX_VALUE[16]" != "") {
         unset($_SESSION["REX_VALUE[16]"]);
     }
-        // E-Mail-Content
+        $rmailbody = $rmailbodyhtml = '';
+	// E-Mail-Content
     foreach ($FORM[$form_ID] as $k => $v) {
         $matches = array();
         
