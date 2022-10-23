@@ -457,7 +457,7 @@ for ($i = 0; $i < count($form_elements); $i++) {
                 $e                     = 1;
                 $warning_set           = 1;
             }
-	    if(!isset($element[4])
+	    if(!isset($element[4]))
 	       {
                 $element[4] = '';
 	       }
