@@ -200,8 +200,7 @@ if (count($moduls_errors) > 0) {
          $output = $moduls[$module_key]['output'];
 
          $mi = rex_sql::factory();
-         $mi->debugsql = 0;
-         $mi->setTable('rex_module');
+//         $mi->setDebug();
          $mi->setValue('input', $input);
          $mi->setValue('output', $output);
          $mi->setValue('name', $modul_name);
