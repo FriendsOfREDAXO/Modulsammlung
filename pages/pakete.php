@@ -192,7 +192,7 @@ if (count($templates_errors) > 0) {
          $template = $templates[$module_key]['template'];
 
          $mi = rex_sql::factory();
-         $mi->debugsql = 0;
+//         $mi->setDebug();
          $mi->setTable('rex_template');
          $mi->setValue('content', $template);
          $mi->setValue('name', $modul_name);
