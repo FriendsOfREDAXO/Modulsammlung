@@ -1,34 +1,34 @@
 <?php /*
 D . Google Map 3 - Input
- * 
+ *
  * Hinweis zur Verwendung dieses Moduls.
- * 
+ *
  * Voraussetzung für dieses Modul ist das yform AddOn mit installiertem Geo Plugin. Außerdem muss eine yform Tabelle angelegt sein, die ein Feld vom Typ Geoposition enthält.
  * Der Google Map Api Key muss dort hinterlegt sein. Ein Google Map api Key kann hier https://developers.google.com/maps/documentation/javascript/get-api-key?hl=de generiert werden.
- * 
+ *
  * Alle Datensätze, die im Geopositionsfeld einen Eintrag haben, werden auf der Karte dargestellt.
- * 
+ *
  * Das Infofenster ist ein Feld, welches mit beliebigem HTML Code befüllt werden kann. Es können Feldnamen aus der yform Tabelle mit dem Geocode als Platzhalter eingesetzt werden.
- * 
+ *
  * Es sind zwei verschiedene Darstellungsmöglichkeiten für das Infofenster für jeden Marker möglich.
  * - Als ganz normales Infowindow. Dabei wird das Infowindow mit einem kleinen Pfeil am jeweiligen Marker dargestellt und die Karte wird gegebenenfalls verschoben, sodass das Infowindow dargestellt wird
  * - Als Overlay. Dabei ist das Overlay unabhängig von der Karte, die Information wird einfach mittig über der Karte angezeigt. Das Overlay ist leichter per css zu formatieren als das Google Infowindow.
- * 
+ *
  * Beispiel:
- * 
+ *
  * <h3>###name###</h3>
  * <p>###strasse###<br>
- * ###plz### ###ort###</p> 
- * 
+ * ###plz### ###ort###</p>
+ *
  * Das Modul wurde mit REDAXO 5.4 und yform 2.3 getestet.
- * 
+ *
  * Es wurde bewusst einfach gehalten. Es enthält keine Markercluster und alles benötigte css und js steht im Modul. Es ist kein jquery notwendig.
- * 
+ *
  * Fragen?
  * Wolfgang Bund
  * post@agile-websites.de
  * http://agile-websites.de
- * 
+ *
  */?>
 
 <?php
@@ -38,17 +38,17 @@ $check = true;
 $message = [];
 if (in_array(rex::getTable('yform_field'),$tables) == false) {
     $message[] = 'Die Tabelle '.rex::getTable('yform_field').' existiert nicht. Ist das yform AddOn installiert und aktiviert?';
-    $check = false;    
+    $check = false;
 }
 if (in_array(rex::getTable('yform_table'),$tables) == false) {
     $message[] = 'Die Tabelle '.rex::getTable('yform_table').' existiert nicht. Ist das yform AddOn installiert und aktiviert?';
-    $check = false;    
+    $check = false;
 }
 if (rex_addon::exists('yform') == false) {
     $message[] = 'Das AddOn yform ist nicht installiert.';
     $check = false;
 }
-if (rex_plugin::exists('yform','geo') == false) {
+if (rex_addon::exists('yform','geo') == false) {
     $message[] = 'Das Plugin Geo für yform ist nicht installiert.';
     $check = false;
 }
@@ -67,7 +67,7 @@ $res = rex_sql::factory()->getArray($qry);
     <div class="col-sm-10">
         <select name="REX_INPUT_VALUE[4]" id="value-4">
             <option value="">--- Bitte auswählen ---</option>
-            <?php foreach ($res as $k=>$v) : ?>            
+            <?php foreach ($res as $k=>$v) : ?>
             <option value='<?= json_encode(['id'=>$v['id'],'table'=>$v['table_name'],'field'=>$v['f_name'],'key'=>$v['googleapikey']]) ?>' <?= "REX_VALUE[id=4 output=html]" == json_encode(['id'=>$v['id'],'table'=>$v['table_name'],'field'=>$v['f_name'],'key'=>$v['googleapikey']]) ? ' selected="selected"' : '' ?>><?= $v['t_name'] ?> | <?= $v['f_label']?></option>
             <?php endforeach ?>
         </select>

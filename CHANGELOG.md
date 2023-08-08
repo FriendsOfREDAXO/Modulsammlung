@@ -1,6 +1,19 @@
 ### Modulsammlung - Changelog
 ___
 
+
+### 08.08.2023 Version 4.16.0
+
+- Modul entfernt: 0010 - Text / Bild / Video / Link (1-4 Spalten)
+- PR von Koala implementiert  (https://github.com/FriendsOfREDAXO/Modulsammlung/pull/134)
+- PR von aeberhard hinzugefügt (https://github.com/FriendsOfREDAXO/Modulsammlung/pull/132)
+- 0103 - Google Map aus yform Tabelle an YForm GEo angepasst. Danke an ritzfritz (https://github.com/FriendsOfREDAXO/Modulsammlung/issues/131)
+
+
+### 26.03.202 - 08.08.2023
+
+- ??
+
 ### 26.03.2020 Version 4.14.0
 
 - Neu: do form! UiKit enabled 6.3.0 
