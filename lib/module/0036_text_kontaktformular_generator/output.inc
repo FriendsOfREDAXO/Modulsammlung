@@ -5,7 +5,7 @@
 /**==================================================
  * REDAXO-Modul: Formulargenerator
  * Bereich: Ausgabe
- * Version: 6.3.1
+ * Version: 6.3.2
  *==================================================*/
 //   SETTINGS
 $form_tag_class 	     = 'doform doajax'; // CSS Klasse des FORM-Tags
@@ -181,7 +181,6 @@ if (!function_exists('is_old_android')) {
 if (!function_exists('form_checkElements')) {
     function form_checkElements($mustHave, $elements, $formelement)
     {
-        global $REX;
         // Diese Information ist nur im Backend zu sehen
         if (rex::isBackend()) {
             // $formelement darf nicht leer sein
@@ -267,25 +266,26 @@ if (!function_exists('convertBytes')) {
     {
         if (is_numeric($value)) {
             return $value;
-        } else {
-            $value        = trim($value);
-            $value_length = strlen($value);
-            $qty          = substr($value, 0, $value_length - 1);
-            $unit         = strtolower(substr($value, $value_length - 1));
-            switch ($unit) {
-                case 'g':
-                    $qty *= 1024;
-                case 'm':
-                    $qty *= 1024;
-                case 'k':
-                    $qty *= 1024;
-                case 'b':
-                    $qty = $qty;
-            }
-            return $qty;
         }
+
+        $value = trim($value);
+        $unit = strtolower(substr($value, -1));
+        $qty = (int)substr($value, 0, -1);
+
+        switch ($unit) {
+            case 'g':
+                $qty *= 1024;
+            case 'm':
+                $qty *= 1024;
+            case 'k':
+                $qty *= 1024;
+                break;
+        }
+
+        return $qty;
     }
 }
+
 //### Achtung! Hinter <<< End darf kein Leerzeichen stehen.
 $rex_form_data = <<<End
 REX_VALUE[id=3]
