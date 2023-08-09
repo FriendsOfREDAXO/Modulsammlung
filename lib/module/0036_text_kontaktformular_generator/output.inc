@@ -286,14 +286,12 @@ if (!function_exists('convertBytes')) {
     }
 }
 
-//### Achtung! Hinter <<< End darf kein Leerzeichen stehen.
 $rex_form_data = <<<End
 REX_VALUE[id=3]
 End;
 
 $rex_form_data = trim(str_replace("<br />","",rex_yform::unhtmlentities($rex_form_data)));
 
-//### Achtung! Hinter <<< End darf kein Leerzeichen stehen.
 $mailbody      = <<<End
 End;
 $responsemail  = <<<End
@@ -302,14 +300,15 @@ End;
 if (isset($_POST['eingabe'])) {
     $eingabe = $_POST['eingabe'];
 }
-$FORM    = array();
+$FORM          = [];
 $FORM          = rex_request::post('FORM', 'array');
-$formoutput    = array();
-$warning       = array();
-$warnblock       = array();
+$formoutput    = [];
+$warning       = [];
+$warnblock     = [];
 $warning_set   = 0; // wird zu 1, wenn ein Fehler auftritt
-$form_elements = array();
+$form_elements = [];
 $form_elements = explode("\n", $rex_form_data);
+
 //Abfrage Felder Vor- und Nachname, 14.05.2014, Benedikt Marcard, Marcard Media, www.marcard-media.de
 for ($i = 0; $i < count($form_elements); $i++) {
 	
