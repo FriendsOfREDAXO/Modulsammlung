@@ -2,6 +2,10 @@
 ___
 
 
+### 11.03.2023 Version 4.16.1
+
+- Modul "0105_parallax_skrollr" Array neu initialisieren. Danke an [ritzfritz](https://github.com/ritzfritz)
+
 ### 08.08.2023 Version 4.16.0
 
 - Modul entfernt: 0010 - Text / Bild / Video / Link (1-4 Spalten)
