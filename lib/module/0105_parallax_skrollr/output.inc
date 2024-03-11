@@ -4,8 +4,8 @@ if(!rex_addon::get('markitup')->isAvailable() && !rex_addon::get('redactor2')->i
   echo rex_view::error('Dieses Modul benötigt das "MarkItUp" oder das "Redactor 2" Addon!');
 }
 
-$output_fe[]      	= '';
-$output_be[]      	= '';
+$output_fe = array();
+$output_be = array();
 $breite           		= 'REX_VALUE[6]';
 $hoehe            		= 'REX_VALUE[5]';
 $pos1			        = 'REX_VALUE[3]';
