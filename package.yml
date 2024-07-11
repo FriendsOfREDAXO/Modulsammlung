@@ -14,7 +14,6 @@ page:
     pjax: false
     subpages:
         module: {title: 'translate:module'}
-        module_mform_mblock: {title: 'translate:module_mform_mblock'}
         more_examples: {title: 'translate:more_examples'}
         templates: {title: 'translate:templates'}
         info:
