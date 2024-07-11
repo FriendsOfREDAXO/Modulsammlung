@@ -6,25 +6,33 @@ info: 'Idee und Realisierung der ersten Version: Oliver Kreischer / concedra.de'
 compile: 0
 
 requires:
-    redaxo: ^5.0.0
+    redaxo: '^5.0.0'
     php:
         version: '>=7.4'
 
 page:
     title: 'translate:title'
-    perm: modulsammlung[]
-    icon: rex-icon fa-plus-square
+    perm: 'modulsammlung[]'
+    icon: 'rex-icon fa-plus-square'
     pjax: false
     subpages:
-        module: {title: 'translate:module'}
-        more_examples: {title: 'translate:more_examples'}
-        templates: {title: 'translate:templates'}
+        module:
+            title: 'translate:module'
+        more_examples:
+            title: 'translate:more_examples'
+        templates:
+            title: 'translate:templates'
         info:
             title: 'Info'
             itemclass: 'pull-right'
             subpages:
-                info: { title: 'Info'}
-                moduluebersicht: { title: 'translate:moduluebersicht'}
-                templateuebersicht: { title: 'translate:templateuebersicht'}
-                changelog: { title: 'translate:changelog'}
-                lizenz: { title: 'translate:lizenz'}
+                info:
+                    title: 'Info'
+                moduluebersicht:
+                    title: 'translate:moduluebersicht'
+                templateuebersicht:
+                    title: 'translate:templateuebersicht'
+                changelog:
+                    title: 'translate:changelog'
+                lizenz:
+                    title: 'translate:lizenz'
