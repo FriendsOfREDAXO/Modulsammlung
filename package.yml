@@ -1,7 +1,6 @@
 package: modulsammlung
 version: '4.21.0'
 author: 'Friends Of REDAXO'
-version: '4.20.0'
 supportpage: 'https://github.com/FriendsOfREDAXO/REX5-Modulsammlung/issues'
 info: 'Idee und Realisierung der ersten Version: Oliver Kreischer / concedra.de'
 compile: 0
