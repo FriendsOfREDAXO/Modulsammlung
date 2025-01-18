@@ -6,6 +6,9 @@ on:
 jobs:
   replace_markitup:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write  # Erlaubt das Schreiben in das Repository
+      pull-requests: write # Erlaubt das Schreiben in Pull Requests
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
