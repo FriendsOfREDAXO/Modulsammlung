@@ -1,14 +1,14 @@
 name: Replace MarkItUp in includes
 
 on:
-  workflow_dispatch:  # Dieser Trigger erlaubt manuelle Auslösung
+  workflow_dispatch:
 
 jobs:
   replace_markitup:
     runs-on: ubuntu-latest
     permissions:
-      contents: write  # Erlaubt das Schreiben in das Repository
-      pull-requests: write # Erlaubt das Schreiben in Pull Requests
+      contents: write
+      pull-requests: write
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
@@ -16,7 +16,7 @@ jobs:
       - name: Set up PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.1'  # oder deine bevorzugte PHP-Version
+          php-version: '8.1'
 
       - name: Find and Replace in .inc files
         run: |
@@ -40,13 +40,18 @@ jobs:
                 echo "Skipping $file, no markitup:: found"
             fi
           done
-
+      
       - name: Create Pull Request
-        uses: peter-evans/create-or-update-pull-request@v5
+        uses: actions/github-script@v6
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          title: 'Refactor: Replace markitup:: and add use statement'
-          branch: 'refactor-markitup'
-          base: main # oder dein Hauptbranch
-          commit-message: 'Refactor: Replace markitup:: and add use statement'
-          body: 'This pull request replaces `markitup::MarkItUp::` with `MarkItUp::` in all `.inc` files under `lib/` and adds `<?php` and `use FriendsOfRedaxo\\MarkItUp\\MarkItUp;` at the beginning if not present.'
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            const { data: pr } = await github.rest.pulls.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: 'Refactor: Replace markitup:: and add use statement',
+              head: 'refactor/markitup-replace',
+              base: 'main',
+              body: 'This pull request replaces `markitup::MarkItUp::` with `MarkItUp::` in all `.inc` files under `lib/` and adds `<?php` and `use FriendsOfRedaxo\\MarkItUp\\MarkItUp;` at the beginning if not present.',
+            });
+            console.log(`Pull request created: ${pr.html_url}`);
