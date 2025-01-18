@@ -1,0 +1,49 @@
+name: Replace MarkItUp in includes
+
+on:
+  workflow_dispatch:  # Dieser Trigger erlaubt manuelle Auslösung
+
+jobs:
+  replace_markitup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'  # oder deine bevorzugte PHP-Version
+
+      - name: Find and Replace in .inc files
+        run: |
+          find lib -type f -name '*.inc' -print0 | while IFS= read -r -d $'\0' file; do
+            if grep -q "markitup::" "$file"; then
+                echo "Processing: $file"
+                
+                # Ersetze das MarkItUp
+                sed -i 's/markitup::MarkItUp::/MarkItUp::/g' "$file"
+
+                # Überprüfe ob bereits <?php am Anfang steht
+                if ! grep -q "^<\?php" "$file"; then
+                    echo "Adding '<?php' at beginning of $file"
+                    # Füge <?php und den use-statement hinzu
+                    sed -i '1s/^/<?php\nuse FriendsOfRedaxo\\MarkItUp\\MarkItUp;\n/' "$file"
+                else
+                    echo "<?php already found at beginning of $file"
+                fi
+
+            else
+                echo "Skipping $file, no markitup:: found"
+            fi
+          done
+
+      - name: Create Pull Request
+        uses: peter-evans/create-or-update-pull-request@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          title: 'Refactor: Replace markitup:: and add use statement'
+          branch: 'refactor-markitup'
+          base: main # oder dein Hauptbranch
+          commit-message: 'Refactor: Replace markitup:: and add use statement'
+          body: 'This pull request replaces `markitup::MarkItUp::` with `MarkItUp::` in all `.inc` files under `lib/` and adds `<?php` and `use FriendsOfRedaxo\\MarkItUp\\MarkItUp;` at the beginning if not present.'
