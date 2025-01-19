@@ -1,4 +1,5 @@
 <?php
+use FriendsOfRedaxo\MarkItUp\MarkItUp;
 if(!rex_addon::get('markitup')->isAvailable()) {
     echo rex_view::error('Dieses Modul ben&ouml;tigt das "MarkItUp" Addon!');
 }
@@ -13,11 +14,11 @@ if ($emailabsender == '') {
 }
 
 if ('REX_VALUE[id=1 isset=1]') {
-    $textnebenformular = markitup::parseOutput ('textile', 'REX_VALUE[id=1 output="html"]');
+    $textnebenformular = MarkItUp::parseOutput ('textile', 'REX_VALUE[id=1 output="html"]');
 }
 
 if ('REX_VALUE[id=3 isset=1]') {
-    $textdanke = markitup::parseOutput ('textile', 'REX_VALUE[id=3 output="html"]');
+    $textdanke = MarkItUp::parseOutput ('textile', 'REX_VALUE[id=3 output="html"]');
 }
 
 

@@ -1,11 +1,12 @@
 <?php
+use FriendsOfRedaxo\MarkItUp\MarkItUp;
 if (!rex_addon::get('markitup')->isAvailable() OR !rex_addon::get("yform")->isAvailable() OR !rex_plugin::get("yform", "tools")->isAvailable()) {
     echo rex_view::error('Dieses Modul ben&ouml;tigt das "MarkItUp", "yForm" und das Plugin "yForm/tools" Addon!');
 }
 
 
 $modal_title = 'REX_VALUE[id=2]';
-$modal_text = markitup::parseOutput('textile', 'REX_VALUE[id=1 output="html"]');
+$modal_text = MarkItUp::parseOutput('textile', 'REX_VALUE[id=1 output="html"]');
 
 $now_date = date('Y-m-d H:i');
 

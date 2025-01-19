@@ -1,11 +1,12 @@
 <?php
+use FriendsOfRedaxo\MarkItUp\MarkItUp;
 
 $artikel          = 'REX_VALUE[2]';
 $start_artikel    = 'REX_VALUE[3]';
 $seo_infos        = 'REX_VALUE[4]';
 
 if ('REX_VALUE[id=1 isset=1]') {
-    $text = markitup::parseOutput ('textile', 'REX_VALUE[id=1 output="html"]');
+    $text = MarkItUp::parseOutput ('textile', 'REX_VALUE[id=1 output="html"]');
 } else {
     $text = '';
 }

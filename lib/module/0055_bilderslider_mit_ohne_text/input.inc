@@ -1,9 +1,10 @@
 <?php
+use FriendsOfRedaxo\MarkItUp\MarkItUp;
 if(!rex_addon::get('markitup')->isAvailable()) {
     echo rex_view::error('Dieses Modul ben&ouml;tigt das "MarkItUp" Addon!');
 } else {
-  if (!markitup::profileExists('supersimple')) {
-    markitup::insertProfile ('supersimple', 'Angelegt durch das Addon Modulsammlung', 'textile', 300, 800, 'relative', 'bold,italic,underline');
+  if (!MarkItUp::profileExists('supersimple')) {
+    MarkItUp::insertProfile ('supersimple', 'Angelegt durch das Addon Modulsammlung', 'textile', 300, 800, 'relative', 'bold,italic,underline');
   }
 }
 ?>
@@ -23,8 +24,6 @@ if(!rex_addon::get('markitup')->isAvailable()) {
       <div class="col-sm-9">
         <div class="rex-select-style">
           <select name="REX_INPUT_VALUE[1]">
-            <option value="nein"<?php if ('REX_VALUE[1]' == 'nein') echo ' selected'; ?>>nein</option>
-            <option value="ja"<?php if ('REX_VALUE[1]' == 'ja') echo ' selected'; ?>>ja</option>
           </select>
         </div>
       </div>
@@ -34,8 +33,6 @@ if(!rex_addon::get('markitup')->isAvailable()) {
       <div class="col-sm-9">
         <div class="rex-select-style">
           <select name="REX_INPUT_VALUE[2]">
-            <option value="nein"<?php if ('REX_VALUE[2]' == 'nein') echo ' selected'; ?>>nein</option>
-            <option value="ja"<?php if ('REX_VALUE[2]' == 'ja') echo ' selected'; ?>>ja</option>
           </select>
         </div>
       </div>
@@ -45,8 +42,6 @@ if(!rex_addon::get('markitup')->isAvailable()) {
     <div class="col-sm-9">
       <div class="rex-select-style">
         <select name="REX_INPUT_VALUE[3]">
-          <option value="nein"<?php if ('REX_VALUE[3]' == 'nein') echo ' selected'; ?>>nein</option>
-          <option value="ja"<?php if ('REX_VALUE[3]' == 'ja') echo ' selected'; ?>>ja</option>
         </select>
       </div>
     </div>
@@ -56,7 +51,6 @@ if(!rex_addon::get('markitup')->isAvailable()) {
     <div class="col-sm-9 ">
       <div class="rex-select-style">
         <select id="trennerbreite" name="REX_INPUT_VALUE[4]">
-        <?php
           foreach (array('1', '2', '3','4','5','6','7','8','9','10') as $value) {
             echo '<option value="'.$value.'" ';
 
@@ -75,7 +69,6 @@ if(!rex_addon::get('markitup')->isAvailable()) {
     <div class="col-sm-9 ">
       <div class="rex-select-style">
         <select id="trennerbreite" name="REX_INPUT_VALUE[5]">
-        <?php
           foreach (array('100% Browserbreite', 'So breit wie der Inhalt') as $value) {
             echo '<option value="'.$value.'" ';
 

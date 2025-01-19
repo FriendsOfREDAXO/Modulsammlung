@@ -1,9 +1,10 @@
 <?php
+use FriendsOfRedaxo\MarkItUp\MarkItUp;
 if(!rex_addon::get('markitup')->isAvailable()) {
     echo rex_view::error('Dieses Modul ben&ouml;tigt das "MarkItUp" Addon!');
 } else {
-  if (!markitup::profileExists('simple')) {
-    markitup::insertProfile('simple', 'Angelegt durch das Addon Modulsammlung', 'textile', 300, 800, 'relative', 'bold,italic,underline,deleted,quote,sub,sup,code,unorderedlist,grouplink[internal|external|mailto]');
+  if (!MarkItUp::profileExists('simple')) {
+    MarkItUp::insertProfile('simple', 'Angelegt durch das Addon Modulsammlung', 'textile', 300, 800, 'relative', 'bold,italic,underline,deleted,quote,sub,sup,code,unorderedlist,grouplink[internal|external|mailto]');
   }
 }
 
@@ -22,8 +23,6 @@ if(!rex_addon::get('markitup')->isAvailable()) {
         <div class="col-sm-9">
           <div class="rex-select-style">
             <select name="REX_INPUT_VALUE[2]">
-              <option value="nein"<?php if ('REX_VALUE[2]' == 'nein') echo ' selected'; ?>>nein</option>
-              <option value="ja"<?php if ('REX_VALUE[2]' == 'ja') echo ' selected'; ?>>ja</option>
               </select>
             </div>
           </div>
@@ -33,8 +32,6 @@ if(!rex_addon::get('markitup')->isAvailable()) {
         <div class="col-sm-9">
           <div class="rex-select-style">
             <select name="REX_INPUT_VALUE[3]">
-              <option value="nein"<?php if ('REX_VALUE[3]' == 'nein') echo ' selected'; ?>>nein</option>
-              <option value="ja"<?php if ('REX_VALUE[3]' == 'ja') echo ' selected'; ?>>ja</option>
               </select>
             </div>
           </div>
@@ -44,8 +41,6 @@ if(!rex_addon::get('markitup')->isAvailable()) {
           <div class="col-sm-9">
             <div class="rex-select-style">
               <select name="REX_INPUT_VALUE[4]">
-                <option value="nein"<?php if ('REX_VALUE[4]' == 'nein') echo ' selected'; ?>>nein</option>
-                <option value="ja"<?php if ('REX_VALUE[4]' == 'ja') echo ' selected'; ?>>ja</option>
               </select>
             </div>
           </div>
