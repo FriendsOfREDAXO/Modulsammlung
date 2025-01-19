@@ -1,9 +1,10 @@
 <?php
+use FriendsOfRedaxo\MarkItUp\MarkItUp;
 if(!rex_addon::get('markitup')->isAvailable() && !rex_addon::get('redactor2')->isAvailable()) {
     echo rex_view::error('Dieses Modul ben&ouml;tigt das "MarkItUp" oder das "Redactor 2" Addon!');
 }
-if (rex_addon::get('markitup')->isAvailable() && !markitup::profileExists('simple')) {
-  markitup::insertProfile('simple', 'Angelegt durch das Addon Modulsammlung', 'textile', 300, 800, 'relative', 'bold,italic,underline,deleted,quote,sub,sup,code,unorderedlist,grouplink[internal|external|mailto]');
+if (rex_addon::get('markitup')->isAvailable() && !MarkItUp::profileExists('simple')) {
+  MarkItUp::insertProfile('simple', 'Angelegt durch das Addon Modulsammlung', 'textile', 300, 800, 'relative', 'bold,italic,underline,deleted,quote,sub,sup,code,unorderedlist,grouplink[internal|external|mailto]');
 }
 
 if (rex_addon::get('redactor2')->isAvailable() && !redactor2::profileExists('simple')) {
@@ -30,7 +31,6 @@ if (rex_addon::get('redactor2')->isAvailable() && !redactor2::profileExists('sim
     <div class="form-group">
       <label class="col-sm-3 control-label">Text</label>
       <div class="col-sm-9">
-      <?php
         if (rex_addon::get('redactor2')->isAvailable()) {
           echo'
             <textarea class="form-control redactorEditor2-simple" id="value-2" name="REX_INPUT_VALUE[2]">REX_VALUE[2]</textarea>';
@@ -47,7 +47,6 @@ if (rex_addon::get('redactor2')->isAvailable() && !redactor2::profileExists('sim
       <div class="col-sm-9">
         <div class="rex-select-style">
           <select id="bildpos1" name="REX_INPUT_VALUE[3]">
-            <?php
               foreach (array('0%', '10%', '20%', '30%', '40%', '50%', '60%', '70%', '80%', '90%', '100%') as $value) {
               echo '<option value="'.$value.'" ';
               if ( "REX_VALUE[3]"=="$value" ) {
@@ -65,7 +64,6 @@ if (rex_addon::get('redactor2')->isAvailable() && !redactor2::profileExists('sim
       <div class="col-sm-9">
         <div class="rex-select-style">
           <select id="bildpos2" name="REX_INPUT_VALUE[4]">
-            <?php
               foreach (array('0%', '10%', '20%', '30%', '40%', '50%', '60%', '70%', '80%', '90%', '100%') as $value) {
               echo '<option value="'.$value.'" ';
               if ( "REX_VALUE[4]"=="$value" ) {
@@ -89,7 +87,6 @@ if (rex_addon::get('redactor2')->isAvailable() && !redactor2::profileExists('sim
       <div class="col-sm-9 ">
         <div class="rex-select-style">
           <select id="breite" name="REX_INPUT_VALUE[6]">
-            <?php
               foreach (array('100% Browserbreite', 'So breit wie der Inhalt') as $value) {
                 echo '<option value="'.$value.'" ';
 

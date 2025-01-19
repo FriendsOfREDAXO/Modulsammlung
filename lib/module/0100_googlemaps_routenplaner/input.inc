@@ -1,4 +1,5 @@
 <?php
+use FriendsOfRedaxo\MarkItUp\MarkItUp;
 
 // HIER DEN API KEY EINGEBEN
 $gmapikey = '';
@@ -11,8 +12,8 @@ if ($gmapikey != '') {
 if(!rex_addon::get('markitup')->isAvailable()) {
     echo rex_view::error('Dieses Modul ben&ouml;tigt das "MarkItUp" Addon!');
 } else {
-  if (!markitup::profileExists('supersimple')) {
-    markitup::insertProfile ('supersimple', 'Angelegt durch das Addon Modulsammlung', 'textile', 300, 800, 'relative', 'bold,italic,underline');
+  if (!MarkItUp::profileExists('supersimple')) {
+    MarkItUp::insertProfile ('supersimple', 'Angelegt durch das Addon Modulsammlung', 'textile', 300, 800, 'relative', 'bold,italic,underline');
   }
 }
 ?>
@@ -59,7 +60,6 @@ if(!rex_addon::get('markitup')->isAvailable()) {
         <div class="col-sm-9 ">
           <div class="rex-select-style">
             <select id="maptype" name="REX_INPUT_VALUE[5]">
-            <?php
               foreach (array('roadmap', 'satellite', 'hybrid', 'terrain') as $value) {
                 echo '<option value="'.$value.'" ';
 
@@ -79,7 +79,6 @@ if(!rex_addon::get('markitup')->isAvailable()) {
         <div class="col-sm-9 ">
           <div class="rex-select-style">
             <select id="maptype" name="REX_INPUT_VALUE[12]">
-            <?php
               foreach (array('100% Browserbreite', 'So breit wie der Inhalt') as $value) {
                 echo '<option value="'.$value.'" ';
 
@@ -106,7 +105,6 @@ if(!rex_addon::get('markitup')->isAvailable()) {
          <div class="col-sm-9 ">
            <div class="rex-select-style">
             <select id="zoom" name="REX_INPUT_VALUE[6]">
-            <?php
               foreach (array('4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20') as $value) {
                 echo '<option value="'.$value.'" ';
                 if ( 'REX_VALUE[6]'==$value) {
@@ -125,7 +123,6 @@ if(!rex_addon::get('markitup')->isAvailable()) {
         <div class="col-sm-9">
           <div class="rex-select-style">
             <select id="marker" name="REX_INPUT_VALUE[7]">
-            <?php
               foreach (array('red','green','blue','yellow','purple','pink') as $value) {
                 echo '<option value="'.$value.'" ';
                 if ( 'REX_VALUE[7]'==$value) {
@@ -154,7 +151,6 @@ if(!rex_addon::get('markitup')->isAvailable()) {
         <div class="col-sm-9">
           <div class="rex-select-style">
             <select id="marker" name="REX_INPUT_VALUE[8]">
-            <?php
               foreach (array('nein','ja') as $value) {
                 echo '<option value="'.$value.'" ';
                 if ( 'REX_VALUE[8]'==$value) {
@@ -429,7 +425,6 @@ function loadScript(src){
   script.src = src;
 }
 if(typeof google === "undefined") {
-loadScript('https://maps.googleapis.com/maps/api/js?<?php echo $gmapikey; ?>v=3&libraries=places&callback=initialize');
 }
 
 // vars
