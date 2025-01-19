@@ -29,11 +29,6 @@ jobs:
             if grep -q "markitup::" "$file"; then
                 echo "Processing: $file"
                 
-                # Ersetze das MarkItUp
-                sed -i 's/markitup::MarkItUp::/MarkItUp::/g' "$file"
-                sed -i 's/markitup::/MarkItUp::/g' "$file"
-
-
                 # Überprüfe ob bereits <?php am Anfang steht
                 if ! grep -q "^<\?php" "$file"; then
                     echo "Adding '<?php' at beginning of $file"
@@ -42,6 +37,11 @@ jobs:
                 else
                     echo "<?php already found at beginning of $file"
                 fi
+
+                # Ersetze das MarkItUp (nachdem <?php eingefügt wurde)
+                sed -i 's/markitup::MarkItUp::/MarkItUp::/g' "$file"
+                sed -i 's/markitup::/MarkItUp::/g' "$file"
+
             else
                 echo "Skipping $file, no markitup:: found"
             fi
