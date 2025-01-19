@@ -1,4 +1,6 @@
 <?php
+use FriendsOfRedaxo\MarkItUp\MarkItUp;
+<?php
 if (!rex_addon::get('markitup')->isAvailable() OR !rex_addon::get("yform")->isAvailable() OR !rex_plugin::get("yform", "tools")->isAvailable()) {
     echo rex_view::error('Dieses Modul ben&ouml;tigt das "MarkItUp", "yForm" und das Plugin "yForm/tools" Addon!');
 }

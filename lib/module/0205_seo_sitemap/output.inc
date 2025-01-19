@@ -1,4 +1,6 @@
 <?php
+use FriendsOfRedaxo\MarkItUp\MarkItUp;
+<?php
 
 $artikel          = 'REX_VALUE[2]';
 $start_artikel    = 'REX_VALUE[3]';

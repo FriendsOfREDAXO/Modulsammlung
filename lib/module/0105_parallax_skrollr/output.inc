@@ -1,4 +1,6 @@
 <?php
+use FriendsOfRedaxo\MarkItUp\MarkItUp;
+<?php
 if(!rex_addon::get('markitup')->isAvailable() && !rex_addon::get('redactor2')->isAvailable()) {
   $editor = 'markitup';
   echo rex_view::error('Dieses Modul benötigt das "MarkItUp" oder das "Redactor 2" Addon!');

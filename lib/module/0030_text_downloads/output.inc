@@ -1,4 +1,6 @@
 <?php
+use FriendsOfRedaxo\MarkItUp\MarkItUp;
+<?php
 $output_frontend   = array();
 $output_backend    = array();
 $download_be_dateien = '';

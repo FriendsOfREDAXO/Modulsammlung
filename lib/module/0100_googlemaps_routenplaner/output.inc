@@ -1,4 +1,6 @@
 <?php
+use FriendsOfRedaxo\MarkItUp\MarkItUp;
+<?php
 
 // HIER DEN API KEY EINGEBEN
 $gmapikey = '';

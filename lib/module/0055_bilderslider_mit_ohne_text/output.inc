@@ -1,4 +1,6 @@
 <?php
+use FriendsOfRedaxo\MarkItUp\MarkItUp;
+<?php
 
 $output_fe_bilder     = '';
 $output_be_bilder     = '';
