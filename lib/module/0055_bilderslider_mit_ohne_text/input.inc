@@ -1,9 +1,11 @@
 <?php
+use FriendsOfRedaxo\MarkItUp\MarkItUp;
+<?php
 if(!rex_addon::get('markitup')->isAvailable()) {
     echo rex_view::error('Dieses Modul ben&ouml;tigt das "MarkItUp" Addon!');
 } else {
-  if (!markitup::profileExists('supersimple')) {
-    markitup::insertProfile ('supersimple', 'Angelegt durch das Addon Modulsammlung', 'textile', 300, 800, 'relative', 'bold,italic,underline');
+  if (!MarkItUp::profileExists('supersimple')) {
+    MarkItUp::insertProfile ('supersimple', 'Angelegt durch das Addon Modulsammlung', 'textile', 300, 800, 'relative', 'bold,italic,underline');
   }
 }
 ?>

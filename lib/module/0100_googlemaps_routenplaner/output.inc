@@ -1,4 +1,6 @@
 <?php
+use FriendsOfRedaxo\MarkItUp\MarkItUp;
+<?php
 
 // HIER DEN API KEY EINGEBEN
 $gmapikey = '';
@@ -45,7 +47,7 @@ if ($breite == '100% Browserbreite') {
 }
 
 if ('REX_VALUE[id=10 isset=1]') {
-    $erklaerungstext = markitup::parseOutput ('textile', 'REX_VALUE[id=10 output="html"]');
+    $erklaerungstext = MarkItUp::parseOutput ('textile', 'REX_VALUE[id=10 output="html"]');
 }
 
 
