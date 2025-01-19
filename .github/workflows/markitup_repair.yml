@@ -28,14 +28,13 @@ jobs:
           find lib -type f -name '*.inc' -print0 | while IFS= read -r -d $'\0' file; do
             if grep -q "markitup::" "$file"; then
                 echo "Processing: $file"
-                
-                # Überprüfe ob bereits <?php am Anfang steht
-                if ! grep -q "^<\?php" "$file"; then
-                    echo "Adding '<?php' at beginning of $file"
-                    # Füge <?php und den use-statement hinzu
+
+                # Überprüfe ob die Datei bereits die <?php und use Anweisung enthält
+                if ! grep -q "^<\?php.*use FriendsOfRedaxo\\\\MarkItUp\\\\MarkItUp;.*$" "$file"; then
+                    echo "Adding '<?php' and use statement at the beginning of $file"
                     sed -i '1s/^/<?php\nuse FriendsOfRedaxo\\MarkItUp\\MarkItUp;\n/' "$file"
                 else
-                    echo "<?php already found at beginning of $file"
+                   echo "<?php and use statement already present in $file"
                 fi
 
                 # Ersetze das MarkItUp (nachdem <?php eingefügt wurde)
