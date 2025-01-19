@@ -1,4 +1,6 @@
 <?php
+use FriendsOfRedaxo\MarkItUp\MarkItUp;
+<?php
 
 $output_fe_bilder     = '';
 $output_be_bilder     = '';
@@ -55,7 +57,7 @@ if ('REX_VALUE[3]' != 'nein') {
 $anzahl = 'REX_VALUE[4]';
 
 if('REX_VALUE[6]' != '') {
-    $text = markitup::parseOutput ('textile', 'REX_VALUE[id=6 output="html"]');
+    $text = MarkItUp::parseOutput ('textile', 'REX_VALUE[id=6 output="html"]');
     $output_backend_text = '
     <div class="form-group">
        <label class="col-sm-3 control-label">Text</label>
