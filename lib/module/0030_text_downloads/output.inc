@@ -1,4 +1,6 @@
 <?php
+use FriendsOfRedaxo\MarkItUp\MarkItUp;
+<?php
 $output_frontend   = array();
 $output_backend    = array();
 $download_be_dateien = '';
@@ -47,7 +49,7 @@ if('REX_VALUE[1]' != '') {
 }
 
 if('REX_VALUE[2]' != '') {
-  $text = markitup::parseOutput ('textile', 'REX_VALUE[id=2 output="html"]');
+  $text = MarkItUp::parseOutput ('textile', 'REX_VALUE[id=2 output="html"]');
   $output_backend[] = '
     <div class="form-group">
        <label class="col-sm-3 control-label">Text</label>

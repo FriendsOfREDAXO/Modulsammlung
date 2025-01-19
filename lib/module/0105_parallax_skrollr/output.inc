@@ -1,4 +1,6 @@
 <?php
+use FriendsOfRedaxo\MarkItUp\MarkItUp;
+<?php
 if(!rex_addon::get('markitup')->isAvailable() && !rex_addon::get('redactor2')->isAvailable()) {
   $editor = 'markitup';
   echo rex_view::error('Dieses Modul benötigt das "MarkItUp" oder das "Redactor 2" Addon!');
@@ -35,7 +37,7 @@ if($text != '') {
   $text = 'REX_VALUE[id=2 output=html]';
 
   if (rex_addon::get('markitup')->isAvailable()) {
-    $text = markitup::parseOutput ('textile', $text);
+    $text = MarkItUp::parseOutput ('textile', $text);
   }
 
   $output_backend_text = '

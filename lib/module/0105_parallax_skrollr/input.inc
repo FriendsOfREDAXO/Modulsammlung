@@ -1,9 +1,11 @@
 <?php
+use FriendsOfRedaxo\MarkItUp\MarkItUp;
+<?php
 if(!rex_addon::get('markitup')->isAvailable() && !rex_addon::get('redactor2')->isAvailable()) {
     echo rex_view::error('Dieses Modul ben&ouml;tigt das "MarkItUp" oder das "Redactor 2" Addon!');
 }
-if (rex_addon::get('markitup')->isAvailable() && !markitup::profileExists('simple')) {
-  markitup::insertProfile('simple', 'Angelegt durch das Addon Modulsammlung', 'textile', 300, 800, 'relative', 'bold,italic,underline,deleted,quote,sub,sup,code,unorderedlist,grouplink[internal|external|mailto]');
+if (rex_addon::get('markitup')->isAvailable() && !MarkItUp::profileExists('simple')) {
+  MarkItUp::insertProfile('simple', 'Angelegt durch das Addon Modulsammlung', 'textile', 300, 800, 'relative', 'bold,italic,underline,deleted,quote,sub,sup,code,unorderedlist,grouplink[internal|external|mailto]');
 }
 
 if (rex_addon::get('redactor2')->isAvailable() && !redactor2::profileExists('simple')) {
