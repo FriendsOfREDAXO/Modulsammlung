@@ -2,6 +2,11 @@ name: Replace MarkItUp in includes
 
 on:
   workflow_dispatch:
+    inputs:
+      base_branch:
+        description: 'The base branch for the pull request (e.g. main, master, develop)'
+        required: true
+        default: 'main'
 
 jobs:
   replace_markitup:
@@ -40,20 +45,23 @@ jobs:
                 echo "Skipping $file, no markitup:: found"
             fi
           done
-      
+
       - name: Configure Git
         run: |
           git config --global user.name 'GitHub Action'
           git config --global user.email 'actions@github.com'
-
-      - name: Commit and Push Changes
+      
+      - name: Create Branch and Commit Changes
         run: |
           git checkout -b refactor/markitup-replace
           git add .
           git commit -m "Refactor: Replace markitup:: and add use statement"
-          git push origin refactor/markitup-replace
-          echo "Pushed changes to branch refactor/markitup-replace"
+          echo "Branch created, changes commited"
 
+      - name: Push Branch
+        run: |
+          git push --force origin refactor/markitup-replace
+          echo "Branch 'refactor/markitup-replace' pushed to remote"
 
       - name: Create Pull Request
         uses: actions/github-script@v6
@@ -66,7 +74,7 @@ jobs:
               repo: context.repo.repo,
               title: 'Refactor: Replace markitup:: and add use statement',
               head: 'refactor/markitup-replace',
-              base: 'main',
+              base: '${{ github.event.inputs.base_branch }}',
               body: 'This pull request replaces `markitup::MarkItUp::` with `MarkItUp::` in all `.inc` files under `lib/` and adds `<?php` and `use FriendsOfRedaxo\\MarkItUp\\MarkItUp;` at the beginning if not present.',
             });
             console.log(`Pull request created: ${pr.html_url}`);
